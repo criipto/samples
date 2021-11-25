@@ -1,1 +1,33 @@
 @import "~bulma";
+
+body,html {
+    margin:0px;
+    height: 100%;
+    color: #204C82;
+}
+
+body, .card, .panel, .panel-block, .panel-block.is-active, .panel-heading {
+    background: #F9F8F4;
+    color: #204C82;
+}
+
+.app {
+    height: 100vh;
+    color: #204C82;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 22px;
+    color: #204C82;
+}
+
+.subtitle {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #204C82;
+}
