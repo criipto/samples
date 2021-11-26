@@ -10,6 +10,33 @@ div.logo {
     background: url("credit_card_logo.png") no-repeat center;
     width: 75px;
 }
+
+.panel-icon,div.icon {
+    width: 24px;
+    height: 24px;
+    border: none;
+    margin-right: 10px;
+}
+
+.icon.arrows {
+    background: url("arrows.png") no-repeat center;
+}
+.icon.chart {
+    background: url("chart.png") no-repeat center;
+}
+.icon.envelope {
+    background: url("envelope.png") no-repeat center;
+}
+.icon.lamp {
+    background: url("lamp.png") no-repeat center;
+}
+.icon.vbars {
+    background: url("vbars.png") no-repeat center;
+}
+.icon.wineglass {
+    background: url("wineglass.png") no-repeat center;
+}
+
 body, .card, .panel, .panel-block, .panel-block.is-active, .panel-heading { 
     background: #F9F8F4;
     color: #204C82;

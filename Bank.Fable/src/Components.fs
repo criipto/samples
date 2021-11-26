@@ -8,35 +8,35 @@ type Components =
     [<ReactComponent>]
     static member MenuPanel() = 
         let activeTab, setActiveTab = React.useState("Konti") 
-        let createMenuItem (name : string) = 
+        let createMenuItem (iconName : string,name : string) = 
             prop.children [
                 Bulma.panelIcon [
-                    Html.i [ prop.className "fas fa-book" ]
+                    Html.div [ iconName |> sprintf "icon %s" |> prop.className ]
                 ]
                 Html.span name
             ]
         let menuItems = 
             [
-                "Konti"
-                "Betal og Overføre"
-                "Investeringer"
-                "Pension og Forsikringer"
-                "Beskeder"
-            ] |> List.map(fun tabName ->
-                if activeTab = tabName then
+                "vbars","Konti"
+                "arrows","Betal og Overføre"
+                "chart","Investeringer"
+                "wineglass","Pension og Forsikringer"
+                "envelope","Beskeder"
+            ] |> List.map(fun tab ->
+                if activeTab = snd tab then
                     Bulma.panelBlock.div [
                         prop.className "is-active"
                         prop.style [
                             style.borderBottomStyle borderStyle.solid
                         ]
-                        createMenuItem tabName
+                        createMenuItem tab
                     ]
                 else
                     Bulma.panelBlock.div [
                         prop.style [
                             style.borderStyle.none
                         ]
-                        createMenuItem tabName
+                        createMenuItem tab
                     ]
             )
         Bulma.panel [
@@ -44,7 +44,12 @@ type Components =
                 style.borderStyle.none
                 style.boxShadow.none
             ]
-            (Bulma.panelHeading [ prop.text "Overblik" ]
+            (Bulma.panelHeading [ 
+                    Html.div [ 
+                        Html.div [ prop.className "icon lamp" ]
+                        Html.span "Overblik" 
+                    ]
+                ]
                 ::menuItems
                 |> prop.children)
         ]  
