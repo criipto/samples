@@ -23,16 +23,16 @@ jobs:
         node-version: '16'
     - name: Restore tools
       run: dotnet tool restore
-      working-directory: /Bank.Fable/src
+      working-directory: /Bank.Fable
     - name: Restore dotnet dependencies 
       run: dotnet paket restore
-      working-directory: /Bank.Fable/src
+      working-directory: /Bank.Fable
     - name: Restore js dependencies
       run: npm install
-      working-directory: /Bank.Fable/src
+      working-directory: /Bank.Fable
     - name: Build
       run: npm run build
-      working-directory: /Bank.Fable/src
+      working-directory: /Bank.Fable
       env:
        WEBPACK_OUT_DIR: ./build
     - name: Push
