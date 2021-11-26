@@ -114,7 +114,7 @@ type Components =
             Components.IdCard()
         ]
     [<ReactComponent>]
-    static member IconButton iconName = 
+    static member IconButton (label : string option,iconName : string option) = 
         Bulma.button.a [  
             prop.style [
                 style.backgroundColor.transparent
@@ -123,9 +123,15 @@ type Components =
             ]
             prop.children[
                 Bulma.icon [
-                    Html.i [
-                        iconName |> sprintf "fal fa-%s" |> prop.className
-                    ]
+                    if label.IsSome then 
+                        yield Html.span [ 
+                                prop.className "navbar-item"
+                                prop.text label.Value
+                              ]
+                    if iconName.IsSome then
+                        yield Html.i [
+                            iconName.Value |> sprintf "fal fa-%s" |> prop.className
+                        ]
                 ]
             ]
         ]
@@ -143,8 +149,10 @@ type Components =
             Bulma.navbarEnd.div [
                 Bulma.navbarItem.div [
                     Bulma.buttons [
-                        "cog" |> Components.IconButton
-                        "power-off" |> Components.IconButton
+                        (None,Some "cog") |> Components.IconButton
+                        (None,None) |> Components.IconButton
+                        (Some "Log af",Some "power-off") |> Components.IconButton
+                        (None,None) |> Components.IconButton
                     ]
                 ]
             ]
