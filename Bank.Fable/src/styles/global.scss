@@ -6,12 +6,17 @@ body,html {
     height: 100%;
     color: #204C82;
 }
-
+div.logo {
+    background: url("credit_card_logo.png") no-repeat center;
+    width: 75px;
+}
 body, .card, .panel, .panel-block, .panel-block.is-active, .panel-heading { 
     background: #F9F8F4;
     color: #204C82;
 }
-
+.navbar-item,i.fal{
+    color: #F9F8F4;
+}
 .app {
     height: 100vh;
     color: #204C82;

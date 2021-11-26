@@ -109,45 +109,37 @@ type Components =
             Components.IdCard()
         ]
     [<ReactComponent>]
+    static member IconButton iconName = 
+        Bulma.button.a [  
+            prop.style [
+                style.backgroundColor.transparent
+                style.borderStyle.none
+                style.fontSize 24
+            ]
+            prop.children[
+                Bulma.icon [
+                    Html.i [
+                        iconName |> sprintf "fal fa-%s" |> prop.className
+                    ]
+                ]
+            ]
+        ]
+    [<ReactComponent>]
     static member Navbar() =
         Bulma.navbarMenu [
             Bulma.navbarStart.div [
-                Bulma.navbarItem.a [ prop.text "Home" ]
-                Bulma.navbarItem.a [ prop.text "Documentation" ]
                 Bulma.navbarItem.div [
-                    Bulma.navbarItem.hasDropdown
-                    Bulma.navbarItem.isHoverable
-                    prop.children [
-                        Bulma.navbarLink.a [ prop.text "More" ]
-                        Bulma.navbarDropdown.div [
-                            Bulma.navbarDivider []
-                            
-                        ]
-                    ]
+                    prop.className "logo"
+                ]
+                Bulma.navbarItem.div[
+                    prop.text "%NAME% Bank"
                 ]
             ]
             Bulma.navbarEnd.div [
                 Bulma.navbarItem.div [
                     Bulma.buttons [
-                        Bulma.button.a [
-                            Bulma.color.isPrimary
-                            prop.children [
-                                Html.strong "Sign up"
-                            ]
-                        ]
-                        Bulma.button.a [  
-                            prop.style [
-                                style.backgroundColor.transparent
-                                style.borderStyle.none
-                            ]
-                            prop.children[
-                                Bulma.icon [
-                                    Html.i [
-                                        prop.className "fa-light fa-power-off"
-                                    ]
-                                ]
-                            ]
-                        ]
+                        "cog" |> Components.IconButton
+                        "power-off" |> Components.IconButton
                     ]
                 ]
             ]
