@@ -31,7 +31,10 @@ jobs:
       run: dotnet paket restore
       working-directory: ./Bank.Fable
     - name: Restore js dependencies
-      run: npm install
+      run: |
+        npm config set "@fortawesome:registry" https://npm.fontawesome.com/
+        npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.Awesome }}
+        npm install
       working-directory: ./Bank.Fable
     - name: Build
       run: npm run build
