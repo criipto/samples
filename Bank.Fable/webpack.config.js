@@ -14,13 +14,13 @@ patchGracefulFileSystem();
 var isProduction = !process.argv.find(v => v.indexOf('webpack-dev-server') !== -1);
 
 const isDevelopment = !isProduction && process.env.NODE_ENV !== 'production';
-
+const outputDir = process.env.WEBPACK_OUT_DIR || "./dist";
 var CONFIG = {
     // The tags to include the generated JS and CSS will be automatically injected in the HTML template
     // See https://github.com/jantimon/html-webpack-plugin
     indexHtmlTemplate: "./src/index.html",
     fsharpEntry: "./src/Main.fs.js",
-    outputDir: "./dist",
+    outputDir: outputDir,
     assetsDir: "./public",
     devServerPort: 8080,
     // When using webpack-dev-server, you may need to redirect some calls

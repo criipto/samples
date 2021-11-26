@@ -7,6 +7,8 @@ open Fable.Core.JsInterop
 
 importSideEffects "./styles/global.scss"
 
+Browser.Dom.document.title <- "%NAME% Bank"
+
 ReactDOM.render(
     Components.Layout(),
     document.getElementById "app"

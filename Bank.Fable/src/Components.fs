@@ -110,7 +110,48 @@ type Components =
         ]
     [<ReactComponent>]
     static member Navbar() =
-        Bulma.navbar[]
+        Bulma.navbarMenu [
+            Bulma.navbarStart.div [
+                Bulma.navbarItem.a [ prop.text "Home" ]
+                Bulma.navbarItem.a [ prop.text "Documentation" ]
+                Bulma.navbarItem.div [
+                    Bulma.navbarItem.hasDropdown
+                    Bulma.navbarItem.isHoverable
+                    prop.children [
+                        Bulma.navbarLink.a [ prop.text "More" ]
+                        Bulma.navbarDropdown.div [
+                            Bulma.navbarDivider []
+                            
+                        ]
+                    ]
+                ]
+            ]
+            Bulma.navbarEnd.div [
+                Bulma.navbarItem.div [
+                    Bulma.buttons [
+                        Bulma.button.a [
+                            Bulma.color.isPrimary
+                            prop.children [
+                                Html.strong "Sign up"
+                            ]
+                        ]
+                        Bulma.button.a [  
+                            prop.style [
+                                style.backgroundColor.transparent
+                                style.borderStyle.none
+                            ]
+                            prop.children[
+                                Bulma.icon [
+                                    Html.i [
+                                        prop.className "fa-light fa-power-off"
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
 
     [<ReactComponent>]
     static member Layout() =

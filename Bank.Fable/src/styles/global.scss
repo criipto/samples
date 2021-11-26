@@ -1,4 +1,5 @@
 @import "~bulma";
+@import "~@fortawesome/fontawesome-pro/css/all.min";
 
 body,html {
     margin:0px;
@@ -6,7 +7,7 @@ body,html {
     color: #204C82;
 }
 
-body, .card, .panel, .panel-block, .panel-block.is-active, .panel-heading {
+body, .card, .panel, .panel-block, .panel-block.is-active, .panel-heading { 
     background: #F9F8F4;
     color: #204C82;
 }
@@ -30,4 +31,9 @@ body, .card, .panel, .panel-block, .panel-block.is-active, .panel-heading {
     font-size: 16px;
     line-height: 24px;
     color: #204C82;
+}
+
+.navbar-menu {
+    background-image: url("bg_top.png");
+    background-size:100% 100%;
 }
