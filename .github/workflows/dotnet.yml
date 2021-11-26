@@ -17,18 +17,22 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
     - name: Restore tools
       run: dotnet tool restore
-      working-directory: src
+      working-directory: /Bank.Fable/src
     - name: Restore dotnet dependencies 
       run: dotnet paket restore
-      working-directory: src
+      working-directory: /Bank.Fable/src
     - name: Restore js dependencies
       run: npm install
-      working-directory: src
+      working-directory: /Bank.Fable/src
     - name: Build
       run: npm run build
-      working-directory: src
+      working-directory: /Bank.Fable/src
       env:
        WEBPACK_OUT_DIR: ./build
     - name: Push
