@@ -5,8 +5,13 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="index.html" />
+    <Compile Include="Models.fs" />
+    <Compile Include="Data/Statements.fs" />
     <Compile Include="Extensions.fs" />
-    <Compile Include="Components.fs" />
+    <Compile Include="Components/Elements.fs" />
+    <Compile Include="Components/Navigation.fs" />
+    <Compile Include="Components/Components.fs" />
+    <Compile Include="Components/Page.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />

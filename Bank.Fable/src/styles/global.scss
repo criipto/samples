@@ -36,16 +36,15 @@ div.logo {
 .icon.wineglass {
     background: url("wineglass.png") no-repeat center;
 }
-
+.card {
+   margin-bottom: 50px;
+}
 body, .card, .panel, .panel-block, .panel-block.is-active, .panel-heading { 
     background: #F9F8F4;
     color: #204C82;
 }
 .navbar-item,i.fal{
     color: #F9F8F4;
-}
-a.button {
-    margin-right: 10px;
 }
 .app {
     height: 100vh;
