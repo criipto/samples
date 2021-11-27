@@ -5,12 +5,8 @@ open Feliz.Bulma
 
 type Navigation =
     [<ReactComponent>]
-    static member SidePanel(onViewChanged) = 
-        let activeView, setActiveView = React.useState(Accounts)
-
-        let changeView view = 
-            setActiveView view
-            onViewChanged view
+    static member SidePanel(activeView,setView) = 
+        
 
         let createMenuItem (iconName : string,view : View) = 
             prop.children [
@@ -18,7 +14,7 @@ type Navigation =
                     Html.div [ iconName |> sprintf "icon %s" |> prop.className ]
                 ]
                 Html.span [
-                    prop.onClick(fun _ -> changeView view)
+                    prop.onClick(fun _ -> setView view)
                     prop.text (view.ToString())
                 ]
             ]
@@ -33,9 +29,6 @@ type Navigation =
                 if activeView = snd tab then
                     Bulma.panelBlock.div [
                         prop.className "is-active"
-                        prop.style [
-                            style.borderBottomStyle borderStyle.solid
-                        ]
                         createMenuItem tab
                     ]
                 else

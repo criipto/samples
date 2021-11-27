@@ -68,6 +68,7 @@ type Components =
             |> List.map(fun account ->
                     Bulma.columns [
                         prop.onClick(fun _ -> viewAccount account.Name)
+                        prop.className "account"
                         prop.children [
                             Bulma.column [
                                 column.is4
@@ -95,5 +96,56 @@ type Components =
             ]
             prop.children [
                 Bulma.cardContent accounts
+            ]
+        ]
+    
+    [<ReactComponent>]
+    static member Account(account : Models.Account) = 
+        let transactions = 
+            account.Ledger
+            |> List.map(fun ledgerEntry ->
+                    let formatCurrency = sprintf "%.2f"
+                    Bulma.columns [
+                        prop.className "transaction"
+                        prop.children [
+                            Bulma.column [
+                                column.is4
+                                prop.text (ledgerEntry.Date.ToShortDateString())
+                            ] 
+                            Bulma.column [
+                                prop.text ledgerEntry.Text
+                            ]
+                            Bulma.column [
+                                column.is4
+                                prop.children [
+                                    Html.div [
+                                        prop.className "ledger-entry amount"
+                                        ledgerEntry.Amount |> formatCurrency |> prop.text  
+                                    ]
+                                    Html.div [
+                                        prop.className "ledger-entry balance"
+                                        ledgerEntry.Balance |> formatCurrency |> prop.text  
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+            )
+        Bulma.card [
+            prop.style[
+                style.boxShadow.none
+                style.backgroundColor.white
+            ]
+            prop.children [
+                Bulma.cardHeader [
+                    Bulma.icon [
+                        "icon-large icon vbars" |> prop.className 
+                    ]
+                    Html.span [
+                        prop.className "account-heading"
+                        prop.text account.Name
+                    ]
+                ]
+                Bulma.cardContent transactions
             ]
         ]

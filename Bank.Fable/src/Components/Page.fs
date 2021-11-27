@@ -7,18 +7,22 @@ open Feliz.Bulma
 type Page =
     
     [<ReactComponent>]
-    static member Overview(onViewChanged) =
+    static member Overview(activeView,setView) =
         let accounts,_ = React.useState(Statements.generate "user" 200)
-        let view = React.useState Accounts |> onViewChanged
+        
         let components = 
-            match view with
+            match activeView with
             Accounts ->        
                 [
                     Components.IdCard()
-                    Components.Accounts(accounts,fun _ -> ())
+                    Components.Accounts(accounts,fun name -> name |> Account |> setView)
                 ]
             | Account name ->
-               []
+               [
+                   accounts
+                   |> List.find (fun a -> a.Name = name)
+                   |> Components.Account
+               ]
             | v ->
                 printfn "Switching to %A" v 
                 [
@@ -29,12 +33,7 @@ type Page =
 
     [<ReactComponent>]
     static member Layout() =
-        let mutable updater = fun _ -> eprintfn "No updater specified" 
-        let rec updateView (view,updatr) =
-            updater <- updatr
-            view
-        let viewChanged view = 
-            updater view
+        let view,setView = React.useState Accounts
         Html.div[
             Navigation.Topbar()
             Bulma.container [
@@ -50,12 +49,12 @@ type Page =
                             ]
                             column.isOneQuarter
                             prop.children[
-                                Navigation.SidePanel viewChanged
+                                Navigation.SidePanel (view,setView)
                             ]
                         ]
                         Bulma.column [
                             prop.children [
-                                Page.Overview updateView
+                                Page.Overview (view,setView)
                             ]
                         ]
                     ]
