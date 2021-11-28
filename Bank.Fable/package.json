@@ -13,6 +13,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-pro": "^5.15.4",
         "date-fns": "^2.16.1",
+        "oidc-client": "^1.11.5",
         "react": "^17.0.1",
         "react-dom": "^17.0.1"
     },

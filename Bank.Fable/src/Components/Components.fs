@@ -6,7 +6,7 @@ open Feliz.Bulma
 type Components =
     
     [<ReactComponent>]
-    static member IdCard() =
+    static member IdCard(user :Models.User) =
         Bulma.card [
             prop.style[
                 style.boxShadow.none
@@ -30,11 +30,11 @@ type Components =
                 
                     Bulma.mediaContent [
                         Bulma.title [
-                            prop.text "John Smith"
+                            prop.text user.Name
                         ]
                         Bulma.subtitle [
                             size.isSize6
-                            prop.text "Fødselsdag: 06-11-1975"
+                            user.DateOfBirth |> sprintf "Fødselsdag: %s" |> prop.text 
                         ] 
                     ]
                 
@@ -63,6 +63,7 @@ type Components =
         ]
     [<ReactComponent>]
     static member Accounts(accounts : Models.Account list, viewAccount) = 
+        
         let accounts = 
             accounts
             |> List.map(fun account ->

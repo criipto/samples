@@ -28,7 +28,5 @@ type User =
    {
        Name : string
        DateOfBirth : string
-       Email : string option
-       ImageUrl : string option
        Accounts : Account list
    } 

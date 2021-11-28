@@ -7,8 +7,9 @@ open Feliz.Bulma
 type Elements =
     
     [<ReactComponent>]
-    static member IconButton (label : string option,iconName : string option) = 
+    static member IconButton (label : string option,iconName : string option, action ) = 
         Bulma.button.a [  
+            prop.onClick action
             prop.style [
                 style.backgroundColor.transparent
                 style.borderStyle.none

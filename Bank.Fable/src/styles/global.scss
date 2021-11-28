@@ -20,6 +20,22 @@ div.logo {
 .card:has( > .account-heading) {
     height:50px;
 }
+
+.ledger-entry {
+    text-align: right;
+}
+
+.ledger-entry.amount {
+    font-weight: 200;
+    font-family: monospace;
+}
+
+.ledger-entry.balance {
+    font-weight: 50;
+    font-size: .75em;
+    font-family: monospace;
+    color: #7192bb;
+}
 .account-heading {
     
     font-weight: 500;

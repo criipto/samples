@@ -6,3 +6,4 @@ nuget Fable.DateFunctions
 nuget Feliz
 nuget Feliz.Bulma
 nuget Feliz.Router
+nuget Fable.JsonProvider
