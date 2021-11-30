@@ -19,13 +19,7 @@ type Components =
                     Bulma.media [
                         Bulma.mediaLeft [
                             Bulma.image [
-                                prop.className "is-48x48"
-                                prop.children[
-                                    Html.img [
-                                        prop.src "https://bulma.io/images/placeholders/96x96.png" 
-                                        prop.alt "Placeholder image"
-                                    ]
-                                ]
+                                prop.className "is-48x48 icon profile"
                             ]
                         ]
                     ]
@@ -63,6 +57,7 @@ type Components =
                 ]
             ]
         ]
+
     [<ReactComponent>]
     static member Accounts(accounts : Models.Account list, viewAccount) = 
         
@@ -99,6 +94,46 @@ type Components =
             ]
             prop.children [
                 Bulma.cardContent accounts
+            ]
+        ]
+    
+    
+    [<ReactComponent>]
+    static member MessageBox(messages : Models.Message []) = 
+        
+        let messages = 
+            messages
+            |> Array.map(fun message ->
+                    Bulma.columns [
+                        prop.onClick(fun _ -> printfn "read message")
+                        prop.className "message"
+                        prop.children [
+                            Bulma.column [
+                                column.is2
+                                prop.text message.From
+                            ]
+                            Bulma.column [
+                                column.is2
+                                prop.text message.Subject
+                            ] 
+                            Bulma.column [
+                                column.is6
+                                message.Content.Substring(0,min message.Content.Length 100) |> prop.text 
+                            ]
+                            Bulma.column [
+                                column.is2
+                                prop.text message.Date
+                            ]
+                        ]
+                    ]
+            )
+        Bulma.card [
+            prop.style[
+                style.boxShadow.none
+                style.backgroundColor.white
+            ]
+            prop.children [
+                Bulma.cardContent messages
             ]
         ]
     
@@ -170,7 +205,7 @@ type Components =
                     ]
                     Bulma.tile [
                         prop.className "message-heading"
-                        prop.text message.Title
+                        prop.text message.Subject
                     ]
                 ]
                 Bulma.cardContent [

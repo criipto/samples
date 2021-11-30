@@ -13,6 +13,7 @@ type Page =
                 [
                     Components.IdCard(messages.Length,user)
                     Components.Accounts(user.Accounts,fun name -> name |> Account |> setView)
+                    Components.MessageBox(messages)
                 ]
             | Account name ->
                 let account = 
@@ -44,8 +45,10 @@ type Page =
                 Message(messagesRaw).messages
                 |> Array.map(fun m ->
                     {
-                        Title = m.title
+                        Subject = m.title
                         Content = m.content
+                        From = m.from
+                        Date = m.date 
                     } : Models.Message
                 ) |> setMessages
             else

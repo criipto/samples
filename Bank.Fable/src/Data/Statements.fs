@@ -431,9 +431,12 @@ let generate (name : string) maxLedgerLength =
             "Household"
             "Children budget"
             "Childs savings"
-            "*Investment"
+            "Investment"
             "Mastercard"
          ] |> List.filter(fun _ -> rnd.NextDouble() > 0.5)
+      let accountNames = 
+          accountNames
+          |> List.take (min accountNames.Length 4)
       
       let length maxl = 
          [for _ in 1..maxl -> if rnd.NextDouble() < 0.75 then 1 else 0] |> List.sum

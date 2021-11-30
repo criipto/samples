@@ -5,7 +5,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="index.html" />
-    <Compile Include="Assets.fs" />
     <Compile Include="OidcClient.fs" />
     <Compile Include="Identity.fs" />
     <Compile Include="Models.fs" />

@@ -11,13 +11,16 @@ type LedgerEntry =
 
 type Message = 
     {
-        Title : string
+        Subject : string
         Content : string
+        From : string
+        Date : string
     }
+    
 type Account = 
     {
         Name : string
-        Ledger : LedgerEntry list
+        Ledger : LedgerEntry list 
     } with member x.Balance
              with get() = 
                  x.Ledger
