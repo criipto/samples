@@ -8,7 +8,7 @@ type private Message = Fable.JsonProvider.Generator<"../public/messages.json">
 type Components =
     
     [<ReactComponent>]
-    static member IdCard(user :Models.User) =
+    static member IdCard(messageCount,user :Models.User) =
         Bulma.card [
             prop.style[
                 style.boxShadow.none
@@ -43,7 +43,7 @@ type Components =
                     Html.hr []
                     Bulma.content[
                         Html.div [
-                            Html.span "Der er ikke nogle nye beskeder fra banken. Se gamle beskeder under "
+                            messageCount |> sprintf "Der er %d nye beskeder fra banken. Se beskeder under " |> Html.span 
                             Html.a [
                                 prop.text "beskeder"
                                 prop.href "/messages"
@@ -154,16 +154,7 @@ type Components =
         ]
     
     [<ReactComponent>]
-    static member Messages() =
-        let messages,setMessages = React.useState [||]
-        async {
-            let! (statusCode,messagesRaw) = Fable.SimpleHttp.Http.get "/messages.json"
-            if statusCode = 200 then
-                Message(messagesRaw).messages
-                |> setMessages
-            else
-               eprintfn "Failed to retrieve messages %d %s" statusCode messagesRaw
-        } |> Async.StartImmediate
+    static member Messages(messages : Models.Message []) =
         messages
         |> Array.map(fun message -> 
             Bulma.card [
@@ -179,12 +170,12 @@ type Components =
                     ]
                     Bulma.tile [
                         prop.className "message-heading"
-                        prop.text message.title
+                        prop.text message.Title
                     ]
                 ]
                 Bulma.cardContent [
                     Bulma.section [
-                        prop.text message.content
+                        prop.text message.Content
                     ]
                 ]
             ]

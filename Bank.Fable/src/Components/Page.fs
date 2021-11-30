@@ -6,14 +6,12 @@ open Feliz.Bulma
 type Page =
     
     [<ReactComponent>]
-    static member Overview(user : Models.User, activeView,setView) =
-        
-        
+    static member Overview(user : Models.User, activeView,setView,messages : Models.Message []) =
         let components = 
             match activeView with
             Accounts ->        
                 [
-                    Components.IdCard(user)
+                    Components.IdCard(messages.Length,user)
                     Components.Accounts(user.Accounts,fun name -> name |> Account |> setView)
                 ]
             | Account name ->
@@ -25,12 +23,12 @@ type Page =
                 ]
             | Messages ->
                 [
-                    Components.Messages()
+                    Components.Messages(messages)
                 ]
             | v ->
                 printfn "Switching to %A" v 
                 [
-                    Components.IdCard(user)
+                    Components.IdCard(messages.Length,user)
                 ]
 
         Bulma.container components
@@ -39,6 +37,20 @@ type Page =
     static member Layout() =
         let view,setView = React.useState Accounts
         let user, _setUser = React.useState None
+        let messages,setMessages = React.useState [||]
+        async {
+            let! (statusCode,messagesRaw) = Fable.SimpleHttp.Http.get "/messages.json"
+            if statusCode = 200 then
+                Message(messagesRaw).messages
+                |> Array.map(fun m ->
+                    {
+                        Title = m.title
+                        Content = m.content
+                    } : Models.Message
+                ) |> setMessages
+            else
+               eprintfn "Failed to retrieve messages %d %s" statusCode messagesRaw
+        } |> Async.StartImmediate
         let setUser (oidcUser : Oidc.UserInfo option) = 
             let user = 
                 oidcUser |> Option.map(fun ou -> 
@@ -76,12 +88,12 @@ type Page =
                                 ]
                                 column.isOneQuarter
                                 prop.children[
-                                    Navigation.SidePanel (view,setView)
+                                    Navigation.SidePanel (messages.Length,view,setView)
                                 ]
                             ]
                             Bulma.column [
                                 prop.children [
-                                    Page.Overview (user,view,setView)
+                                    Page.Overview (user,view,setView, messages)
                                 ]
                             ]
                         ]

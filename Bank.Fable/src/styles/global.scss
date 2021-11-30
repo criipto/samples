@@ -18,9 +18,6 @@ div.logo {
     border: none;
     margin-right: 10px;
 }
-.card:has( > .account-heading) {
-    height:50px;
-}
 
 .ledger-entry {
     text-align: right;
@@ -83,6 +80,15 @@ body, .card, .panel, .panel-block, .panel-block.is-active, .panel-heading {
     background: #F9F8F4;
     color: #204C82;
 }
+
+.panel-block {
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+  }
+
 .navbar-item,i.fal{
     color: #F9F8F4;
 }
@@ -110,4 +116,14 @@ body, .card, .panel, .panel-block, .panel-block.is-active, .panel-heading {
 .navbar-menu {
     background-image: url("bg_top.png");
     background-size:100% 100%;
+}
+
+.badge {
+    position: relative;
+    top: -10px;
+    right: -10px;
+    padding: 4px;
+    border-radius: 50%;
+    background: red;
+    color: white;
 }

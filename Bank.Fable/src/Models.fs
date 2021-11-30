@@ -9,6 +9,11 @@ type LedgerEntry =
         Text : string
     }
 
+type Message = 
+    {
+        Title : string
+        Content : string
+    }
 type Account = 
     {
         Name : string

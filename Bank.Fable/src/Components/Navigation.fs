@@ -5,13 +5,19 @@ open Feliz.Bulma
 
 type Navigation =
     [<ReactComponent>]
-    static member SidePanel(activeView,setView) = 
+    static member SidePanel(messageCount : int,activeView,setView) = 
         
 
-        let createMenuItem (iconName : string,view : View) = 
+        let createMenuItem (iconName : string,view : View,count : int option) = 
             prop.children [
                 Bulma.panelIcon [
-                    Html.div [ iconName |> sprintf "icon %s" |> prop.className ]
+                    yield Html.div [ 
+                        iconName |> sprintf "icon %s" |> prop.className
+                        prop.children [
+                            if count.IsSome then 
+                                yield Html.span [prop.className "badge"; prop.text count.Value]
+                        ]
+                    ]
                 ]
                 Html.span [
                     prop.onClick(fun _ -> setView view)
@@ -20,23 +26,23 @@ type Navigation =
             ]
         let menuItems = 
             [
-                "vbars",Accounts
-                "arrows",Transfer
-                "chart",Invest
-                "wineglass",Pensions
-                "envelope",Messages
-            ] |> List.map(fun tab ->
-                if activeView = snd tab then
+                "vbars",Accounts, None
+                "arrows",Transfer, None
+                "chart",Invest, None
+                "wineglass",Pensions, None
+                "envelope",Messages, Some messageCount
+            ] |> List.map(fun (viewName,view,notification) ->
+                if activeView = view then
                     Bulma.panelBlock.div [
                         prop.className "is-active"
-                        createMenuItem tab
+                        createMenuItem (viewName,view,notification)
                     ]
                 else
                     Bulma.panelBlock.div [
                         prop.style [
                             style.borderStyle.none
                         ]
-                        createMenuItem tab
+                        createMenuItem (viewName,view,notification)
                     ]
             )
         Bulma.panel [
