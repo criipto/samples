@@ -54,7 +54,8 @@ type Navigation =
                 |> prop.children)
         ] 
     [<ReactComponent>]
-    static member Topbar(logout) =
+    static member Topbar(userButtonText,action) =
+        
         Bulma.navbarMenu [
             Bulma.navbarStart.div [
                 Bulma.navbarItem.div [
@@ -69,7 +70,7 @@ type Navigation =
                     Bulma.buttons [
                         (None,Some "cog",ignore) |> Elements.IconButton
                         (None,None,ignore) |> Elements.IconButton
-                        (Some "Log af",Some "power-off", fun _ -> logout() ) |> Elements.IconButton
+                        (Some userButtonText,Some "power-off", fun _ -> action() ) |> Elements.IconButton
                         (None,None,ignore) |> Elements.IconButton
                     ]
                 ]

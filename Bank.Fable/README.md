@@ -1,43 +1,25 @@
-# Feliz Template
+# Criipto Verify 
 
-This template gets you up and running with a simple web app using [Fable](http://fable.io/), [Elmish](https://fable-elmish.github.io/) and [Feliz](https://github.com/Zaid-Ajaj/Feliz).
+This template gets you up and running with a simple demo bank using criipto verify for authentication. The intention of the application is to show you how to integrate Criipto Verify into an application. This guide will show you how the integration is configured and used. For how to build and run the application please see [DEVELOPMET](/DEVELOPMENT.md)
 
-## Requirements
+## Configuration
 
-* [dotnet SDK](https://www.microsoft.com/net/download/core) 2.0.0 or higher
-* [node.js](https://nodejs.org) 10.0.0 or higher
-
-
-## Editor
-
-To write and edit your code, you can use either VS Code + [Ionide](http://ionide.io/), Emacs with [fsharp-mode](https://github.com/fsharp/emacs-fsharp-mode), [Rider](https://www.jetbrains.com/rider/) or Visual Studio.
+The integration to Criipto verify is setup up in the file Identity.fs. THe important part is this block of code
 
 
-## Development
+SOMETHING ABOUT REQUIRING response strategy plainJson
 
-Before doing anything, start with installing npm dependencies using `npm install`.
-
-Then to start development mode with hot module reloading, run:
-```bash
-npm start
+```F#
+{
+    authority = "https://fablecriipto-test.criipto.id"               
+    client_id = "urn:my:application:identifier:1744"               
+    redirect_uri = url            
+    responseType = "id_token" 
+    post_logout_redirect_uri = url           
+    acr_values = "urn:grn:authn:dk:mitid:low"
+} 
 ```
-This will start the development server after compiling the project, once it is finished, navigate to http://localhost:8080 to view the application .
 
-To build the application and make ready for production:
-```
-npm run build
-```
-This command builds the application and puts the generated files into the `deploy` directory (can be overwritten in webpack.config.js).
+All the values in this block are in pne way or another reflected in the [Criipto management UI][https://manage.criipto.id/]
 
-### Tests
-
-The template includes a test project that ready to go which you can either run in the browser in watch mode or run in the console using node.js and mocha. To run the tests in watch mode:
-```
-npm run test:live
-```
-This command starts a development server for the test application and makes it available at http://localhost:8085.
-
-To run the tests using the command line and of course in your CI server, you have to use the mocha test runner which doesn't use the browser but instead runs the code using node.js:
-```
-npm test
-```
+![](domain.png)

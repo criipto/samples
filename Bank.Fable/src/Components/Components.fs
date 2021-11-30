@@ -3,6 +3,8 @@ namespace App.Components
 open Feliz
 open Feliz.Bulma
 
+type private Message = Fable.JsonProvider.Generator<"../public/messages.json">  
+
 type Components =
     
     [<ReactComponent>]
@@ -150,3 +152,43 @@ type Components =
                 Bulma.cardContent transactions
             ]
         ]
+    
+    [<ReactComponent>]
+    static member Messages() =
+        let messages,setMessages = React.useState [||]
+        async {
+            let! (statusCode,messagesRaw) = Fable.SimpleHttp.Http.get "/messages.json"
+            if statusCode = 200 then
+                Message(messagesRaw).messages
+                |> setMessages
+            else
+               eprintfn "Failed to retrieve messages %d %s" statusCode messagesRaw
+        } |> Async.StartImmediate
+        messages
+        |> Array.map(fun message -> 
+            Bulma.card [
+            prop.style[
+                style.boxShadow.none
+                style.borderRadius 10
+                style.backgroundColor.white
+            ]
+            prop.children [
+                Bulma.cardHeader [
+                    Bulma.icon [
+                        "icon envelope" |> prop.className 
+                    ]
+                    Bulma.tile [
+                        prop.className "message-heading"
+                        prop.text message.title
+                    ]
+                ]
+                Bulma.cardContent [
+                    Bulma.section [
+                        prop.text message.content
+                    ]
+                ]
+            ]
+        ]
+        ) |> List.ofArray
+        |> Bulma.section 
+        

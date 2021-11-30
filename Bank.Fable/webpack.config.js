@@ -8,6 +8,7 @@ var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const { patchGracefulFileSystem } = require("./webpack.common.js");
+const CopyPlugin = require('copy-webpack-plugin');
 patchGracefulFileSystem();
 
 // If we're running the webpack-dev-server, assume we're in development mode
@@ -101,7 +102,14 @@ module.exports = {
             }),
         ])
         : commonPlugins.concat([
-            new ReactRefreshWebpackPlugin()
+            new ReactRefreshWebpackPlugin(),
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: path.resolve(__dirname, './public/'),
+                        to: path.resolve(__dirname, 'dist')
+                    }
+                ]})    
         ]),
     resolve: {
         // See https://github.com/fable-compiler/Fable/issues/1490
@@ -149,6 +157,9 @@ module.exports = {
                         options: { implementation: require("sass") }
                     }
                 ],
+            },
+            {
+                include: /\.json$/, loaders: ['json-loader']
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?.*)?$/,

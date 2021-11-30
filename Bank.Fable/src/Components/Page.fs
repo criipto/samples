@@ -23,6 +23,10 @@ type Page =
                 [
                    Components.Account(account)
                 ]
+            | Messages ->
+                [
+                    Components.Messages()
+                ]
             | v ->
                 printfn "Switching to %A" v 
                 [
@@ -34,24 +38,31 @@ type Page =
     [<ReactComponent>]
     static member Layout() =
         let view,setView = React.useState Accounts
-        let oidcUser, _ = Identity.tryReadIdToken |> React.useState
-        let user, _ = 
-            oidcUser |> Option.map(fun ou -> 
-                {
-                    Name = ou.name
-                    DateOfBirth = ou.birthdate
-                    Accounts = Statements.generate ou.name 200
-                }  : Models.User
-            ) |> React.useState
-
+        let user, _setUser = React.useState None
+        let setUser (oidcUser : Oidc.UserInfo option) = 
+            let user = 
+                oidcUser |> Option.map(fun ou -> 
+                    {
+                        Name = ou.profile.name
+                        DateOfBirth = ou.profile.birthdate
+                        Accounts = Statements.generate ou.profile.name 200
+                    }  : Models.User
+                ) 
+            match user with
+            Some _ -> user |> _setUser
+            | None -> ()
         match user with
         None -> 
-            Identity.logIn()
-            Html.div []
+            if Identity.isAuthenticated |> not then
+                Html.div[
+                    Navigation.Topbar("Log på",fun _ -> Identity.logIn())
+                ]
+            else
+               Identity.registerLogin(setUser) |> ignore
+               Html.div[]
         | Some user -> 
-            
             Html.div[
-                Navigation.Topbar(Identity.logOut)
+                Navigation.Topbar("Log af",Identity.logOut)
                 Bulma.container [
                     Bulma.columns[
                         prop.style [
