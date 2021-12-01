@@ -12,6 +12,9 @@ body,html {
     background: #F9F8F4;
     color: #204C82;
 }
+.sidebar-header {
+    border-bottom: solid 2px #204C82;
+}
 div.logo {
     background: url("credit_card_logo.png") no-repeat center;
     width: 75px;
@@ -79,8 +82,8 @@ div.logo {
 .panel-block.is-active:hover {
     background-color: hsl(214, 89%, 72%);
 }
-.panel-block.is-active {
-    border-bottom: solid 2px hsl(214, 89%, 72%);
+.panel-block:last-child {
+    border-radius: 0px;
 }
 body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .column { 
     background: #F9F8F4;
@@ -98,6 +101,7 @@ body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .
 .columns.account, .columns.transaction , .columns.message {
     border-bottom: 1px solid #EDECE8;
     border-top: 1px solid #EDECE8;
+    background: white;
 }
 
 .panel-block {
@@ -161,9 +165,14 @@ h2.subtitle {
     font-size: 0.8em;
 }
 
+.dot.column {
+    width: 24px;
+}
+
 h1.title.message-item {
     font-size: 16px;
 }
+
 .subtitle .message-item {
     font-size: 14px;
 }

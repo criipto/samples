@@ -104,7 +104,7 @@ type Components =
                     prop.children [
                         Bulma.column [
                             column.is1
-                            prop.className "is-narrow"
+                            prop.className "dot"
                             prop.children [
                                 if message.Unread then yield Bulma.icon [
                                     Html.i [

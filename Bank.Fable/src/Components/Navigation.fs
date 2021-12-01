@@ -7,7 +7,6 @@ type Navigation =
     [<ReactComponent>]
     static member SidePanel(messageCount : int,activeView,setView) = 
         
-
         let createMenuItem (iconName : string,view : View,count : int option) = 
             prop.children [
                 Bulma.panelIcon [
@@ -24,6 +23,7 @@ type Navigation =
                     prop.text (view.ToString())
                 ]
             ]
+
         let menuItems = 
             [
                 "vbars",Accounts, None
@@ -51,9 +51,12 @@ type Navigation =
                 style.boxShadow.none
             ]
             (Bulma.panelHeading [ 
-                    Html.div [ 
-                        Html.div [ prop.className "icon lamp" ]
-                        Html.span "Overblik" 
+                    Bulma.panelBlock.div [ 
+                        prop.className "sidebar-header"
+                        prop.children [
+                            Html.div [ prop.className "icon lamp" ]
+                            Html.span "Overview" 
+                        ]
                     ]
                 ]
                 ::menuItems
