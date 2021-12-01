@@ -9,6 +9,7 @@
 body,html {
     margin:0px;
     height: 100%;
+    background: #F9F8F4;
     color: #204C82;
 }
 div.logo {
@@ -86,8 +87,17 @@ body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .
     color: #204C82;
 }
 
-.message > .column { 
+.message > .column, .card-content > div.content > h1.title { 
     background: white;
+}
+
+.card-content > div.content > h1.title,.card-content > div.content > h2.subtitle, .columns.account, .columns.transaction {
+    color: #204C82;
+}
+
+.columns.account, .columns.transaction , .columns.message {
+    border-bottom: 1px solid #EDECE8;
+    border-top: 1px solid #EDECE8;
 }
 
 .panel-block {
@@ -97,7 +107,13 @@ body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .
     display: inline-block;
     border-radius: 2px;
   }
+.container > .card {
+    margin-bottom: 1em;
+}
 
+.columns.message > .column {
+    padding: 0px;
+}
 .navbar-item,i.fal{
     color: #F9F8F4;
 }
@@ -106,7 +122,7 @@ body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .
     color: #204C82;
 }
 
-.title {
+h1.title {
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -114,7 +130,7 @@ body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .
     color: #204C82;
 }
 
-.subtitle {
+h2.subtitle {
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -131,8 +147,28 @@ body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .
     position: relative;
     top: -10px;
     right: -10px;
-    padding: 4px;
+    height: 14px;
+    width: 14px;
+    padding: 0px;
     border-radius: 50%;
-    background: red;
+    background: hsl(348, 100%, 61%);
+    font-size: 0.7em;
     color: white;
+}
+
+.dot {
+    color: hsl(348, 100%, 61%);
+    font-size: 0.8em;
+}
+
+h1.title.message-item {
+    font-size: 16px;
+}
+.subtitle .message-item {
+    font-size: 14px;
+}
+
+.icon.dot {
+    padding : 0px;
+    margin: 0px;
 }

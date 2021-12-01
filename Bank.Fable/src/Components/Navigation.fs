@@ -15,7 +15,7 @@ type Navigation =
                         iconName |> sprintf "icon %s" |> prop.className
                         prop.children [
                             if count.IsSome then 
-                                yield Html.span [prop.className "badge"; prop.text count.Value]
+                                yield Html.span [prop.className "badge is-danger"; prop.text count.Value]
                         ]
                     ]
                 ]

@@ -8,7 +8,7 @@ type private Message = Fable.JsonProvider.Generator<"../public/messages.json">
 type Components =
     
     [<ReactComponent>]
-    static member IdCard(messageCount,user :Models.User) =
+    static member IdCard(user :Models.User) =
         Bulma.card [
             prop.style[
                 style.boxShadow.none
@@ -19,12 +19,12 @@ type Components =
                     Bulma.media [
                         Bulma.mediaLeft [
                             Bulma.image [
-                                prop.className "is-48x48 icon profile"
+                                prop.className "is-32x32 icon profile"
                             ]
                         ]
                     ]
                 
-                    Bulma.mediaContent [
+                    Bulma.content [
                         Bulma.title [
                             prop.text user.Name
                         ]
@@ -33,27 +33,6 @@ type Components =
                             user.DateOfBirth |> sprintf "Fødselsdag: %s" |> prop.text 
                         ] 
                     ]
-                
-                    Html.hr []
-                    Bulma.content[
-                        Html.div [
-                            messageCount |> sprintf "Der er %d nye beskeder fra banken. Se beskeder under " |> Html.span 
-                            Html.a [
-                                prop.text "beskeder"
-                                prop.href "/messages"
-                            ]
-                        ]
-                        Html.div [
-                            Bulma.helpers.isPulledRight
-                            prop.children[
-                                Html.span [
-                                    size.isSize7
-                                    prop.text "25-11-2021"
-                                ]
-                            ]
-                        ]
-                    ]
-
                 ]
             ]
         ]
@@ -93,39 +72,62 @@ type Components =
                 style.backgroundColor.white
             ]
             prop.children [
-                Bulma.cardContent accounts
+                Bulma.cardContent [
+                    Bulma.media [
+                        Bulma.mediaLeft [
+                            Bulma.image [
+                                prop.className "is-32x32 icon vbars"
+                            ]
+                        ]
+                    ]
+                
+                    
+                    (Bulma.title [
+                        prop.text "Accounts"
+                    ])::accounts
+                    |> Bulma.content 
+                    
+                ]
             ]
         ]
     
     
     [<ReactComponent>]
-    static member MessageBox(messages : Models.Message []) = 
+    static member MessageBox(messages : Models.Message list) = 
         
         let messages = 
             messages
-            |> Array.map(fun message ->
-                    Bulma.columns [
-                        prop.onClick(fun _ -> printfn "read message")
-                        prop.className "message"
-                        prop.children [
-                            Bulma.column [
-                                column.is2
-                                prop.text message.From
-                            ]
-                            Bulma.column [
-                                column.is2
-                                prop.text message.Subject
-                            ] 
-                            Bulma.column [
-                                column.is6
-                                message.Content.Substring(0,min message.Content.Length 100) |> prop.text 
-                            ]
-                            Bulma.column [
-                                column.is2
-                                prop.text message.Date
+            |> List.map(fun message ->
+                Bulma.columns [
+                    prop.onClick(fun _ -> printfn "read message")
+                    prop.className "message"
+                    prop.children [
+                        Bulma.column [
+                            column.is1
+                            prop.className "is-narrow"
+                            prop.children [
+                                if message.Unread then yield Bulma.icon [
+                                    Html.i [
+                                        prop.className "fas fa-circle dot"
+                                    ]
+                                ]
                             ]
                         ]
+                        Bulma.column [    
+                            column.is11
+                            prop.children[
+                                Bulma.title [
+                                    prop.className "message-item"
+                                    message.From + " " + (message.Date.ToString("yyyy-MM-dd")) |> prop.text
+                                ]
+                                Bulma.subtitle [
+                                    prop.className "message-item"
+                                    message.Subject |> prop.text
+                                ]
+                            ] 
+                        ]
                     ]
+                ]
             )
         Bulma.card [
             prop.style[
@@ -133,7 +135,22 @@ type Components =
                 style.backgroundColor.white
             ]
             prop.children [
-                Bulma.cardContent messages
+                Bulma.cardContent [
+                    Bulma.media [
+                        Bulma.mediaLeft [
+                            Bulma.image [
+                                prop.className "is-32x32 icon envelope"
+                            ]
+                        ]
+                    ]
+                
+                    
+                    (Bulma.title [
+                        prop.text "Messages"
+                    ])::messages
+                    |> Bulma.content 
+                    
+                ]
             ]
         ]
     
@@ -189,32 +206,31 @@ type Components =
         ]
     
     [<ReactComponent>]
-    static member Messages(messages : Models.Message []) =
+    static member Messages(messages : Models.Message list) =
         messages
-        |> Array.map(fun message -> 
+        |> List.map(fun message -> 
             Bulma.card [
-            prop.style[
-                style.boxShadow.none
-                style.borderRadius 10
-                style.backgroundColor.white
-            ]
-            prop.children [
-                Bulma.cardHeader [
-                    Bulma.icon [
-                        "icon envelope" |> prop.className 
+                prop.style[
+                    style.boxShadow.none
+                    style.borderRadius 10
+                    style.backgroundColor.white
+                ]
+                prop.children [
+                    Bulma.cardHeader [
+                        Bulma.icon [
+                            "icon envelope" |> prop.className 
+                        ]
+                        Bulma.tile [
+                            prop.className "message-heading"
+                            prop.text message.Subject
+                        ]
                     ]
-                    Bulma.tile [
-                        prop.className "message-heading"
-                        prop.text message.Subject
+                    Bulma.cardContent [
+                        Bulma.section [
+                            prop.text message.Content
+                        ]
                     ]
                 ]
-                Bulma.cardContent [
-                    Bulma.section [
-                        prop.text message.Content
-                    ]
-                ]
             ]
-        ]
-        ) |> List.ofArray
-        |> Bulma.section 
+        ) |> Bulma.section 
         

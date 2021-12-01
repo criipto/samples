@@ -6,14 +6,14 @@ open Feliz.Bulma
 type Page =
     
     [<ReactComponent>]
-    static member Overview(user : Models.User, activeView,setView,messages : Models.Message []) =
+    static member Overview(user : Models.User, activeView,setView,messages : Models.Message list) =
         let components = 
             match activeView with
             Accounts ->        
                 [
-                    Components.IdCard(messages.Length,user)
-                    Components.Accounts(user.Accounts,fun name -> name |> Account |> setView)
+                    Components.IdCard(user)
                     Components.MessageBox(messages)
+                    Components.Accounts(user.Accounts,fun name -> name |> Account |> setView)
                 ]
             | Account name ->
                 let account = 
@@ -29,7 +29,7 @@ type Page =
             | v ->
                 printfn "Switching to %A" v 
                 [
-                    Components.IdCard(messages.Length,user)
+                    Components.IdCard(user)
                 ]
 
         Bulma.container components
@@ -38,7 +38,7 @@ type Page =
     static member Layout() =
         let view,setView = React.useState Accounts
         let user, _setUser = React.useState None
-        let messages,setMessages = React.useState [||]
+        let messages,setMessages = React.useState []
         async {
             let! (statusCode,messagesRaw) = Fable.SimpleHttp.Http.get "/messages.json"
             if statusCode = 200 then
@@ -48,9 +48,13 @@ type Page =
                         Subject = m.title
                         Content = m.content
                         From = m.from
-                        Date = m.date 
+                        Date = System.DateTime.Parse(m.date,System.Globalization.CultureInfo.InvariantCulture)
+                        Unread = true
                     } : Models.Message
-                ) |> setMessages
+                ) |> Array.sortByDescending(fun m ->
+                    (if m.Unread then 1 else 0),m.Date
+                ) |> List.ofArray
+                |> setMessages
             else
                eprintfn "Failed to retrieve messages %d %s" statusCode messagesRaw
         } |> Async.StartImmediate

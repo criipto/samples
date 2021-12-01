@@ -14,7 +14,8 @@ type Message =
         Subject : string
         Content : string
         From : string
-        Date : string
+        Date : System.DateTime
+        Unread : bool
     }
     
 type Account = 
