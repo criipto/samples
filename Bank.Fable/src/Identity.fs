@@ -23,6 +23,8 @@ let private userManager =
     UserManager(
         options
     )
+let storageKey = sprintf "oidc.user:%s:%s" options.authority options.client_id
+let storage = sessionStorage
 
 let isAuthenticated = 
     let href = window.location.href
@@ -37,11 +39,16 @@ let logIn () =
     userManager.signinRedirect()
     
 let registerLogin(setUser : Oidc.UserInfo option -> unit) = 
-    userManager.processSigninResponse().``then``(fun userInfo -> 
-        let json = Fable.Core.JS.JSON.stringify userInfo
-        localStorage.setItem(sprintf "oidc.user:%s:%s" options.authority options.client_id, sprintf "%A" json)
-        userInfo |> Some |> setUser 
-    ).catch(fun err ->
-        Browser.Dom.console.error("Error:", err)
-        None |> setUser
-    )
+    let userInfo = storage.getItem storageKey
+    if  userInfo |> isNull then 
+        userManager.processSigninResponse().``then``(fun userInfo -> 
+            let json = Fable.Core.JS.JSON.stringify userInfo
+            storage.setItem(storageKey, sprintf "%A" json)
+            userInfo |> Some |> setUser 
+        ).catch(fun err ->
+            Browser.Dom.console.error("Error:", err)
+            None |> setUser
+        ) |> ignore
+    else
+        userInfo |> Oidc.UserInfo.Parse |> Some |> setUser
+    

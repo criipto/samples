@@ -73,6 +73,9 @@ div.logo {
 .icon.wineglass {
     @include icon("wineglass")
 }
+.icon.code {
+    @include icon("code")
+}
 .card {
    margin-bottom: 50px; 
 }

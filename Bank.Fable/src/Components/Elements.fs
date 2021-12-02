@@ -49,6 +49,6 @@ module Types =
                 | Invest -> "Investment"
                 | Pensions -> "Pension and Insurance"
                 | Messages -> "Messages"
-                | Protile -> "Protile"
-                | DevSupport -> "Developer ßSupport"
+                | Profile -> "Profile"
+                | DevSupport -> "Developer Support"
     

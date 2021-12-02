@@ -94,6 +94,7 @@ type Page =
                                     style.boxShadow.none
                                 ]
                                 column.isOneQuarter
+                                column.isOneFifthFullHd
                                 prop.children[
                                     Navigation.SidePanel (messages.Length,view,setView)
                                 ]

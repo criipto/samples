@@ -31,6 +31,8 @@ type Navigation =
                 "chart",Invest, None
                 "wineglass",Pensions, None
                 "envelope",Messages, Some messageCount
+                "profile",Profile, None
+                "code",DevSupport,None
             ] |> List.map(fun (viewName,view,notification) ->
                 if activeView = view then
                     Bulma.panelBlock.div [

@@ -2,6 +2,34 @@ module Oidc
 
 open Fable.Core
 
+type private _UserInfo = Fable.JsonProvider.Generator<"""{
+            "code" : "some string",
+            "id_token": "some string",
+            "access_token" : "some string",
+            "token_type" : "some string",
+            "scope" : "some string",
+            "profile" : {
+                "identityscheme" : "some string",
+                "authenticationtype" : "some string",
+                "authenticationmethod" : "some string",
+                "authenticationinstant" : "some string",
+                "nameidentifier" : "some string",
+                "sub" : "some string",
+                "sessionindex" : "some string",
+                "loA" : "some string",
+                "ial" : "some string",
+                "aal" : "some string",
+                "fal" : "some string",
+                "uuid" : "some string",
+                "cprNumberIdentifier" : "some string",
+                "birthdate" : "some string",
+                "dateofbirth": "some string",
+                "age" : 52,
+                "name" : "some string",
+                "country" : "some string"
+            },
+            "expires_at" : 0
+    }""">
 type UserProfile = 
     {
         identityscheme : string
@@ -33,7 +61,40 @@ type UserInfo =
       scope:string
       profile : UserProfile
       expires_at : int
-    }
+    } with static member Parse json = 
+                    printfn "json: %s" json
+                    let info = _UserInfo(json)
+                    let p = info.profile
+                    let profile = 
+                        {
+                            identityscheme = p.identityscheme
+                            authenticationtype = p.authenticationtype
+                            authenticationmethod = p.authenticationmethod
+                            authenticationinstant = p.authenticationinstant
+                            nameidentifier = p.nameidentifier
+                            sub = p.sub
+                            sessionindex = p.sessionindex
+                            loA = p.loA
+                            ial = p.ial
+                            aal = p.aal
+                            fal = p.fal
+                            uuid = p.uuid
+                            cprNumberIdentifier = p.cprNumberIdentifier
+                            birthdate = p.birthdate
+                            dateofbirth = p.dateofbirth
+                            age = int p.age
+                            name = p.name
+                            country = p.country
+                        }
+                    {
+                        code = info.code
+                        id_token = info.id_token
+                        access_token = info.access_token
+                        token_type = info.token_type
+                        scope = info.scope
+                        profile = profile
+                        expires_at = int info.expires_at
+                    }
 
 [<Import("WebStorageStateStore", from="oidc-client")>]
 type WebStorageStateStore() = 
