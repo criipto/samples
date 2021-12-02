@@ -26,7 +26,7 @@ type Navigation =
 
         let menuItems = 
             [
-                "vbars",Accounts, None
+                "lamp",Overview, None
                 "arrows",Transfer, None
                 "chart",Invest, None
                 "wineglass",Pensions, None
@@ -41,28 +41,15 @@ type Navigation =
                     ]
                 else
                     Bulma.panelBlock.div [
-                        prop.style [
-                            style.borderStyle.none
-                        ]
+
                         createMenuItem (viewName,view,notification)
                     ]
             )
         Bulma.panel [
             prop.style [
-                style.borderStyle.none
                 style.boxShadow.none
             ]
-            (Bulma.panelHeading [ 
-                    Bulma.panelBlock.div [ 
-                        prop.className "sidebar-header"
-                        prop.children [
-                            Html.div [ prop.className "icon lamp" ]
-                            Html.span "Overview" 
-                        ]
-                    ]
-                ]
-                ::menuItems
-                |> prop.children)
+            prop.children menuItems
         ] 
     [<ReactComponent>]
     static member Topbar(userButtonText,action) =
@@ -70,7 +57,7 @@ type Navigation =
         Bulma.navbarMenu [
             Bulma.navbarStart.div [
                 Bulma.navbarItem.div [
-                    prop.className "logo"
+                    prop.className "icon credit-card-logo"
                 ]
                 Bulma.navbarItem.div[
                     prop.text "%NAME% Bank"
@@ -79,10 +66,7 @@ type Navigation =
             Bulma.navbarEnd.div [
                 Bulma.navbarItem.div [
                     Bulma.buttons [
-                        (None,Some "cog",ignore) |> Elements.IconButton
-                        (None,None,ignore) |> Elements.IconButton
                         (Some userButtonText,Some "power-off", fun _ -> action() ) |> Elements.IconButton
-                        (None,None,ignore) |> Elements.IconButton
                     ]
                 ]
             ]

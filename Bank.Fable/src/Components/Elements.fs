@@ -33,7 +33,7 @@ type Elements =
 [<AutoOpen>]
 module Types =
     type View = 
-        | Accounts
+        | Overview
         | Account of string
         | Transfer
         | Invest
@@ -43,7 +43,7 @@ module Types =
         | DevSupport
         with override x.ToString() = 
                 match x with
-                | Accounts -> "Accounts"
+                | Overview -> "Overview"
                 | Account n -> sprintf "Account - %s" n
                 | Transfer -> "Payments & Transfer"
                 | Invest -> "Investment"

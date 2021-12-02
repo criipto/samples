@@ -9,7 +9,7 @@ type Page =
     static member Overview(user : Models.User, activeView,setView,messages : Models.Message list) =
         let components = 
             match activeView with
-            Accounts ->        
+            Overview ->        
                 [
                     Components.IdCard(user)
                     Components.MessageBox(messages)
@@ -36,7 +36,7 @@ type Page =
 
     [<ReactComponent>]
     static member Layout() =
-        let view,setView = React.useState Accounts
+        let view,setView = React.useState Overview
         let user, _setUser = React.useState None
         let messages,setMessages = React.useState []
         async {

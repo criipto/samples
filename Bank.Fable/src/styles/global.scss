@@ -12,13 +12,6 @@ body,html {
     background: #F9F8F4;
     color: #204C82;
 }
-.sidebar-header {
-    border-bottom: solid 2px #204C82;
-}
-div.logo {
-    background: url("credit_card_logo.png") no-repeat center;
-    width: 75px;
-}
 
 .panel-icon,.icon {
     width: 24px;
@@ -55,6 +48,11 @@ div.logo {
 .icon.arrows {
     @include icon("arrows")
 }
+.icon.credit-card-logo {
+    @include icon("credit-card-logo");
+    width:36px;
+    height: auto;
+}
 .icon.chart {
     @include icon("chart")
 }
@@ -90,7 +88,13 @@ div.logo {
 }
 .panel-block.is-active:hover {
     background-color: hsl(214, 89%, 72%);
+    border-bottom: solid 2px #204C82;
 }
+
+.panel-block.is-active {
+    border-bottom: solid 2px #204C82;
+}
+
 .panel-block:last-child {
     border-radius: 0px;
 }
@@ -163,6 +167,12 @@ h2.subtitle {
 .navbar-menu {
     background-image: url("bg_top.png");
     background-size:100% 100%;
+    padding-right: 44px;
+    padding-left: 32px;
+}
+
+.navbar-item.logo {
+    padding : 0px;
 }
 
 .badge {
