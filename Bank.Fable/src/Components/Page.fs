@@ -12,19 +12,19 @@ type Page =
             Overview ->        
                 [
                     Components.IdCard(user)
-                    Components.MessageBox(messages)
-                    Components.Accounts(user.Accounts,fun name -> name |> Account |> setView)
+                    Message.Box(messages)
+                    Account.Box(user.Accounts,fun name -> name |> View.Account |> setView)
                 ]
-            | Account name ->
+            | View.Account name ->
                 let account = 
                     user.Accounts
                     |> List.find(fun a -> a.Name = name)
                 [
-                   Components.Account(account)
+                   Account.Transactions(account)
                 ]
             | Messages ->
                 [
-                    Components.Messages(messages)
+                    Message.List(messages)
                 ]
             | v ->
                 printfn "Switching to %A" v 
@@ -33,7 +33,7 @@ type Page =
                 ]
 
         Bulma.container components
-
+        
     [<ReactComponent>]
     static member Layout() =
         let view,setView = React.useState Overview

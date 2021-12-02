@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-pro": "^5.15.4",
+        "bulma-extensions": "^6.2.7",
         "date-fns": "^2.16.1",
         "oidc-client": "^1.11.5",
         "react": "^17.0.1",

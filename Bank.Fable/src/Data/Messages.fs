@@ -8,8 +8,8 @@ type private Message = Fable.JsonProvider.Generator<"../public/messages.json">
 let mutable messages = []
 let sources = 
   [
-      "https://agitated-villani-6f8525.netlify.app/messages.json"
-     // "/messages.json"
+      "https://agitated-villani-6f8525.netlify.app/messages.json" //try online first
+      "/messages.json" //fallback to local if online is unavailable
   ]
 let fetch(setMessages) = 
     let rec inner srcs = 

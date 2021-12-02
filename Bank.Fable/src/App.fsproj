@@ -13,6 +13,8 @@
     <Compile Include="Components/Elements.fs" />
     <Compile Include="Components/Navigation.fs" />
     <Compile Include="Components/Components.fs" />
+    <Compile Include="Components/Message.fs" />
+    <Compile Include="Components/Account.fs" />
     <Compile Include="Components/Page.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>

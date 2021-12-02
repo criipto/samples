@@ -1,5 +1,6 @@
 @import "~bulma";
 @import "~@fortawesome/fontawesome-pro/css/all.min";
+@import "~bulma-extensions/bulma-accordion/dist/css/bulma-accordion";
 
 @mixin icon($iconName) {
     background: url($iconName + ".svg") no-repeat center;
