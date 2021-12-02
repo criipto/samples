@@ -13,7 +13,7 @@ type Elements =
             prop.style [
                 style.backgroundColor.transparent
                 style.borderStyle.none
-                style.fontSize 24
+                style.fontSize 18
             ]
             prop.children[
                 Bulma.icon [

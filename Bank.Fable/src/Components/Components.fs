@@ -3,8 +3,6 @@ namespace App.Components
 open Feliz
 open Feliz.Bulma
 
-type private Message = Fable.JsonProvider.Generator<"../public/messages.json">  
-
 type Components =
     
     [<ReactComponent>]
@@ -115,27 +113,30 @@ type Components =
                     prop.onClick(fun _ -> printfn "read message")
                     prop.className "message"
                     prop.children [
-                        Bulma.column [
-                            column.is1
-                            prop.className "dot"
-                            prop.children [
-                                if message.Unread then yield Bulma.icon [
-                                    Html.i [
-                                        prop.className "fas fa-circle dot"
-                                    ]
-                                ]
-                            ]
-                        ]
                         Bulma.column [    
                             column.is11
                             prop.children[
-                                Bulma.title [
+                                Bulma.content [
                                     prop.className "message-item"
-                                    message.From + " " + (message.Date.ToString("yyyy-MM-dd")) |> prop.text
-                                ]
-                                Bulma.subtitle [
-                                    prop.className "message-item"
-                                    message.Subject |> prop.text
+                                    prop.children [
+                                        Html.div [
+                                            prop.className "from"
+                                            prop.children[
+                                                if message.Unread then 
+                                                    yield Html.i [
+                                                        prop.style [
+                                                            style.marginRight 12
+                                                        ]
+                                                        prop.className "fas fa-circle dot"
+                                                    ]
+                                                yield message.From + " " + (message.Date.ToString("yyyy-MM-dd")) |> Html.span
+                                            ]
+                                        ]
+                                        Html.span [
+                                            prop.className "subject"
+                                            message.Subject |> prop.text
+                                        ]
+                                    ]
                                 ]
                             ] 
                         ]

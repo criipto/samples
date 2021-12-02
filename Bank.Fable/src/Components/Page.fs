@@ -39,25 +39,7 @@ type Page =
         let view,setView = React.useState Overview
         let user, _setUser = React.useState None
         let messages,setMessages = React.useState []
-        async {
-            let! (statusCode,messagesRaw) = Fable.SimpleHttp.Http.get "/messages.json"
-            if statusCode = 200 then
-                Message(messagesRaw).messages
-                |> Array.map(fun m ->
-                    {
-                        Subject = m.title
-                        Content = m.content
-                        From = m.from
-                        Date = System.DateTime.Parse(m.date,System.Globalization.CultureInfo.InvariantCulture)
-                        Unread = true
-                    } : Models.Message
-                ) |> Array.sortByDescending(fun m ->
-                    (if m.Unread then 1 else 0),m.Date
-                ) |> List.ofArray
-                |> setMessages
-            else
-               eprintfn "Failed to retrieve messages %d %s" statusCode messagesRaw
-        } |> Async.StartImmediate
+        Messages.fetch(setMessages)
         let setUser (oidcUser : Oidc.UserInfo option) = 
             let user = 
                 oidcUser |> Option.map(fun ou -> 
@@ -74,14 +56,14 @@ type Page =
         None -> 
             if Identity.isAuthenticated |> not then
                 Html.div[
-                    Navigation.Topbar("Log på",fun _ -> Identity.logIn())
+                    Navigation.Topbar("Log on",fun _ -> Identity.logIn())
                 ]
             else
                Identity.registerLogin(setUser) |> ignore
                Html.div[]
         | Some user -> 
             Html.div[
-                Navigation.Topbar("Log af",Identity.logOut)
+                Navigation.Topbar("Log off",Identity.logOut)
                 Bulma.container [
                     Bulma.columns[
                         prop.style [
