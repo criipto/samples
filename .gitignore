@@ -208,3 +208,5 @@ out
 .paket/
 dist/
 **/.DS_Store
+
+**/fable_modules/

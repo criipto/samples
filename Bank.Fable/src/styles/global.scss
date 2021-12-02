@@ -110,7 +110,8 @@ body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .
     position: relative;
     display: inline-block;
     border-radius: 2px;
-  }
+}
+
 .container > .card {
     margin-bottom: 1em;
 }
@@ -118,9 +119,17 @@ body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .
 .columns.message > .column {
     padding: 0px;
 }
+
 .navbar-item,i.fal{
     color: #F9F8F4;
 }
+
+.columns.account.header {
+    border-top : none;
+    font-weight: 700;
+    font-size: 16px;
+}
+
 .app {
     height: 100vh;
     color: #204C82;

@@ -39,12 +39,16 @@ module Types =
         | Invest
         | Pensions
         | Messages
+        | Profile
+        | DevSupport
         with override x.ToString() = 
                 match x with
-                | Accounts -> "Konti"
-                | Account n -> sprintf "Konto - %s" n
-                | Transfer -> "Betal og Overføre"
-                | Invest -> "Investeringer"
-                | Pensions -> "Pension og Forsikringer"
-                | Messages -> "Beskeder"
+                | Accounts -> "Accounts"
+                | Account n -> sprintf "Account - %s" n
+                | Transfer -> "Payments & Transfer"
+                | Invest -> "Investment"
+                | Pensions -> "Pension and Insurance"
+                | Messages -> "Messages"
+                | Protile -> "Protile"
+                | DevSupport -> "Developer ßSupport"
     

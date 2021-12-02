@@ -39,7 +39,20 @@ type Components =
 
     [<ReactComponent>]
     static member Accounts(accounts : Models.Account list, viewAccount) = 
-        
+        let header = 
+            Bulma.columns [
+                prop.className "account header"
+                [
+                    "Name"
+                    "Balance"
+                    "Recent transactions"
+                ] |> List.map(fun name ->
+                    Bulma.column [
+                        column.is4
+                        prop.text name
+                    ]
+                ) |> prop.children 
+            ]
         let accounts = 
             accounts
             |> List.map(fun account ->
@@ -84,7 +97,7 @@ type Components =
                     
                     (Bulma.title [
                         prop.text "Accounts"
-                    ])::accounts
+                    ])::header::accounts
                     |> Bulma.content 
                     
                 ]
