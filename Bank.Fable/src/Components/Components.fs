@@ -172,32 +172,32 @@ type Components =
         let transactions = 
             account.Ledger
             |> List.map(fun ledgerEntry ->
-                    let formatCurrency = sprintf "%.2f"
-                    Bulma.columns [
-                        prop.className "transaction"
-                        prop.children [
-                            Bulma.column [
-                                column.is4
-                                prop.text (ledgerEntry.Date.ToShortDateString())
-                            ] 
-                            Bulma.column [
-                                prop.text ledgerEntry.Text
-                            ]
-                            Bulma.column [
-                                column.is4
-                                prop.children [
-                                    Html.div [
-                                        prop.className "ledger-entry amount"
-                                        ledgerEntry.Amount |> formatCurrency |> prop.text  
-                                    ]
-                                    Html.div [
-                                        prop.className "ledger-entry balance"
-                                        ledgerEntry.Balance |> formatCurrency |> prop.text  
-                                    ]
+                let formatCurrency = sprintf "%.2f"
+                Bulma.columns [
+                    prop.className "transaction"
+                    prop.children [
+                        Bulma.column [
+                            column.is4
+                            prop.text (ledgerEntry.Date.ToShortDateString())
+                        ] 
+                        Bulma.column [
+                            prop.text ledgerEntry.Text
+                        ]
+                        Bulma.column [
+                            column.is4
+                            prop.children [
+                                Html.div [
+                                    prop.className "ledger-entry amount"
+                                    ledgerEntry.Amount |> formatCurrency |> prop.text  
+                                ]
+                                Html.div [
+                                    prop.className "ledger-entry balance"
+                                    ledgerEntry.Balance |> formatCurrency |> prop.text  
                                 ]
                             ]
                         ]
                     ]
+                ]
             )
         Bulma.card [
             prop.style[
@@ -205,16 +205,20 @@ type Components =
                 style.backgroundColor.white
             ]
             prop.children [
-                Bulma.cardHeader [
-                    Bulma.icon [
-                        "icon-large icon vbars" |> prop.className 
+                Bulma.cardContent [
+                    Bulma.media [
+                        Bulma.mediaLeft [
+                            Bulma.image [
+                                prop.className "is-32x32 icon vbars"
+                            ]
+                        ]
                     ]
-                    Html.span [
-                        prop.className "account-heading"
+                    
+                    (Bulma.title [
                         prop.text account.Name
-                    ]
+                    ])::transactions
+                    |> Bulma.content
                 ]
-                Bulma.cardContent transactions
             ]
         ]
     

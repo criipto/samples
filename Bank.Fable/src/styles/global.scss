@@ -79,8 +79,14 @@ div.logo {
 .card {
    margin-bottom: 50px; 
 }
-.columns.account:hover, .panel-block:hover{
+.columns.account:hover, .panel-block:hover, .columns.message:hover, .columns.message > .column:hover {
     background-color: hsl(0, 0%, 90%);
+    cursor:pointer;
+}
+
+.columns.account.header:hover, .sidebar-header:hover {
+    background-color: white;
+    cursor: auto;
 }
 .panel-block.is-active:hover {
     background-color: hsl(214, 89%, 72%);
