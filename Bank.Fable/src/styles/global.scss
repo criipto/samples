@@ -89,11 +89,15 @@ body,html {
     cursor:pointer;
 }
 
-.columns.account.header:hover, .sidebar-header:hover {
+.columns.account.header:hover,
+.sidebar-header:hover,
+.accordion-content.message-item {
     background-color: $content-background;
     cursor: auto;
 }
-
+.accordion-content.message-item {
+    border-top: solid $text-color 2px;
+}
 .panel-block.is-active {
     border-bottom: solid 2px $text-color;
 }
@@ -101,20 +105,29 @@ body,html {
 .panel-block:last-child {
     border-radius: 0px;
 }
-body, .panel, .panel-block, .panel-block.is-active, .panel-heading, .message > .column { 
+body, .panel, .panel-block, 
+.panel-block.is-active,
+.panel-heading, .message > .column { 
     background: $background;
     color: $text-color;
 }
 
-.message > .column, .card-content > div.content > h1.title { 
+.message > .column, 
+.card-content > div.content > h1.title, 
+.accordions > .accordion > .accordion-header.message-item { 
     background: $content-background;
 }
 
-.card-content > div.content > h1.title,.card-content > div.content > h2.subtitle, .columns.account, .columns.transaction {
+.card-content > div.content > h1.title,
+.card-content > div.content > h2.subtitle, 
+.columns.account, .columns.transaction,
+.accordions > .accordion > .accordion-header.message-item {
     color: $text-color;
 }
 
-.columns.account, .columns.transaction , .columns.message {
+.columns.account,
+.columns.transaction,
+.columns.message {
     border-bottom: 1px solid #EDECE8;
     border-top: 1px solid #EDECE8;
     background: $content-background;
@@ -193,12 +206,16 @@ h2.subtitle {
     font-size: 0.8em;
 }
 
-.message-item > .from {
+.message-item .from {
     font-size: 14px;
     font-weight: 700;
 }
 
-.message-item > .subject {
+.dot.read {
+    display : none;
+}
+
+.message-item .subject {
     font-size: 16px;
 }
 

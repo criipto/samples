@@ -16,11 +16,7 @@ module Imports =
     [<Import("bulmaAccordion",from="/node_modules/bulma-extensions/dist/js/bulma-extensions.js")>]
     let bulmaAccordion : Accordion = jsNative
     let attach() = 
-        printfn "Attaching..."
-        bulmaAccordion.attach()
-        |> printfn "Attached %A"
-        bulmaAccordion.attach
-        |> printfn "accordion %A"
+        bulmaAccordion.attach() |> ignore
 
 type Message() =  
     [<ReactComponent>]
@@ -28,6 +24,11 @@ type Message() =
         let messages = 
             messages
             |> List.map(fun message ->
+                let iconClass = 
+                    if message.Unread then 
+                        "fas fa-circle dot"
+                    else
+                        "fas fa-circle dot read"
                 Bulma.columns [
                     prop.onClick(fun _ -> printfn "read message")
                     prop.className "message"
@@ -39,20 +40,19 @@ type Message() =
                                     prop.className "message-item"
                                     prop.children [
                                         Html.div [
-                                            prop.className "from"
+                                            prop.className "message-item from"
                                             prop.children[
-                                                if message.Unread then 
-                                                    yield Html.i [
-                                                        prop.style [
-                                                            style.marginRight 12
-                                                        ]
-                                                        prop.className "fas fa-circle dot"
+                                                Html.i [
+                                                    prop.style [
+                                                        style.marginRight 12
                                                     ]
-                                                yield message.From + " " + (message.Date.ToString("yyyy-MM-dd")) |> Html.span
+                                                    prop.className iconClass
+                                                ]
+                                                message.From + " " + (message.Date.ToString("yyyy-MM-dd")) |> Html.span
                                             ]
                                         ]
                                         Html.span [
-                                            prop.className "subject"
+                                            prop.className "message-item subject"
                                             message.Subject |> prop.text
                                         ]
                                     ]
@@ -62,7 +62,7 @@ type Message() =
                     ]
                 ]
             )
-        JS.setTimeout Imports.attach 1000 |> ignore
+        
         Bulma.card [
             prop.style[
                 style.boxShadow.none
@@ -98,10 +98,15 @@ type Message() =
                     prop.children [
                         Html.div [
                             i |> sprintf "accordion-header toggle message-item message-item-%d" |> prop.className 
-                            prop.onClick(fun _ -> Browser.Dom.document.getElementsByClassName(sprintf "message-item-%d" i ).[0].parentElement.classList.toggle "is-active" |> ignore)
+                            prop.onClick(fun _ -> 
+                                let messageHeader = Browser.Dom.document.getElementsByClassName(sprintf "message-item-%d" i ).[0]
+                                messageHeader.parentElement.classList.toggle "is-active" |> ignore
+                                messageHeader.getElementsByClassName("dot").[0].classList.add "read" |> ignore
+                            )
                             prop.children [
+                                Html.div [
                                     Html.div [
-                                        prop.className "from"
+                                        prop.className "message-item from"
                                         prop.children[
                                             if message.Unread then 
                                                 yield Html.i [
@@ -114,16 +119,17 @@ type Message() =
                                         ]
                                     ]
                                     Html.span [
-                                        prop.className "subject"
+                                        prop.className "message-item subject"
                                         message.Subject |> prop.text
                                     ]
+                                ]
                             ]
                         ]
                         Html.div [
                             prop.className "accordion-body"
                             prop.children [
                                 Html.div [
-                                    prop.className "accordion-content"
+                                    prop.className "accordion-content message-item"
                                     prop.text message.Content
                                 ]
                             ]

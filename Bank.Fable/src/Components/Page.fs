@@ -3,8 +3,8 @@ namespace App.Components
 open Feliz
 open Feliz.Bulma
 
-type Page =
-    
+type Page() =
+    static let mutable accordions = [||]
     [<ReactComponent>]
     static member Overview(user : Models.User, activeView,setView,messages : Models.Message list) =
         let components = 
@@ -31,7 +31,7 @@ type Page =
                 [
                     Components.IdCard(user)
                 ]
-
+        
         Bulma.container components
         
     [<ReactComponent>]
