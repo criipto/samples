@@ -30,7 +30,7 @@ type Navigation =
                 "arrows",Transfer, None
                 "chart",Invest, None
                 "wineglass",Pensions, None
-                "envelope",Messages, Some messageCount
+                "envelope",Messages, if messageCount > 0 then Some messageCount else None
                 "profile",Profile, None
                 "code",DevSupport,None
             ] |> List.map(fun (viewName,view,notification) ->

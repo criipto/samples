@@ -89,7 +89,7 @@ type Message() =
 
     
     [<ReactComponent>]
-    static member List(messages : Models.Message list) =
+    static member List(messages : Models.Message list,reduceUnreadCount) =
         let messages = 
             messages
             |> List.mapi(fun i message -> 
@@ -102,7 +102,9 @@ type Message() =
                                 let messageHeader = Browser.Dom.document.getElementsByClassName(sprintf "message-item-%d" i ).[0]
                                 messageHeader.parentElement.classList.toggle "is-active" |> ignore
                                 let dot = messageHeader.getElementsByClassName("dot").[0]
-                                if dot |> isNull |> not && dot.classList.contains "reads" |> not then dot.classList.add "read" |> ignore
+                                if dot |> isNull |> not && dot.classList.contains "read" |> not then 
+                                    dot.classList.add "read" |> ignore
+                                    reduceUnreadCount()
                             )
                             prop.children [
                                 Html.div [
