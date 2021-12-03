@@ -138,6 +138,10 @@ body, .panel, .panel-block,
     color: $text-color;
 }
 
+.card {
+    padding-bottom: 32px;
+}
+
 .columns.account,
 .columns.transaction,
 .columns.message {
@@ -242,5 +246,8 @@ h2.subtitle {
 }
 
 div.card-content {
-    padding: $boxmargin;
+    padding-left: $boxmargin;
+    padding-right: $boxmargin;
+    padding-top: $boxmargin;
+    padding-bottom: 0px;
 }
