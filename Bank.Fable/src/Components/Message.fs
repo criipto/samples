@@ -34,7 +34,7 @@ type Message() =
                     prop.className "message"
                     prop.children [
                         Bulma.column [    
-                            column.is11
+                            column.is12
                             prop.children[
                                 Bulma.content [
                                     prop.className "message-item"
@@ -94,14 +94,15 @@ type Message() =
             messages
             |> List.mapi(fun i message -> 
                 Html.article [
-                    prop.className "accordion"
+                    prop.className "accordion message-item"
                     prop.children [
                         Html.div [
                             i |> sprintf "accordion-header toggle message-item message-item-%d" |> prop.className 
                             prop.onClick(fun _ -> 
                                 let messageHeader = Browser.Dom.document.getElementsByClassName(sprintf "message-item-%d" i ).[0]
                                 messageHeader.parentElement.classList.toggle "is-active" |> ignore
-                                messageHeader.getElementsByClassName("dot").[0].classList.add "read" |> ignore
+                                let dot = messageHeader.getElementsByClassName("dot").[0]
+                                if dot |> isNull |> not && dot.classList.contains "reads" |> not then dot.classList.add "read" |> ignore
                             )
                             prop.children [
                                 Html.div [
@@ -137,10 +138,33 @@ type Message() =
                     ]
                 ]
             )
-        
-        Html.section [
-            prop.className "accordions"
-            prop.children messages
+        Bulma.card [
+            prop.style[
+                style.boxShadow.none
+                style.backgroundColor.white
+            ]
+            prop.children [
+                Bulma.cardContent [
+                    Bulma.media [
+                        Bulma.mediaLeft [
+                            Bulma.image [
+                                prop.className "is-32x32 icon envelope"
+                            ]
+                        ]
+                    ]
+                    
+                    Bulma.content [
+                        Bulma.title [
+                            prop.text "Messages"
+                        ]
+                        Html.section [
+                            prop.className "accordions"
+                            prop.children messages
+                        ]
+                    ]
+                ]
+            ]
         ]
+        
         
     

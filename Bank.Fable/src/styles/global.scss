@@ -6,7 +6,7 @@
     background: url($iconName + ".svg") no-repeat center;
     background-size: 100%;
 }
-
+$hover-background: rgba(69, 128, 201, 0.2);
 $boxmargin : 32px;
 $background : #F9F8F4;
 $content-background : white;
@@ -84,9 +84,14 @@ body,html {
 .card {
    margin-bottom: 50px; 
 }
-.columns.account:hover, .panel-block:hover, .columns.message:hover, .columns.message > .column:hover {
-    background-color: rgba(69, 128, 201, 0.2);
-    cursor:pointer;
+
+.columns.account:hover,
+.panel-block:hover,
+.columns.message:hover,
+.columns.message > .column:hover,
+.accordion.message-item > .accordion-header:hover {
+    background-color: $hover-background;
+    cursor: pointer;
 }
 
 .columns.account.header:hover,
@@ -114,7 +119,7 @@ body, .panel, .panel-block,
 
 .message > .column, 
 .card-content > div.content > h1.title, 
-.accordions > .accordion > .accordion-header.message-item { 
+.accordion.message-item > .accordion-header{ 
     background: $content-background;
 }
 
