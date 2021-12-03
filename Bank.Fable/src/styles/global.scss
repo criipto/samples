@@ -99,18 +99,24 @@ body,html {
     cursor: pointer;
 }
 
-.accordion.message-item {
-    border-top : $border-regular
-}
+
 .columns.account.header:hover,
-.sidebar-header:hover,
-.accordion-content.message-item {
+.sidebar-header:hover {
     background-color: $content-background;
     cursor: auto;
+    border: none;
 }
-.accordion-content.message-item {
-    border-top: $border-emphasis
+
+.accordions > .accordion.message-item > .accordion-body {
+    background-color: $content-background;
+    border : none;
 }
+
+.accordion.message-item {
+    border: none;
+    border-top: $border-regular;
+}
+
 .panel-block.is-active {
     border-bottom: $border-emphasis;
 }
