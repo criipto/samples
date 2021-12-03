@@ -7,6 +7,7 @@
     background-size: 100%;
 }
 $hover-background: rgba(69, 128, 201, 0.2);
+$hover-text: rgba(69, 128, 201);
 $boxmargin : 32px;
 $background : #F9F8F4;
 $content-background : white;
@@ -86,9 +87,11 @@ body,html {
 .card {
    margin-bottom: 50px; 
 }
+.panel-block:hover {
+    color: $hover-text;
+}
 
 .columns.account:hover,
-.panel-block:hover,
 .columns.message:hover,
 .columns.message > .column:hover,
 .accordion.message-item > .accordion-header:hover {
@@ -144,10 +147,16 @@ body, .panel, .panel-block,
 
 .panel-block {
     text-decoration: none;
-    padding: 15px 26px;
     position: relative;
     display: inline-block;
+    padding-left: 0px;
+    padding-right: 0px;
     border-radius: 2px;
+}
+
+.panel-block.menu-item::after {
+    content: "\A";
+    white-space: pre;
 }
 
 .container > .card {
@@ -192,6 +201,8 @@ h2.subtitle {
     background-size:100% 100%;
     padding-right: 44px;
     padding-left: $boxmargin;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 .navbar-item {

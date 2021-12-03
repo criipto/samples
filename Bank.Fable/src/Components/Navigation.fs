@@ -33,17 +33,16 @@ type Navigation =
                 "envelope",Messages, if messageCount > 0 then Some messageCount else None
                 "profile",Profile, None
                 "code",DevSupport,None
-            ] |> List.map(fun (viewName,view,notification) ->
-                if activeView = view then
-                    Bulma.panelBlock.div [
-                        prop.className "is-active"
-                        createMenuItem (viewName,view,notification)
-                    ]
-                else
-                    Bulma.panelBlock.div [
-
-                        createMenuItem (viewName,view,notification)
-                    ]
+            ] |> List.collect(fun (viewName,view,notification) ->
+                let className =
+                    if activeView = view then
+                        "is-active menu-item"
+                    else
+                        "menu-item"
+                Bulma.panelBlock.div [
+                    prop.className className
+                    createMenuItem (viewName,view,notification)
+                ]::[Html.br []]
             )
         Bulma.panel [
             prop.style [
