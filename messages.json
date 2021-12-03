@@ -1,6 +1,6 @@
 {
     "messages":[{
-        "title" : "Using code flow",
+        "title" : "Using code flow with oidc-client",
         "from" : "Criipto",
         "date": "2021-12-01",
         "content" : "Some times requirement change or specifications are updated providing better alternatives. One such is the change from id_token to PKCE. PKCE provides several improvements over id_token but migrating requires a few changes that are not easily discoverable. Firstly you will have to change the responseType from id_token to code . If you are in a browser and need to be able to read the user profile as well you will also have to make sure to update the response strategy in the criipto management ui. The strategy has to be plainJson"
