@@ -26,7 +26,7 @@ let fetch(setMessages) =
                                 Content = m.content
                                 From = m.from
                                 Date = System.DateTime.Parse(m.date,System.Globalization.CultureInfo.InvariantCulture)
-                                Unread = (i % 5 = 1)
+                                Unread = (i % 5 <> 1)
                             } : Models.Message
                         ) |> Array.sortByDescending(fun m ->
                             (if m.Unread then 1 else 0),m.Date

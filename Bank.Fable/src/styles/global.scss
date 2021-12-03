@@ -11,6 +11,8 @@ $boxmargin : 32px;
 $background : #F9F8F4;
 $content-background : white;
 $text-color : #204C82;;
+$border-emphasis: solid $text-color 2px;
+$border-regular: 1px solid #EDECE8;
 
 body,html {
     margin:0px;
@@ -94,6 +96,9 @@ body,html {
     cursor: pointer;
 }
 
+.accordion.message-item {
+    border-top : $border-regular
+}
 .columns.account.header:hover,
 .sidebar-header:hover,
 .accordion-content.message-item {
@@ -101,10 +106,10 @@ body,html {
     cursor: auto;
 }
 .accordion-content.message-item {
-    border-top: solid $text-color 2px;
+    border-top: $border-emphasis
 }
 .panel-block.is-active {
-    border-bottom: solid 2px $text-color;
+    border-bottom: $border-emphasis;
 }
 
 .panel-block:last-child {
@@ -133,8 +138,7 @@ body, .panel, .panel-block,
 .columns.account,
 .columns.transaction,
 .columns.message {
-    border-bottom: 1px solid #EDECE8;
-    border-top: 1px solid #EDECE8;
+    border-top: $border-regular;
     background: $content-background;
 }
 
@@ -159,7 +163,9 @@ body, .panel, .panel-block,
     font-weight: 700;
     font-size: 16px;
 }
-
+.columns.account.header > .amount {
+   text-align: right;
+}
 .app {
     height: 100vh;
     color: $text-color;

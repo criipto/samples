@@ -7,6 +7,21 @@ type Account =
 
     [<ReactComponent>]
     static member Transactions(account : Models.Account) = 
+        let header = 
+            Bulma.columns [
+                prop.className "account header"
+                [
+                    "Date"
+                    "Message"
+                    "Amount"
+                ] |> List.map(fun name ->
+                    Bulma.column [
+                        prop.className name
+                        column.is4
+                        prop.text name
+                    ]
+                ) |> prop.children 
+            ]
         let transactions = 
             account.Ledger
             |> List.map(fun ledgerEntry ->
@@ -54,7 +69,7 @@ type Account =
                     
                     (Bulma.title [
                         prop.text account.Name
-                    ])::transactions
+                    ])::header::transactions
                     |> Bulma.content
                 ]
             ]

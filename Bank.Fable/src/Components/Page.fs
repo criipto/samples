@@ -9,10 +9,26 @@ type Page() =
     static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, reduceUnreadCount) =
         let components = 
             match activeView with
-            Overview ->        
+            Overview ->
+                let msgs = 
+                    let l = 
+                        messages
+                        |> List.filter(fun m -> m.Unread)
+                    l
+                    |> List.take (min l.Length 2)
+
+                let messageLink = 
+                    if msgs.Length < messages.Length then
+                        Html.a [
+                            prop.onClick(fun _ -> setView View.Messages)
+                            prop.text "Show all messages"
+                        ] 
+                        |> Some
+                    else
+                        None
                 [
                     Components.IdCard(user)
-                    Message.Box(messages)
+                    Message.List("New messages",msgs, reduceUnreadCount, messageLink)
                     Account.Box(user.Accounts,fun name -> name |> View.Account |> setView)
                 ]
             | View.Account name ->
@@ -24,7 +40,7 @@ type Page() =
                 ]
             | Messages ->
                 [
-                    Message.List(messages, reduceUnreadCount)
+                    Message.List("Messages",messages, reduceUnreadCount, None)
                 ]
             | v ->
                 printfn "Switching to %A" v 

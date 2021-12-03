@@ -19,77 +19,10 @@ module Imports =
         bulmaAccordion.attach() |> ignore
 
 type Message() =  
-    [<ReactComponent>]
-    static member Box(messages : Models.Message list) = 
-        let messages = 
-            messages
-            |> List.map(fun message ->
-                let iconClass = 
-                    if message.Unread then 
-                        "fas fa-circle dot"
-                    else
-                        "fas fa-circle dot read"
-                Bulma.columns [
-                    prop.onClick(fun _ -> printfn "read message")
-                    prop.className "message"
-                    prop.children [
-                        Bulma.column [    
-                            column.is12
-                            prop.children[
-                                Bulma.content [
-                                    prop.className "message-item"
-                                    prop.children [
-                                        Html.div [
-                                            prop.className "message-item from"
-                                            prop.children[
-                                                Html.i [
-                                                    prop.style [
-                                                        style.marginRight 12
-                                                    ]
-                                                    prop.className iconClass
-                                                ]
-                                                message.From + " " + (message.Date.ToString("yyyy-MM-dd")) |> Html.span
-                                            ]
-                                        ]
-                                        Html.span [
-                                            prop.className "message-item subject"
-                                            message.Subject |> prop.text
-                                        ]
-                                    ]
-                                ]
-                            ] 
-                        ]
-                    ]
-                ]
-            )
-        
-        Bulma.card [
-            prop.style[
-                style.boxShadow.none
-                style.backgroundColor.white
-            ]
-            prop.children [
-                Bulma.cardContent [
-                    Bulma.media [
-                        Bulma.mediaLeft [
-                            Bulma.image [
-                                prop.className "is-32x32 icon envelope"
-                            ]
-                        ]
-                    ]
-                
-                    (Bulma.title [
-                        prop.text "Messages"
-                    ])::messages
-                    |> Bulma.content 
-                    
-                ]
-            ]
-        ]
-
     
     [<ReactComponent>]
-    static member List(messages : Models.Message list,reduceUnreadCount) =
+    static member List(title : string, messages : Models.Message list,reduceUnreadCount, footer) =
+        
         let messages = 
             messages
             |> List.mapi(fun i message -> 
@@ -156,13 +89,15 @@ type Message() =
                     ]
                     
                     Bulma.content [
-                        Bulma.title [
-                            prop.text "Messages"
+                        yield Bulma.title [
+                            prop.text title
                         ]
-                        Html.section [
+                        yield Html.section [
                             prop.className "accordions"
                             prop.children messages
                         ]
+                        if footer |> Option.isSome then
+                            yield footer.Value
                     ]
                 ]
             ]
