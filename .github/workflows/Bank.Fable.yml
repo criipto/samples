@@ -37,7 +37,7 @@ jobs:
         npm install
       working-directory: ./Bank.Fable
     - name: Build
-      run: dotnet pack -o build
+      run: dotnet pack -o build && cp deploy.sh ./build
       working-directory: ./
     - name: Publish
       uses: s0/git-publish-subdir-action@develop
