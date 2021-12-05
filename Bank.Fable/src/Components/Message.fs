@@ -21,10 +21,16 @@ module Imports =
 type Message() =  
     
     [<ReactComponent>]
-    static member List(title : string, messages : Models.Message list,reduceUnreadCount, footer) =
+    static member List(title : string, messages : Models.Message list,setMessages, setView, maxCount) =
+        let msgs = 
+            match maxCount with
+            None -> messages
+            | Some maxCount -> 
+                messages
+                |> List.take (min messages.Length maxCount)
         
-        let messages = 
-            messages
+        let messageViewss = 
+            msgs
             |> List.mapi(fun i message -> 
                 Html.article [
                     prop.className "accordion message-item"
@@ -37,7 +43,14 @@ type Message() =
                                 let dot = messageHeader.getElementsByClassName("dot").[0]
                                 if dot |> isNull |> not && dot.classList.contains "read" |> not then 
                                     dot.classList.add "read" |> ignore
-                                    reduceUnreadCount()
+                                messages
+                                |> List.map(fun m -> 
+                                    if m = message then
+                                        {
+                                            m with Unread = false
+                                        } 
+                                    else m
+                                ) |> setMessages
                             )
                             prop.children [
                                 Html.div [
@@ -94,10 +107,13 @@ type Message() =
                         ]
                         yield Html.section [
                             prop.className "accordions"
-                            prop.children messages
+                            prop.children messageViewss
                         ]
-                        if footer |> Option.isSome then
-                            yield footer.Value
+                        if msgs.Length < messages.Length then
+                            yield Html.a [
+                                prop.onClick(fun _ -> setView View.Messages)
+                                prop.text "Show all messages"
+                            ] 
                     ]
                 ]
             ]

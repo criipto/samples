@@ -6,29 +6,14 @@ open Feliz.Bulma
 type Page() =
     static let mutable accordions = [||]
     [<ReactComponent>]
-    static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, reduceUnreadCount) =
+    static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, setMessages) =
         let components = 
             match activeView with
             Overview ->
-                let msgs = 
-                    let l = 
-                        messages
-                        |> List.filter(fun m -> m.Unread)
-                    l
-                    |> List.take (min l.Length 2)
-
-                let messageLink = 
-                    if msgs.Length < messages.Length then
-                        Html.a [
-                            prop.onClick(fun _ -> setView View.Messages)
-                            prop.text "Show all messages"
-                        ] 
-                        |> Some
-                    else
-                        None
+                
                 [
                     Components.IdCard(user)
-                    Message.List("New messages",msgs, reduceUnreadCount, messageLink)
+                    Message.List("New messages",messages, setMessages, setView, Some 2)
                     Account.Box(user.Accounts,fun name -> name |> View.Account |> setView)
                 ]
             | View.Account name ->
@@ -40,7 +25,7 @@ type Page() =
                 ]
             | Messages ->
                 [
-                    Message.List("Messages",messages, reduceUnreadCount, None)
+                    Message.List("Messages",messages, setMessages,setView, None )
                 ]
             | v ->
                 printfn "Switching to %A" v 
@@ -108,7 +93,7 @@ type Page() =
                             ]
                             Bulma.column [
                                 prop.children [
-                                    Page.Overview (user,view,setView, messages,reduceUnreadCount)
+                                    Page.Overview (user,view,setView, messages,setMessages)
                                 ]
                             ]
                         ]

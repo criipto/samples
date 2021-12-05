@@ -20,12 +20,11 @@
             "dataType" : "text",
             "replaces": "urn:my:application:identifier:1744",
             "defaultValue": "urn:my:application:identifier:1744"
-        }
-        ,
+        },
         "companyName":{
             "type" : "parameter",
             "dataType" : "text",
-            "replaces": "%APPNAME%€",
+            "replaces": "%APPNAME%",
             "defaultValue": "Criipto"
         }
 

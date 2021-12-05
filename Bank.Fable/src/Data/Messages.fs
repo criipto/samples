@@ -32,6 +32,7 @@ let fetch(setMessages) =
                             (if m.Unread then 1 else 0),m.Date
                         ) |> List.ofArray
                     if messages |> List.isEmpty |> not then 
+                        eprintfn "Failed retrieving from %s got %d - %s" src statusCode messagesRaw
                         setMessages messages                    
                     else 
                         return! inner s
