@@ -1,0 +1,24 @@
+{
+    "messages":[{
+        "title" : "Using code flow with oidc-client",
+        "from" : "Criipto",
+        "date": "2021-12-01",
+        "content" : "Some times requirement change or specifications are updated providing better alternatives. One such is the change from id_token to PKCE. PKCE provides several improvements over id_token but migrating requires a few changes that are not easily discoverable. Firstly you will have to change the responseType from id_token to code . If you are in a browser and need to be able to read the user profile as well you will also have to make sure to update the response strategy in the criipto management ui. The strategy has to be plainJson"
+        }, {
+            "title" : "Lorem",
+            "from" : "Criipto",
+            "date": "2021-12-02",
+            "content" : "Quasar of brilliant syntheses great turbulent clouds descended from astronomers concept of the number one Euclid. Circumnavigated network of wormholes made in the interiors of collapsing stars hearts of the stars preserve and cherish that pale blue dot decipherment. A still more glorious dawn awaits another world citizens of distant epochs courage of our questions white dwarf Sea of Tranquility? With pretty stories for which there's little good evidence from which we spring rich in heavy atoms vanquish the impossible courage of our questions the carbon in our apple pies and billions upon billions upon billions upon billions upon billions upon billions upon billions."
+        }, {
+            "title" : "Disabling debugger statements in Safari",
+            "from" : "Dev Support",
+            "date": "2021-12-03",
+            "content" : "When debuggin a site that uses either nemid or mitid, the developer tools will be forced to break at a number of debugger statements. This can be somewhat inconvinient. Luckily some browsers like Safari makes it possible to disable debugger statements while preserving break points. With the dev tools open. Open the sources tab and at the top left corner you can enable and disable debugger statements"
+        }, {
+            "title" : "Lorem 2",
+            "from" : "Criipto",
+            "date": "2021-11-02",
+            "content" : "Quasar of brilliant syntheses great turbulent clouds descended from astronomers concept of the number one Euclid. Circumnavigated network of wormholes made in the interiors of collapsing stars hearts of the stars preserve and cherish that pale blue dot decipherment. A still more glorious dawn awaits another world citizens of distant epochs courage of our questions white dwarf Sea of Tranquility? With pretty stories for which there's little good evidence from which we spring rich in heavy atoms vanquish the impossible courage of our questions the carbon in our apple pies and billions upon billions upon billions upon billions upon billions upon billions upon billions."
+        }
+    ]
+}
