@@ -1,0 +1,259 @@
+@import "~bulma";
+@import "~@fortawesome/fontawesome-pro/css/all.min";
+@import "~bulma-extensions/bulma-accordion/dist/css/bulma-accordion";
+
+@mixin icon($iconName) {
+    background: url($iconName + ".svg") no-repeat center;
+    background-size: 100%;
+}
+$hover-background: rgba(69, 128, 201, 0.2);
+$hover-text: rgba(69, 128, 201);
+$boxmargin : 32px;
+$background : #F9F8F4;
+$content-background : white;
+$text-color : #204C82;;
+$border-emphasis: solid $text-color 2px;
+$border-regular: 1px solid #EDECE8;
+
+body,html {
+    margin:0px;
+    height: 100%;
+    background: $background;
+    color: $text-color;
+}
+
+.panel-icon,.icon {
+    width: 24px;
+    border: none;
+    margin-right: 10px;
+}
+
+.ledger-entry {
+    text-align: right;
+}
+ 
+.ledger-entry.amount {
+    font-weight: 200;
+    font-family: monospace;
+}
+
+.ledger-entry.balance {
+    font-weight: 50;
+    font-size: .75em;
+    font-family: monospace;
+    color: #7192bb;
+}
+
+.account-heading {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 22px;
+    vertical-align: center;
+}
+
+.icon-large.icon {
+    height: $boxmargin;
+}
+
+.icon.arrows {
+    @include icon("arrows")
+}
+.icon.credit-card-logo {
+    @include icon("credit-card-logo");
+    width:36px;
+    height: auto;
+}
+.icon.chart {
+    @include icon("chart")
+}
+.icon.profile {
+    @include icon("profile")
+}
+.icon.envelope {
+    @include icon("envelope")
+}
+.icon.lamp {
+    @include icon("lamp")
+}
+.icon.vbars {
+    @include icon("vbars")
+}
+.icon.wineglass {
+    @include icon("wineglass")
+}
+.icon.code {
+    @include icon("code")
+}
+.card {
+   margin-bottom: 50px; 
+}
+.panel-block:hover {
+    color: $hover-text;
+}
+
+.columns.account:hover,
+.columns.message:hover,
+.columns.message > .column:hover,
+.accordion.message-item > .accordion-header:hover {
+    background-color: $hover-background;
+    cursor: pointer;
+}
+
+
+.columns.account.header:hover,
+.sidebar-header:hover {
+    background-color: $content-background;
+    cursor: auto;
+    border: none;
+}
+
+.accordions > .accordion.message-item > .accordion-body {
+    background-color: $content-background;
+    border : none;
+}
+
+.accordion.message-item {
+    border: none;
+    border-top: $border-regular;
+}
+
+.panel-block.is-active {
+    border-bottom: $border-emphasis;
+}
+
+.panel-block:last-child {
+    border-radius: 0px;
+}
+body, .panel, .panel-block, 
+.panel-block.is-active,
+.panel-heading, .message > .column { 
+    background: $background;
+    color: $text-color;
+}
+
+.message > .column, 
+.card-content > div.content > h1.title, 
+.accordion.message-item > .accordion-header{ 
+    background: $content-background;
+}
+
+.card-content > div.content > h1.title,
+.card-content > div.content > h2.subtitle, 
+.columns.account, .columns.transaction,
+.accordions > .accordion > .accordion-header.message-item {
+    color: $text-color;
+}
+
+.card {
+    padding-bottom: 32px;
+}
+
+.columns.account,
+.columns.transaction,
+.columns.message {
+    border-top: $border-regular;
+    background: $content-background;
+}
+
+.panel-block {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-radius: 2px;
+}
+
+.panel-block.menu-item::after {
+    content: "\A";
+    white-space: pre;
+}
+
+.container > .card {
+    margin-bottom: 1em;
+}
+
+.navbar-item,i.fal{
+    color: $background;
+}
+
+.columns.account.header {
+    border-top : none;
+    font-weight: 700;
+    font-size: 16px;
+}
+.columns.account.header > .amount {
+   text-align: right;
+}
+.app {
+    height: 100vh;
+    color: $text-color;
+}
+
+h1.title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 22px;
+    color: $text-color;
+}
+
+h2.subtitle {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: $text-color;
+}
+
+.navbar-menu {
+    background-image: url("bg_top.png");
+    background-size:100% 100%;
+    padding-right: 44px;
+    padding-left: $boxmargin;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.navbar-item {
+    padding : 0px;
+    margin-right: 12px;
+}
+
+.badge {
+    position: relative;
+    top: -10px;
+    right: -10px;
+    height: 14px;
+    width: 14px;
+    padding: 0px;
+    border-radius: 50%;
+    background: hsl(348, 100%, 61%);
+    font-size: 0.7em;
+    color: $content-background;
+}
+
+.dot {
+    color: hsl(348, 100%, 61%);
+    font-size: 0.8em;
+}
+
+.message-item .from {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.dot.read {
+    display : none;
+}
+
+.message-item .subject {
+    font-size: 16px;
+}
+
+div.card-content {
+    padding-left: $boxmargin;
+    padding-right: $boxmargin;
+    padding-top: $boxmargin;
+    padding-bottom: 0px;
+}
