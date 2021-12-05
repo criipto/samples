@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageVersion>0.2.0</PackageVersion>
+    <PackageId>Criipto.Templates</PackageId>
+    <Title>Criipto Templates</Title>
+    <Authors>Criipto ApS</Authors>
+    <Description>Templates for using Criipto products on various tech stacks</Description>
+    <PackageTags>dotnet-new;templates;criipto</PackageTags>
+
+    <TargetFramework>net6.0</TargetFramework>
+
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Bank.Fable\**\*" Exclude="**\bin\**;**\obj\**;**/node_modules/**;;**/fable_modules/**;.DS_Store" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+
+</Project>

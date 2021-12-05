@@ -37,15 +37,13 @@ jobs:
         npm install
       working-directory: ./Bank.Fable
     - name: Build
-      run: npm run build
-      working-directory: ./Bank.Fable
-      env:
-       WEBPACK_OUT_DIR: ./build
+      run: dotnet pack -o build
+      working-directory: ./
     - name: Publish
       uses: s0/git-publish-subdir-action@develop
       env:
         REPO: self
         BRANCH: release 
-        FOLDER: ./Bank.Fable/build # netlify will pick up pushes to this branch and make the build output available as a static site
+        FOLDER: ./build # netlify will pick up pushes to this branch and make the build output available as a static site
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         MESSAGE: "Build: ({sha}) {msg}"

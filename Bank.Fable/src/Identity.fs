@@ -32,6 +32,7 @@ let isAuthenticated =
 
 let logOut () = 
     try
+        storage.removeItem storageKey
         userManager.signoutRedirect()
     with e ->
         eprintfn "Eror when logging out: %s" e.Message

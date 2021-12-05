@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Criipto ApS",
+    "classifications": [ "Common", "Web", "Fable"],
+    "identity": "Criipto.Felize Sample",
+    "name": "Criipto Bank Feliz SPA Sample",
+    "shortName": "CriiptoFelizeSample",
+    "tags": {
+      "language": "F#",
+      "type": "project"
+    },
+    "symbols": {
+        "domain":{
+            "type" : "parameter",
+            "replaces" : "fablecriipto-test.criipto.id",
+            "isRequired": true
+        },
+        "clientid":{
+            "type" : "parameter",
+            "dataType" : "text",
+            "replaces": "urn:my:application:identifier:1744",
+            "isRequired": true
+        }
+        ,
+        "companyName":{
+            "type" : "parameter",
+            "dataType" : "text",
+            "replaces": "%APPNAME%€",
+            "defaultValue": "Criipto"
+        }
+
+    },
+    "sources": [
+        {
+          "exclude" : ".git",
+          "modifiers": [{
+            "exclude": [ 
+              ".github/**",
+              ".template.config/**", 
+              "**/bin/",
+              "**/obj",
+              ".git*",
+              "**/fable_modules/**",
+              "node_modules/**",
+              "paket-files/**",
+              ".ionide/**"]
+          }]
+        }
+      ]
+  }
