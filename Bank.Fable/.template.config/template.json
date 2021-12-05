@@ -13,13 +13,13 @@
         "domain":{
             "type" : "parameter",
             "replaces" : "fablecriipto-test.criipto.id",
-            "isRequired": true
+            "defaultValue" : "fablecriipto-test.criipto.id"
         },
         "clientid":{
             "type" : "parameter",
             "dataType" : "text",
             "replaces": "urn:my:application:identifier:1744",
-            "isRequired": true
+            "defaultValue": "urn:my:application:identifier:1744"
         }
         ,
         "companyName":{
