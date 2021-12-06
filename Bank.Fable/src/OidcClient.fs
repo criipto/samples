@@ -94,8 +94,6 @@ type UserInfo =
                 profile = profile
                 expires_at = float info.expires_at
             }
-           
-            
 
 [<Import("WebStorageStateStore", from="oidc-client")>]
 type WebStorageStateStore() = 
