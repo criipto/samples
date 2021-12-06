@@ -96,7 +96,9 @@ type Account =
             accounts
             |> List.map(fun account ->
                     Bulma.columns [
-                        prop.onClick(fun _ -> viewAccount account.Name)
+                        prop.onClick(fun _ -> 
+                            Browser.Dom.window.location.href <- sprintf "#%s" account.Name
+                            viewAccount account.Name)
                         prop.className "account"
                         prop.children [
                             Bulma.column [

@@ -64,7 +64,7 @@ type Page() =
             | None -> ()
         match user with
         None -> 
-            if Identity.isAuthenticated |> not then
+            if Identity.isAuthenticated |> not || Identity.hasExpired() then
                 Html.div[
                     Navigation.Topbar("Log on",fun _ -> Identity.logIn())
                 ]

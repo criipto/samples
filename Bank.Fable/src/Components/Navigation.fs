@@ -19,7 +19,6 @@ type Navigation =
                     ]
                 ]
                 Html.span [
-                    prop.onClick(fun _ -> setView view)
                     prop.text (view.ToString())
                 ]
             ]
@@ -41,6 +40,7 @@ type Navigation =
                         "menu-item"
                 Bulma.panelBlock.div [
                     prop.className className
+                    prop.onClick(fun _ -> setView view)
                     createMenuItem (viewName,view,notification)
                 ]::[Html.br []]
             )
@@ -65,7 +65,7 @@ type Navigation =
                     ]
                     Html.span[
                         prop.style [
-                            style.marginLeft 12
+                            style.marginLeft 4
                             style.fontWeight 800
                             style.fontSize 20
                         ]

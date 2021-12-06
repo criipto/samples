@@ -121,6 +121,10 @@ body,html {
     border-bottom: $border-emphasis;
 }
 
+.panel-block:not(.is-active) {
+    border-bottom: none;
+}
+
 .panel-block:last-child {
     border-radius: 0px;
 }
@@ -211,8 +215,8 @@ h2.subtitle {
     background-size:100% 100%;
     padding-right: 44px;
     padding-left: $boxmargin;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 .navbar-item {

@@ -106,6 +106,7 @@ type Options =
       client_id               : string
       redirect_uri            : string
       response_type           : string
+      response_mode           : string
       post_logout_redirect_uri: string
       acr_values              : string
     }

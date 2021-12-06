@@ -15,6 +15,7 @@ let private options : Options =
             client_id = "urn:my:application:identifier:1744"               
             redirect_uri = url            
             response_type = "code" 
+            response_mode = "query"
             post_logout_redirect_uri = url           
             acr_values = "urn:grn:authn:dk:mitid:low"
         }         
@@ -28,7 +29,12 @@ let storage = sessionStorage
 
 let isAuthenticated = 
     let href = window.location.href
-    href.Contains "?" && href.Contains "code="
+    href.Contains "code="
+
+let hasExpired() = 
+    match storage.getItem storageKey with
+    null -> false
+    | _ -> true
 
 let logOut () = 
     try
@@ -51,5 +57,5 @@ let registerLogin(setUser : Oidc.UserInfo option -> unit) =
             None |> setUser
         ) |> ignore
     else
-        userInfo |> Oidc.UserInfo.Parse |> Some |> setUser
+        userInfo |> UserInfo.Parse |> Some |> setUser
     
