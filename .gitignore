@@ -212,3 +212,4 @@ dist/
 **/fable_modules/
 .vscode/
 **/package
+test-template/

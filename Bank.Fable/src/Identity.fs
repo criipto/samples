@@ -26,16 +26,24 @@ let private userManager =
     )
 let storageKey = sprintf "oidc.user:%s:%s" options.authority options.client_id
 let storage = sessionStorage
-
-let isAuthenticated = 
+let tryGetUserProfile() = 
+    let userInfo = storage.getItem storageKey
+    if  userInfo |> isNull then 
+        None
+    else
+        userInfo |> UserInfo.Parse |> Some
+let hasRequestedAuthentication() = 
     let href = window.location.href
     href.Contains "code="
 
-let hasExpired() = 
-    match storage.getItem storageKey with
-    null -> false
-    | _ -> true
-
+let isAuthenticated() = 
+    match tryGetUserProfile() with
+    None -> true
+    | Some userProfile -> 
+        let expiresAt = System.DateTime(int64 userProfile.expires_at)
+        printfn "Expires at %A" expiresAt
+        expiresAt > System.DateTime.Now
+        
 let logOut () = 
     try
         storage.removeItem storageKey
@@ -46,16 +54,16 @@ let logIn () =
     userManager.signinRedirect()
     
 let registerLogin(setUser : Oidc.UserInfo option -> unit) = 
-    let userInfo = storage.getItem storageKey
-    if  userInfo |> isNull then 
+    match tryGetUserProfile() with
+    None -> 
         userManager.processSigninResponse().``then``(fun userInfo -> 
             let json = Fable.Core.JS.JSON.stringify userInfo
             storage.setItem(storageKey, sprintf "%A" json)
             userInfo |> Some |> setUser 
         ).catch(fun err ->
-            Browser.Dom.console.error("Error:", err)
+            console.error("Error:", err)
             None |> setUser
         ) |> ignore
-    else
-        userInfo |> UserInfo.Parse |> Some |> setUser
+    | userProfile ->
+        userProfile |> setUser
     
