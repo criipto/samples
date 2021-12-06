@@ -64,12 +64,12 @@ type Page() =
             | None -> ()
         match user with
         None -> 
-            if Identity.hasRequestedAuthentication() |> not || Identity.isAuthenticated() |> not then
+            if Identity.hasRequestedAuthentication() |> not then
                 Html.div[
                     Navigation.Topbar("Log on",fun _ -> Identity.logIn())
                 ]
             else
-               Identity.registerLogin(setUser) |> ignore
+               Identity.isAuthenticated(setUser) |> ignore
                Html.div[]
         | Some user -> 
             Html.div[

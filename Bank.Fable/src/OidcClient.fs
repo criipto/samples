@@ -60,41 +60,42 @@ type UserInfo =
       token_type : string
       scope:string
       profile : UserProfile
-      expires_at : int
-    } with static member Parse json = 
-                    printfn "json: %s" json
-                    let info = _UserInfo(json)
-                    let p = info.profile
-                    let profile = 
-                        {
-                            identityscheme = p.identityscheme
-                            authenticationtype = p.authenticationtype
-                            authenticationmethod = p.authenticationmethod
-                            authenticationinstant = p.authenticationinstant
-                            nameidentifier = p.nameidentifier
-                            sub = p.sub
-                            sessionindex = p.sessionindex
-                            loA = p.loA
-                            ial = p.ial
-                            aal = p.aal
-                            fal = p.fal
-                            uuid = p.uuid
-                            cprNumberIdentifier = p.cprNumberIdentifier
-                            birthdate = p.birthdate
-                            dateofbirth = p.dateofbirth
-                            age = int p.age
-                            name = p.name
-                            country = p.country
-                        }
-                    {
-                        code = info.code
-                        id_token = info.id_token
-                        access_token = info.access_token
-                        token_type = info.token_type
-                        scope = info.scope
-                        profile = profile
-                        expires_at = int info.expires_at
-                    }
+      expires_at : float
+    } with static member Parse json =             
+            let info = _UserInfo(json)
+            let p = info.profile
+            let profile = 
+                {
+                    identityscheme = p.identityscheme
+                    authenticationtype = p.authenticationtype
+                    authenticationmethod = p.authenticationmethod
+                    authenticationinstant = p.authenticationinstant
+                    nameidentifier = p.nameidentifier
+                    sub = p.sub
+                    sessionindex = p.sessionindex
+                    loA = p.loA
+                    ial = p.ial
+                    aal = p.aal
+                    fal = p.fal
+                    uuid = p.uuid
+                    cprNumberIdentifier = p.cprNumberIdentifier
+                    birthdate = p.birthdate
+                    dateofbirth = p.dateofbirth
+                    age = int p.age
+                    name = p.name
+                    country = p.country
+                }
+            {
+                code = info.code
+                id_token = info.id_token
+                access_token = info.access_token
+                token_type = info.token_type
+                scope = info.scope
+                profile = profile
+                expires_at = float info.expires_at
+            }
+           
+            
 
 [<Import("WebStorageStateStore", from="oidc-client")>]
 type WebStorageStateStore() = 
@@ -106,7 +107,6 @@ type Options =
       client_id               : string
       redirect_uri            : string
       response_type           : string
-      response_mode           : string
       post_logout_redirect_uri: string
       acr_values              : string
     }
