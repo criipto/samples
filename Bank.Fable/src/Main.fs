@@ -8,7 +8,7 @@ open App.Components
 
 importSideEffects "./styles/global.scss"
 
-Browser.Dom.document.title <- "%NAME% Bank"
+Browser.Dom.document.title <- "%APPNAME% Bank"
 
 ReactDOM.render(
     Page.Layout(),
