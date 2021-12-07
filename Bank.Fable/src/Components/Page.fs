@@ -67,6 +67,7 @@ type Page() =
             if Identity.hasRequestedAuthentication() |> not then
                 Html.div[
                     Navigation.Topbar("Log on",fun _ -> Identity.logIn())
+                    Components.Splash()
                 ]
             else
                Identity.isAuthenticated(setUser) |> ignore
