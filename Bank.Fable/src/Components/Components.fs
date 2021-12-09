@@ -64,8 +64,8 @@ type Components =
 
         let splashItems =
             [
-                "signature","Easy digital signing of sensitive documents","Criipto provides %appname% Bank’s secure and user-friendly signing solution so you can sign securely - on your computer and on the go."
-                "power-off","Easy login to %appname% Bank","%appname% Bank is using Criipto's easy and secure login solution. It saves us a lot of money that we can spend on better service for you!"
+                "signature","Easy digital signing of sensitive documents","Criipto provides %APPNAME% Bank’s secure and user-friendly signing solution so you can sign securely - on your computer and on the go."
+                "power-off","Easy login to %APPNAME% Bank","%APPNAME% Bank is using Criipto's easy and secure login solution. It saves us a lot of money that we can spend on better service for you!"
                 "mitid","MitID has arrived - We have you covered","Don’t worry. We have your back. With Criipto’s easy e-ID login solution we provide MitID and NemID login side-by-side."
             ]
 
@@ -159,7 +159,7 @@ type Components =
                                         prop.children [
                                             Bulma.button.button [
                                                 prop.className "call-to-action"
-                                                prop.text "Become a customer in %appname% Bank"
+                                                prop.text "Become a customer in %APPNAME% Bank"
                                             ]
                                         ]
                                     ]
