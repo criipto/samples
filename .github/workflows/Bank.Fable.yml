@@ -45,8 +45,8 @@ jobs:
     
     - name: create feliz project from template
       run: |
-         mkdir deployment-felize-source
-         cd deployment-felize-source
+         mkdir deployment-feliz-source
+         cd deployment-feliz-source
          dotnet new CriiptoFelizSample
          npm install
          npm run build
