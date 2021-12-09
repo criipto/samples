@@ -39,10 +39,10 @@ type Components =
     static member Splash() = 
         let images = 
             [
-                "apartment","Start a business"
-                "car","Finance cars"
+                "apartment","Housing"
+                "car","Cars"
                 "chart","Investment"
-                "wineglass", "Employee Pension"
+                "wineglass", "Pension"
                 "hand-holding-medical","Insurance"
                 "credit-card","Cards"
                 "coins","Loans"
@@ -74,7 +74,7 @@ type Components =
                 prop.className "is-child box splash-item"
                 prop.children [
                     Html.div [ 
-                        icon |> sprintf "icon %s is-48x48 splash-item" |> prop.className 
+                        icon |> sprintf "icon %s is-40x40 splash-item" |> prop.className 
                     ]
                     Bulma.title [
                         prop.className "splash-item"
@@ -112,6 +112,25 @@ type Components =
                                 prop.children [
                                     Bulma.tile[
                                         prop.className "is-child box banner"
+                                        prop.children [
+                                            Html.div[
+                                                prop.className "banner overlay"
+                                            ]
+                                            Html.div [
+                                                prop.className "banner-content"
+                                                prop.children [
+                                                    Bulma.subtitle [
+                                                        prop.className "banner"
+                                                        prop.text "BUSINESS TO BUSINESS"
+                                                    ]
+                                                    Bulma.title [
+                                                        prop.className "banner"
+                                                        prop.text "“We save 120 dev hours a year with Criipto’s e-ID login”"
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+
                                     ]
                                 ]
                             ]

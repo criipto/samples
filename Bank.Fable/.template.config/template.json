@@ -2,9 +2,9 @@
     "$schema": "http://json.schemastore.org/template",
     "author": "Criipto ApS",
     "classifications": [ "Common", "Web", "Fable"],
-    "identity": "Criipto.Felize Sample",
+    "identity": "Criipto.Feliz Sample",
     "name": "Criipto Bank Feliz SPA Sample",
-    "shortName": "CriiptoFelizeSample",
+    "shortName": "CriiptoFelizSample",
     "tags": {
       "language": "F#",
       "type": "project"
