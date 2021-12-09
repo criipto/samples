@@ -74,7 +74,7 @@ type Components =
                 prop.className "is-child box splash-item"
                 prop.children [
                     Html.div [ 
-                        icon |> sprintf "icon %s is-40x40 splash-item" |> prop.className 
+                        icon |> sprintf "icon %s is-40h splash-item" |> prop.className 
                     ]
                     Bulma.title [
                         prop.className "splash-item"
