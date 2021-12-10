@@ -1,0 +1,6 @@
+{
+    "schema": "schema.json",
+    "queries": "./queries",
+    "project": "Signatures",
+    "output": "./generated"
+}

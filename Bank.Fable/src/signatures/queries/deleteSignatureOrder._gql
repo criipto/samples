@@ -1,0 +1,14 @@
+mutation {
+  deleteSignatory(
+    input: {
+      signatureOrderId: "[signatureOrder.id]"
+      signatoryId: "[signatureOrder.openSignatory.id]"
+    }
+  ) {
+    signatureOrder {
+      openSignatory {
+        status
+      }
+    }
+  }
+}

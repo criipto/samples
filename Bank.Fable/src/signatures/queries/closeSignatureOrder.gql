@@ -1,0 +1,15 @@
+mutation {
+  closeSignatureOrder(
+    input: {
+      signatureOrderId: "[signatureOrder.id]"
+    }
+  ) {
+    signatureOrder {
+      status
+
+      documents {
+        blob
+      }
+    }
+  }
+}

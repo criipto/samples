@@ -1,0 +1,12 @@
+mutation {
+  addSignatory(
+    input: {
+      signatureOrderId: "[signatureOrder.id]"
+      reference: "..."
+    }
+  ) {
+    signatory {
+      href
+    }
+  }
+}

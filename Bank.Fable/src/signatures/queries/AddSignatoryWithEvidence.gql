@@ -1,0 +1,14 @@
+mutation {
+  addSignatory(
+    input: {
+      signatureOrderId: "[signatureOrder.id]"
+      evidenceValidation: [
+        {key: "cprNumberIdentifier", value: "1234568888"}
+      ]
+    }
+  ) {
+    signatory {
+      href
+    }
+  }
+}

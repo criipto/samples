@@ -59,17 +59,16 @@ type Navigation =
                     prop.className "icon credit-card-logo"
                 ]
                 Bulma.navbarItem.div[
-                    Html.span[
-                        prop.className "app-name"
-                        prop.text "%APPNAME%"
-                    ]
-                    Html.span[
-                        prop.style [
-                            style.marginLeft 4
-                            style.fontWeight 800
-                            style.fontSize 20
+                    prop.className "logo-text"
+                    prop.children [
+                        Html.span[
+                            prop.className "app-name"
+                            prop.text "%APPNAME%"
                         ]
-                        prop.text "Bank"
+                        Html.span[
+                            prop.className "bank"
+                            prop.text "Bank"
+                        ]
                     ]
                 ]
             ]

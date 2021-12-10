@@ -81,6 +81,16 @@ type Message() =
                                     prop.className "accordion-content message-item"
                                     prop.text message.Content
                                 ]
+                                Bulma.button.a [
+                                    prop.className "reply"
+                                    sprintf "mailto:support@criipto.com?subject=%s&body=%s" message.Subject  message.Content|> prop.href 
+                                    prop.children [
+                                        Html.span "Reply "
+                                        Html.div [
+                                            prop.className "icon reply"
+                                        ]
+                                    ]
+                                ]
                             ]
                         ]
                     ]

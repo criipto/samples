@@ -213,3 +213,4 @@ dist/
 .vscode/
 **/package
 test-template/
+**/signatures/generated/

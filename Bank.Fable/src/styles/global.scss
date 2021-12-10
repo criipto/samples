@@ -18,11 +18,16 @@ $border-emphasis: solid $text-color 2px;
 $border-regular: 1px solid #EDECE8;
 
 body,html {
-    font-family: 'Roboto slab', serif;
+    font-family: 'Raleway', serif;
     margin:0px;
     height: 100%;
     background: $background;
     color: $text-color;
+}
+
+.title{
+    font-family: "Roboto Slab", serif !important;
+    font-weight: 800;
 }
 
 .panel-icon,.icon {
@@ -58,6 +63,15 @@ body,html {
     height: $boxmargin;
 }
 
+.logo-text {
+    font-size: 20px;
+}
+
+.logo-text > .bank {
+    margin-left: 4px;
+    font-weight: 800;
+}
+
 .icon.arrows {
     @include icon("arrows")
 }
@@ -69,6 +83,17 @@ body,html {
 .icon.chart {
     @include icon("chart")
 }
+
+.button.reply > div.icon.reply {
+    @include icon("reply");
+    height: 16px !important;
+    width: 16px !important;
+}
+
+div.icon.reply > span:hover, a.reply:hover {
+    color: white;
+}
+
 .icon.profile {
     @include icon("profile")
 }
@@ -132,6 +157,19 @@ body,html {
 }
 
 
+.accordions .accordion .accordion-header.message-item {
+    padding-left : 0px;
+}
+
+section.accordions + a {
+    text-decoration: underline;
+    color:$text-color;
+}
+
+section.accordions + a:hover {
+    color:#4580c9;
+
+}
 .columns.account.header:hover,
 .sidebar-header:hover {
     background-color: $content-background;
@@ -205,6 +243,14 @@ body, .panel, .panel-block,
     white-space: pre;
 }
 
+.panel-block.menu-item {
+    margin-bottom : 8px;
+}
+
+.card-content > article.media:not(:last-child) {
+    margin-bottom : 16px;
+}
+
 .container > .card {
     margin-bottom: 1em;
 }
@@ -228,7 +274,6 @@ body, .panel, .panel-block,
 
 h1.title {
     font-style: normal;
-    font-weight: 500;
     font-size: 24px;
     line-height: 22px;
     color: $text-color;
@@ -277,6 +322,10 @@ h2.subtitle {
 .message-item .from {
     font-size: 14px;
     font-weight: 700;
+}
+
+.accordion-content.message-item {
+    color: $text-color;
 }
 
 .dot.read {
@@ -398,4 +447,15 @@ div.banner {
 
 .is-40h {
     height: 40px !important;
+}
+
+a.reply {
+    background-color: $text-color;
+    color: white;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 15px;
+    text-align: center;
+    margin-bottom: 24px;
 }

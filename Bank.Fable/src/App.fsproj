@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>1f14b35c-eda5-41d2-82fd-0dee0ebde15c</UserSecretsId>
   </PropertyGroup>
+  <ItemGroup>
+        <!--<ProjectReference Include="signatures/generated/Signatures.fsproj" />-->
+  </ItemGroup>
   <ItemGroup>
     <None Include="index.html" />
     <Compile Include="OidcClient.fs" />

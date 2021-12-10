@@ -1,0 +1,11 @@
+mutation {
+  cancelSignatureOrder(
+    input: {
+      signatureOrderId: "[signatureOrder.id]"
+    }
+  ) {
+    signatureOrder {
+      status
+    }
+  }
+}

@@ -1,0 +1,12 @@
+query {
+  signatureOrder(id: "[signatureOrder.id]") {
+    status
+    openSignatory {
+      status
+      href
+    }
+    signatories {
+      status
+    }
+  }
+}
