@@ -82,6 +82,12 @@ body,html {
     @include icon("chart")
 }
 
+.icon.dot {
+    @include icon("dot");
+    height: 12px !important;
+    width: 12px !important;
+}
+
 .button.reply > div.icon.reply {
     @include icon("reply");
     height: 16px !important;

@@ -9,7 +9,7 @@ let mutable messages = []
 let sources = 
   [
       "https://criipto-bank.netlify.app/feliz/messages.json" //try online first
-      //"/messages.json" //fallback to local if online is unavailable
+      "/messages.json" //fallback to local if online is unavailable
   ]
 let fetch(setMessages) = 
     let rec inner srcs = 

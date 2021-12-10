@@ -58,11 +58,11 @@ type Message() =
                                         prop.className "message-item from"
                                         prop.children[
                                             if message.Unread then 
-                                                yield Html.i [
+                                                yield Html.div [
                                                     prop.style [
                                                         style.marginRight 12
                                                     ]
-                                                    prop.className "fas fa-circle dot"
+                                                    prop.className "icon dot"
                                                 ]
                                             yield message.From + " " + (message.Date.ToString("yyyy-MM-dd")) |> Html.span
                                         ]
