@@ -75,7 +75,7 @@ type Navigation =
             Bulma.navbarEnd.div [
                 Bulma.navbarItem.div [
                     Bulma.buttons [
-                        (Some userButtonText,Some "power-off", fun _ -> action() ) |> Elements.IconButton
+                        (Some userButtonText,Some "power-off-white", fun _ -> action() ) |> Elements.IconButton
                     ]
                 ]
             ]

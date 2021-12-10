@@ -8,7 +8,7 @@ type private Message = Fable.JsonProvider.Generator<"../public/messages.json">
 let mutable messages = []
 let sources = 
   [
-      "https://criipto-bank.netlify.app/felize/messages.json" //try online first
+      "https://criipto-bank.netlify.app/feliz/messages.json" //try online first
       //"/messages.json" //fallback to local if online is unavailable
   ]
 let fetch(setMessages) = 

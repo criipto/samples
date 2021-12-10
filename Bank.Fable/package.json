@@ -11,7 +11,6 @@
         "test": "dotnet fable tests --outDir dist/tests && mocha dist/tests -r esm"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-pro": "^5.15.4",
         "bulma-extensions": "^6.2.7",
         "date-fns": "^2.16.1",
         "oidc-client": "^1.11.5",

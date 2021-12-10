@@ -1,5 +1,4 @@
 @import "~bulma";
-@import "~@fortawesome/fontawesome-pro/css/all.min";
 @import "~bulma-extensions/bulma-accordion/dist/css/bulma-accordion";
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
@@ -138,6 +137,12 @@ div.icon.reply > span:hover, a.reply:hover {
 }
 .icon.power-off {
     @include icon("power-off");
+}
+.icon.power-off-white {
+    @include icon("power-off-white");
+    width: 24px !important;
+    height: 24px;
+    display : inline-block;
 }
 
 .card {

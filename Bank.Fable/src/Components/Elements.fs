@@ -16,17 +16,15 @@ type Elements =
                 style.fontSize 18
             ]
             prop.children[
-                Bulma.icon [
-                    if label.IsSome then 
-                        yield Html.span [ 
-                                prop.className "navbar-item"
-                                prop.text label.Value
-                              ]
-                    if iconName.IsSome then
-                        yield Html.i [
-                            iconName.Value |> sprintf "fal fa-%s" |> prop.className
-                        ]
-                ]
+                if label.IsSome then 
+                    yield Html.span [ 
+                            prop.className "navbar-item"
+                            prop.text label.Value
+                            ]
+                if iconName.IsSome then
+                    yield Html.div [
+                        iconName.Value |> sprintf "icon %s" |> prop.className
+                    ]
             ]
         ]
 
