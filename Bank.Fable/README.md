@@ -1,6 +1,6 @@
 # Criipto Verify 
 
-This template gets you up and running with a simple demo bank using criipto verify for authentication. The intention of the application is to show you how to integrate Criipto Verify into an application. This guide will show you how the integration is configured and used. For how to build and run the application please see [DEVELOPMET](/DEVELOPMENT.md)
+This template gets you up and running with a simple demo bank using criipto verify for authentication. The intention of the application is to show you how to integrate Criipto Verify into an application. This guide will show you how the integration is configured and used. For how to build and run the application please see [DEVELOPMET](./DEVELOPMENT.md)
 
 ## Configuration
 
@@ -19,6 +19,6 @@ We want' dive into configuring an application using the Criipto Management UI in
 } 
 ```
 
-All the values in this block are in one way or another reflected in the [Criipto management UI][https://manage.criipto.id/]
+All the values in this block are in one way or another reflected in the [Criipto management UI](https://manage.criipto.id/)
 
 ![](domain.png)
