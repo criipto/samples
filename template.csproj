@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Bank.Fable\**\*" Exclude="**\bin\**;**\obj\**;**/node_modules/**;;**/fable_modules/**;.DS_Store" />
+    <Content Include="Bank/Fable/**/*" Exclude="**\bin\**;**\obj\**;**/node_modules/**;;**/fable_modules/**;.DS_Store;**/.git*" />
     <Compile Remove="**\*" />
   </ItemGroup>
 
