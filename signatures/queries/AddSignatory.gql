@@ -1,0 +1,18 @@
+mutation ($signatureOrderId: ID!, $signatoryRef : String, $cpr : String!, $documentId : String!, $preapproved: Boolean) {
+  addSignatory(
+    input: {
+      signatureOrderId: $signatureOrderId
+      reference: $signatoryRef
+      evidenceValidation: [
+        {key: "cprNumberIdentifier", value: $cpr}
+      ]
+      documents: [
+        {id: $documentId,, preapproved: $preapproved }
+      ]
+    }
+  ) {
+    signatory {
+      href
+    }
+  }
+}

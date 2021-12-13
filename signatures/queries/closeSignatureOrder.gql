@@ -1,7 +1,7 @@
-mutation {
+mutation ($signatureOrderId : String!) {
   closeSignatureOrder(
     input: {
-      signatureOrderId: "[signatureOrder.id]"
+      signatureOrderId: $signatureOrderId
     }
   ) {
     signatureOrder {
