@@ -26,7 +26,7 @@ jobs:
         
     - name: Restore tools
       run: dotnet tool restore
-      working-directory: ./Bank.Fable
+      working-directory: ./Bank/Fable
       
     - name: Restore dotnet dependencies 
       run: dotnet paket restore
