@@ -1,0 +1,10 @@
+query signatureOrder($id: ID!) {
+    signatureOrder(id: $id) {
+        status
+
+        signatories {
+            id
+            status
+        }
+    }
+}

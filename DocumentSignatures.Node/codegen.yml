@@ -1,0 +1,8 @@
+schema: https://signatures-api-prod.azurewebsites.net/v1/graphql
+generates:
+  src/graphql.ts:
+    documents: './src/**/*.graphql'
+    plugins:
+      - typescript
+      - typescript-operations
+      - "@graphql-codegen/typescript-graphql-request"

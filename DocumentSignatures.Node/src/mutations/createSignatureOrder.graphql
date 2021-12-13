@@ -1,0 +1,16 @@
+mutation createSignatureOrder ($input: CreateSignatureOrderInput!) {
+  createSignatureOrder(input: $input) {
+    signatureOrder {
+      id
+
+      documents {
+        id
+      }
+
+      signatories {
+        id
+        status
+      }
+    }
+  }
+}
