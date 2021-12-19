@@ -5,7 +5,7 @@
     <UserSecretsId>1f14b35c-eda5-41d2-82fd-0dee0ebde15c</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-        <ProjectReference Include="../signatures/generated/Signatures.fsproj" />-->
+        <ProjectReference Include="../signatures/Signatures.fsproj" />-->
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.fs" />
