@@ -1,0 +1,12 @@
+mutation closeSignatureOrder ($input: CloseSignatureOrderInput!) {
+  closeSignatureOrder(input: $input) {
+    signatureOrder {
+      id
+
+      documents {
+        id
+        blob
+      }
+    }
+  }
+}

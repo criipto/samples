@@ -1,0 +1,13 @@
+source https://api.nuget.org/v3/index.json
+
+storage: none
+framework: net6.0
+nuget Fable.Core
+nuget Fable.Remoting.json
+nuget Fable.SimpleHttp
+nuget Fable.SimpleJson
+nuget FSharp.core
+nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson
+nuget ply
+nuget Swashbuckle.AspNetCore ~> 6
+nuget system.collections

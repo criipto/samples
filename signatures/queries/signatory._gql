@@ -1,8 +1,0 @@
-query {
-  signatory(id: "[signatory.id]") {
-    status
-    signatureOrder {
-      status
-    }
-  }
-}
