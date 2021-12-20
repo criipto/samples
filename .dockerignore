@@ -1,0 +1,6 @@
+**/generated/
+**/bin/
+**/obj/
+**/node_modules/
+**/packages/
+Bank/

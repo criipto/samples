@@ -18,7 +18,6 @@ type SignaturesClient(url,clientId,clientSecret) =
         httpClient.BaseAddress <- System.Uri url
         SignaturesGraphqlClient(url,httpClient)
 
-
     member this.AddSignatory(signatureOrderId, signatory) = 
         AddSignatory(signatureOrderId, signatory)
         |> this.AddSignatory
