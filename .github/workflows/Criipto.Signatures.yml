@@ -41,8 +41,13 @@ jobs:
         run: dotnet snowflaqe --generate
         working-directory: ./Signing/signatures
       - name: Build 
-        run: dotnet build Signing/signatures/Criipto.Signatures.fsproj -c Release
+        run: dotnet build -c Release
+        working-directory: ./Signing/signatures
       - name: Pack the package
         run: dotnet paket pack ./package --version "$(dotnet aver Signing/signatures/bin/Release/net6.0/Criipto.Signatures.dll | grep AssemblyVersion | rev | cut -d' ' -f1 | rev)-alpha"
+        working-directory: ./Signing/signatures
       - name: Push the package
-        run: dotnet paket push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
+        run: |
+            ls ./package/*.nupkg
+            dotnet paket push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
+        working-directory: ./Signing/signatures
