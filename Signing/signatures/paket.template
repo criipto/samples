@@ -4,4 +4,4 @@ authors Criipto ApS
 description
   An SDK for the Criipto signatures offering
 files
-  src/bin/Release ==> lib
+  bin/Release ==> lib
