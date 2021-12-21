@@ -20,7 +20,7 @@ public class SigningController : ControllerBase
         var cfg = config.Value;
         _client =  new Signatures.SignaturesClient(cfg.Url, cfg.ClientID, cfg.ClientSecret);
     }
-
+#if DEBUG
     [HttpGet(Name = "CreateSignatureOrder")]
     public async System.Threading.Tasks.Task<Output.SignatureOrder> CreateSignatureOrder()
     {
@@ -38,7 +38,7 @@ public class SigningController : ControllerBase
         
         return order;
     }
-    
+#endif
     [HttpPost(Name = "AddSignatory")]
     public Output.AddSignatory AddSignatory([FromBody]Arguments.AddSignatory input)
     {
