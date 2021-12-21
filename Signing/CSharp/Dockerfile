@@ -2,7 +2,8 @@
 # $ docker build -f Signing/CSharp/Dockerfile -t signing .
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-copy .paket/ /.paket/
+COPY .paket/ /.paket/
+
 
 WORKDIR /source
 
@@ -34,10 +35,13 @@ WORKDIR /source/signatures
 RUN snowflaqe --generate
 
 WORKDIR /source/main
-RUN dotnet publish -c debug -o /app
+RUN dotnet publish -c Debug -o /app
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app ./
+
+ENV ASPNETCORE_ENVIRONMENT="Development"
+ENV ASPNETCORE_URLS="http://+:80"
 ENTRYPOINT ["dotnet", "signing.dll"]
