@@ -6,7 +6,7 @@ open Feliz.Bulma
 type Page() =
     static let mutable accordions = [||]
     [<ReactComponent>]
-    static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, setMessages) =
+    static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, Models.Document list, setMessages) =
         let components = 
             match activeView with
             Overview ->
@@ -26,6 +26,38 @@ type Page() =
             | Messages ->
                 [
                     Message.List("Messages",messages, setMessages,setView, None )
+                ]
+            | Pensions ->
+                printfn "Switching to %A" Pensions
+                async{
+                    let doc = documents |> List.head
+                    let! order = 
+                        Criipto.Signatures.createSignatureOrder(
+                            doc.Name,
+                            doc.Reference
+                            Doc.Content
+                            Signatures.DocumentStorageMode.Temporary           
+                        )
+                    let userRef = 
+                        user.Name
+                        |> System.Text.Encoding.ASCII.GetBytes
+                        |> System.Convert.ToBase64String
+                    let signatoryAdded = 
+                        Criipto.Signatures.addSignatory(
+                            orderId,
+                            Signatures.Types.Arguments.Signatory(userRef)
+                        )
+                    let linkToDoc = signatoryAdded.Signatory.DocumentLink
+                    {
+                        Subject = "Document to be signed"
+                        Content = sprintfn "Copy this link into your browser: %s" linkToDoc
+                        From = "Your bank advisor"
+                        Date = System.DateTime.Now
+                        Unread = true
+                    }::messages |> setMessages
+                } |> Async.StartImmediate
+                [
+                    Components.IdCard(user)
                 ]
             | v ->
                 printfn "Switching to %A" v 

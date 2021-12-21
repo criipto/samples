@@ -34,7 +34,8 @@ jobs:
       - name: restore tools
         run: dotnet tool restore
       - name: install version tool
-        run: dotnet tool install aver
+        run: dotnet tool install -g aver
+        working-directory: ./Signing/signatures
       - name: restore package
         run: dotnet paket restore
       - name: Generate client
@@ -45,8 +46,8 @@ jobs:
         working-directory: ./Signing/signatures
       - name: Pack the package
         run: |
-            dotnet aver bin/Release/net6.0/Criipto.Signatures.dll
-            dllVersion=$(dotnet aver bin/Release/net6.0/Criipto.Signatures.dll)
+            aver bin/Release/net6.0/Criipto.Signatures.dll
+            dllVersion=$(aver bin/Release/net6.0/Criipto.Signatures.dll)
             echo "DLL version info: $dllVersion"
             packageVersion=$(echo $dllVersion | grep AssemblyVersion | rev | cut -d' ' -f1 | rev)-alpha)
             echo $packageVersion

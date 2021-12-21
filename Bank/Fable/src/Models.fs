@@ -21,6 +21,7 @@ type Document =
     {
         Name : string
         Content : string
+        Reference : string option
     }  
 type Account = 
     {
