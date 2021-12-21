@@ -44,7 +44,12 @@ jobs:
         run: dotnet build -c Release
         working-directory: ./Signing/signatures
       - name: Pack the package
-        run: dotnet paket pack ./package --version "$(dotnet aver Signing/signatures/bin/Release/net6.0/Criipto.Signatures.dll | grep AssemblyVersion | rev | cut -d' ' -f1 | rev)-alpha"
+        run: |
+            dllVersion=$(dotnet aver bin/Release/net6.0/Criipto.Signatures.dll)
+            echo "DLL version info: $dllVersion"
+            packageVersion=$(echo $dllVersion | grep AssemblyVersion | rev | cut -d' ' -f1 | rev)-alpha)
+            echo $packageVersion
+            dotnet paket pack ./package --version "$packageVersion"
         working-directory: ./Signing/signatures
       - name: Push the package
         run: |

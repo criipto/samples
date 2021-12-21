@@ -12,6 +12,7 @@
     <Compile Include="OidcClient.fs" />
     <Compile Include="Identity.fs" />
     <Compile Include="Models.fs" />
+    <Compile Include="Data/Documents.fs" />
     <Compile Include="Data/Messages.fs" />
     <Compile Include="Data/Statements.fs" />
     <Compile Include="Components/Elements.fs" />

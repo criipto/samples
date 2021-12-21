@@ -17,7 +17,11 @@ type Message =
         Date : System.DateTime
         Unread : bool
     }
-    
+type Document = 
+    {
+        Name : string
+        Content : string
+    }  
 type Account = 
     {
         Name : string

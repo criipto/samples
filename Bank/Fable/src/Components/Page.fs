@@ -40,6 +40,7 @@ type Page() =
         let view,setView = React.useState Overview
         let user, _setUser = React.useState None
         let messages,_setMessages = React.useState []
+        let documents,_setDocuments = React.useState []
         let unreadCount,setUnread = React.useState 0
         let reduceUnreadCount() = 
             unreadCount - 1 |> setUnread
@@ -50,6 +51,7 @@ type Page() =
             setUnread unreadCount
             _setMessages msgs
         Messages.fetch(setMessages)
+        Documents.fetch(setDocuments)
         let setUser (oidcUser : Oidc.UserInfo option) = 
             let user = 
                 oidcUser |> Option.map(fun ou -> 
