@@ -11,8 +11,8 @@ module Shared =
 
 module Arguments = 
 
-    type SignatoryDocumentReference(id,?preapproved) = 
-        let preapproved = if defaultArg preapproved false then Some true else None
+    type SignatoryDocumentReference(id,[<Optional;DefaultParameterValue(false)>]preapproved) = 
+        let preapproved = if preapproved then Some true else None
         interface Convertible<Signatures.SignatoryDocumentInput> with
             member __.Convert() = 
                {id = id; preapproved = preapproved}
