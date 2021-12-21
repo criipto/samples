@@ -37,6 +37,9 @@ jobs:
             dotnet tool install aver
       - name: restore package
         run: dotnet paket restore
+      - name: Generate client
+        run: dotnet snowflaqe --generate
+        working-directory: ./Signing/signatures
       - name: Build 
         run: dotnet build Signing/signatures/Criipto.Signatures.fsproj -c Release
       - name: Pack the package
