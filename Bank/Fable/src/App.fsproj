@@ -10,16 +10,16 @@
     <None Include="index.html" />
     <Compile Include="Authentication/OidcClient.fs" />
     <Compile Include="Authentication/Identity.fs" />
-    <Compile Include="Models.fs" />
-    <Compile Include="Data/Documents.fs" />
-    <Compile Include="Data/Messages.fs" />
-    <Compile Include="Data/Statements.fs" />
-    <Compile Include="Components/Elements.fs" />
-    <Compile Include="Components/Navigation.fs" />
-    <Compile Include="Components/Components.fs" />
-    <Compile Include="Components/Message.fs" />
-    <Compile Include="Components/Account.fs" />
-    <Compile Include="Components/Page.fs" />
+    <Compile Include="App/Models.fs" />
+    <Compile Include="App/Data/Documents.fs" />
+    <Compile Include="App/Data/Messages.fs" />
+    <Compile Include="App/Data/Statements.fs" />
+    <Compile Include="App/Components/Elements.fs" />
+    <Compile Include="App/Components/Navigation.fs" />
+    <Compile Include="App/Components/Components.fs" />
+    <Compile Include="App/Components/Message.fs" />
+    <Compile Include="App/Components/Account.fs" />
+    <Compile Include="App/Components/Page.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
