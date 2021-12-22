@@ -1,5 +1,4 @@
-﻿
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>1f14b35c-eda5-41d2-82fd-0dee0ebde15c</UserSecretsId>
@@ -22,9 +21,6 @@
     <Compile Include="Components/Account.fs" />
     <Compile Include="Components/Page.fs" />
     <Compile Include="Main.fs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="../../../Signing/signatures/Criipto.Signatures.fsproj" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

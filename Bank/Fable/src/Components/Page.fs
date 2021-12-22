@@ -59,7 +59,7 @@ type Page() =
                 //         Unread = true
                 //     }::messages |> setMessages
                 // } |> Async.StartImmediate
-                
+
                 [
                     Components.IdCard(user)
                 ]
@@ -76,7 +76,7 @@ type Page() =
         let view,setView = React.useState Overview
         let user, _setUser = React.useState None
         let messages,_setMessages = React.useState []
-        let documents,_setDocuments = React.useState []
+        let documents,setDocuments = React.useState []
         let unreadCount,setUnread = React.useState 0
         let reduceUnreadCount() = 
             unreadCount - 1 |> setUnread
@@ -132,7 +132,7 @@ type Page() =
                             ]
                             Bulma.column [
                                 prop.children [
-                                    Page.Overview (user,view,setView, messages,setMessages)
+                                    Page.Overview (user,view,setView, messages,documents,setMessages)
                                 ]
                             ]
                         ]
