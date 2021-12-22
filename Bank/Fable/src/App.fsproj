@@ -8,8 +8,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="index.html" />
-    <Compile Include="OidcClient.fs" />
-    <Compile Include="Identity.fs" />
+    <Compile Include="Authentication/OidcClient.fs" />
+    <Compile Include="Authentication/Identity.fs" />
     <Compile Include="Models.fs" />
     <Compile Include="Data/Documents.fs" />
     <Compile Include="Data/Messages.fs" />
