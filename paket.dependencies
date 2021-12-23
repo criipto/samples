@@ -6,6 +6,12 @@ nuget Fable.Core
 nuget Fable.Remoting.json
 nuget Fable.SimpleHttp
 nuget Fable.SimpleJson
+nuget Fable.DateFunctions
+nuget Fable.Promise
+nuget Feliz
+nuget Feliz.Bulma
+nuget Feliz.Router
+nuget Fable.JsonProvider
 nuget FSharp.core
 nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson
 nuget ply

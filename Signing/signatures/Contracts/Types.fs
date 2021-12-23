@@ -5,12 +5,11 @@ open Signatures
 
 [<AutoOpen>]
 module Shared =
-    type internal Convertible<'a> = 
+    type Convertible<'a> = 
         abstract member Convert : unit -> 'a
-    let inline internal convert (arg : Convertible<_>) = arg.Convert()
+    let inline convert (arg : Convertible<_>) = arg.Convert()
 
 module Arguments = 
-
     type SignatoryDocumentReference(id,[<Optional;DefaultParameterValue(false)>]preapproved) = 
         let preapproved = if preapproved then Some true else None
         interface Convertible<Signatures.SignatoryDocumentInput> with
@@ -19,7 +18,7 @@ module Arguments =
 
     type Signatory([<Optional;DefaultParameterValue(null : string)>]reference : string,
                    [<Optional;DefaultParameterValue(null : SignatoryDocumentReference [])>]documents :  SignatoryDocumentReference [],
-                   [<Optional;DefaultParameterValue(null : System.Collections.Generic.Dictionary<string,string>)>]evidenceValidation : System.Collections.Generic.Dictionary<string,string>) = 
+                   [<Optional;DefaultParameterValue(null : System.Collections.Generic.Dictionary<string,string>)>]evidenceValidation : System.Collections.Generic.Dictionary<string,string>) =                    
         let reference = 
             match reference with 
             null -> None 
@@ -86,13 +85,24 @@ module Arguments =
                             audience = this.Audience 
                         } : Signatures.OidcEvidenceProviderInput
                 { oidc = oidc}
+
     type DocumentInfo(title: string,
                       content: string,
                       [<Optional;DefaultParameterValue(null : string)>]reference: string) =
-        let mutable title = title
-        let mutable content = content
         let mutable reference = 
             if reference |> isNull then None else Some reference
+        let mutable title = title
+        let mutable content = content
+        
+        member __.Title 
+                   with get() = title
+                   and set value = title <- value
+        member __.Content 
+                   with get() = content
+                   and set value = content <- value
+        member __.Reference 
+                   with get() = reference
+                   and set value = reference <- value
         interface Convertible<Signatures.DocumentInput> with
             member __.Convert() = 
                 {
@@ -100,11 +110,13 @@ module Arguments =
                             title = title
                             reference = reference
                             blob = content
-                            storageMode = Signatures.DocumentStorageMode.Temporary
+                            storageMode = DocumentStorageMode.Temporary
                         }
                 }
+
     type CreateOrder(documents : DocumentInfo [], 
-                        [<Optional;DefaultParameterValue(null : string)>]title : string,
+                        [<Optional>]
+                        [<DefaultParameterValue(null : string)>]title : string,
                         [<Optional;DefaultParameterValue(false)>]disableVerifyEvidenceProvider : bool,
                         [<Optional;DefaultParameterValue(true)>]fixDocumentFormattingErrors : bool,
                         [<Optional;DefaultParameterValue(14)>] maxSignatories : int,
@@ -121,6 +133,7 @@ module Arguments =
         let mutable evidenceProviders = evidenceProviders 
         let mutable ui = signatoryUIRedirectUri
         let mutable webhook = webhookUrl
+
         new() = CreateOrder([||])
         member __.Documents 
                     with get() = documents
@@ -176,12 +189,12 @@ module Arguments =
                     evidenceProviders = 
                         match evidenceProviders  with null -> None | arr -> arr |> Array.map convert |> List.ofArray |> Some
                     ui = 
-                        match signatoryUIRedirectUri with 
+                        match ui with 
                         null -> None 
                         | signatoryRedirectUri -> 
                             ({signatoryRedirectUri = Some signatoryRedirectUri} : CreateSignatureOrderUIInput )|> Some
                     webhook = 
-                        match webhookUrl with 
+                        match webhook with 
                         null -> None 
                         | url -> 
                             ({url = url} : CreateSignatureOrderWebhookInput) |> Some

@@ -43,10 +43,12 @@ Then to start development mode with hot module reloading, run:
 ```bash
 npm start
 ```
-This will start the development server after compiling the project, once it is finished, navigate to http://localhost:8080 to view the application .
+
+This will start the development server after compiling the project, once it has finished, navigate to http://localhost:8080 to view the application .
 
 To build the application and make ready for production:
 ```
 npm run build
 ```
+
 This command builds the application and puts the generated files into the `dist` directory (can be overwritten in webpack.config.js or using an env var called `WEBPACK_OUT_DIR`).

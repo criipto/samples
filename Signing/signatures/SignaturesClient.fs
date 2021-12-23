@@ -1,8 +1,8 @@
 namespace Signatures
 
 open Signatures
-open Signatures.Types.Arguments
-open Signatures.Types
+open Criipto.Signatures.Types.Arguments
+open Criipto.Signatures.Types
 open System.Runtime.InteropServices
 
 type SignaturesClient(url,clientId,clientSecret) = 
@@ -126,7 +126,7 @@ type SignaturesClient(url,clientId,clientSecret) =
                 System.String.Join(" => ", e |> List.map (fun e -> e.message))
                 |> failwith
     
-    member this.CreateSignatureOrder(documents : DocumentInput [], 
+    member this.CreateSignatureOrder(documents : DocumentInfo [], 
                                     [<Optional;DefaultParameterValue(null : string)>]title : string,
                                     [<Optional;DefaultParameterValue(false)>]disableVerifyEvidenceProvider : bool,
                                     [<Optional;DefaultParameterValue(true)>]fixDocumentFormattingErrors : bool,

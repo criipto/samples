@@ -27,11 +27,15 @@ var CONFIG = {
     // When using webpack-dev-server, you may need to redirect some calls
     // to a external API server. See https://webpack.js.org/configuration/dev-server/#devserver-proxy
     devServerProxy: {
-        '/**': {
-            // assuming the suave server is running on port 8083
-            target: "http://localhost:5000",
-            changeOrigin: true
-        }
+        "/signatures/*": {
+            "target": "http://localhost:8081/signing",
+            "pathRewrite": {
+              "^/signatures": ""
+            },
+            "changeOrigin": true,
+            "secure": false,
+            "logLevel": "debug"
+          }
     },
     // Use babel-preset-env to generate JS compatible with most-used browsers.
     // More info at https://babeljs.io/docs/en/next/babel-preset-env.html

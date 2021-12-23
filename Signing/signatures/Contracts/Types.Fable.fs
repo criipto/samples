@@ -1,37 +1,27 @@
-namespace Criipto.Signatures.Types
+namespace Criipto.Signatures.Types.Fable
 
 open System.Runtime.InteropServices
 open Signatures
 
 [<AutoOpen>]
 module Shared =
-    type internal Convertible<'a> = 
+    type Convertible<'a> = 
         abstract member Convert : unit -> 'a
-    let inline internal convert (arg : Convertible<_>) = arg.Convert()
+    let inline convert (arg : Convertible<_>) = arg.Convert()
+
 
 module Arguments = 
 
-    type SignatoryDocumentReference(id,[<Optional;DefaultParameterValue(false)>]preapproved) = 
-        let preapproved = if preapproved then Some true else None
+    type SignatoryDocumentReference(id,?preapproved) = 
         interface Convertible<Signatures.SignatoryDocumentInput> with
             member __.Convert() = 
                {id = id; preapproved = preapproved}
+               
+    type Signatory (?reference : string,
+            ?documents :  SignatoryDocumentReference [],
+            ?evidenceValidation : System.Collections.Generic.Dictionary<string,string>) = 
+        
 
-    type Signatory([<Optional;DefaultParameterValue(null : string)>]reference : string,
-                   [<Optional;DefaultParameterValue(null : SignatoryDocumentReference [])>]documents :  SignatoryDocumentReference [],
-                   [<Optional;DefaultParameterValue(null : System.Collections.Generic.Dictionary<string,string>)>]evidenceValidation : System.Collections.Generic.Dictionary<string,string>) = 
-        let reference = 
-            match reference with 
-            null -> None 
-            | s -> Some s
-        let documents = 
-            match documents with 
-            null -> None 
-            | s -> Some s
-        let evidenceValidation = 
-            match evidenceValidation with 
-            null -> None 
-            | s -> Some s
         interface Convertible<Signatures.CreateSignatureOrderSignatoryInput> with
             member __.Convert() = 
                 {
@@ -47,6 +37,7 @@ module Arguments =
                             |> List.ofSeq
                         )
                 }
+
     type AddSignatory(signatureOrderId: string, signatory : Signatory) =
         let signatory = signatory |> convert
         interface Convertible<AddSignatoryInput> with
@@ -86,13 +77,25 @@ module Arguments =
                             audience = this.Audience 
                         } : Signatures.OidcEvidenceProviderInput
                 { oidc = oidc}
-    type DocumentInfo(title: string,
-                      content: string,
-                      [<Optional;DefaultParameterValue(null : string)>]reference: string) =
+
+    type DocumentInfo (title,
+                        content,
+                        ?reference)  =
+        let mutable reference = reference
+    
+        let mutable reference = reference
         let mutable title = title
         let mutable content = content
-        let mutable reference = 
-            if reference |> isNull then None else Some reference
+        
+        member __.Title 
+                   with get() = title
+                   and set value = title <- value
+        member __.Content 
+                   with get() = content
+                   and set value = content <- value
+        member __.Reference 
+                   with get() = reference
+                   and set value = reference <- value
         interface Convertible<Signatures.DocumentInput> with
             member __.Convert() = 
                 {
@@ -103,25 +106,28 @@ module Arguments =
                             storageMode = Signatures.DocumentStorageMode.Temporary
                         }
                 }
+
     type CreateOrder(documents : DocumentInfo [], 
-                        [<Optional;DefaultParameterValue(null : string)>]title : string,
-                        [<Optional;DefaultParameterValue(false)>]disableVerifyEvidenceProvider : bool,
-                        [<Optional;DefaultParameterValue(true)>]fixDocumentFormattingErrors : bool,
-                        [<Optional;DefaultParameterValue(14)>] maxSignatories : int,
-                        [<Optional;DefaultParameterValue(null : Signatory [])>] signatories : Signatory [],
-                        [<Optional;DefaultParameterValue(null : ProviderInfo [])>]evidenceProviders : ProviderInfo [],
-                        [<Optional;DefaultParameterValue(null : string)>]signatoryUIRedirectUri : string,
-                        [<Optional;DefaultParameterValue(null : string)>]webhookUrl : string) = 
+                        ?title,
+                        ?disableVerifyEvidenceProvider,
+                        ?fixDocumentFormattingErrors,
+                        ?maxSignatories,
+                        ?signatories,
+                        ?evidenceProviders,
+                        ?signatoryUIRedirectUri,
+                        ?webhookUrl) = 
         let mutable documents = documents
-        let mutable title = title
-        let mutable disableVerifyEvidenceProvider = disableVerifyEvidenceProvider
-        let mutable fixDocumentFormattingErrors = fixDocumentFormattingErrors
-        let mutable maxSignatories = maxSignatories
-        let mutable signatories = signatories
-        let mutable evidenceProviders = evidenceProviders 
-        let mutable ui = signatoryUIRedirectUri
-        let mutable webhook = webhookUrl
+        let mutable title = defaultArg title null
+        let mutable disableVerifyEvidenceProvider = defaultArg disableVerifyEvidenceProvider false
+        let mutable fixDocumentFormattingErrors = defaultArg fixDocumentFormattingErrors true
+        let mutable maxSignatories = defaultArg maxSignatories 14
+        let mutable signatories = defaultArg signatories null
+        let mutable evidenceProviders = defaultArg evidenceProviders  null
+        let mutable ui = defaultArg signatoryUIRedirectUri null
+        let mutable webhook = defaultArg webhookUrl null
+
         new() = CreateOrder([||])
+
         member __.Documents 
                     with get() = documents
                     and set value = documents <- value
@@ -176,12 +182,12 @@ module Arguments =
                     evidenceProviders = 
                         match evidenceProviders  with null -> None | arr -> arr |> Array.map convert |> List.ofArray |> Some
                     ui = 
-                        match signatoryUIRedirectUri with 
+                        match ui with 
                         null -> None 
                         | signatoryRedirectUri -> 
                             ({signatoryRedirectUri = Some signatoryRedirectUri} : CreateSignatureOrderUIInput )|> Some
                     webhook = 
-                        match webhookUrl with 
+                        match webhook with 
                         null -> None 
                         | url -> 
                             ({url = url} : CreateSignatureOrderWebhookInput) |> Some

@@ -8,8 +8,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="generated/Signatures.StringEnum.fs" />
-    <Compile Include="generated/Signatures.Types.fs" />
     <Compile Include="generated/Signatures.CreateSignatureOrder.fs" />
     <Compile Include="generated/Signatures.AddSignatory.fs" />
     <Compile Include="generated/Signatures.AddSignatories.fs" />
@@ -17,8 +15,10 @@
     <Compile Include="generated/Signatures.CloseSignatureOrder.fs" />
     <Compile Include="generated/Signatures.SignatureOrder.fs" />
     <Compile Include="generated/Signatures.GraphqlClient.fs" />
-    <Compile Include="Types.fs" />
     <Compile Include="SignaturesClient.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Contracts/Criipto.Signatures.Contracts.fsproj" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

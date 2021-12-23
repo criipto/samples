@@ -1,15 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>1f14b35c-eda5-41d2-82fd-0dee0ebde15c</UserSecretsId>
+    <DefineConstants>FABLE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-        <!--<ProjectReference Include="signatures/generated/Signatures.fsproj" />-->
+    <!--<ProjectReference Include="signatures/generated/Signatures.fsproj" />-->
   </ItemGroup>
   <ItemGroup>
     <None Include="index.html" />
     <Compile Include="Authentication/OidcClient.fs" />
     <Compile Include="Authentication/Identity.fs" />
+    <Compile Include="Signatures/Signatures.fs" />
     <Compile Include="App/Models.fs" />
     <Compile Include="App/Data/Documents.fs" />
     <Compile Include="App/Data/Messages.fs" />
@@ -22,5 +25,8 @@
     <Compile Include="App/Components/Page.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
+  <ItemGroup>
+    <ProjectReference Include="../../../Signing/signatures/Contracts/Criipto.Signatures.Contracts.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\..\.paket\Paket.Restore.targets" />
 </Project>
