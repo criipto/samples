@@ -56,5 +56,7 @@ jobs:
       - name: Push the package
         run: |
             ls ./package/*.nupkg
-            dotnet paket push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
+            cmd="dotnet paket push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)"
+            echo $cmd
+            eval(cmd)
         working-directory: ./Signing/signatures
