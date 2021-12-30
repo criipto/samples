@@ -6,6 +6,8 @@ open Feliz
 open Feliz.Bulma
 open Fable
 open Fable.Core.JsInterop
+open Browser.Dom
+open Fable.Formatting.Markdown
 
 module Imports =
     type Accordion = 
@@ -13,25 +15,60 @@ module Imports =
             attach : unit -> obj
         } 
 
-    [<Import("bulmaAccordion",from="/node_modules/bulma-extensions/dist/js/bulma-extensions.js")>]
+    [<Import("bulmaAccordion",from="../../../node_modules/bulma-extensions/dist/js/bulma-extensions.js")>]
     let bulmaAccordion : Accordion = jsNative
     let attach() = 
         bulmaAccordion.attach() |> ignore
-
+type ActionType = 
+    Link of href : string
+    | Action of (unit -> unit)
 type Message() =  
-    
     [<ReactComponent>]
-    static member List(title : string, messages : Models.Message list,setMessages, setView, maxCount) =
+    static member MarkdownDiv (x:string) =
+        Html.div [
+            prop.dangerouslySetInnerHTML (Markdown.ToHtml x)
+        ]
+
+    [<ReactComponent>]
+    static member List(title : string, messages : Models.Message list,setMessages, setView, maxCount, cancelSignatureOrder) =
         let msgs = 
             match maxCount with
             None -> messages
             | Some maxCount -> 
                 messages
                 |> List.take (min messages.Length maxCount)
-        
-        let messageViewss = 
+        let actionButton (actionText : string) action = 
+            let action = 
+                match action with
+                Link actionLink ->
+                    actionLink |> prop.href 
+                | Action f ->
+                    prop.onClick( fun _ -> f())
+            Bulma.button.a (
+                action::[
+                    prop.className "reply"
+                    prop.children [
+                        Html.span actionText
+                        Html.div [
+                            prop.className "icon reply"
+                        ]
+                    ]
+                ]
+            )
+            
+        let messageViews = 
             msgs
             |> List.mapi(fun i message -> 
+                
+                let buttons = 
+                    match message.Type with
+                    Models.Plain ->
+                        [sprintf "mailto:support@criipto.com?subject=%s&body=%s" message.Subject  message.Content |> Link |> actionButton "Reply "]
+                    | Models.Signature(href,orderId) ->
+                        [
+                            href |> Link |> actionButton "Sign "
+                            cancelSignatureOrder orderId |> Action |> actionButton "Reject "
+                        ]
                 Html.article [
                     prop.className "accordion message-item"
                     prop.children [
@@ -79,18 +116,11 @@ type Message() =
                             prop.children [
                                 Html.div [
                                     prop.className "accordion-content message-item"
-                                    prop.text message.Content
-                                ]
-                                Bulma.button.a [
-                                    prop.className "reply"
-                                    sprintf "mailto:support@criipto.com?subject=%s&body=%s" message.Subject  message.Content|> prop.href 
-                                    prop.children [
-                                        Html.span "Reply "
-                                        Html.div [
-                                            prop.className "icon reply"
-                                        ]
+                                    prop.children[
+                                        Message.MarkdownDiv message.Content
                                     ]
                                 ]
+                                Html.section buttons
                             ]
                         ]
                     ]
@@ -117,7 +147,7 @@ type Message() =
                         ]
                         yield Html.section [
                             prop.className "accordions"
-                            prop.children messageViewss
+                            prop.children messageViews
                         ]
                         if msgs.Length < messages.Length then
                             yield Html.a [
@@ -128,6 +158,3 @@ type Message() =
                 ]
             ]
         ]
-        
-        
-    

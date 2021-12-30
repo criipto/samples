@@ -25,8 +25,5 @@
     <Compile Include="App/Components/Page.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="../../../Signing/signatures/Contracts/Criipto.Signatures.Contracts.fsproj" />
-  </ItemGroup>
   <Import Project="..\..\..\.paket\Paket.Restore.targets" />
 </Project>

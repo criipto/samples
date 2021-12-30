@@ -35,6 +35,8 @@ NUGET
     Fable.Elmish (3.1)
       Fable.Core (>= 3.0)
       FSharp.Core (>= 4.6.2)
+    Fable.Formatting.Markdown (1.0.1)
+      FSharp.Core (>= 5.0)
     Fable.JsonProvider (1.0.1)
       FSharp.Core (>= 4.7)
     Fable.Parsimmon (4.1)

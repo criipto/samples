@@ -20,22 +20,18 @@ var CONFIG = {
     // The tags to include the generated JS and CSS will be automatically injected in the HTML template
     // See https://github.com/jantimon/html-webpack-plugin
     indexHtmlTemplate: "./src/index.html",
-    fsharpEntry: "./src/Main.fs.js",
+    fsharpEntry: "./.webpack/Main.js",
     outputDir: outputDir,
     assetsDir: "./public",
     devServerPort: 8080,
     // When using webpack-dev-server, you may need to redirect some calls
     // to a external API server. See https://webpack.js.org/configuration/dev-server/#devserver-proxy
     devServerProxy: {
-        "/signatures/*": {
-            "target": "http://localhost:8081/signing",
-            "pathRewrite": {
-              "^/signatures": ""
-            },
-            "changeOrigin": true,
-            "secure": false,
-            "logLevel": "debug"
-          }
+        "/signing": {
+            "target": "http://localhost:7110/",
+            "secure" : false,
+            changeOrigin: true
+        }
     },
     // Use babel-preset-env to generate JS compatible with most-used browsers.
     // More info at https://babeljs.io/docs/en/next/babel-preset-env.html

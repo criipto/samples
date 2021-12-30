@@ -135,17 +135,17 @@ type SignaturesClient(url,clientId,clientSecret) =
                                     [<Optional;DefaultParameterValue(null : ProviderInfo [])>]evidenceProviders : ProviderInfo [],
                                     [<Optional;DefaultParameterValue(null : string)>]signatoryUIRedirectUri : string,
                                     [<Optional;DefaultParameterValue(null : string)>]webhookUrl : string) = 
-        let order  = 
-            CreateOrder(documents,
-                title = title,
-                disableVerifyEvidenceProvider = disableVerifyEvidenceProvider,
-                fixDocumentFormattingErrors = fixDocumentFormattingErrors,
-                maxSignatories = maxSignatories,
-                signatories = signatories,
-                evidenceProviders = evidenceProviders,
-                signatoryUIRedirectUri = signatoryUIRedirectUri,
-                webhookUrl = webhookUrl
-            )
+        let order  = CreateOrder()
+        order.Documents <- documents
+        order.Title <- title
+        order.DisableVerifyEvidenceProvider <- disableVerifyEvidenceProvider
+        order.FixDocumentFormattingErrors <- fixDocumentFormattingErrors
+        order.MaxSignatories <- maxSignatories
+        order.Signatories <- signatories
+        order.EvidenceProviders <- evidenceProviders
+        order.SignatoryUIRedirectUri <- signatoryUIRedirectUri
+        order.WebhookUrl <- webhookUrl
+            
         this.CreateSignatureOrder order
     member __.CreateSignatureOrder(input : CreateOrder) = 
         async {

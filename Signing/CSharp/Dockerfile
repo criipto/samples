@@ -18,9 +18,9 @@ USER ContainerAdministrator
 RUN icacls ./main/Signing.csproj /t /grant Users:M
 COPY ./Signing/CSharp/paket.references ./main/
 
-COPY ./Signing/signatures/Signatures.fsproj ./signatures/
+COPY ./Signing/signatures/Criipto.Signatures.fsproj ./signatures/
 
-RUN icacls ./signatures/Signatures.fsproj /t /grant Users:M
+RUN icacls ./signatures/Criipto.Signatures.fsproj /t /grant Users:M
 COPY ./Signing/signatures/paket.references ./signatures/
 
 USER ContainerUser

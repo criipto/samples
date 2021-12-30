@@ -8,14 +8,18 @@ type LedgerEntry =
         Balance : decimal
         Text : string
     }
-
+type MessageType = 
+    Plain
+    | Signature of href: string * orderId : string
 type Message = 
     {
+        Id : string
         Subject : string
         Content : string
         From : string
         Date : System.DateTime
         Unread : bool
+        Type : MessageType
     }
 type Document = 
     {

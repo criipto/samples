@@ -2,19 +2,40 @@ namespace App.Components
 
 open Feliz
 open Feliz.Bulma
-open Criipto.Signatures.Types.Fable
 
 type Page() =
     static let mutable accordions = [||]
+    static let cancelSignatureOrder removeMessage userToken orderId= 
+        let identifyMessage (msg : Models.Message) = 
+            match msg.Type with
+            Models.Signature(_,oid) when oid = orderId -> true
+            | _ -> false
+        
+        fun () -> 
+            async {
+                let! res = Signatures.cancelSignatureOrder userToken orderId
+                match res with
+                Ok res -> 
+                    printfn "Cancel: %A" res
+                    removeMessage identifyMessage
+                | Error e ->
+                    eprintfn "Failed to cancel %s. Errors: %s" orderId e
+            } |> Async.StartImmediate
+         
     [<ReactComponent>]
     static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, documents : Models.Document list, setMessages) =
+        let removeMessage predicate =
+            messages
+            |> List.filter(predicate >> not)
+            |> setMessages
+        let cancelSignatureOrder = cancelSignatureOrder removeMessage user.Token
         let components = 
             match activeView with
             Overview ->
                 
                 [
                     Components.IdCard(user)
-                    Message.List("New messages",messages, setMessages, setView, Some 2)
+                    Message.List("New messages",messages, setMessages, setView, Some 2, cancelSignatureOrder)
                     Account.Box(user.Accounts,fun name -> name |> View.Account |> setView)
                 ]
             | View.Account name ->
@@ -26,42 +47,49 @@ type Page() =
                 ]
             | Messages ->
                 [
-                    Message.List("Messages",messages, setMessages,setView, None )
+                    Message.List("Messages",messages, setMessages,setView, None, cancelSignatureOrder)
                 ]
             | Pensions ->
                 printfn "Switching to %A" Pensions
-                // REWRITE TO SO THAT IT USES THE API
-                // CREATE PROXY IN WEBPACK CONFIG
-
                 async{
-                    printfn "Creating signature order"
+                    
                     let doc = documents |> List.head
-                    let! order = Signatures.createSignatureOrder user.Token "Signature order" [| Arguments.DocumentInfo(doc.Name,doc.Content) |] 
-                    let! result = 
-                        match order with
-                        Ok (order : Output.SignatureOrder) ->    
-                            async {
-                                let userRef = 
-                                    user.Name
-                                    |> System.Text.Encoding.Unicode.GetBytes
-                                    |> System.Convert.ToBase64String
-                                let! signatoryAdded = 
-                                    Signatures.addSignatory user.Token order.Id userRef    
-                                // let linkToDoc = signatoryAdded.Signatory.DocumentLink
-                                // {
-                                //     Subject = "Document to be signed"
-                                //     Content = sprintfn "Copy this link into your browser: %s" linkToDoc
-                                //     From = "Your bank advisor"
-                                //     Date = System.DateTime.Now
-                                //     Unread = true
-                                // }::messages |> setMessages
-                                return signatoryAdded
-                            }
-                        | Error e -> async { return Error e }
-                    printfn "Order result: %A" result 
-                    ()
+                    let docName = doc.Name.Replace("%USERNAME%", user.Name)
+                    let content = doc.Content.Replace("%USERNAME%", user.Name)
+                    let! signatureOrderResult = Signatures.createSignatureOrder user.Token "Signature order" [|{Title = docName; Content = content; Reference = None} |] 
+                    
+                    match signatureOrderResult with
+                    Ok order  -> 
+                        
+                        async {
+                            let userRef = 
+                                user.Name
+                                |> System.Text.Encoding.Unicode.GetBytes
+                                |> System.Convert.ToBase64String
+                            
+                            let! signatoryAddedResult = 
+                                Signatures.addSignatory user.Token order.id userRef    
+                            match signatoryAddedResult with
+                            Ok signatoryAdded ->
+                                let linkToDoc = signatoryAdded.signatory.documentLink
+                                let msg : Models.Message = 
+                                    {
+                                        Id = (userRef + System.DateTime.Now.Ticks.ToString())
+                                        Subject = "Document to be signed"
+                                        Content = "Your loan is awaiting your signature. To read the document and sign it press the button below"
+                                        From = "Your bank advisor"
+                                        Date = System.DateTime.Now
+                                        Unread = true
+                                        Type = Models.Signature(linkToDoc,order.id)
+                                    }
+                                msg::messages |> setMessages
+                            | Error e -> 
+                                eprintfn "Erros while adding signatory %s" e
+                        } |> Async.StartImmediate
+                    | Error e -> 
+                        printfn "Error occurred while creating signature order %s" e
+                    
                 } |> Async.StartImmediate
-
                 [
                     Components.IdCard(user)
                 ]
