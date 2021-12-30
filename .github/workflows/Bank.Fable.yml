@@ -32,10 +32,7 @@ jobs:
       run: dotnet paket restore
       working-directory: ./Bank/Fable
     - name: Restore js dependencies
-      run: |
-        npm config set "@fortawesome:registry" https://npm.fontawesome.com/
-        npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.Awesome }}
-        npm install
+      run: npm install
       working-directory: ./Bank/Fable
     - name: Build
       run: dotnet pack -o build
@@ -50,8 +47,7 @@ jobs:
          cd deployment-feliz-source
          dotnet new CriiptoFelizSample
          cd src
-         dotnet user-secrets clear
-         
+         dotnet paket update
          npm install
          npm run build
       working-directory: ./

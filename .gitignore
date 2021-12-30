@@ -214,3 +214,5 @@ dist/
 **/package
 test-template/
 **/signatures/generated/
+build/
+deployment-feliz-source/
