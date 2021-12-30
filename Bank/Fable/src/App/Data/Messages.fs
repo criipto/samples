@@ -6,10 +6,12 @@ open Feliz.Bulma
 type private Message = Fable.JsonProvider.Generator<"../public/messages.json">
 
 let mutable messages = None
+//prioritiezed list of sources
+//anything in the previous source will be overriden by something in a later source with the same id
 let sources = 
   [
-      "https://criipto-bank.netlify.app/feliz/messages.json" //try online first
-      "/messages.json" //fallback to local if online is unavailable
+      "https://criipto-bank.netlify.app/feliz/messages.json" 
+      "/messages.json" 
   ]
 let fetch(setMessages) = 
     let retrieveMessages priority src =

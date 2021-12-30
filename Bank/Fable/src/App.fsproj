@@ -6,9 +6,6 @@
     <DefineConstants>FABLE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <!--<ProjectReference Include="signatures/generated/Signatures.fsproj" />-->
-  </ItemGroup>
-  <ItemGroup>
     <None Include="index.html" />
     <Compile Include="Authentication/OidcClient.fs" />
     <Compile Include="Authentication/Identity.fs" />
