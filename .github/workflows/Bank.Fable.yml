@@ -49,8 +49,8 @@ jobs:
          mkdir deployment-feliz-source
          cd deployment-feliz-source
          dotnet new CriiptoFelizSample
-         dotnet user-secrets init
-         dotnet user-secrets list
+         dotnet user-secrets clear
+         
          npm install
          npm run build
       working-directory: ./
