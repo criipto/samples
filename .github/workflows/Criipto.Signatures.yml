@@ -49,7 +49,7 @@ jobs:
             aver bin/Release/net6.0/Criipto.Signatures.dll
             dllVersion=$(aver bin/Release/net6.0/Criipto.Signatures.dll)
             echo "DLL version info: $dllVersion"
-            packageVersion=$(echo $dllVersion | grep AssemblyVersion | rev | cut -d' ' -f1 | rev)-alpha)
+            packageVersion=$(echo $dllVersion | grep AssemblyVersion | rev | cut -d' ' -f1 | rev)-alpha
             echo $packageVersion
             dotnet paket pack ./package --version "$packageVersion"
         working-directory: ./Signing/signatures
