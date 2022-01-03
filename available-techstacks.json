@@ -1,10 +1,5 @@
 {
     "stacks" : [ 
-        {"displayName" : "dotnet aspnet [F#]","sampleName":"CriiptoAspNetSample","executeCommand" : "dotnet run ./src"}, 
-        {"displayName" : "dotnet aspnet [C#]","sampleName":"CriiptoAspNetSample","executeCommand" : "dotnet run ./src"},
-        {"displayName" : "feliz","sampleName":"CriiptoFelizSample","executeCommand" : "npm start"},
-        {"displayName" : "nodejs","sampleName":"CriiptoNodeJsSample","executeCommand" : "npm start"},
-        {"displayName" : "react","sampleName":"CriiptoReactSample","executeCommand" : "npm start"},
-        {"displayName" : "angular","sampleName":"CriiptoAngularSample","executeCommand" : "npm start"}
+        {"displayName" : "feliz","sampleName":"CriiptoFelizSample","executeCommand" : "npm start"}
     ]
 }
