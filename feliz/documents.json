@@ -1,0 +1,7 @@
+{
+    "documents" : [{
+        "name" : "Lånedokument til %USERNAME%",
+        "documentUrl" : "lorem-ipsum.b64",
+        "reference" : "some text"
+    }]
+}
