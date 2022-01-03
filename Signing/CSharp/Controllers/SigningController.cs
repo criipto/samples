@@ -12,13 +12,13 @@ public class SigningController : ControllerBase
 {
     
     private readonly ILogger<SigningController> _logger;
-    private readonly Signatures.SignaturesClient _client;
+    private readonly Criipto.Signatures.Client _client;
     
     public SigningController(ILogger<SigningController> logger, IOptions<SigningConfig> config)
     {
         _logger = logger;
         var cfg = config.Value;
-        _client =  new Signatures.SignaturesClient(cfg.Url, cfg.ClientID, cfg.ClientSecret);
+        _client =  new Criipto.Signatures.Client(cfg.Url, cfg.ClientID, cfg.ClientSecret);
     }
     
 #if DEBUG
