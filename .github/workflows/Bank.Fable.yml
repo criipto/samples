@@ -52,7 +52,7 @@ jobs:
     - name: install JS dependencies for templated project
       run: npm install
       working-directory: ./deployment-feliz-source/
-    - name: build the tempalted project
+    - name: build the templated project
       run: npm run build
       working-directory: ./deployment-feliz-source/
       env:
