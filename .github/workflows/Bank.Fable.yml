@@ -46,12 +46,15 @@ jobs:
          mkdir deployment-feliz-source
          cd deployment-feliz-source
          dotnet new CriiptoFelizSample
-         cd src
-         dotnet paket update
-         cd ..
-         npm install
-         npm run build
-      working-directory: ./
+    - name: install dotnet dependencies for templated project
+      run: dotnet paket update
+      working-directory: ./deployment-feliz-source/src
+    - name: install JS dependencies for templated project
+      run: npm install
+      working-directory: ./deployment-feliz-source/
+    - name: build the tempalted project
+      run: npm run build
+      working-directory: ./deployment-feliz-source/
       env:
          WEBPACK_OUT_DIR: ../releases/feliz
     - name: Publish
