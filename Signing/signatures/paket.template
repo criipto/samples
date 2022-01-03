@@ -1,5 +1,5 @@
 type file
-id Criipto.Signatures
+id Criipto.Signatures.Client
 authors Criipto ApS
 description
   An SDK for the Criipto signatures offering

@@ -1,7 +1,7 @@
 namespace Criipto.Signatures.Types
 
 open System.Runtime.InteropServices
-open Signatures
+open Criipto.Signatures
 
 [<AutoOpen>]
 module Shared =
@@ -12,7 +12,7 @@ module Shared =
 module Arguments = 
     type SignatoryDocumentReference(id,[<Optional;DefaultParameterValue(false)>]preapproved) = 
         let preapproved = if preapproved then Some true else None
-        interface Convertible<Signatures.SignatoryDocumentInput> with
+        interface Convertible<Criipto.Signatures.SignatoryDocumentInput> with
             member __.Convert() = 
                {id = id; preapproved = preapproved}
     
@@ -36,7 +36,7 @@ module Arguments =
             and set value = evidenceValidation <- value
 
 
-        interface Convertible<Signatures.CreateSignatureOrderSignatoryInput> with
+        interface Convertible<Criipto.Signatures.CreateSignatureOrderSignatoryInput> with
             member __.Convert() = 
                 {
                     reference = reference |> noneIfNull
@@ -49,7 +49,7 @@ module Arguments =
                         |> noneIfNull
                         |> Option.map(fun evidenceValidation ->  
                             evidenceValidation
-                            |> Seq.map(fun kv -> { key = kv.Key; value = kv.Value } : Signatures.SignatoryEvidenceValidationInput)
+                            |> Seq.map(fun kv -> { key = kv.Key; value = kv.Value } : Criipto.Signatures.SignatoryEvidenceValidationInput)
                             |> List.ofSeq
                         )
                 }
@@ -64,7 +64,7 @@ module Arguments =
         member __.Signatory
             with get() = signatory
             and set value = signatory <- value
-        interface Convertible<AddSignatoryInput> with
+        interface Convertible<Criipto.Signatures.AddSignatoryInput> with
             member __.Convert() = 
                 let signatory = signatory |> convert
                 { 
@@ -72,19 +72,19 @@ module Arguments =
                     reference = signatory.reference
                     documents = signatory.documents
                     evidenceValidation = signatory.evidenceValidation
-                } : Signatures.AddSignatoryInput
+                } : Criipto.Signatures.AddSignatoryInput
 
     type AddSignatories(signatureOrderId: string, signatories : Signatory []) =
         let signatories = 
             signatories 
             |> Array.map convert
             |> List.ofArray
-        interface Convertible<AddSignatoriesInput> with
+        interface Convertible<Criipto.Signatures.AddSignatoriesInput> with
             member __.Convert() = 
                 { 
                     signatureOrderId = signatureOrderId
                     signatories = signatories
-                } : Signatures.AddSignatoriesInput
+                } : Criipto.Signatures.AddSignatoriesInput
                 
     type ProviderInfo = 
         { 
@@ -92,7 +92,7 @@ module Arguments =
           Domain: string
           ClientID: string
           Audience: string 
-        } interface Convertible<EvidenceProviderInput> with 
+        } interface Convertible<Criipto.Signatures.EvidenceProviderInput> with 
               member this.Convert() = 
                 let oidc = 
                        { 
@@ -100,7 +100,7 @@ module Arguments =
                             domain = this.Domain
                             clientID = this.ClientID
                             audience = this.Audience 
-                        } : Signatures.OidcEvidenceProviderInput
+                        } : Criipto.Signatures.OidcEvidenceProviderInput
                 { oidc = oidc}
 
     type DocumentInfo() =
@@ -117,7 +117,7 @@ module Arguments =
         member __.Reference 
                    with get() = reference
                    and set value = reference <- value
-        interface Convertible<Signatures.DocumentInput> with
+        interface Convertible<Criipto.Signatures.DocumentInput> with
             member __.Convert() = 
                 {
                     pdf = {
@@ -125,7 +125,7 @@ module Arguments =
                                 if title |> isNull then failwith "Title must not be null" else title
                             reference = reference
                             blob = if content |> isNull then failwith "Content must not be null" else content
-                            storageMode = DocumentStorageMode.Temporary
+                            storageMode = Criipto.Signatures.DocumentStorageMode.Temporary
                         }
                 }
 
@@ -169,7 +169,7 @@ module Arguments =
                     with get() = signatories 
                     and  set value = signatories <- value 
 
-        interface Convertible<Signatures.CreateSignatureOrderInput> with
+        interface Convertible<Criipto.Signatures.CreateSignatureOrderInput> with
             member __.Convert() =  
                 {
                     title = 

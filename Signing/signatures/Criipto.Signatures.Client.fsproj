@@ -8,15 +8,15 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-   <Compile Include="generated/Signatures.StringEnum.fs" />
-    <Compile Include="generated/Signatures.Types.fs" />
-    <Compile Include="generated/Signatures.CreateSignatureOrder.fs" />
-    <Compile Include="generated/Signatures.AddSignatory.fs" />
-    <Compile Include="generated/Signatures.AddSignatories.fs" />
-    <Compile Include="generated/Signatures.CancelSignatureOrder.fs" />
-    <Compile Include="generated/Signatures.CloseSignatureOrder.fs" />
-    <Compile Include="generated/Signatures.SignatureOrder.fs" />
-    <Compile Include="generated/Signatures.GraphqlClient.fs" />
+   <Compile Include="generated/StringEnum.fs" />
+    <Compile Include="generated/Types.fs" />
+    <Compile Include="generated/CreateSignatureOrder.fs" />
+    <Compile Include="generated/AddSignatory.fs" />
+    <Compile Include="generated/AddSignatories.fs" />
+    <Compile Include="generated/CancelSignatureOrder.fs" />
+    <Compile Include="generated/CloseSignatureOrder.fs" />
+    <Compile Include="generated/SignatureOrder.fs" />
+    <Compile Include="generated/GraphqlClient.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="SignaturesClient.fs" />
   </ItemGroup>

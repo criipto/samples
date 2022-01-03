@@ -1,11 +1,11 @@
-namespace Signatures
+namespace Criipto.Signatures
 
-open Signatures
+open Criipto.Signatures
 open Criipto.Signatures.Types.Arguments
 open Criipto.Signatures.Types
 open System.Runtime.InteropServices
 
-type SignaturesClient(url,clientId,clientSecret) = 
+type Client(url,clientId,clientSecret) = 
     
     let _client = 
         let credentials = 
@@ -16,7 +16,7 @@ type SignaturesClient(url,clientId,clientSecret) =
         let httpClient = new System.Net.Http.HttpClient()
         httpClient.DefaultRequestHeaders.Add("Authorization", sprintf "Basic %s" credentials)
         httpClient.BaseAddress <- System.Uri url
-        SignaturesGraphqlClient(url,httpClient)
+        GraphqlClient(url,httpClient)
 
     member this.AddSignatory(signatureOrderId, signatory) = 
         AddSignatory(signatureOrderId, signatory)
