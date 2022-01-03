@@ -21,21 +21,48 @@ type Page() =
                 | Error e ->
                     eprintfn "Failed to cancel %s. Errors: %s" orderId e
             } |> Async.StartImmediate
-         
+    
     [<ReactComponent>]
     static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, documents : Models.Document list, setMessages) =
         let removeMessage predicate =
             messages
             |> List.filter(predicate >> not)
             |> setMessages
+        let placeholderContent (v : View) = 
+            Bulma.card [
+                prop.style[
+                    style.boxShadow.none
+                    style.backgroundColor.white
+                ]
+                prop.children [
+                    Bulma.cardContent [
+                        Bulma.media [
+                            Bulma.mediaLeft [
+                                Bulma.image [
+                                    v.IconName |> sprintf "is-32x32 icon %s" |> prop.className 
+                                ]
+                            ]
+                        ]
+                    
+                        Bulma.content [
+                            Bulma.title [
+                                v.ToString() |> prop.text
+                            ]
+                        ]
+                    ]
+                ]
+            ]
         let cancelSignatureOrder = cancelSignatureOrder removeMessage user.Token
         let components = 
             match activeView with
             Overview ->
-                
                 [
                     Components.IdCard(user)
                     Message.List("New messages",messages, setMessages, setView, Some 2, cancelSignatureOrder)
+                    Account.Box(user.Accounts,fun name -> name |> View.Account |> setView)
+                ]
+            | Accounts ->
+                [
                     Account.Box(user.Accounts,fun name -> name |> View.Account |> setView)
                 ]
             | View.Account name ->
@@ -50,7 +77,7 @@ type Page() =
                     Message.List("Messages",messages, setMessages,setView, None, cancelSignatureOrder)
                 ]
             | Pensions ->
-                printfn "Switching to %A" Pensions
+                
                 async{
                     
                     let doc = documents |> List.head
@@ -90,15 +117,8 @@ type Page() =
                         printfn "Error occurred while creating signature order %s" e
                     
                 } |> Async.StartImmediate
-                [
-                    Components.IdCard(user)
-                ]
-            | v ->
-                printfn "Switching to %A" v 
-                [
-                    Components.IdCard(user)
-                ]
-        
+                [placeholderContent Pensions]
+            | v -> [placeholderContent v]
         Bulma.container components
         
     [<ReactComponent>]

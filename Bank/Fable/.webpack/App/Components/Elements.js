@@ -45,11 +45,14 @@ export class Types_View extends Union {
         this.fields = fields;
     }
     cases() {
-        return ["Overview", "Account", "Transfer", "Invest", "Pensions", "Messages", "Profile", "DevSupport"];
+        return ["Overview", "Account", "Transfer", "Invest", "Pensions", "Messages", "Profile", "DevSupport", "Accounts"];
     }
     toString() {
         const x = this;
         switch (x.tag) {
+            case 8: {
+                return "Accounts";
+            }
             case 1: {
                 const n = x.fields[0];
                 return toText(printf("Account - %s"))(n);
@@ -80,7 +83,40 @@ export class Types_View extends Union {
 }
 
 export function Types_View$reflection() {
-    return union_type("App.Components.Types.View", [], Types_View, () => [[], [["Item", string_type]], [], [], [], [], [], []]);
+    return union_type("App.Components.Types.View", [], Types_View, () => [[], [["Item", string_type]], [], [], [], [], [], [], []]);
+}
+
+export function Types_View__get_IconName(x) {
+    switch (x.tag) {
+        case 8: {
+            return "coins";
+        }
+        case 1: {
+            const n = x.fields[0];
+            return "";
+        }
+        case 2: {
+            return "arrows";
+        }
+        case 3: {
+            return "chart";
+        }
+        case 4: {
+            return "wineglass";
+        }
+        case 5: {
+            return "envelope";
+        }
+        case 6: {
+            return "profile";
+        }
+        case 7: {
+            return "code";
+        }
+        default: {
+            return "lamp";
+        }
+    }
 }
 
 //# sourceMappingURL=Elements.js.map

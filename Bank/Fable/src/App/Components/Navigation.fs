@@ -7,11 +7,11 @@ type Navigation =
     [<ReactComponent>]
     static member SidePanel(messageCount : int,activeView,setView) = 
         
-        let createMenuItem (iconName : string,view : View,count : int option) = 
+        let createMenuItem (view : View) (count : int option) = 
             prop.children [
                 Bulma.panelIcon [
                     yield Html.div [ 
-                        iconName |> sprintf "icon %s" |> prop.className
+                        view.IconName |> sprintf "icon %s" |> prop.className
                         prop.children [
                             if count.IsSome then 
                                 yield Html.span [prop.className "badge is-danger"; prop.text count.Value]
@@ -25,14 +25,16 @@ type Navigation =
 
         let menuItems = 
             [
-                "lamp",Overview, None
-                "arrows",Transfer, None
-                "chart",Invest, None
-                "wineglass",Pensions, None
-                "envelope",Messages, if messageCount > 0 then Some messageCount else None
-                "profile",Profile, None
-                "code",DevSupport,None
-            ] |> List.collect(fun (viewName,view,notification) ->
+                Overview, None
+                Accounts,None
+                Transfer, None
+                Invest, None
+                Pensions, None
+                Messages, if messageCount > 0 then Some messageCount else None
+                Profile, None
+                DevSupport,None
+            ] |> List.collect(fun (view,notification) ->
+                
                 let className =
                     if activeView = view then
                         "is-active menu-item"
@@ -41,7 +43,7 @@ type Navigation =
                 Bulma.panelBlock.div [
                     prop.className className
                     prop.onClick(fun _ -> setView view)
-                    createMenuItem (viewName,view,notification)
+                    createMenuItem view notification
                 ]::[Html.br []]
             )
         Bulma.panel [

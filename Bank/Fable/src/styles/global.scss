@@ -156,6 +156,7 @@ div.icon.reply > span:hover, a.reply:hover {
 }
 .panel-block:hover {
     color: $hover-text;
+    cursor: pointer;
 }
 
 .columns.account:hover,

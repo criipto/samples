@@ -39,9 +39,11 @@ module Types =
         | Messages
         | Profile
         | DevSupport
+        | Accounts
         with override x.ToString() = 
                 match x with
                 | Overview -> "Overview"
+                | Accounts -> "Accounts"
                 | Account n -> sprintf "Account - %s" n
                 | Transfer -> "Payments & Transfer"
                 | Invest -> "Investment"
@@ -49,4 +51,17 @@ module Types =
                 | Messages -> "Messages"
                 | Profile -> "Profile"
                 | DevSupport -> "Developer Support"
+             member x.IconName
+                 with get() = 
+                    match x with
+                    | Overview -> "lamp"
+                    | Accounts -> "coins"
+                    | Account n -> ""
+                    | Transfer -> "arrows"
+                    | Invest -> "chart"
+                    | Pensions -> "wineglass"
+                    | Messages -> "envelope"
+                    | Profile -> "profile"
+                    | DevSupport -> "code"
+                
     

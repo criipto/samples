@@ -1,11 +1,15 @@
 import { int32_type, obj_type, array_type, anonRecord_type, string_type, bool_type, class_type } from "../../fable_modules/fable-library.3.6.3/Reflection.js";
-import { sumBy, empty, cons, head, singleton, find, ofArray, filter } from "../../fable_modules/fable-library.3.6.3/List.js";
+import { sumBy, empty, cons, head, find, ofArray, singleton, filter } from "../../fable_modules/fable-library.3.6.3/List.js";
+import { Interop_reactApi } from "../../fable_modules/Feliz.1.57.0/Interop.fs.js";
+import { Types_View, Types_View__get_IconName } from "./Elements.js";
+import { toConsoleError, toBase64String, toConsole, replace, printf, toText } from "../../fable_modules/fable-library.3.6.3/String.js";
 import { createElement } from "react";
+import { createObj } from "../../fable_modules/fable-library.3.6.3/Util.js";
+import { Helpers_combineClasses } from "../../fable_modules/Feliz.Bulma.2.18.0/ElementBuilders.fs.js";
+import { toString } from "../../fable_modules/fable-library.3.6.3/Types.js";
 import { Components_Splash, Components_IdCard_Z34C1F15A } from "./Components.js";
 import { Message_List_3D36A079 } from "./Message.js";
 import { Account_Transactions_Z2F12D0CA, Account_Box_130DA4ED } from "./Account.js";
-import { Types_View } from "./Elements.js";
-import { toConsoleError, toBase64String, toText, replace, printf, toConsole } from "../../fable_modules/fable-library.3.6.3/String.js";
 import { startImmediate } from "../../fable_modules/fable-library.3.6.3/Async.js";
 import { singleton as singleton_1 } from "../../fable_modules/fable-library.3.6.3/AsyncBuilder.js";
 import { map } from "../../fable_modules/fable-library.3.6.3/Array.js";
@@ -17,9 +21,8 @@ import { HttpMethod, BodyContent } from "../../fable_modules/Fable.SimpleHttp.3.
 import { FSharpResult$2 } from "../../fable_modules/fable-library.3.6.3/Choice.js";
 import { get_Unicode } from "../../fable_modules/fable-library.3.6.3/Encoding.js";
 import { getTicks, now } from "../../fable_modules/fable-library.3.6.3/Date.js";
-import { toString } from "../../fable_modules/fable-library.3.6.3/Long.js";
+import { toString as toString_1 } from "../../fable_modules/fable-library.3.6.3/Long.js";
 import { User, Message, MessageType } from "../Models.js";
-import { Interop_reactApi } from "../../fable_modules/Feliz.1.57.0/Interop.fs.js";
 import { useFeliz_React__React_useState_Static_1505 } from "../../fable_modules/Feliz.1.57.0/React.fs.js";
 import { fetch$ } from "../Data/Messages.js";
 import { fetch$ as fetch$_1 } from "../Data/Documents.js";
@@ -27,8 +30,6 @@ import { map as map_1 } from "../../fable_modules/fable-library.3.6.3/Option.js"
 import { generate } from "../Data/Statements.js";
 import { Navigation_SidePanel_AB71DB6, Navigation_Topbar_700867CD } from "./Navigation.js";
 import { isAuthenticated, logIn, hasRequestedAuthentication, logOut } from "../../Authentication/Identity.js";
-import { createObj } from "../../fable_modules/fable-library.3.6.3/Util.js";
-import { Helpers_combineClasses } from "../../fable_modules/Feliz.Bulma.2.18.0/ElementBuilders.fs.js";
 
 export class Page {
     constructor() {
@@ -57,6 +58,26 @@ export function Page_Overview_2B9534(page_Overview_2B9534InputProps) {
     const removeMessage = (predicate) => {
         setMessages(filter((arg) => (!predicate(arg)), messages));
     };
+    const placeholderContent = (v) => {
+        let elms_3, elms_1, elms, props, arg10, elms_2, props_4;
+        const props_8 = ofArray([["style", {
+            boxShadow: "none",
+            backgroundColor: "#FFFFFF",
+        }], ["children", Interop_reactApi.Children.toArray([(elms_3 = ofArray([(elms_1 = singleton((elms = singleton((props = singleton(["className", (arg10 = Types_View__get_IconName(v), toText(printf("is-32x32 icon %s"))(arg10))]), createElement("figure", createObj(Helpers_combineClasses("image", props))))), createElement("div", {
+            className: "media-left",
+            children: Interop_reactApi.Children.toArray(Array.from(elms)),
+        }))), createElement("article", {
+            className: "media",
+            children: Interop_reactApi.Children.toArray(Array.from(elms_1)),
+        })), (elms_2 = singleton((props_4 = singleton(["children", toString(v)]), createElement("h1", createObj(Helpers_combineClasses("title", props_4))))), createElement("div", {
+            className: "content",
+            children: Interop_reactApi.Children.toArray(Array.from(elms_2)),
+        }))]), createElement("div", {
+            className: "card-content",
+            children: Interop_reactApi.Children.toArray(Array.from(elms_3)),
+        }))])]]);
+        return createElement("div", createObj(Helpers_combineClasses("card", props_8)));
+    };
     const cancelSignatureOrder = (orderId) => Page_cancelSignatureOrder(removeMessage, user.Token, orderId);
     let components;
     switch (activeView.tag) {
@@ -70,15 +91,24 @@ export function Page_Overview_2B9534(page_Overview_2B9534InputProps) {
                 cancelSignatureOrder: cancelSignatureOrder,
             }), createElement(Account_Box_130DA4ED, {
                 accounts: user.Accounts,
-                viewAccount: (name) => {
-                    setView(new Types_View(1, name));
+                viewAccount: (name_14) => {
+                    setView(new Types_View(1, name_14));
                 },
             })]);
             break;
         }
+        case 8: {
+            components = singleton(createElement(Account_Box_130DA4ED, {
+                accounts: user.Accounts,
+                viewAccount: (name_15) => {
+                    setView(new Types_View(1, name_15));
+                },
+            }));
+            break;
+        }
         case 1: {
-            const name_1 = activeView.fields[0];
-            const account = find((a) => (a.Name === name_1), user.Accounts);
+            const name_16 = activeView.fields[0];
+            const account = find((a) => (a.Name === name_16), user.Accounts);
             components = singleton(createElement(Account_Transactions_Z2F12D0CA, account));
             break;
         }
@@ -94,13 +124,12 @@ export function Page_Overview_2B9534(page_Overview_2B9534InputProps) {
             break;
         }
         case 4: {
-            toConsole(printf("Switching to %A"))(new Types_View(4));
             startImmediate(singleton_1.Delay(() => {
-                let json, arg00, typeInfo;
+                let json, arg00_2, typeInfo;
                 const doc = head(documents);
                 const docName = replace(doc.Name, "%USERNAME%", user.Name);
                 const content = replace(doc.Content, "%USERNAME%", user.Name);
-                return singleton_1.Bind((json = ((arg00 = {
+                return singleton_1.Bind((json = ((arg00_2 = {
                     disableVerifyEvidenceProvider: false,
                     documents: map((doc_1) => {
                         let matchValue, s;
@@ -117,7 +146,7 @@ export function Page_Overview_2B9534(page_Overview_2B9534InputProps) {
                     signatoryUIRedirectUri: null,
                     title: "Signature order",
                     webhookUrl: null,
-                }, (typeInfo = createTypeInfo(anonRecord_type(["disableVerifyEvidenceProvider", bool_type], ["documents", array_type(anonRecord_type(["Content", string_type], ["Reference", string_type], ["Title", string_type]))], ["evidenceProviders", obj_type], ["fixDocumentFormattingErrors", bool_type], ["maxSignatories", int32_type], ["signatories", obj_type], ["signatoryUIRedirectUri", obj_type], ["title", string_type], ["webhookUrl", obj_type])), Convert_serialize(arg00, typeInfo)))), singleton_1.Delay(() => {
+                }, (typeInfo = createTypeInfo(anonRecord_type(["disableVerifyEvidenceProvider", bool_type], ["documents", array_type(anonRecord_type(["Content", string_type], ["Reference", string_type], ["Title", string_type]))], ["evidenceProviders", obj_type], ["fixDocumentFormattingErrors", bool_type], ["maxSignatories", int32_type], ["signatories", obj_type], ["signatoryUIRedirectUri", obj_type], ["title", string_type], ["webhookUrl", obj_type])), Convert_serialize(arg00_2, typeInfo)))), singleton_1.Delay(() => {
                     let req_1;
                     return singleton_1.Bind(Http_send(Http_content(new BodyContent(1, json), (req_1 = Http_method(new HttpMethod(1), Http_request("/signing/createSignatureOrder")), Http_headers(ofArray([Headers_contentType("application/json"), Headers_authorization(toText(printf("Bearer %s"))(user.Token))]), req_1)))), (_arg1) => {
                         const response = _arg1;
@@ -144,16 +173,16 @@ export function Page_Overview_2B9534(page_Overview_2B9534InputProps) {
                     else {
                         const order = signatureOrderResult.fields[0];
                         startImmediate(singleton_1.Delay(() => {
-                            let json_2, arg00_4, typeInfo_1;
+                            let json_2, arg00_6, typeInfo_1;
                             const userRef = toBase64String(get_Unicode().getBytes(user.Name));
-                            return singleton_1.Bind((json_2 = ((arg00_4 = {
+                            return singleton_1.Bind((json_2 = ((arg00_6 = {
                                 Signatory: {
                                     documents: null,
                                     evidenceValidation: null,
                                     reference: userRef,
                                 },
                                 SignatureOrderId: order["id"],
-                            }, (typeInfo_1 = createTypeInfo(anonRecord_type(["Signatory", anonRecord_type(["documents", obj_type], ["evidenceValidation", obj_type], ["reference", string_type])], ["SignatureOrderId", string_type])), Convert_serialize(arg00_4, typeInfo_1)))), singleton_1.Delay(() => {
+                            }, (typeInfo_1 = createTypeInfo(anonRecord_type(["Signatory", anonRecord_type(["documents", obj_type], ["evidenceValidation", obj_type], ["reference", string_type])], ["SignatureOrderId", string_type])), Convert_serialize(arg00_6, typeInfo_1)))), singleton_1.Delay(() => {
                                 let req_5;
                                 return singleton_1.Bind(Http_send(Http_content(new BodyContent(1, json_2), (req_5 = Http_method(new HttpMethod(1), Http_request("/signing/addSignatory")), Http_headers(ofArray([Headers_contentType("application/json"), Headers_authorization(toText(printf("Bearer %s"))(user.Token))]), req_5)))), (_arg1_1) => {
                                     const response_2 = _arg1_1;
@@ -181,7 +210,7 @@ export function Page_Overview_2B9534(page_Overview_2B9534InputProps) {
                                 else {
                                     const signatoryAdded = signatoryAddedResult.fields[0];
                                     const linkToDoc = (signatoryAdded["signatory"])["documentLink"];
-                                    const msg = new Message(userRef + ((copyOfStruct_1 = ((copyOfStruct = now(), getTicks(copyOfStruct))), toString(copyOfStruct_1))), "Document to be signed", "Your loan is awaiting your signature. To read the document and sign it press the button below", "Your bank advisor", now(), true, new MessageType(1, linkToDoc, order["id"]));
+                                    const msg = new Message(userRef + ((copyOfStruct_1 = ((copyOfStruct = now(), getTicks(copyOfStruct))), toString_1(copyOfStruct_1))), "Document to be signed", "Your loan is awaiting your signature. To read the document and sign it press the button below", "Your bank advisor", now(), true, new MessageType(1, linkToDoc, order["id"]));
                                     setMessages(cons(msg, messages));
                                     return singleton_1.Zero();
                                 }
@@ -191,13 +220,12 @@ export function Page_Overview_2B9534(page_Overview_2B9534InputProps) {
                     }
                 });
             }));
-            components = singleton(createElement(Components_IdCard_Z34C1F15A, user));
+            components = singleton(placeholderContent(new Types_View(4)));
             break;
         }
         default: {
-            const v = activeView;
-            toConsole(printf("Switching to %A"))(v);
-            components = singleton(createElement(Components_IdCard_Z34C1F15A, user));
+            const v_1 = activeView;
+            components = singleton(placeholderContent(v_1));
         }
     }
     return createElement("div", {
