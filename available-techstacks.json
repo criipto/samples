@@ -1,0 +1,5 @@
+{
+    "stacks" : [ 
+        {"displayName" : "feliz","sampleName":"CriiptoFelizSample","executeCommand" : "npm start"}
+    ]
+}
