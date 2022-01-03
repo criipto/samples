@@ -4,7 +4,7 @@
         "prestart": "dotnet tool restore",
         "start": "dotnet fable watch ./src -s --outDir .webpack/ --run webpack-dev-server",
         "prebuild": "dotnet tool restore",
-        "build": "dotnet fable ./src --define FABLE && webpack",
+        "build": "dotnet fable ./src --outDir .webpack/ && webpack",
         "test:live": "dotnet fable watch tests --run webpack-dev-server --config ./webpack.tests.js",
         "build:test": "dotnet fable tests && webpack --config webpack.tests.js",
         "pretest": "dotnet tool restore",
