@@ -213,6 +213,6 @@ dist/
 .vscode/
 **/package
 test-template/
-**/signatures/generated/
+Signing/signatures/generated/
 build/
 deployment-feliz-source/

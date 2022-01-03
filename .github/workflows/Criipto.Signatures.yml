@@ -46,8 +46,8 @@ jobs:
         working-directory: ./Signing/signatures
       - name: Pack the package
         run: |
-            aver bin/Release/net6.0/Criipto.Signatures.dll
-            dllVersion=$(aver bin/Release/net6.0/Criipto.Signatures.dll)
+            aver bin/Release/net6.0/Criipto.Signatures.Client.dll
+            dllVersion=$(aver bin/Release/net6.0/Criipto.Signatures.Client.dll)
             echo "DLL version info: $dllVersion"
             packageVersion=$(echo $dllVersion | grep AssemblyVersion | rev | cut -d' ' -f1 | rev)-alpha
             echo $packageVersion
