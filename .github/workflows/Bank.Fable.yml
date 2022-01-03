@@ -57,7 +57,9 @@ jobs:
       working-directory: ./deployment-feliz-source/
       env:
          WEBPACK_OUT_DIR: ../releases/feliz
-    - name: Publish
+    - name: copy tech stack info
+      run: cp available-techstacks.json releases/
+    - name: Publish demo site
       uses: s0/git-publish-subdir-action@develop
       env:
         REPO: self
