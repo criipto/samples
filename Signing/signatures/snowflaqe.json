@@ -1,8 +1,0 @@
-{
-    "schema": "schema.json",
-    "queries": "./queries",
-    "project": "Criipto.Signatures",
-    "output": "./generated",
-    "target": "fsharp",
-    "serializer": "newtonsoft"
-}   

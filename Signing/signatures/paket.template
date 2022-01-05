@@ -1,7 +1,0 @@
-type file
-id Criipto.Signatures.Client
-authors Criipto ApS
-description
-  An SDK for the Criipto signatures offering
-files
-  bin/Release ==> lib
