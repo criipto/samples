@@ -9,3 +9,4 @@ nuget Microsoft.AspNetCore.Authentication.OpenIdConnect
 nuget FSharp.Core
 nuget Microsoft.AspNetCore.Razor.Language 
 nuget Criipto.Configuration ~> 0.2
+

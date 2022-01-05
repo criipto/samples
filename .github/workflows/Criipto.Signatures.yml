@@ -38,9 +38,7 @@ jobs:
         working-directory: ./Signing/signatures
       - name: restore package
         run: dotnet paket restore
-      - name: Generate client
-        run: dotnet snowflaqe --generate
-        working-directory: ./Signing/signatures
+      
       - name: Build 
         run: dotnet build -c Release
         working-directory: ./Signing/signatures

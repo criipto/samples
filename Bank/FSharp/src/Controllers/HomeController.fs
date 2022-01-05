@@ -14,18 +14,6 @@ type HomeController (logger : ILogger<HomeController>) =
     
     member this.Index () =
         this.View()
-        
-    [<Authorize>]
-    member this.Overview(string accountName) =
-        this.View()
-
-    [<Authorize>]
-    member this.Transactions(string accountName) =
-        this.View()
-
-    [<Authorize>]
-    member this.Messages(string accountName) =
-        this.View()
 
     [<ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)>]
     member this.Error () =

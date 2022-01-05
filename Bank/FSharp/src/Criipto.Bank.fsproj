@@ -8,10 +8,14 @@
   <ItemGroup>
     <Compile Include="Models/ErrorViewModel.fs" />
     <Compile Include="Controllers/HomeController.fs" />
+    <Compile Include="Controllers/Accounts.fs" />
+    <Compile Include="Controllers/Messages.fs" />
     <Compile Include="Startup.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
-
+  <Target Name="CompileStaticAssets" AfterTargets="AfterBuild">
+    <Exec Command="dotnet webcompiler -r wwwroot" StandardOutputImportance="high" />
+  </Target>
   <Import Project="..\.paket\Paket.Restore.targets" />
 
 </Project>

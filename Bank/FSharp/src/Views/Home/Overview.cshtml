@@ -1,0 +1,33 @@
+@{
+    Layout = "_Layout";
+}
+
+<div class="card" style="box-shadow: none; background-color: rgb(255, 255, 255);">
+    <div class="card-content">
+        <article class="media">
+            <div class="media-left">
+                <figure class="image is-32x32 icon vbars"></figure>
+            </div>
+        </article>
+        <div class="content">
+            <h1 class="title">Accounts</h1>
+            <div class="columns account header">
+                <div class="column is-4">Name</div>
+                <div class="column is-4">Balance</div>
+                <div class="column is-4">Recent transactions</div>
+            </div>
+            @foreach (var account in @Model.Accounts)
+            {
+                <div class="columns account">
+                    <div class="column is-4">account.Name</div>
+                    if(account.Balance < 0.0){
+                        <div class="column is-4" style="color: rgb(205, 92, 92);">account.Balance</div>
+                    } else {
+                        <div class="column is-4">account.Balance</div>
+                    }
+                    <div class="column is-4">account.LatestActivity</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

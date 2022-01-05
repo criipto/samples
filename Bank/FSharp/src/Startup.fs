@@ -9,7 +9,7 @@ open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Microsoft.AspNetCore.Http
 open Criipto.Configuration.AuthenticationBuilderExtensions
-    
+
 type Startup private () =
     new (env : IHostEnvironment) as this =
         
@@ -58,6 +58,7 @@ type Startup private () =
             app.UseExceptionHandler("/Home/Error") |> ignore
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts() |> ignore
+        
         app.UseHttpsRedirection()
            .UseStaticFiles()
            .UseCookiePolicy()

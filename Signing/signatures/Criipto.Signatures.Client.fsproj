@@ -21,4 +21,7 @@
     <Compile Include="SignaturesClient.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
+  <Target Name="GenerateClient" AfterTargets="PreBuild">
+    <Exec Command="dotnet snowflake --generate" StandardOutputImportance="high" />
+  </Target>
 </Project>

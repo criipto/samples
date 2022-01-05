@@ -1,0 +1,75 @@
+﻿<html>
+
+<head>
+    <title>%APPNAME% Bank</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+    <link rel="shortcut icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
+    <script src="https://cdn.polyfill.io/v2/polyfill.js?features=es6"></script>
+</head>
+
+<body>
+    <div class="app" id="app">
+        <div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <div class="navbar-item icon credit-card-logo"></div>
+                    <div class="navbar-item logo-text"><span class="app-name">%APPNAME%</span><span
+                            class="bank">Bank</span></div>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons"><a class="button"
+                                style="background-color: transparent; border-style: none; font-size: 18px;"><span
+                                    class="navbar-item">Log off</span>
+                                <div class="icon power-off-white"></div>
+                            </a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="columns is-centered" style="margin-top: 40px;">
+                    <div class="column is-one-quarter is-one-fifth-fullhd" style="box-shadow: none;">
+                        <nav class="panel" style="box-shadow: none;">
+                            <div class="panel-block menu-item"><span class="panel-icon">
+                                    <div class="icon lamp"></div>
+                                </span><span>Overview</span></div><br>
+                            <div class="panel-block is-active menu-item"><span class="panel-icon">
+                                    <div class="icon coins"></div>
+                                </span><span>Accounts</span></div><br>
+                            <div class="panel-block menu-item"><span class="panel-icon">
+                                    <div class="icon arrows"></div>
+                                </span><span>Payments &amp; Transfer</span></div><br>
+                            <div class="panel-block menu-item"><span class="panel-icon">
+                                    <div class="icon chart"></div>
+                                </span><span>Investment</span></div><br>
+                            <div class="panel-block menu-item"><span class="panel-icon">
+                                    <div class="icon wineglass"></div>
+                                </span><span>Pension and Insurance</span></div><br>
+                            <div class="panel-block menu-item"><span class="panel-icon">
+                                    <div class="icon envelope"><span class="badge is-danger">3</span></div>
+                                </span><span>Messages</span></div><br>
+                            <div class="panel-block menu-item"><span class="panel-icon">
+                                    <div class="icon profile"></div>
+                                </span><span>Profile</span></div><br>
+                            <div class="panel-block menu-item"><span class="panel-icon">
+                                    <div class="icon code"></div>
+                                </span><span>Developer Support</span></div><br>
+                        </nav>
+                    </div>
+                    <div class="column">
+                        <div class="container">
+                            @RenderBody();
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="vendors.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
