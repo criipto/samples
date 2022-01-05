@@ -1,11 +1,16 @@
-@import "~bulma";
-@import "~bulma-extensions/bulma-accordion/dist/css/bulma-accordion";
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+@import "https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/js/bulma-extensions.min.js";
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
 @mixin icon($iconName) {
     background: url($iconName + ".svg") no-repeat center;
     background-size: 100%;
 }
+
+@mixin icon-hover($iconName) {
+    @include icon($iconName + "-hover");
+}
+
 $font : Helvetica;
 $hover-background: rgba(69, 128, 201, 0.2);
 $hover-text: rgba(69, 128, 201);
@@ -70,17 +75,6 @@ body,html {
     font-weight: 800;
 }
 
-.icon.arrows {
-    @include icon("arrows")
-}
-.icon.credit-card-logo {
-    @include icon("credit-card-logo");
-    width:36px;
-    height: auto;
-}
-.icon.chart {
-    @include icon("chart")
-}
 
 .icon.dot {
     @include icon("dot");
@@ -96,6 +90,18 @@ body,html {
 
 div.icon.reply > span:hover, a.reply:hover {
     color: white;
+}
+
+.icon.arrows {
+    @include icon("arrows")
+}
+.icon.credit-card-logo {
+    @include icon("credit-card-logo");
+    width:36px;
+    height: auto;
+}
+.icon.chart {
+    @include icon("chart")
 }
 
 .icon.profile {
@@ -149,6 +155,52 @@ div.icon.reply > span:hover, a.reply:hover {
     width: 24px !important;
     height: 24px;
     display : inline-block;
+}
+
+
+.icon.arrows {
+    @include icon("arrows")
+}
+.icon.credit-card-logo {
+    @include icon("credit-card-logo");
+    width:36px;
+    height: auto;
+}
+:hover > .icon.chart {
+    @include icon-hover("chart")
+}
+
+:hover > .icon.profile {
+    @include icon-hover("profile")
+}
+:hover > .icon.envelope {
+    @include icon-hover("envelope")
+}
+:hover > .icon.lamp {
+    @include icon-hover("lamp")
+}
+:hover > .icon.vbars {
+    @include icon-hover("vbars")
+}
+:hover > .icon.wineglass {
+    @include icon-hover("wineglass")
+}
+:hover > .icon.code {
+    @include icon-hover("code")
+}
+
+.icon.apartment {
+    @include icon("apartment")
+}
+.icon.car {
+    @include icon("car")
+}
+.icon.hand-holding-medical {
+    @include icon("hand-holding-medical")
+}
+
+.icon.coins {
+    @include icon("coins")
 }
 
 .card {

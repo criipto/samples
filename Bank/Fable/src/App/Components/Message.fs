@@ -75,7 +75,7 @@ type Message() =
                         Html.div [
                             i |> sprintf "accordion-header toggle message-item message-item-%d" |> prop.className 
                             prop.onClick(fun _ -> 
-                                let messageHeader = Browser.Dom.document.getElementsByClassName(sprintf "message-item-%d" i ).[0]
+                                let messageHeader = document.getElementsByClassName(sprintf "message-item-%d" i ).[0]
                                 messageHeader.parentElement.classList.toggle "is-active" |> ignore
                                 let dot = messageHeader.getElementsByClassName("dot").[0]
                                 if dot |> isNull |> not && dot.classList.contains "read" |> not then 
