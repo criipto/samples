@@ -1,5 +1,8 @@
 {
     "recommendations": [
-        "ms-dotnettools.csharp"
+        "ms-dotnettools.csharp",
+        "adrianwilczynski.user-secrets",
+        "ionide.ionide-fsharp",
+        "ionide.ionide-paket"
     ]
 }
