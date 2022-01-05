@@ -210,7 +210,6 @@ dist/
 **/.DS_Store
 
 **/fable_modules/
-.vscode/
 **/package
 test-template/
 Signing/signatures/generated/
