@@ -75,7 +75,7 @@ jobs:
         name: demo-releases
         path: ./releases/
   push-template-package:
-    needs: test_template
+    needs: test-template
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@master
@@ -87,7 +87,7 @@ jobs:
     - name: Push the package
       run: dotnet paket push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
   publish-demo-site:
-    needs: test_template
+    needs: test-template
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@master
