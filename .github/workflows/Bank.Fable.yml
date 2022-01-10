@@ -42,7 +42,8 @@ jobs:
         name: template-package
         path: ./build/
   test_template:
-    - depends_on: build
+    depends_on: build
+    steps:
     - uses: actions/download-artifact@master
       with:
         name: template-package
@@ -73,7 +74,8 @@ jobs:
         name: demo-releases
         path: ./releases/
   push_template_package:
-    - depends_on: test_template
+    depends_on: test_template
+    steps:
     - uses: actions/download-artifact@master
       with:
         name: template-package
@@ -83,7 +85,8 @@ jobs:
     - name: Push the package
       run: dotnet paket push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
   publish_demo_site:
-    - depends_on: test_template
+    depends_on: test_template
+    steps:
     - uses: actions/download-artifact@master
       with:
         name: demo-releases
