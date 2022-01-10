@@ -83,7 +83,8 @@ type Page() =
                     let doc = documents |> List.head
                     let docName = doc.Name.Replace("%USERNAME%", user.Name)
                     let content = doc.Content.Replace("%USERNAME%", user.Name)
-                    let! signatureOrderResult = Signatures.createSignatureOrder user.Token "Signature order" [|{Title = docName; Content = content; Reference = None} |] 
+                    let userToken = user.Token 
+                    let! signatureOrderResult = Signatures.createSignatureOrder userToken "Signature order" [|{Title = docName; Content = content; Reference = None} |] 
                     
                     match signatureOrderResult with
                     Ok order  -> 
@@ -95,7 +96,7 @@ type Page() =
                                 |> System.Convert.ToBase64String
                             
                             let! signatoryAddedResult = 
-                                Signatures.addSignatory user.Token order.id userRef    
+                                Signatures.addSignatory userToken order.id userRef    
                             match signatoryAddedResult with
                             Ok signatoryAdded ->
                                 let linkToDoc = signatoryAdded.signatory.documentLink

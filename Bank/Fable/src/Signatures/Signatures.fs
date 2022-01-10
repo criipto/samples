@@ -5,6 +5,23 @@ module Signatures
 open Fable.SimpleHttp
 open Fable.SimpleJson
 
+type Operation =
+    CreateOrder
+    | CancelOrder
+    | CloseOrder
+    | AddSignatory
+    | AddSignatories
+    override x.ToString() = 
+        match x with
+        CreateOrder -> "createOrder"
+        | CancelOrder -> "cancelOrder"
+        | CloseOrder -> "closeOrder"
+        | AddSignatory -> "addSignatory"
+        | AddSignatories -> "addSignatories"
+
+
+[<Literal>]
+let private apiRoot = "https://demo-app-signature-api.azurewebsites.net/api/"
 
 type DocumentInfo = 
     {
@@ -26,9 +43,9 @@ type AddSignatoryResponse = Fable.JsonProvider.Generator<"""{
 }""">
 
 
-let inline private post (token : string) (url : string) parser (json : string) = 
+let inline private post (token : string) (operation : Operation) parser (json : string) = 
     async{
-        
+        let url = sprintf "%s%A" apiRoot operation
         let! response =
             Http.request url
             |> Http.method POST
@@ -73,7 +90,7 @@ let inline createSignatureOrder token title documents  =
         webhookUrl = null
     |}
     |> Json.serialize
-    |> post token "/signing/createSignatureOrder" SignatureOrderResponse
+    |> post token CreateOrder SignatureOrderResponse
     
 
 let inline addSignatory (token : string) (orderId : string) (userRef : string) =
@@ -86,10 +103,10 @@ let inline addSignatory (token : string) (orderId : string) (userRef : string) =
 
         |}
     |} |> Json.serialize
-    |> post token "/signing/addSignatory" AddSignatoryResponse
+    |> post token AddSignatory AddSignatoryResponse
 
 
 let inline cancelSignatureOrder (token : string) (orderId : string) =
     orderId
     |> Json.serialize
-    |> post token "/signing/cancelSignatureOrder" id
+    |> post token CancelOrder id

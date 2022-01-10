@@ -52,7 +52,9 @@ let hasRequestedAuthentication() =
 
 let isAuthenticated(updateUserProfile) = 
     let hasExpired (userProfile : UserInfo) = 
-        userProfile.expires_at > (System.DateTime.Now - System.DateTime(1970,1,1,0,0,0,0)).TotalSeconds
+        let nowInUnixTime = (System.DateTime.Now - System.DateTime(1970,1,1,0,0,0,0,System.DateTimeKind.Utc)).TotalSeconds
+        printfn "Expires at: %.0f it is now %.0f. Valid another %.0fs" userProfile.expires_at nowInUnixTime (userProfile.expires_at - nowInUnixTime)
+        userProfile.expires_at < nowInUnixTime
 
     tryGetUserProfile(
         Option.bind(fun userProfile ->  
