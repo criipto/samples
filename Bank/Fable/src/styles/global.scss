@@ -8,7 +8,8 @@
 }
 
 @mixin icon-hover($iconName) {
-    @include icon($iconName + "-hover");
+    background: url($iconName + "-hover.svg") no-repeat center;
+    background-size: 100%;
 }
 
 $font : Helvetica;
@@ -166,47 +167,70 @@ div.icon.reply > span:hover, a.reply:hover {
     width:36px;
     height: auto;
 }
-:hover > .icon.chart {
-    @include icon-hover("chart")
+.menu-item:hover  .icon.chart {
+    @include icon-hover("chart");
+}
+.menu-item:hover  .icon.profile {
+    @include icon-hover("profile");
+}
+.menu-item:hover  .icon.envelope {
+    @include icon-hover("envelope");
+}
+.menu-item:hover  .icon.lamp {
+    @include icon-hover("lamp");
+}
+.menu-item:hover  .icon.vbars {
+    @include icon-hover("vbars");
+}
+.menu-item:hover  .icon.wineglass {
+    @include icon-hover("wineglass");
+}
+.menu-item:hover  .icon.code {
+    @include icon-hover("code");
 }
 
-:hover > .icon.profile {
-    @include icon-hover("profile")
+
+.is-active.menu-item:hover  .icon.chart {
+    @include icon("chart");
 }
-:hover > .icon.envelope {
-    @include icon-hover("envelope")
+
+.is-active.menu-item:hover  .icon.profile {
+    @include icon("profile");
 }
-:hover > .icon.lamp {
-    @include icon-hover("lamp")
+.is-active.menu-item:hover  .icon.envelope {
+    @include icon("envelope");
 }
-:hover > .icon.vbars {
-    @include icon-hover("vbars")
+.is-active.menu-item:hover  .icon.lamp {
+    @include icon("lamp");
 }
-:hover > .icon.wineglass {
-    @include icon-hover("wineglass")
+.is-active.menu-item:hover  .icon.vbars {
+    @include icon("vbars");
 }
-:hover > .icon.code {
-    @include icon-hover("code")
+.is-active.menu-item:hover  .icon.wineglass {
+    @include icon("wineglass");
+}
+.is-active.menu-item:hover  .icon.code {
+    @include icon("code");
 }
 
 .icon.apartment {
-    @include icon("apartment")
+    @include icon("apartment");
 }
 .icon.car {
-    @include icon("car")
+    @include icon("car");
 }
 .icon.hand-holding-medical {
-    @include icon("hand-holding-medical")
+    @include icon("hand-holding-medical");
 }
 
 .icon.coins {
-    @include icon("coins")
+    @include icon("coins");
 }
 
 .card {
    margin-bottom: 50px; 
 }
-.panel-block:hover {
+.menu-item:hover {
     color: $hover-text;
     cursor: pointer;
 }

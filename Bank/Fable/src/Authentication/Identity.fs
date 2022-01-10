@@ -61,6 +61,7 @@ let isAuthenticated(updateUserProfile) =
             printfn "Expires at: %A" userProfile.expires_at
             if userProfile |> hasExpired then
                 storage.removeItem storageKey
+                window.location.href <- window.location.href.Split('?').[0]
                 None
             else
                 //validation of the profile is handled by oidc-client

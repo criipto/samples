@@ -215,3 +215,4 @@ test-template/
 Signing/signatures/generated/
 build/
 deployment-feliz-source/
+.webpack/
