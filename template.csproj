@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>0.2.0</PackageVersion>
+    <GITHUB_RUN_NUMBER Condition="$(GITHUB_RUN_NUMBER)==''">0-dev</GITHUB_RUN_NUMBER>
+    <Version Condition="$(Version)==''">0.2.0.$(GITHUB_RUN_NUMBER)</Version>
     <PackageId>Criipto.Templates</PackageId>
     <Title>Criipto Templates</Title>
     <Authors>Criipto ApS</Authors>

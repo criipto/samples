@@ -37,10 +37,19 @@ jobs:
     - name: Build
       run: dotnet pack -o build
       working-directory: ./
+    - uses: actions/upload-artifact@master
+      with:
+        name: template-package
+        path: ./build/
+  test_template:
+    - depends_on: build
+    - uses: actions/download-artifact@master
+      with:
+        name: template-package
+        path: ./build/
     - name: Install template
       run: dotnet new -i $(ls ./build/*.* | grep Criipto)
       working-directory: ./
-    
     - name: create feliz project from template
       run: |
          mkdir deployment-feliz-source
@@ -59,6 +68,26 @@ jobs:
          WEBPACK_OUT_DIR: ../releases/feliz
     - name: copy tech stack info
       run: cp available-techstacks.json releases/
+    - uses: actions/upload-artifact@master
+      with:
+        name: demo-releases
+        path: ./releases/
+  push_template_package:
+    - depends_on: test_template
+    - uses: actions/download-artifact@master
+      with:
+        name: template-package
+        path: ./build/
+    - name: Pack the teample project
+      run: dotnet pack ./package
+    - name: Push the package
+      run: dotnet paket push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
+  publish_demo_site:
+    - depends_on: test_template
+    - uses: actions/download-artifact@master
+      with:
+        name: demo-releases
+        path: ./releases/
     - name: Publish demo site
       uses: s0/git-publish-subdir-action@develop
       env:
