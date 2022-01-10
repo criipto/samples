@@ -43,6 +43,7 @@ jobs:
         path: ./build/
   test_template:
     needs: build
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@master
       with:
@@ -75,6 +76,7 @@ jobs:
         path: ./releases/
   push_template_package:
     needs: test_template
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@master
       with:
