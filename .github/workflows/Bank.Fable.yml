@@ -94,15 +94,18 @@ jobs:
       with:
         name: feliz-demo
         path: ./releases/feliz
+
   publish-demo-sites:
     needs: test-feliz-template
-    runs-on: unbuntu:latest
+    runs-on: ubuntu:latest
     steps:
-    - uses: actions/download-artifact@master
+    - name: Download release artefacts
+      uses: actions/download-artifact@master
       with:
         name: release-artefacts
         path: releases/
-    - uses: actions/download-artifact@master
+    - name: Download feliz build artefacts
+      uses: actions/download-artifact@master
       with:
         name: feliz-demo
         path: releases/feliz/
@@ -114,6 +117,7 @@ jobs:
         FOLDER: ./releases # netlify will pick up pushes to this branch and make the build output available as a static site
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         MESSAGE: "Build: ({sha}) {msg}"
+
   push-template-package:
     needs: test-feliz-template
     runs-on: ubuntu-latest
@@ -122,7 +126,11 @@ jobs:
       with:
         name: template-package
         path: ./build/
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
     - name: Pack the template project
-      run: dotnet pack ./package
+      run: dotnet pack -o ./package
     - name: Push the package
       run: dotnet nuget push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
