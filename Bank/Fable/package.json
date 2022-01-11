@@ -3,6 +3,7 @@
     "scripts": {
         "prestart": "dotnet tool restore && npm install",
         "start": "dotnet fable watch ./src -s --outDir .webpack/ --run webpack-dev-server",
+        "start:clean": "npm install && npm run start",
         "prebuild": "dotnet tool restore",
         "build": "dotnet fable ./src --outDir .webpack/ && webpack",
         "test:live": "dotnet fable watch tests --run webpack-dev-server --config ./webpack.tests.js",
