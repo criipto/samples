@@ -90,10 +90,7 @@ jobs:
       working-directory: ./deployment-feliz-source/
       env:
          WEBPACK_OUT_DIR: ../releases/feliz
-    - name: make static files like styling available for all
-      run: |
-           cp releases/feliz/public releases/
-           mv releases/style.*.css releases/style.css
+   
     - uses: actions/upload-artifact@master
       with:
         name: feliz-demo
