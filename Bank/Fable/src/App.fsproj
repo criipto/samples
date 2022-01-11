@@ -22,5 +22,5 @@
     <Compile Include="App/Components/Page.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
-  <Import Project="..\..\..\.paket\Paket.Restore.targets" />
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

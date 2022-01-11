@@ -88,7 +88,7 @@ jobs:
     - name: Pack the teample project
       run: dotnet pack ./package
     - name: Push the package
-      run: dotnet paket push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
+      run: dotnet nuget push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
   publish-demo-site:
     needs: test-template
     runs-on: ubuntu-latest

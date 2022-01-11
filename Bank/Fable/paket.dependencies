@@ -1,7 +1,8 @@
 source https://api.nuget.org/v3/index.json
 
 storage: none
-framework: net6.0
+framework: auto-detect
+
 nuget Fable.Core
 nuget Fable.Formatting.Markdown
 nuget Fable.Remoting.json
@@ -13,8 +14,3 @@ nuget Feliz
 nuget Feliz.Bulma
 nuget Feliz.Router
 nuget Fable.JsonProvider
-nuget FSharp.core
-nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson
-nuget ply
-nuget Swashbuckle.AspNetCore ~> 6
-nuget system.collections
