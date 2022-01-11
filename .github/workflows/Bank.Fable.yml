@@ -41,7 +41,13 @@ jobs:
       with:
         name: template-package
         path: ./build/
-  test-template:
+    - name: copy tech stack info
+      run: cp available-techstacks.json releases/
+    - uses: actions/upload-artifact@master
+      with:
+        name: release-artefacts
+        path: releases/
+  test-feliz-template:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -71,12 +77,29 @@ jobs:
       working-directory: ./deployment-feliz-source/
       env:
          WEBPACK_OUT_DIR: ../releases/feliz
-    - name: copy tech stack info
-      run: cp available-techstacks.json releases/
     - uses: actions/upload-artifact@master
       with:
-        name: demo-releases
-        path: ./releases/
+        name: feliz-demo
+        path: ./releases/feliz
+  publish-demo-sites:
+    needs: test-feliz-template
+    runs_on: unbuntu:latest
+    - uses: actions/download-artifact@master
+      with:
+        name: release-artefacts
+        path: releases/
+    - uses: actions/download-artifact@master
+      with:
+        name: release-artefacts
+        path: releases/feliz/
+    - name: Publish demo site
+      uses: s0/git-publish-subdir-action@develop
+      env:
+        REPO: self
+        BRANCH: feliz 
+        FOLDER: ./releases # netlify will pick up pushes to this branch and make the build output available as a static site
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        MESSAGE: "Build: ({sha}) {msg}"
   push-template-package:
     needs: test-template
     runs-on: ubuntu-latest
@@ -85,7 +108,7 @@ jobs:
       with:
         name: template-package
         path: ./build/
-    - name: Pack the teample project
+    - name: Pack the template project
       run: dotnet pack ./package
     - name: Push the package
       run: dotnet nuget push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
@@ -97,11 +120,4 @@ jobs:
       with:
         name: demo-releases
         path: ./releases/
-    - name: Publish demo site
-      uses: s0/git-publish-subdir-action@develop
-      env:
-        REPO: self
-        BRANCH: feliz 
-        FOLDER: ./releases # netlify will pick up pushes to this branch and make the build output available as a static site
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        MESSAGE: "Build: ({sha}) {msg}"
+    
