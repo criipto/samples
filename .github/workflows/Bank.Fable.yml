@@ -113,12 +113,3 @@ jobs:
       run: dotnet pack ./package
     - name: Push the package
       run: dotnet nuget push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./package/*.nupkg)
-  publish-demo-site:
-    needs: test-feliz-template
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/download-artifact@master
-      with:
-        name: demo-releases
-        path: ./releases/
-    
