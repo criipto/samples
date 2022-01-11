@@ -84,6 +84,7 @@ jobs:
   publish-demo-sites:
     needs: test-feliz-template
     runs_on: unbuntu:latest
+    steps:
     - uses: actions/download-artifact@master
       with:
         name: release-artefacts
