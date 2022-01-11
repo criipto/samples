@@ -117,12 +117,11 @@ module.exports = {
     },
     // Configuration for webpack-dev-server
     devServer: {
-        publicPath: "/",
-        contentBase: resolve(CONFIG.assetsDir),
+        //publicPath: "/",
+        static: resolve(CONFIG.assetsDir),
         port: CONFIG.devServerPort,
         proxy: CONFIG.devServerProxy,
-        hot: true,
-        inline: true
+        hot: true
     },
     // - babel-loader: transforms JS to old syntax (compatible with old browsers)
     // - sass-loaders: transforms SASS/SCSS into JS
@@ -151,9 +150,6 @@ module.exports = {
                         options: { implementation: require("sass") }
                     }
                 ],
-            },
-            {
-                include: /\.json$/, loaders: ['json-loader']
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?.*)?$/,
