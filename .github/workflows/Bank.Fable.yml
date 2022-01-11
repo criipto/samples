@@ -44,9 +44,7 @@ jobs:
     - name: Create release fodler
       run: mkdir releases
     - name: copy tech stack info into release
-      run: |
-          mkdir releases
-          cp available-techstacks.json releases/
+      run: cp available-techstacks.json releases/
     - uses: actions/upload-artifact@master
       with:
         name: release-artefacts
