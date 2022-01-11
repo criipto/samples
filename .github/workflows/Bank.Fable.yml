@@ -83,7 +83,7 @@ jobs:
         path: ./releases/feliz
   publish-demo-sites:
     needs: test-feliz-template
-    runs_on: unbuntu:latest
+    runs-on: unbuntu:latest
     steps:
     - uses: actions/download-artifact@master
       with:
