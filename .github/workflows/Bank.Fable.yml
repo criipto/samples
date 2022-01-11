@@ -42,7 +42,9 @@ jobs:
         name: template-package
         path: ./build/
     - name: copy tech stack info
-      run: cp available-techstacks.json releases/
+      run: |
+          mkdir releases
+          cp available-techstacks.json releases/
     - uses: actions/upload-artifact@master
       with:
         name: release-artefacts
