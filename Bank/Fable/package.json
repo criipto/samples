@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "prestart": "dotnet tool restore",
+        "prestart": "dotnet tool restore && npm install",
         "start": "dotnet fable watch ./src -s --outDir .webpack/ --run webpack-dev-server",
         "prebuild": "dotnet tool restore",
         "build": "dotnet fable ./src --outDir .webpack/ && webpack",
