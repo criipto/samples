@@ -49,14 +49,25 @@ jobs:
       with:
         name: release-artefacts
         path: releases/
+
   test-feliz-template:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@master
+    - name: Download build artefactsß
+      uses: actions/download-artifact@master
       with:
         name: template-package
         path: ./build/
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+        
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
     - name: Install template
       run: dotnet new -i $(ls ./build/*.* | grep Criipto)
       working-directory: ./
