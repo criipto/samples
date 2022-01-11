@@ -131,4 +131,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Push the package
-      run: dotnet nuget push --api-key ${{ secrets.NUGET_APIKEY }} $(ls ./build/*.nupkg)
+      run: | 
+         path=$(ls ./build/*.nupkg)
+         echo "Path: $path"
+         dotnet nuget push $path --api-key ${{ secrets.NUGET_APIKEY }} --source https://api.nuget.org/v3/index.json
