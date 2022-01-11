@@ -52,13 +52,14 @@ jobs:
     - name: Install template
       run: dotnet new -i $(ls ./build/*.* | grep Criipto)
       working-directory: ./
-    - name: Restore tools
-      run: dotnet tool restore
     - name: create feliz project from template
       run: |
          mkdir deployment-feliz-source
          cd deployment-feliz-source
          dotnet new CriiptoFelizSample
+    - name: Restore tools
+      run: dotnet tool restore
+      working-directory: ./deployment-feliz-source/src
     - name: install dotnet dependencies for templated project
       run: dotnet paket update
       working-directory: ./deployment-feliz-source/src
