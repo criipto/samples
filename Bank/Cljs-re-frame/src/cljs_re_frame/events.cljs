@@ -1,6 +1,6 @@
 (ns cljs-re-frame.events
   (:require [ajax.core :as ajax]
-            [cljs-re-frame.authentication :as auth]
+            [Authentication.authentication :as auth]
             [cljs-re-frame.db :as db]
             [cljs-re-frame.router :as router]
             [cljs.reader :refer [read-string]]

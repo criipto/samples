@@ -1,5 +1,5 @@
 (ns cljs-re-frame.views
-  (:require [cljs-re-frame.authentication :as auth]
+  (:require [Authentication.authentication :as auth]
             [cljs-re-frame.events :as events]
             [cljs-re-frame.subs :as subs]
             [clojure.string :as str]
