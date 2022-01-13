@@ -37,7 +37,7 @@ jobs:
       run: npm run build
       working-directory: ./Bank/Fable
 
-  build:
+  build-template-project:
     runs-on: ubuntu-latest
     needs:
     - build-feliz
@@ -52,7 +52,7 @@ jobs:
     - name: Create release folder
       run: mkdir releases
     - name: copy static files
-      run: cp Bank/Fable/public/ releases/
+      run: cp -r Bank/Fable/public releases
     - name: copy tech stack info into release
       run: cp available-techstacks.json releases/
 
@@ -68,7 +68,7 @@ jobs:
         path: releases/
 
   test-feliz-template:
-    needs: build
+    needs: build-template-project
     runs-on: ubuntu-latest
     steps:
     - name: Download build artefactsß
@@ -112,7 +112,8 @@ jobs:
         path: ./releases/feliz
 
   publish-demo-sites:
-    needs: test-feliz-template
+    needs: 
+    - test-feliz-template
     runs-on: ubuntu-latest
     steps:
     - name: Download release artefacts
@@ -135,7 +136,8 @@ jobs:
         MESSAGE: "Build: ({sha}) {msg}"
 
   push-template-package:
-    needs: test-feliz-template
+    needs: 
+    - test-feliz-template
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@master
