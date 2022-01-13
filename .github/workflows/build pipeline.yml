@@ -72,10 +72,7 @@ jobs:
       run: dotnet new -i $(ls ./build/*.* | grep Criipto)
       working-directory: ./
     - name: create feliz project from template
-      run: |
-         mkdir deployment-feliz-source
-         cd deployment-feliz-source
-         dotnet new CriiptoFelizSample
+      run: dotnet new CriiptoFelizSample -o deployment-feliz-source
     - name: Restore tools
       run: dotnet tool restore
       working-directory: ./deployment-feliz-source/src
@@ -93,8 +90,7 @@ jobs:
     - name: make static files like styling available for all
       run: |
            cp releases/feliz/public releases/
-           cp releases/style.*.css releases/public/style.css
-           cp releases/*.svg releases/public/
+           cp releases/feliz/style.*.css releases/public/style.css
     - uses: actions/upload-artifact@master
       with:
         name: feliz-demo

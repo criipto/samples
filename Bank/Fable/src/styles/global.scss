@@ -1,16 +1,8 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
 @import "https://cdn.jsdelivr.net/npm/bulma-extensions@6.2.7/dist/css/bulma-extensions.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import "mixins.scss";
 
-@mixin icon($iconName) {
-    background: url($iconName + ".svg") no-repeat center;
-    background-size: 100%;
-}
-
-@mixin icon-hover($iconName) {
-    background: url($iconName + "-hover.svg") no-repeat center;
-    background-size: 100%;
-}
 
 $font : Helvetica;
 $hover-background: rgba(69, 128, 201, 0.2);
@@ -78,13 +70,13 @@ body,html {
 
 
 .icon.dot {
-    @include icon("dot");
+    @include dot();
     height: 12px !important;
     width: 12px !important;
 }
 
 .button.reply > div.icon.reply {
-    @include icon("reply");
+    @include reply();
     height: 16px !important;
     width: 16px !important;
 }
@@ -94,65 +86,65 @@ div.icon.reply > span:hover, a.reply:hover {
 }
 
 .icon.arrows {
-    @include icon("arrows")
+    @include arrows();
 }
 .icon.credit-card-logo {
-    @include icon("credit-card-logo");
+    @include credit-card-logo();
     width:36px;
     height: auto;
 }
 .icon.chart {
-    @include icon("chart")
+    @include chart();
 }
 
 .icon.profile {
-    @include icon("profile")
+    @include profile();
 }
 .icon.envelope {
-    @include icon("envelope")
+    @include envelope();
 }
 .icon.lamp {
-    @include icon("lamp")
+    @include lamp();
 }
 .icon.vbars {
-    @include icon("vbars")
+    @include vbars();
 }
 .icon.wineglass {
-    @include icon("wineglass")
+    @include wineglass();
 }
 .icon.code {
-    @include icon("code")
+    @include code();
 }
 
 .icon.apartment {
-    @include icon("apartment")
+    @include apartment();
 }
 .icon.car {
-    @include icon("car")
+    @include car();
 }
 .icon.hand-holding-medical {
-    @include icon("hand-holding-medical")
+    @include hand-holding-medical();
 }
 .icon.credit-card {
-    @include icon("credit-card")
+    @include credit-card();
 }
 .icon.coins {
-    @include icon("coins")
+    @include coins();
 }
 .icon.cardboard-box {
-    @include icon("box")
+    @include box();
 }
 .icon.signature {
-    @include icon("signature");
+    @include signature();
 }
 .icon.mitid {
-    @include icon("mitid");
+    @include mitid();
 }
 .icon.power-off {
-    @include icon("power-off");
+    @include power-off();
 }
 .icon.power-off-white {
-    @include icon("power-off-white");
+   @include power-off-white();
     width: 24px !important;
     height: 24px;
     display : inline-block;
@@ -160,71 +152,71 @@ div.icon.reply > span:hover, a.reply:hover {
 
 
 .icon.arrows {
-    @include icon("arrows")
+    @include arrows();
 }
 .icon.credit-card-logo {
-    @include icon("credit-card-logo");
+    @include credit-card-logo();
     width:36px;
     height: auto;
 }
 .menu-item:hover  .icon.chart {
-    @include icon-hover("chart");
+    @include chart-hover();
 }
 .menu-item:hover  .icon.profile {
-    @include icon-hover("profile");
+    @include profile-hover();
 }
 .menu-item:hover  .icon.envelope {
-    @include icon-hover("envelope");
+    @include envelope-hover();
 }
 .menu-item:hover  .icon.lamp {
-    @include icon-hover("lamp");
+    @include lamp-hover();
 }
 .menu-item:hover  .icon.vbars {
-    @include icon-hover("vbars");
+    @include vbars-hover();
 }
 .menu-item:hover  .icon.wineglass {
-    @include icon-hover("wineglass");
+    @include wineglass-hover();
 }
 .menu-item:hover  .icon.code {
-    @include icon-hover("code");
+    @include code-hover();
 }
 
 
 .is-active.menu-item:hover  .icon.chart {
-    @include icon("chart");
+    @include chart();
 }
 
 .is-active.menu-item:hover  .icon.profile {
-    @include icon("profile");
+    @include profile();
 }
 .is-active.menu-item:hover  .icon.envelope {
-    @include icon("envelope");
+    @include envelope();
 }
 .is-active.menu-item:hover  .icon.lamp {
-    @include icon("lamp");
+    @include lamp();
 }
 .is-active.menu-item:hover  .icon.vbars {
-    @include icon("vbars");
+    @include vbars();
 }
 .is-active.menu-item:hover  .icon.wineglass {
-    @include icon("wineglass");
+    @include wineglass();
 }
 .is-active.menu-item:hover  .icon.code {
-    @include icon("code");
+    @include code();
 }
 
 .icon.apartment {
-    @include icon("apartment");
+    @include apartment();
 }
 .icon.car {
-    @include icon("car");
+    @include car();
 }
 .icon.hand-holding-medical {
-    @include icon("hand-holding-medical");
+    @include hand-holding-medical();
 }
 
 .icon.coins {
-    @include icon("coins");
+    @include coins();
 }
 
 .card {
@@ -371,9 +363,8 @@ h2 {
     line-height: 24px;
     color: $text-color;
 }
-
 .navbar-menu {
-    background-image: url("bg_top.png");
+    background-image: url("https://criipto.github.io/samples/public/img/bg_top.png");
     background-size:100% 100%;
     padding-right: 44px;
     padding-left: $boxmargin;
@@ -429,8 +420,7 @@ div.card-content {
 }
 
 div.banner {
-    background: url("banner.png") no-repeat center;
-    background-size: 100%;
+    background-image: url("https://criipto.github.io/samples/public/img/banner.png");
     height : 250px;
     position: relative;
 }

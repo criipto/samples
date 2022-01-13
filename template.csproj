@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Bank/Fable/**/*" Exclude="**\bin\**;**\obj\**;**/node_modules/**;;**/fable_modules/**;.DS_Store;**/.git*  " />
+    <Content Include="Bank/Fable/**/*" Exclude="**\bin\**;**\obj\**;**/node_modules/**;;**/fable_modules/**;.DS_Store;**/.git*;**/*.svg;**/*.png" />
     <Compile Remove="**\*" />
   </ItemGroup>
 

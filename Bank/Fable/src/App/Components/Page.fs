@@ -21,7 +21,48 @@ type Page() =
                 | Error e ->
                     eprintfn "Failed to cancel %s. Errors: %s" orderId e
             } |> Async.StartImmediate
-    
+    static let createOrder (user : Models.User) (documents : Models.Document list) addMessages = 
+        
+                async{
+                    
+                    let doc = documents |> List.head
+                    let docName = doc.Name.Replace("%USERNAME%", user.Name)
+                    let content = doc.Content.Replace("%USERNAME%", user.Name)
+                    let userToken = user.Token 
+                    let! signatureOrderResult = Signatures.createSignatureOrder userToken "Signature order" [|{Title = docName; Content = content; Reference = None} |] 
+                    
+                    match signatureOrderResult with
+                    Ok order  -> 
+                        
+                        async {
+                            let userRef = 
+                                user.Name
+                                |> System.Text.Encoding.Unicode.GetBytes
+                                |> System.Convert.ToBase64String
+                            
+                            let! signatoryAddedResult = 
+                                Signatures.addSignatory userToken order.id userRef    
+                            match signatoryAddedResult with
+                            Ok signatoryAdded ->
+                                let linkToDoc = signatoryAdded.signatory.documentLink
+                                let msg : Models.Message = 
+                                    {
+                                        Id = (userRef + System.DateTime.Now.Ticks.ToString())
+                                        Subject = "Document to be signed"
+                                        Content = "Your loan is awaiting your signature. To read the document and sign it press the button below"
+                                        From = "Your bank advisor"
+                                        Date = System.DateTime.Now
+                                        Unread = true
+                                        Type = Models.Signature(linkToDoc,order.id)
+                                    }
+                                msg |> addMessages
+                            | Error e -> 
+                                eprintfn "Erros while adding signatory %s" e
+                        } |> Async.StartImmediate
+                    | Error e -> 
+                        printfn "Error occurred while creating signature order %s" e
+                    
+                } 
     [<ReactComponent>]
     static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, documents : Models.Document list, setMessages) =
         let removeMessage predicate =
@@ -78,47 +119,16 @@ type Page() =
                 ]
             | Pensions ->
                 
-                async{
-                    
-                    let doc = documents |> List.head
-                    let docName = doc.Name.Replace("%USERNAME%", user.Name)
-                    let content = doc.Content.Replace("%USERNAME%", user.Name)
-                    let userToken = user.Token 
-                    let! signatureOrderResult = Signatures.createSignatureOrder userToken "Signature order" [|{Title = docName; Content = content; Reference = None} |] 
-                    
-                    match signatureOrderResult with
-                    Ok order  -> 
-                        
-                        async {
-                            let userRef = 
-                                user.Name
-                                |> System.Text.Encoding.Unicode.GetBytes
-                                |> System.Convert.ToBase64String
-                            
-                            let! signatoryAddedResult = 
-                                Signatures.addSignatory userToken order.id userRef    
-                            match signatoryAddedResult with
-                            Ok signatoryAdded ->
-                                let linkToDoc = signatoryAdded.signatory.documentLink
-                                let msg : Models.Message = 
-                                    {
-                                        Id = (userRef + System.DateTime.Now.Ticks.ToString())
-                                        Subject = "Document to be signed"
-                                        Content = "Your loan is awaiting your signature. To read the document and sign it press the button below"
-                                        From = "Your bank advisor"
-                                        Date = System.DateTime.Now
-                                        Unread = true
-                                        Type = Models.Signature(linkToDoc,order.id)
-                                    }
-                                msg::messages |> setMessages
-                            | Error e -> 
-                                eprintfn "Erros while adding signatory %s" e
-                        } |> Async.StartImmediate
-                    | Error e -> 
-                        printfn "Error occurred while creating signature order %s" e
-                    
-                } |> Async.StartImmediate
-                [placeholderContent Pensions]
+                [
+                    placeholderContent Pensions
+                    Bulma.button.button [
+                        prop.text "Apply"
+                        prop.onClick(fun _ -> 
+                            createOrder user documents (fun msg -> msg::messages |> setMessages)
+                            |> Async.StartImmediate
+                        )
+                    ]
+                ]
             | v -> [placeholderContent v]
         Bulma.container components
         

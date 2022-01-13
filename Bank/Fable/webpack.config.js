@@ -8,13 +8,13 @@ var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const { patchGracefulFileSystem } = require("./webpack.common.js");
-const CopyPlugin = require('copy-webpack-plugin');
 patchGracefulFileSystem();
 
 // If we're running the webpack-dev-server, assume we're in development mode
 var isProduction = !process.argv.find(v => v.indexOf('webpack-dev-server') !== -1);
 
 const isDevelopment = !isProduction && process.env.NODE_ENV !== 'production';
+
 const outputDir = process.env.WEBPACK_OUT_DIR || "./dist";
 var CONFIG = {
     // The tags to include the generated JS and CSS will be automatically injected in the HTML template
@@ -24,9 +24,7 @@ var CONFIG = {
     outputDir: outputDir,
     assetsDir: "./public",
     devServerPort: 8080,
-    // When using webpack-dev-server, you may need to redirect some calls
-    // to a external API server. See https://webpack.js.org/configuration/dev-server/#devserver-proxy
-    devServerProxy: {},
+  
     // Use babel-preset-env to generate JS compatible with most-used browsers.
     // More info at https://babeljs.io/docs/en/next/babel-preset-env.html
     babel: {
@@ -96,14 +94,7 @@ module.exports = {
             }),
         ])
         : commonPlugins.concat([
-            new ReactRefreshWebpackPlugin(),
-            new CopyPlugin({
-                patterns: [
-                    {
-                        from: path.resolve(__dirname, './public/'),
-                        to: path.resolve(__dirname, 'dist')
-                    }
-                ]})    
+            new ReactRefreshWebpackPlugin()
         ]),
     resolve: {
         // See https://github.com/fable-compiler/Fable/issues/1490
@@ -117,7 +108,9 @@ module.exports = {
     },
     // Configuration for webpack-dev-server
     devServer: {
-        //publicPath: "/",
+        devMiddleware :{
+            publicPath: "/"
+        },
         static: resolve(CONFIG.assetsDir),
         port: CONFIG.devServerPort,
         proxy: CONFIG.devServerProxy,

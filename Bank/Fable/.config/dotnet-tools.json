@@ -19,6 +19,18 @@
       "commands": [
         "paket"
       ]
+    },
+    "fake-cli": {
+      "version": "5.20.4",
+      "commands": [
+        "fake"
+      ]
+    },
+    "image2datauri": {
+      "version": "1.0.0",
+      "commands": [
+        "image2uri"
+      ]
     }
   }
 }
