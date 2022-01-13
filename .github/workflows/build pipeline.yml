@@ -47,6 +47,7 @@ jobs:
           cp ./Bank/Fable/dist/documents.json releases/static/documents.json
           cp ./Bank/Fable/dist/messages.json releases/static/messages.json
           cp ./Bank/Fable/dist/*.b64 releases/static/
+          cp -r ./Bank/Fable/dist/img releases/static/
     - name: Upload static files
       uses: actions/upload-artifact@master
       with:
@@ -65,13 +66,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-    
-    - name: Create release folder
-      run: mkdir releases
-    - name: copy static files
-      run: cp -r Bank/Fable/public releases
-    - name: copy tech stack info into release
-      run: cp available-techstacks.json releases/
 
     - name: Build the template package
       run: dotnet pack -o build
@@ -121,8 +115,6 @@ jobs:
       working-directory: ./deployment-feliz-source/
       env:
          WEBPACK_OUT_DIR: ../releases/feliz
-    - name: make static files like styling available for all
-      run: cp releases/feliz/style.*.css releases/public/style.css
     - uses: actions/upload-artifact@master
       with:
         name: feliz-demo
