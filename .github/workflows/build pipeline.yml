@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-feliz:
 
     runs-on: ubuntu-latest
 
@@ -27,24 +27,40 @@ jobs:
     - name: Restore tools
       run: dotnet tool restore
       working-directory: ./Bank/Fable
-      
     - name: Restore dotnet dependencies 
       run: dotnet paket restore
       working-directory: ./Bank/Fable
     - name: Restore js dependencies
       run: npm install
       working-directory: ./Bank/Fable
-    - name: Build
+    - name: Test build the project
+      run: npm run build
+
+  build:
+    runs-on: ubuntu-latest
+    needs:
+    - build-feliz
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    
+    - name: Create release folder
+      run: mkdir releases
+    - name: copy static files
+      run: cp Bank/Fable/public/ releases/
+    - name: copy tech stack info into release
+      run: cp available-techstacks.json releases/
+
+    - name: Build the template package
       run: dotnet pack -o build
-      working-directory: ./
     - uses: actions/upload-artifact@master
       with:
         name: template-package
         path: ./build/
-    - name: Create release folder
-      run: mkdir releases
-    - name: copy tech stack info into release
-      run: cp available-techstacks.json releases/
     - uses: actions/upload-artifact@master
       with:
         name: release-artefacts
@@ -88,9 +104,7 @@ jobs:
       env:
          WEBPACK_OUT_DIR: ../releases/feliz
     - name: make static files like styling available for all
-      run: |
-           cp releases/feliz/public releases/
-           cp releases/feliz/style.*.css releases/public/style.css
+      run: cp releases/feliz/style.*.css releases/public/style.css
     - uses: actions/upload-artifact@master
       with:
         name: feliz-demo
