@@ -54,7 +54,6 @@ jobs:
         name: static-files
         path: releases/static/
       
-
   build-template-project:
     runs-on: ubuntu-latest
     needs:
@@ -73,10 +72,6 @@ jobs:
       with:
         name: template-package
         path: ./build/
-    - uses: actions/upload-artifact@master
-      with:
-        name: release-artefacts
-        path: releases/
 
   test-feliz-template:
     needs: build-template-project
@@ -126,11 +121,6 @@ jobs:
     - build-feliz
     runs-on: ubuntu-latest
     steps:
-    - name: Download release artefacts
-      uses: actions/download-artifact@master
-      with:
-        name: release-artefacts
-        path: releases/
     - name: Download feliz build artefacts
       uses: actions/download-artifact@master
       with:
