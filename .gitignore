@@ -216,3 +216,25 @@ Signing/signatures/generated/
 build/
 deployment-feliz-source/
 .webpack/
+
+# ===================================================
+# Exclude Clojure project specific directories and files
+# ===================================================
+**/resources/public/js/compiled/
+**/target/
+**/*-init.clj
+**/*.log
+
+# Leiningen
+.lein-*
+.nrepl-port
+
+# Node.js dependencies
+# **/node_modules/
+
+# shadow-cljs cache, port files
+**/.shadow-cljs/
+
+# development tool artifacts
+.lsp/
+.clj-kondo/
