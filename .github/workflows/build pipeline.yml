@@ -36,6 +36,10 @@ jobs:
     - name: Test build the project
       run: npm run build
       working-directory: ./Bank/Fable
+    - name: Create release folder
+      run: |
+          mkdir releases
+          mkdir releases/static
     - name: Collect static files
       run: |
           set -e
@@ -127,6 +131,7 @@ jobs:
   publish-demo-sites:
     needs: 
     - test-feliz-template
+    - build-feliz
     runs-on: ubuntu-latest
     steps:
     - name: Download release artefacts
