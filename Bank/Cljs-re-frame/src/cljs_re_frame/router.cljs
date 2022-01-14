@@ -27,13 +27,16 @@
                  "developer-support"     :developer-support}]
     ["" (assoc routes* "/samples/cljs/" routes*)]))
 
-(def history
-  (let [dispatch #(rf/dispatch [::route-changed %])
-        match #(bidi/match-route routes %)]
-    (pushy/pushy dispatch match)))
-
 (defn match-route [uri]
   (bidi/match-route routes uri))
+
+(def history
+  (let [dispatch #(rf/dispatch [::route-changed %])
+        match #(let [matched-route (bidi/match-route routes %)]
+                 (js/console.log "matched-route")
+                 (js/console.log matched-route)
+                 matched-route)]
+    (pushy/pushy dispatch match)))
 
 (defn start!
   []
