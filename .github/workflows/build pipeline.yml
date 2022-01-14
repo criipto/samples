@@ -119,12 +119,17 @@ jobs:
       run: npm install
       working-directory: deployment-cljs-source
     - name: Test build the project
-      run: npm run build
+      run: |
+        npm run build
+        ls -lrth resources/
+        ls -lrth resources/public/
+        ls -lrth resources/public/js/
+        ls -lrth resources/public/js/compiled/
       working-directory: deployment-cljs-source
     - uses: actions/upload-artifact@master
       with:
         name: cljs-demo
-        path: ./deployment-cljs-source/resources
+        path: ./deployment-cljs-source/resources/public/
 
   test-feliz-template:
     needs: build-template-project
