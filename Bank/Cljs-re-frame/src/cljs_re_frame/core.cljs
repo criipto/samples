@@ -44,8 +44,7 @@
 
 (defn dev-setup []
   (when config/debug?
-    (println "dev mode")
-    (js/console.log "dev mode")))
+    (println "dev mode")))
 
 (defn ^:dev/after-load start []
   (rf/clear-subscription-cache!)

@@ -4,12 +4,11 @@
             [clojure.string :as str]
             [re-frame.core :as rf]))
 
-
 (def redirect-uri
   (delay
     (if (= (.-hostname (.-location js/window)) "localhost")
-      (str "http://" (.-host (.-location js/window)) "/auth")
-      (str "https://" (.-host (.-location js/window)) "/samples/cljs/auth"))))
+      (str "http://" (.-host (.-location js/window)) "/samples/cljs/")
+      (str "https://" (.-host (.-location js/window)) "/samples/cljs/"))))
 
 (def auth-domain "mnie-test.criipto.id")
 
@@ -26,8 +25,7 @@
         match-object (.redirect.match authenticator)]
     (.. match-object
         (then (fn [result]
-                (when-let [parsed-result (some->> result
-                                                  js->clj)]
+                (when-let [parsed-result (some->> result js->clj)]
                   (if (nil? (get parsed-result "error"))
                     (rf/dispatch [:authorized parsed-result])
                     (rf/dispatch [:authorization-error parsed-result])))))
