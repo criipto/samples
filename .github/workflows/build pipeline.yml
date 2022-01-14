@@ -121,15 +121,10 @@ jobs:
     - name: Test build the project
       run: npm run build
       working-directory: deployment-cljs-source
-    - name: copy release files
-      run: |
-        mkdir -p releases/cljs
-        cp -r deployment-cljs-source/public releases/cljs
-        ls -lrth releases/cljs/
     - uses: actions/upload-artifact@master
       with:
         name: cljs-demo
-        path: ./releases/cljs/
+        path: ./deployment-cljs-source/public/
 
   test-feliz-template:
     needs: build-template-project
