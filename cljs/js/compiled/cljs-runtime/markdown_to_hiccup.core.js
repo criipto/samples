@@ -163,9 +163,9 @@ return cljs.core.every_QMARK_(cljs.core.keyword_QMARK_,args);
 (markdown_to_hiccup.core.keywords_QMARK_.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(markdown_to_hiccup.core.keywords_QMARK_.cljs$lang$applyTo = (function (seq22547){
+(markdown_to_hiccup.core.keywords_QMARK_.cljs$lang$applyTo = (function (seq22510){
 var self__4852__auto__ = this;
-return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22547));
+return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22510));
 }));
 
 /**
@@ -175,9 +175,9 @@ return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq
  * count value for the first pair.
  */
 markdown_to_hiccup.core.dec_front = (function markdown_to_hiccup$core$dec_front(kw_pairs){
-var vec__22548 = cljs.core.first(kw_pairs);
-var kw = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22548,(0),null);
-var count = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22548,(1),null);
+var vec__22534 = cljs.core.first(kw_pairs);
+var kw = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22534,(0),null);
+var count = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22534,(1),null);
 var new_count = (count - (1));
 var new_pair = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [kw,new_count], null);
 if((new_count < (0))){
@@ -231,9 +231,9 @@ return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(coll_a),cljs
  */
 markdown_to_hiccup.core.get_nested_hiccup = (function markdown_to_hiccup$core$get_nested_hiccup(hiccup,kw_pairs){
 while(true){
-var vec__22551 = cljs.core.first(kw_pairs);
-var kw = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22551,(0),null);
-var nth_kw = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22551,(1),null);
+var vec__22548 = cljs.core.first(kw_pairs);
+var kw = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22548,(0),null);
+var nth_kw = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22548,(1),null);
 var front = cljs.core.first(hiccup);
 var remaining = cljs.core.rest(hiccup);
 if(cljs.core.empty_QMARK_(hiccup)){
@@ -306,14 +306,14 @@ break;
  */
 markdown_to_hiccup.core.hiccup_in = (function markdown_to_hiccup$core$hiccup_in(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___22593 = arguments.length;
-var i__4865__auto___22594 = (0);
+var len__4864__auto___22585 = arguments.length;
+var i__4865__auto___22586 = (0);
 while(true){
-if((i__4865__auto___22594 < len__4864__auto___22593)){
-args__4870__auto__.push((arguments[i__4865__auto___22594]));
+if((i__4865__auto___22586 < len__4864__auto___22585)){
+args__4870__auto__.push((arguments[i__4865__auto___22586]));
 
-var G__22595 = (i__4865__auto___22594 + (1));
-i__4865__auto___22594 = G__22595;
+var G__22587 = (i__4865__auto___22586 + (1));
+i__4865__auto___22586 = G__22587;
 continue;
 } else {
 }
@@ -332,11 +332,11 @@ return markdown_to_hiccup.core.get_nested_hiccup(hiccup,pathway);
 (markdown_to_hiccup.core.hiccup_in.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(markdown_to_hiccup.core.hiccup_in.cljs$lang$applyTo = (function (seq22554){
-var G__22555 = cljs.core.first(seq22554);
-var seq22554__$1 = cljs.core.next(seq22554);
+(markdown_to_hiccup.core.hiccup_in.cljs$lang$applyTo = (function (seq22551){
+var G__22552 = cljs.core.first(seq22551);
+var seq22551__$1 = cljs.core.next(seq22551);
 var self__4851__auto__ = this;
-return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22555,seq22554__$1);
+return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22552,seq22551__$1);
 }));
 
 /**

@@ -51,9 +51,9 @@ return new cljs.core.PersistentVector(null, 21, 5, cljs.core.PersistentVector.EM
 (day8.re_frame_10x.view.app_db.pod_header_section.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(day8.re_frame_10x.view.app_db.pod_header_section.cljs$lang$applyTo = (function (seq16348){
+(day8.re_frame_10x.view.app_db.pod_header_section.cljs$lang$applyTo = (function (seq16345){
 var self__4852__auto__ = this;
-return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq16348));
+return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq16345));
 }));
 
 day8.re_frame_10x.view.app_db.pod_header = (function day8$re_frame_10x$view$app_db$pod_header(p__16352){

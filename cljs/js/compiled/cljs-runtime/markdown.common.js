@@ -38,9 +38,9 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 (markdown.common.freeze_string.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(markdown.common.freeze_string.cljs$lang$applyTo = (function (seq22153){
+(markdown.common.freeze_string.cljs$lang$applyTo = (function (seq22149){
 var self__4852__auto__ = this;
-return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22153));
+return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22149));
 }));
 
 /**
@@ -149,46 +149,46 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 })());
 var new_buf = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22173,(0),null);
 var new_state = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22173,(1),null);
-var G__22189 = cljs.core.vec(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(out,cljs.core.seq(open),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new_buf,cljs.core.seq(close)], 0)));
-var G__22190 = cljs.core.PersistentVector.EMPTY;
-var G__22191 = cljs.core.rest(tokens);
-var G__22192 = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(new_state,new cljs.core.Keyword(null,"found-token","found-token",113525576),false);
-out = G__22189;
-buf = G__22190;
-tokens = G__22191;
-cur_state = G__22192;
+var G__22216 = cljs.core.vec(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(out,cljs.core.seq(open),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new_buf,cljs.core.seq(close)], 0)));
+var G__22217 = cljs.core.PersistentVector.EMPTY;
+var G__22218 = cljs.core.rest(tokens);
+var G__22219 = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(new_state,new cljs.core.Keyword(null,"found-token","found-token",113525576),false);
+out = G__22216;
+buf = G__22217;
+tokens = G__22218;
+cur_state = G__22219;
 continue;
 } else {
-var G__22193 = out;
-var G__22194 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(buf,cljs.core.first(tokens));
-var G__22195 = cljs.core.rest(tokens);
-var G__22196 = cur_state;
-out = G__22193;
-buf = G__22194;
-tokens = G__22195;
-cur_state = G__22196;
+var G__22220 = out;
+var G__22221 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(buf,cljs.core.first(tokens));
+var G__22222 = cljs.core.rest(tokens);
+var G__22223 = cur_state;
+out = G__22220;
+buf = G__22221;
+tokens = G__22222;
+cur_state = G__22223;
 continue;
 }
 } else {
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.first(tokens),separator__$1)){
-var G__22197 = out;
-var G__22198 = buf;
-var G__22199 = cljs.core.rest(tokens);
-var G__22200 = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cur_state,new cljs.core.Keyword(null,"found-token","found-token",113525576),true);
-out = G__22197;
-buf = G__22198;
-tokens = G__22199;
-cur_state = G__22200;
+var G__22224 = out;
+var G__22225 = buf;
+var G__22226 = cljs.core.rest(tokens);
+var G__22227 = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cur_state,new cljs.core.Keyword(null,"found-token","found-token",113525576),true);
+out = G__22224;
+buf = G__22225;
+tokens = G__22226;
+cur_state = G__22227;
 continue;
 } else {
-var G__22201 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(out,cljs.core.first(tokens));
-var G__22202 = buf;
-var G__22203 = cljs.core.rest(tokens);
-var G__22204 = cur_state;
-out = G__22201;
-buf = G__22202;
-tokens = G__22203;
-cur_state = G__22204;
+var G__22228 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(out,cljs.core.first(tokens));
+var G__22229 = buf;
+var G__22230 = cljs.core.rest(tokens);
+var G__22231 = cur_state;
+out = G__22228;
+buf = G__22229;
+tokens = G__22230;
+cur_state = G__22231;
 continue;
 
 }

@@ -290,14 +290,14 @@ return (new rewrite_clj.node.keyword.KeywordNode(new cljs.core.Keyword(null,"k",
  */
 rewrite_clj.node.keyword.keyword_node = (function rewrite_clj$node$keyword$keyword_node(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___17686 = arguments.length;
-var i__4865__auto___17687 = (0);
+var len__4864__auto___17685 = arguments.length;
+var i__4865__auto___17686 = (0);
 while(true){
-if((i__4865__auto___17687 < len__4864__auto___17686)){
-args__4870__auto__.push((arguments[i__4865__auto___17687]));
+if((i__4865__auto___17686 < len__4864__auto___17685)){
+args__4870__auto__.push((arguments[i__4865__auto___17686]));
 
-var G__17688 = (i__4865__auto___17687 + (1));
-i__4865__auto___17687 = G__17688;
+var G__17687 = (i__4865__auto___17686 + (1));
+i__4865__auto___17686 = G__17687;
 continue;
 } else {
 }
@@ -308,9 +308,9 @@ var argseq__4871__auto__ = ((((1) < args__4870__auto__.length))?(new cljs.core.I
 return rewrite_clj.node.keyword.keyword_node.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__4871__auto__);
 });
 
-(rewrite_clj.node.keyword.keyword_node.cljs$core$IFn$_invoke$arity$variadic = (function (k,p__17680){
-var vec__17681 = p__17680;
-var namespaced_QMARK_ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__17681,(0),null);
+(rewrite_clj.node.keyword.keyword_node.cljs$core$IFn$_invoke$arity$variadic = (function (k,p__17679){
+var vec__17680 = p__17679;
+var namespaced_QMARK_ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__17680,(0),null);
 if((k instanceof cljs.core.Keyword)){
 } else {
 throw (new Error("Assert failed: (keyword? k)"));

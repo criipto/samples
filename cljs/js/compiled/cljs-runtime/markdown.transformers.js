@@ -588,12 +588,12 @@ var prev_val = cljs.core.get.cljs$core$IFn$_invoke$arity$3(acc,key,cljs.core.Per
 var postfix = ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [" "," "], null),cljs.core.take_last((2),val)))?"\n":"");
 var norm_val = [clojure.string.trim(val),postfix].join('');
 var new_val = (((!(cljs.core.empty_QMARK_(norm_val))))?cljs.core.conj.cljs$core$IFn$_invoke$arity$2(prev_val,norm_val):prev_val);
-var G__22423 = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([acc,cljs.core.PersistentArrayMap.createAsIfByAssoc([key,new_val])], 0));
-var G__22424 = cljs.core.rest(remain);
-var G__22425 = key;
-acc = G__22423;
-remain = G__22424;
-prev_key = G__22425;
+var G__22427 = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([acc,cljs.core.PersistentArrayMap.createAsIfByAssoc([key,new_val])], 0));
+var G__22428 = cljs.core.rest(remain);
+var G__22429 = key;
+acc = G__22427;
+remain = G__22428;
+prev_key = G__22429;
 continue;
 } else {
 return acc;

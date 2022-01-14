@@ -332,10 +332,10 @@ while(true){
 if(cljs.core.not(nloc)){
 return ploc;
 } else {
-var G__18412 = zprint.zutil.zleftnws(nloc);
-var G__18413 = nloc;
-nloc = G__18412;
-ploc = G__18413;
+var G__18411 = zprint.zutil.zleftnws(nloc);
+var G__18412 = nloc;
+nloc = G__18411;
+ploc = G__18412;
 continue;
 }
 break;
@@ -363,10 +363,10 @@ while(true){
 if((((nloc == null)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(i,(0))))){
 return nloc;
 } else {
-var G__18415 = zprint.zutil.zrightnws(nloc);
-var G__18416 = (i - (1));
-nloc = G__18415;
-i = G__18416;
+var G__18413 = zprint.zutil.zrightnws(nloc);
+var G__18414 = (i - (1));
+nloc = G__18413;
+i = G__18414;
 continue;
 }
 break;
@@ -384,10 +384,10 @@ if((!((nloc == null)))){
 if(cljs.core.truth_((zthing_QMARK_.cljs$core$IFn$_invoke$arity$1 ? zthing_QMARK_.cljs$core$IFn$_invoke$arity$1(nloc) : zthing_QMARK_.call(null,nloc)))){
 return i;
 } else {
-var G__18417 = zprint.zutil.zrightnws(nloc);
-var G__18418 = (i + (1));
-nloc = G__18417;
-i = G__18418;
+var G__18415 = zprint.zutil.zrightnws(nloc);
+var G__18416 = (i + (1));
+nloc = G__18415;
+i = G__18416;
 continue;
 }
 } else {
@@ -1203,41 +1203,41 @@ return null;
 if(cljs.core.truth_(current_ns)){
 if(cljs.core.truth_(ns__$1)){
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(ns__$1,current_ns)){
-var G__18467 = ns__$1;
-var G__18468 = cljs.core.next(pair_seq__$1);
-var G__18469 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons((function (){var G__18256 = (function (){var G__18257 = strip_ns((rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1(k) : rewrite_clj.zip.sexpr.call(null,k)));
+var G__18465 = ns__$1;
+var G__18466 = cljs.core.next(pair_seq__$1);
+var G__18467 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons((function (){var G__18256 = (function (){var G__18257 = strip_ns((rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1(k) : rewrite_clj.zip.sexpr.call(null,k)));
 return (rewrite_clj.node.token_node.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.token_node.cljs$core$IFn$_invoke$arity$1(G__18257) : rewrite_clj.node.token_node.call(null,G__18257));
 })();
 return (zprint.zutil.edn_STAR_.cljs$core$IFn$_invoke$arity$1 ? zprint.zutil.edn_STAR_.cljs$core$IFn$_invoke$arity$1(G__18256) : zprint.zutil.edn_STAR_.call(null,G__18256));
 })(),rest_of_pair));
-ns__$1 = G__18467;
-pair_seq__$1 = G__18468;
-out = G__18469;
+ns__$1 = G__18465;
+pair_seq__$1 = G__18466;
+out = G__18467;
 continue;
 } else {
 return null;
 }
 } else {
-var G__18470 = current_ns;
-var G__18471 = cljs.core.next(pair_seq__$1);
-var G__18472 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons((function (){var G__18258 = (function (){var G__18259 = strip_ns((rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1(k) : rewrite_clj.zip.sexpr.call(null,k)));
+var G__18468 = current_ns;
+var G__18469 = cljs.core.next(pair_seq__$1);
+var G__18470 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons((function (){var G__18258 = (function (){var G__18259 = strip_ns((rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1(k) : rewrite_clj.zip.sexpr.call(null,k)));
 return (rewrite_clj.node.token_node.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.token_node.cljs$core$IFn$_invoke$arity$1(G__18259) : rewrite_clj.node.token_node.call(null,G__18259));
 })();
 return (zprint.zutil.edn_STAR_.cljs$core$IFn$_invoke$arity$1 ? zprint.zutil.edn_STAR_.cljs$core$IFn$_invoke$arity$1(G__18258) : zprint.zutil.edn_STAR_.call(null,G__18258));
 })(),rest_of_pair));
-ns__$1 = G__18470;
-pair_seq__$1 = G__18471;
-out = G__18472;
+ns__$1 = G__18468;
+pair_seq__$1 = G__18469;
+out = G__18470;
 continue;
 }
 } else {
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(pair),(1))){
-var G__18473 = ns__$1;
-var G__18474 = cljs.core.next(pair_seq__$1);
-var G__18475 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,pair);
-ns__$1 = G__18473;
-pair_seq__$1 = G__18474;
-out = G__18475;
+var G__18471 = ns__$1;
+var G__18472 = cljs.core.next(pair_seq__$1);
+var G__18473 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,pair);
+ns__$1 = G__18471;
+pair_seq__$1 = G__18472;
+out = G__18473;
 continue;
 } else {
 return null;
@@ -1294,20 +1294,20 @@ if(cljs.core.truth_(current_ns)){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [ns,pair_seq__$1], null);
 } else {
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(pair),(1))){
-var G__18476 = cljs.core.next(pair_seq__$1);
-var G__18477 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,pair);
-pair_seq__$1 = G__18476;
-out = G__18477;
+var G__18474 = cljs.core.next(pair_seq__$1);
+var G__18475 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,pair);
+pair_seq__$1 = G__18474;
+out = G__18475;
 continue;
 } else {
-var G__18478 = cljs.core.next(pair_seq__$1);
-var G__18479 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons((function (){var G__18268 = (function (){var G__18269 = cljs.core.symbol.cljs$core$IFn$_invoke$arity$1([cljs.core.str.cljs$core$IFn$_invoke$arity$1(ns),"/",cljs.core.name((rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1(k) : rewrite_clj.zip.sexpr.call(null,k)))].join(''));
+var G__18476 = cljs.core.next(pair_seq__$1);
+var G__18477 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons((function (){var G__18268 = (function (){var G__18269 = cljs.core.symbol.cljs$core$IFn$_invoke$arity$1([cljs.core.str.cljs$core$IFn$_invoke$arity$1(ns),"/",cljs.core.name((rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.zip.sexpr.cljs$core$IFn$_invoke$arity$1(k) : rewrite_clj.zip.sexpr.call(null,k)))].join(''));
 return (rewrite_clj.node.token_node.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.token_node.cljs$core$IFn$_invoke$arity$1(G__18269) : rewrite_clj.node.token_node.call(null,G__18269));
 })();
 return (zprint.zutil.edn_STAR_.cljs$core$IFn$_invoke$arity$1 ? zprint.zutil.edn_STAR_.cljs$core$IFn$_invoke$arity$1(G__18268) : zprint.zutil.edn_STAR_.call(null,G__18268));
 })(),rest_of_pair));
-pair_seq__$1 = G__18478;
-out = G__18479;
+pair_seq__$1 = G__18476;
+out = G__18477;
 continue;
 
 }

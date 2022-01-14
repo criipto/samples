@@ -1,14 +1,14 @@
 goog.provide('day8.re_frame_10x.svgs');
 day8.re_frame_10x.svgs.triangle_down = (function day8$re_frame_10x$svgs$triangle_down(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___16325 = arguments.length;
-var i__4865__auto___16326 = (0);
+var len__4864__auto___16308 = arguments.length;
+var i__4865__auto___16309 = (0);
 while(true){
-if((i__4865__auto___16326 < len__4864__auto___16325)){
-args__4870__auto__.push((arguments[i__4865__auto___16326]));
+if((i__4865__auto___16309 < len__4864__auto___16308)){
+args__4870__auto__.push((arguments[i__4865__auto___16309]));
 
-var G__16327 = (i__4865__auto___16326 + (1));
-i__4865__auto___16326 = G__16327;
+var G__16310 = (i__4865__auto___16309 + (1));
+i__4865__auto___16309 = G__16310;
 continue;
 } else {
 }
@@ -19,19 +19,19 @@ var argseq__4871__auto__ = ((((0) < args__4870__auto__.length))?(new cljs.core.I
 return day8.re_frame_10x.svgs.triangle_down.cljs$core$IFn$_invoke$arity$variadic(argseq__4871__auto__);
 });
 
-(day8.re_frame_10x.svgs.triangle_down.cljs$core$IFn$_invoke$arity$variadic = (function (p__16323){
-var map__16324 = p__16323;
-var map__16324__$1 = cljs.core.__destructure_map(map__16324);
-var style = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__16324__$1,new cljs.core.Keyword(null,"style","style",-496642736),cljs.core.PersistentArrayMap.EMPTY);
+(day8.re_frame_10x.svgs.triangle_down.cljs$core$IFn$_invoke$arity$variadic = (function (p__16306){
+var map__16307 = p__16306;
+var map__16307__$1 = cljs.core.__destructure_map(map__16307);
+var style = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__16307__$1,new cljs.core.Keyword(null,"style","style",-496642736),cljs.core.PersistentArrayMap.EMPTY);
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"svg","svg",856789142),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"height","height",1025178622),"7px",new cljs.core.Keyword(null,"viewBox","viewBox",-469489477),"0 0 12 7",new cljs.core.Keyword(null,"style","style",-496642736),style], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"g","g",1738089905),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"id","id",-1388402092),"Canvas",new cljs.core.Keyword(null,"transform","transform",1381301764),"translate(-2344 -40)"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"g","g",1738089905),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"Polygon"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"use","use",-1846382424),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"href","href",-793805698),"#path0_fill",new cljs.core.Keyword(null,"transform","transform",1381301764),"matrix(-1 9.54098e-18 -9.54098e-18 -1 2356 47)",new cljs.core.Keyword(null,"fill","fill",883462889),"#6EC0E6"], null)], null)], null)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"defs","defs",1398449717),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"path","path",-188191168),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"id","id",-1388402092),"path0_fill",new cljs.core.Keyword(null,"d","d",1972142424),"M 6.05481 0L 12 7L 0 7L 6.05481 0Z"], null)], null)], null)], null);
 }));
 
 (day8.re_frame_10x.svgs.triangle_down.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(day8.re_frame_10x.svgs.triangle_down.cljs$lang$applyTo = (function (seq16322){
+(day8.re_frame_10x.svgs.triangle_down.cljs$lang$applyTo = (function (seq16305){
 var self__4852__auto__ = this;
-return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq16322));
+return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq16305));
 }));
 
 day8.re_frame_10x.svgs.round_arrow = (function day8$re_frame_10x$svgs$round_arrow(){
