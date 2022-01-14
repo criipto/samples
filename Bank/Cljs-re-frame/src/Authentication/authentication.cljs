@@ -4,10 +4,14 @@
             [clojure.string :as str]
             [re-frame.core :as rf]))
 
-;; TODO use environment variable?
-(def redirect-uri "http://localhost:3000/auth")
 
-(def domain "mnie-test.criipto.id")
+(def redirect-uri
+  (delay
+    (if (= (.-hostname (.-location js/window)) "localhost")
+      (str "http://" (.-host (.-location js/window)) "/auth")
+      (str "https://" (.-host (.-location js/window)) "/samples/cljs/auth"))))
+
+(def auth-domain "mnie-test.criipto.id")
 
 (def client-id "urn:mnie:1010")
 
@@ -15,7 +19,7 @@
 
 (defonce ^Object authenticator
   (let [session-storage js/sessionStorage
-        args (clj->js {:domain domain
+        args (clj->js {:domain auth-domain
                        :clientID client-id
                        :store session-storage})
         authenticator (auth. args)
@@ -32,7 +36,9 @@
     authenticator))
 
 (defn login []
-  (let [args (clj->js {:redirectUri redirect-uri
+  (js/console.log "redirect uri")
+  (js/console.log (deref redirect-uri))
+  (let [args (clj->js {:redirectUri (deref redirect-uri)
                        :acrValues acr-mitid})]
     (.redirect.authorize authenticator args)))
 
@@ -48,7 +54,7 @@
      :signature signature}))
 
 (def js-storage-key-for-auth
-  (str "oidc.user:" domain ":" client-id))
+  (str "oidc.user:" auth-domain ":" client-id))
 
 (defn save-token-to-js-storage! [js-storage]
   (fn [{:keys [authorization-result] :as _db}]
