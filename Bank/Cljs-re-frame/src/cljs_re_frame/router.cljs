@@ -28,8 +28,11 @@
   []
   (pushy/start! history))
 
-(def path-for
-  (partial bidi/path-for routes))
+(defn path-for [page]
+  (let [path (bidi/path-for routes page)]
+    (js/console.log (str "path-for: " page))
+    (js/console.log path)
+    path))
 
 (defn set-token!
   [token]

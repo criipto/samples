@@ -23,7 +23,7 @@
  {:app
   {:target     :browser
    :output-dir "resources/public/js/compiled"
-   :asset-path "/js/compiled"
+   :asset-path "js/compiled"
    :modules
    {:app {:init-fn cljs-re-frame.core/init}}
    :devtools
