@@ -24,14 +24,14 @@ return (rewrite_clj.node.coerce.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node
  */
 rewrite_clj.zip.editz.edit = (function rewrite_clj$zip$editz$edit(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___18196 = arguments.length;
-var i__4865__auto___18197 = (0);
+var len__4864__auto___18194 = arguments.length;
+var i__4865__auto___18195 = (0);
 while(true){
-if((i__4865__auto___18197 < len__4864__auto___18196)){
-args__4870__auto__.push((arguments[i__4865__auto___18197]));
+if((i__4865__auto___18195 < len__4864__auto___18194)){
+args__4870__auto__.push((arguments[i__4865__auto___18195]));
 
-var G__18198 = (i__4865__auto___18197 + (1));
-i__4865__auto___18197 = G__18198;
+var G__18196 = (i__4865__auto___18195 + (1));
+i__4865__auto___18195 = G__18196;
 continue;
 } else {
 }
@@ -103,12 +103,12 @@ var n = cljs.core.update_in.cljs$core$IFn$_invoke$arity$3(clojure.zip.node(zloc)
 return clojure.zip.replace(zloc,n);
 });
 rewrite_clj.zip.editz.prefix = (function rewrite_clj$zip$editz$prefix(zloc,s){
-var G__18193 = rewrite_clj.zip.base.tag(zloc);
-var G__18193__$1 = (((G__18193 instanceof cljs.core.Keyword))?G__18193.fqn:null);
-switch (G__18193__$1) {
+var G__18191 = rewrite_clj.zip.base.tag(zloc);
+var G__18191__$1 = (((G__18191 instanceof cljs.core.Keyword))?G__18191.fqn:null);
+switch (G__18191__$1) {
 case "token":
-return rewrite_clj.zip.editz.edit_token(zloc,(function (p1__18191_SHARP_){
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(s),cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__18191_SHARP_)].join('');
+return rewrite_clj.zip.editz.edit_token(zloc,(function (p1__18189_SHARP_){
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(s),cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__18189_SHARP_)].join('');
 }));
 
 break;
@@ -117,25 +117,25 @@ return rewrite_clj.zip.editz.edit_multi_line(zloc,(function (lines){
 if(cljs.core.empty_QMARK_(lines)){
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [s], null);
 } else {
-return cljs.core.update_in.cljs$core$IFn$_invoke$arity$3(lines,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0)], null),(function (p1__18192_SHARP_){
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(s),cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__18192_SHARP_)].join('');
+return cljs.core.update_in.cljs$core$IFn$_invoke$arity$3(lines,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0)], null),(function (p1__18190_SHARP_){
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(s),cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__18190_SHARP_)].join('');
 }));
 }
 }));
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__18193__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__18191__$1)].join('')));
 
 }
 });
 rewrite_clj.zip.editz.suffix = (function rewrite_clj$zip$editz$suffix(zloc,s){
-var G__18195 = rewrite_clj.zip.base.tag(zloc);
-var G__18195__$1 = (((G__18195 instanceof cljs.core.Keyword))?G__18195.fqn:null);
-switch (G__18195__$1) {
+var G__18193 = rewrite_clj.zip.base.tag(zloc);
+var G__18193__$1 = (((G__18193 instanceof cljs.core.Keyword))?G__18193.fqn:null);
+switch (G__18193__$1) {
 case "token":
-return rewrite_clj.zip.editz.edit_token(zloc,(function (p1__18194_SHARP_){
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__18194_SHARP_),cljs.core.str.cljs$core$IFn$_invoke$arity$1(s)].join('');
+return rewrite_clj.zip.editz.edit_token(zloc,(function (p1__18192_SHARP_){
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__18192_SHARP_),cljs.core.str.cljs$core$IFn$_invoke$arity$1(s)].join('');
 }));
 
 break;
@@ -150,7 +150,7 @@ return cljs.core.concat.cljs$core$IFn$_invoke$arity$2(cljs.core.butlast(lines),[
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__18195__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__18193__$1)].join('')));
 
 }
 });

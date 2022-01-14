@@ -8,9 +8,7 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 });
 cljs_re_frame.core.dev_setup = (function cljs_re_frame$core$dev_setup(){
 if(cljs_re_frame.config.debug_QMARK_){
-cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["dev mode"], 0));
-
-return console.log("dev mode");
+return cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["dev mode"], 0));
 } else {
 return null;
 }

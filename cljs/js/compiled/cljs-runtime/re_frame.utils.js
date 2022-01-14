@@ -5,14 +5,14 @@ goog.provide('re_frame.utils');
  *   will not be present in the new structure.
  *   The key thing is that 'm' remains identical? to itself if the path was never present
  */
-re_frame.utils.dissoc_in = (function re_frame$utils$dissoc_in(m,p__20069){
-var vec__20070 = p__20069;
-var seq__20071 = cljs.core.seq(vec__20070);
-var first__20072 = cljs.core.first(seq__20071);
-var seq__20071__$1 = cljs.core.next(seq__20071);
-var k = first__20072;
-var ks = seq__20071__$1;
-var keys = vec__20070;
+re_frame.utils.dissoc_in = (function re_frame$utils$dissoc_in(m,p__20067){
+var vec__20068 = p__20067;
+var seq__20069 = cljs.core.seq(vec__20068);
+var first__20070 = cljs.core.first(seq__20069);
+var seq__20069__$1 = cljs.core.next(seq__20069);
+var k = first__20070;
+var ks = seq__20069__$1;
+var keys = vec__20068;
 if(ks){
 var temp__5751__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,k);
 if(cljs.core.truth_(temp__5751__auto__)){
@@ -73,11 +73,11 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(f,cljs.core.apply.cljs$core
 (re_frame.utils.apply_kw.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(re_frame.utils.apply_kw.cljs$lang$applyTo = (function (seq20073){
-var G__20074 = cljs.core.first(seq20073);
-var seq20073__$1 = cljs.core.next(seq20073);
+(re_frame.utils.apply_kw.cljs$lang$applyTo = (function (seq20071){
+var G__20072 = cljs.core.first(seq20071);
+var seq20071__$1 = cljs.core.next(seq20071);
 var self__4851__auto__ = this;
-return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__20074,seq20073__$1);
+return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__20072,seq20071__$1);
 }));
 
 
