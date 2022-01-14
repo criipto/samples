@@ -3,23 +3,26 @@
             [pushy.core :as pushy]
             [re-frame.core :as rf]))
 
-(def routes [#_"/samples/cljs/"
-             ""
-             {""                      :front-page
-              "profile"               :profile
-              "overview"              :overview
-              "auth"                  :auth
-              "accounts"              :accounts
-              "payments-and-transfer" :payments-and-transfer
-              "investment"            :investment
-              "pension-and-insurance" :pension-and-insurance
-              "messages"              :messages
-              "developer-support"     :developer-support}])
+(def routes
+  (let [routes* {""                      :front-page
+                 "profile"               :profile
+                 "overview"              :overview
+                 "auth"                  :auth
+                 "accounts"              :accounts
+                 "payments-and-transfer" :payments-and-transfer
+                 "investment"            :investment
+                 "pension-and-insurance" :pension-and-insurance
+                 "messages"              :messages
+                 "developer-support"     :developer-support}]
+    ["" (assoc routes* "/samples/cljs/" routes*)]))
 
 (def history
   (let [dispatch #(rf/dispatch [::route-changed %])
         match #(bidi/match-route routes %)]
     (pushy/pushy dispatch match)))
+
+(defn match-route [uri]
+  (bidi/match-route routes uri))
 
 (defn start!
   []
