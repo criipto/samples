@@ -1,0 +1,1 @@
+{"version":3,"sources":["cljs_re_frame/config.cljs"],"mappings":";AAEA,AAAKA,oCACMC","names":["cljs-re-frame.config/debug?","js/goog.DEBUG"],"sourcesContent":["(ns cljs-re-frame.config)\n\n(def debug?\n  ^boolean goog.DEBUG)\n"]}
