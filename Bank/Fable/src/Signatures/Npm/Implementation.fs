@@ -1,7 +1,6 @@
 namespace Signatures
 
-module Client = 
-
+module internal Implementation = 
     //this assumes that the server is using the criipto signatures docker image criipto/signatures
 
     open Fable.SimpleHttp
@@ -22,13 +21,6 @@ module Client =
             | AddSignatory -> "addSignatory"
             | AddSignatories -> "addSignatories"
 
-    type DocumentInfo = 
-        {
-            Title : string
-            Content : string
-            Reference : string option
-        }
-
     type Client(apiRoot, token) = 
         let post (operation : Operation) (json : string) = 
             async{
@@ -43,7 +35,7 @@ module Client =
                 return response.statusCode, response.responseText
             } |> Async.StartAsPromise
 
-        member __.createSignatureOrder(title : string, documents : DocumentInfo [])  =
+        member __.CreateSignatureOrder(title : string, documents : Types.DocumentInfo [])  =
             {|
                 documents =
                     documents
@@ -69,7 +61,7 @@ module Client =
             |> Json.serialize
             |> post CreateOrder
             
-        member __.addSignatory(orderId : string,userRef : string) =
+        member __.AddSignatory(orderId : string,userRef : string) =
             {|
                 SignatureOrderId = orderId
                 Signatory =  {|
@@ -82,7 +74,7 @@ module Client =
             |> post AddSignatory
 
 
-        member __.cancelSignatureOrder(orderId : string) =
+        member __.CancelSignatureOrder(orderId : string) =
             orderId
             |> Json.serialize
             |> post CancelOrder
