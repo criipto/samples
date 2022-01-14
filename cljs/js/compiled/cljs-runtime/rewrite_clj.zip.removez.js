@@ -53,17 +53,17 @@ if(cljs.core.truth_(zloc)){
 throw (new Error("Assert failed: zloc"));
 }
 
-var _PERCENT_ = rewrite_clj.zip.whitespace.skip_whitespace.cljs$core$IFn$_invoke$arity$2(clojure.zip.prev,clojure.zip.remove(rewrite_clj.zip.removez.remove_trailing_space(((((rewrite_clj.zip.move.rightmost_QMARK_(zloc)) || (rewrite_clj.zip.move.leftmost_QMARK_(zloc))))?rewrite_clj.zip.removez.remove_preceding_space(zloc,(function (p1__18179_SHARP_){
-var and__4251__auto__ = rewrite_clj.zip.whitespace.whitespace_QMARK_(p1__18179_SHARP_);
+var _PERCENT_ = rewrite_clj.zip.whitespace.skip_whitespace.cljs$core$IFn$_invoke$arity$2(clojure.zip.prev,clojure.zip.remove(rewrite_clj.zip.removez.remove_trailing_space(((((rewrite_clj.zip.move.rightmost_QMARK_(zloc)) || (rewrite_clj.zip.move.leftmost_QMARK_(zloc))))?rewrite_clj.zip.removez.remove_preceding_space(zloc,(function (p1__18171_SHARP_){
+var and__4251__auto__ = rewrite_clj.zip.whitespace.whitespace_QMARK_(p1__18171_SHARP_);
 if(cljs.core.truth_(and__4251__auto__)){
-return cljs.core.not(rewrite_clj.zip.whitespace.linebreak_QMARK_(p1__18179_SHARP_));
+return cljs.core.not(rewrite_clj.zip.whitespace.linebreak_QMARK_(p1__18171_SHARP_));
 } else {
 return and__4251__auto__;
 }
-})):zloc),(function (p1__18180_SHARP_){
-var and__4251__auto__ = rewrite_clj.zip.whitespace.whitespace_QMARK_(p1__18180_SHARP_);
+})):zloc),(function (p1__18172_SHARP_){
+var and__4251__auto__ = rewrite_clj.zip.whitespace.whitespace_QMARK_(p1__18172_SHARP_);
 if(cljs.core.truth_(and__4251__auto__)){
-return cljs.core.not(rewrite_clj.zip.whitespace.linebreak_QMARK_(p1__18180_SHARP_));
+return cljs.core.not(rewrite_clj.zip.whitespace.linebreak_QMARK_(p1__18172_SHARP_));
 } else {
 return and__4251__auto__;
 }

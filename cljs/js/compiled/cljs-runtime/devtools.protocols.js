@@ -26,7 +26,7 @@ devtools.protocols.ISurrogate = function(){};
  */
 devtools.protocols.IFormat = function(){};
 
-var devtools$protocols$IFormat$_header$dyn_11078 = (function (value){
+var devtools$protocols$IFormat$_header$dyn_11048 = (function (value){
 var x__4550__auto__ = (((value == null))?null:value);
 var m__4551__auto__ = (devtools.protocols._header[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -44,11 +44,11 @@ devtools.protocols._header = (function devtools$protocols$_header(value){
 if((((!((value == null)))) && ((!((value.devtools$protocols$IFormat$_header$arity$1 == null)))))){
 return value.devtools$protocols$IFormat$_header$arity$1(value);
 } else {
-return devtools$protocols$IFormat$_header$dyn_11078(value);
+return devtools$protocols$IFormat$_header$dyn_11048(value);
 }
 });
 
-var devtools$protocols$IFormat$_has_body$dyn_11079 = (function (value){
+var devtools$protocols$IFormat$_has_body$dyn_11049 = (function (value){
 var x__4550__auto__ = (((value == null))?null:value);
 var m__4551__auto__ = (devtools.protocols._has_body[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -66,7 +66,7 @@ devtools.protocols._has_body = (function devtools$protocols$_has_body(value){
 if((((!((value == null)))) && ((!((value.devtools$protocols$IFormat$_has_body$arity$1 == null)))))){
 return value.devtools$protocols$IFormat$_has_body$arity$1(value);
 } else {
-return devtools$protocols$IFormat$_has_body$dyn_11079(value);
+return devtools$protocols$IFormat$_has_body$dyn_11049(value);
 }
 });
 

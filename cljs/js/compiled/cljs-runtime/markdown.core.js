@@ -1,22 +1,22 @@
 goog.provide('markdown.core');
-markdown.core.init_transformer = (function markdown$core$init_transformer(p__22404){
-var map__22405 = p__22404;
-var map__22405__$1 = cljs.core.__destructure_map(map__22405);
-var replacement_transformers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22405__$1,new cljs.core.Keyword(null,"replacement-transformers","replacement-transformers",-2028552897));
-var custom_transformers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22405__$1,new cljs.core.Keyword(null,"custom-transformers","custom-transformers",1440601790));
-var inhibit_separator = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22405__$1,new cljs.core.Keyword(null,"inhibit-separator","inhibit-separator",1268116222));
+markdown.core.init_transformer = (function markdown$core$init_transformer(p__22408){
+var map__22409 = p__22408;
+var map__22409__$1 = cljs.core.__destructure_map(map__22409);
+var replacement_transformers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22409__$1,new cljs.core.Keyword(null,"replacement-transformers","replacement-transformers",-2028552897));
+var custom_transformers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22409__$1,new cljs.core.Keyword(null,"custom-transformers","custom-transformers",1440601790));
+var inhibit_separator = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22409__$1,new cljs.core.Keyword(null,"inhibit-separator","inhibit-separator",1268116222));
 return (function (html,line,next_line,state){
-var _STAR_inhibit_separator_STAR__orig_val__22406 = markdown.common._STAR_inhibit_separator_STAR_;
-var _STAR_inhibit_separator_STAR__temp_val__22407 = inhibit_separator;
-(markdown.common._STAR_inhibit_separator_STAR_ = _STAR_inhibit_separator_STAR__temp_val__22407);
+var _STAR_inhibit_separator_STAR__orig_val__22410 = markdown.common._STAR_inhibit_separator_STAR_;
+var _STAR_inhibit_separator_STAR__temp_val__22411 = inhibit_separator;
+(markdown.common._STAR_inhibit_separator_STAR_ = _STAR_inhibit_separator_STAR__temp_val__22411);
 
-try{var vec__22408 = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p__22411,transformer){
-var vec__22412 = p__22411;
-var text = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22412,(0),null);
-var state__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22412,(1),null);
-var G__22415 = text;
-var G__22416 = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(state__$1,new cljs.core.Keyword(null,"next-line","next-line",-1187000287),next_line);
-return (transformer.cljs$core$IFn$_invoke$arity$2 ? transformer.cljs$core$IFn$_invoke$arity$2(G__22415,G__22416) : transformer.call(null,G__22415,G__22416));
+try{var vec__22412 = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (p__22415,transformer){
+var vec__22416 = p__22415;
+var text = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22416,(0),null);
+var state__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22416,(1),null);
+var G__22419 = text;
+var G__22420 = cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(state__$1,new cljs.core.Keyword(null,"next-line","next-line",-1187000287),next_line);
+return (transformer.cljs$core$IFn$_invoke$arity$2 ? transformer.cljs$core$IFn$_invoke$arity$2(G__22419,G__22420) : transformer.call(null,G__22419,G__22420));
 }),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [line,state], null),(function (){var or__4253__auto__ = replacement_transformers;
 if(cljs.core.truth_(or__4253__auto__)){
 return or__4253__auto__;
@@ -24,12 +24,12 @@ return or__4253__auto__;
 return cljs.core.into.cljs$core$IFn$_invoke$arity$2(markdown.transformers.transformer_vector,custom_transformers);
 }
 })());
-var text = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22408,(0),null);
-var new_state = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22408,(1),null);
+var text = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22412,(0),null);
+var new_state = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22412,(1),null);
 html.append(text);
 
 return new_state;
-}finally {(markdown.common._STAR_inhibit_separator_STAR_ = _STAR_inhibit_separator_STAR__orig_val__22406);
+}finally {(markdown.common._STAR_inhibit_separator_STAR_ = _STAR_inhibit_separator_STAR__orig_val__22410);
 }});
 });
 /**
@@ -62,11 +62,11 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$3(goog.string.format,fmt,args
 (markdown.core.format.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(markdown.core.format.cljs$lang$applyTo = (function (seq22417){
-var G__22418 = cljs.core.first(seq22417);
-var seq22417__$1 = cljs.core.next(seq22417);
+(markdown.core.format.cljs$lang$applyTo = (function (seq22421){
+var G__22422 = cljs.core.first(seq22421);
+var seq22421__$1 = cljs.core.next(seq22421);
 var self__4851__auto__ = this;
-return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22418,seq22417__$1);
+return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22422,seq22421__$1);
 }));
 
 markdown.core.parse_references = (function markdown$core$parse_references(lines){
@@ -316,11 +316,11 @@ return markdown.core.md_to_html_string_STAR_(text,cljs.core.into.cljs$core$IFn$_
 (markdown.core.md__GT_html_with_meta.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(markdown.core.md__GT_html_with_meta.cljs$lang$applyTo = (function (seq22460){
-var G__22461 = cljs.core.first(seq22460);
-var seq22460__$1 = cljs.core.next(seq22460);
+(markdown.core.md__GT_html_with_meta.cljs$lang$applyTo = (function (seq22457){
+var G__22458 = cljs.core.first(seq22457);
+var seq22457__$1 = cljs.core.next(seq22457);
 var self__4851__auto__ = this;
-return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22461,seq22460__$1);
+return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22458,seq22457__$1);
 }));
 
 /**
@@ -354,9 +354,9 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(markdown.core.md__GT_html,p
 (markdown.core.mdToHtml.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(markdown.core.mdToHtml.cljs$lang$applyTo = (function (seq22462){
+(markdown.core.mdToHtml.cljs$lang$applyTo = (function (seq22459){
 var self__4852__auto__ = this;
-return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22462));
+return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22459));
 }));
 
 /**
@@ -390,9 +390,9 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(markdown.core.md__GT_html_w
 (markdown.core.mdToHtmlWithMeta.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(markdown.core.mdToHtmlWithMeta.cljs$lang$applyTo = (function (seq22463){
+(markdown.core.mdToHtmlWithMeta.cljs$lang$applyTo = (function (seq22460){
 var self__4852__auto__ = this;
-return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22463));
+return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22460));
 }));
 
 

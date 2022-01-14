@@ -4,62 +4,62 @@ cljs_re_frame.events.js_storage = sessionStorage;
 cljs_re_frame.events.set_token_interceptor = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [re_frame.core.after(Authentication.authentication.save_token_to_js_storage_BANG_(cljs_re_frame.events.js_storage))], null);
 cljs_re_frame.events.remove_token_interceptor = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [re_frame.core.after(Authentication.authentication.remove_token_from_js_storage_BANG_(cljs_re_frame.events.js_storage))], null);
 cljs_re_frame.events.read_local_storage = (function cljs_re_frame$events$read_local_storage(k){
-var G__22081 = cljs_re_frame.events.js_storage.getItem(k);
-if((G__22081 == null)){
+var G__22080 = cljs_re_frame.events.js_storage.getItem(k);
+if((G__22080 == null)){
 return null;
 } else {
-return cljs.reader.read_string.cljs$core$IFn$_invoke$arity$1(G__22081);
+return cljs.reader.read_string.cljs$core$IFn$_invoke$arity$1(G__22080);
 }
 });
 re_frame.core.reg_cofx(new cljs.core.Keyword("cljs-re-frame.events","local-store-token","cljs-re-frame.events/local-store-token",1929263119),(function (cofx,_){
 var token = cljs_re_frame.events.read_local_storage(Authentication.authentication.js_storage_key_for_auth);
-var G__22082 = cofx;
+var G__22081 = cofx;
 if((!((token == null)))){
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__22082,new cljs.core.Keyword("cljs-re-frame.events","local-store-token","cljs-re-frame.events/local-store-token",1929263119),token);
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__22081,new cljs.core.Keyword("cljs-re-frame.events","local-store-token","cljs-re-frame.events/local-store-token",1929263119),token);
 } else {
-return G__22082;
+return G__22081;
 }
 }));
-re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("cljs-re-frame.events","set-active-page","cljs-re-frame.events/set-active-page",103486923),(function (p__22083,p__22084){
-var map__22085 = p__22083;
-var map__22085__$1 = cljs.core.__destructure_map(map__22085);
-var db = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22085__$1,new cljs.core.Keyword(null,"db","db",993250759));
-var vec__22086 = p__22084;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22086,(0),null);
-var active_page = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22086,(1),null);
+re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("cljs-re-frame.events","set-active-page","cljs-re-frame.events/set-active-page",103486923),(function (p__22082,p__22083){
+var map__22084 = p__22082;
+var map__22084__$1 = cljs.core.__destructure_map(map__22084);
+var db = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22084__$1,new cljs.core.Keyword(null,"db","db",993250759));
+var vec__22085 = p__22083;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22085,(0),null);
+var active_page = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22085,(1),null);
 return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"db","db",993250759),cljs.core.assoc_in(db,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"nav","nav",719540477),new cljs.core.Keyword(null,"active-page","active-page",370357330)], null),active_page),new cljs.core.Keyword(null,"navigate-to","navigate-to",-1161651312),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"path","path",-188191168),cljs_re_frame.router.path_for(active_page)], null)], null);
 }));
 cljs_re_frame.events.token_payload__GT_user_profile = (function cljs_re_frame$events$token_payload__GT_user_profile(payload){
 return cljs.core.select_keys(payload,new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"name","name",1843675177),new cljs.core.Keyword(null,"birthdate","birthdate",-534621599),new cljs.core.Keyword(null,"age","age",-604307804),new cljs.core.Keyword(null,"cprNumberIdentifier","cprNumberIdentifier",-728346227),new cljs.core.Keyword(null,"country","country",312965309)], null));
 });
-re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$3(new cljs.core.Keyword(null,"authorized","authorized",509904454),cljs_re_frame.events.set_token_interceptor,(function (p__22089,p__22090){
-var map__22091 = p__22089;
-var map__22091__$1 = cljs.core.__destructure_map(map__22091);
-var _cofx = map__22091__$1;
-var db = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22091__$1,new cljs.core.Keyword(null,"db","db",993250759));
-var vec__22092 = p__22090;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22092,(0),null);
-var result = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22092,(1),null);
+re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$3(new cljs.core.Keyword(null,"authorized","authorized",509904454),cljs_re_frame.events.set_token_interceptor,(function (p__22088,p__22089){
+var map__22090 = p__22088;
+var map__22090__$1 = cljs.core.__destructure_map(map__22090);
+var _cofx = map__22090__$1;
+var db = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22090__$1,new cljs.core.Keyword(null,"db","db",993250759));
+var vec__22091 = p__22089;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22091,(0),null);
+var result = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22091,(1),null);
 var result_STAR_ = clojure.walk.keywordize_keys(result);
-var parsed_result = (function (){var G__22095 = result_STAR_;
-var G__22095__$1 = (((G__22095 == null))?null:new cljs.core.Keyword(null,"id_token","id_token",148712273).cljs$core$IFn$_invoke$arity$1(G__22095));
+var parsed_result = (function (){var G__22094 = result_STAR_;
+var G__22094__$1 = (((G__22094 == null))?null:new cljs.core.Keyword(null,"id_token","id_token",148712273).cljs$core$IFn$_invoke$arity$1(G__22094));
+if((G__22094__$1 == null)){
+return null;
+} else {
+return Authentication.authentication.parse_id_token(G__22094__$1);
+}
+})();
+return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"db","db",993250759),cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc_in(db,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"authorization-result","authorization-result",1368017039),new cljs.core.Keyword(null,"token","token",-1211463215)], null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"raw","raw",1604651272),result_STAR_,new cljs.core.Keyword(null,"parsed","parsed",-819589156),parsed_result], null)),new cljs.core.Keyword(null,"user-profile","user-profile",-1783018313),(function (){var G__22095 = parsed_result;
+var G__22095__$1 = (((G__22095 == null))?null:new cljs.core.Keyword(null,"payload","payload",-383036092).cljs$core$IFn$_invoke$arity$1(G__22095));
 if((G__22095__$1 == null)){
 return null;
 } else {
-return Authentication.authentication.parse_id_token(G__22095__$1);
-}
-})();
-return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"db","db",993250759),cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc_in(db,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"authorization-result","authorization-result",1368017039),new cljs.core.Keyword(null,"token","token",-1211463215)], null),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"raw","raw",1604651272),result_STAR_,new cljs.core.Keyword(null,"parsed","parsed",-819589156),parsed_result], null)),new cljs.core.Keyword(null,"user-profile","user-profile",-1783018313),(function (){var G__22096 = parsed_result;
-var G__22096__$1 = (((G__22096 == null))?null:new cljs.core.Keyword(null,"payload","payload",-383036092).cljs$core$IFn$_invoke$arity$1(G__22096));
-if((G__22096__$1 == null)){
-return null;
-} else {
-return cljs_re_frame.events.token_payload__GT_user_profile(G__22096__$1);
+return cljs_re_frame.events.token_payload__GT_user_profile(G__22095__$1);
 }
 })()),new cljs.core.Keyword(null,"dispatch","dispatch",1319337009),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("cljs-re-frame.events","set-active-page","cljs-re-frame.events/set-active-page",103486923),new cljs.core.Keyword(null,"overview","overview",-435037267)], null)], null);
 }));
-re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"authorization-error","authorization-error",-329272671),(function (db,p__22097){
-var vec__22098 = p__22097;
+re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"authorization-error","authorization-error",-329272671),(function (db,p__22096){
+var vec__22098 = p__22096;
 var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22098,(0),null);
 var error_message = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22098,(1),null);
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(db,new cljs.core.Keyword(null,"authorization-error-message","authorization-error-message",-1415565754),error_message);
