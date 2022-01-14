@@ -20,8 +20,8 @@ return or__4253__auto__;
 return top;
 }
 } else {
-var G__18103 = (function (){var G__18095 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [node], null);
-return (rewrite_clj.node.forms_node.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.forms_node.cljs$core$IFn$_invoke$arity$1(G__18095) : rewrite_clj.node.forms_node.call(null,G__18095));
+var G__18103 = (function (){var G__18093 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [node], null);
+return (rewrite_clj.node.forms_node.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.forms_node.cljs$core$IFn$_invoke$arity$1(G__18093) : rewrite_clj.node.forms_node.call(null,G__18093));
 })();
 node = G__18103;
 continue;
@@ -33,12 +33,12 @@ break;
  * Get tag of node at the current zipper location.
  */
 rewrite_clj.zip.base.tag = (function rewrite_clj$zip$base$tag(zloc){
-var G__18096 = zloc;
-var G__18096__$1 = (((G__18096 == null))?null:clojure.zip.node(G__18096));
-if((G__18096__$1 == null)){
+var G__18094 = zloc;
+var G__18094__$1 = (((G__18094 == null))?null:clojure.zip.node(G__18094));
+if((G__18094__$1 == null)){
 return null;
 } else {
-return (rewrite_clj.node.tag.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.tag.cljs$core$IFn$_invoke$arity$1(G__18096__$1) : rewrite_clj.node.tag.call(null,G__18096__$1));
+return (rewrite_clj.node.tag.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.tag.cljs$core$IFn$_invoke$arity$1(G__18094__$1) : rewrite_clj.node.tag.call(null,G__18094__$1));
 }
 });
 /**

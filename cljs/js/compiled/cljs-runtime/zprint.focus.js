@@ -55,14 +55,14 @@ var new_next_nonws_QMARK_ = ((((cljs.core.not(skip_to_right_QMARK_)) || (cljs.co
 if(cljs.core.truth_(next_nonws_QMARK_)){
 return index;
 } else {
-var G__16451 = (cljs.core.truth_((function (){var and__4251__auto__ = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(index_type,new cljs.core.Keyword(null,"left","left",-399115937));
+var G__16458 = (cljs.core.truth_((function (){var and__4251__auto__ = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(index_type,new cljs.core.Keyword(null,"left","left",-399115937));
 if(and__4251__auto__){
 return skip_to_right_QMARK_;
 } else {
 return and__4251__auto__;
 }
 })())?(zprint.focus.next_ssv.cljs$core$IFn$_invoke$arity$2 ? zprint.focus.next_ssv.cljs$core$IFn$_invoke$arity$2(ssv,index) : zprint.focus.next_ssv.call(null,ssv,index)):(index + (1)));
-var G__16452 = (function (){var and__4251__auto__ = (function (){var or__4253__auto__ = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(index_type,new cljs.core.Keyword(null,"left","left",-399115937));
+var G__16459 = (function (){var and__4251__auto__ = (function (){var or__4253__auto__ = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(index_type,new cljs.core.Keyword(null,"left","left",-399115937));
 if(or__4253__auto__){
 return or__4253__auto__;
 } else {
@@ -75,10 +75,10 @@ return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(index_type,new cljs.core.
 return and__4251__auto__;
 }
 })();
-var G__16453 = new_next_nonws_QMARK_;
-index = G__16451;
-skip_to_right_QMARK_ = G__16452;
-next_nonws_QMARK_ = G__16453;
+var G__16460 = new_next_nonws_QMARK_;
+index = G__16458;
+skip_to_right_QMARK_ = G__16459;
+next_nonws_QMARK_ = G__16460;
 continue;
 }
 }
@@ -100,10 +100,10 @@ return zprint.focus.skip_whitespace_ssv(ssv,index);
 return null;
 }
 } else {
-var G__16454 = zprint.focus.next_ssv(ssv,index);
-var G__16455 = (moves - (1));
-index = G__16454;
-moves = G__16455;
+var G__16469 = zprint.focus.next_ssv(ssv,index);
+var G__16470 = (moves - (1));
+index = G__16469;
+moves = G__16470;
 continue;
 }
 } else {
@@ -124,10 +124,10 @@ if(cljs.core.truth_(idx)){
 if(cljs.core.empty_QMARK_(nwp)){
 return idx;
 } else {
-var G__16456 = zprint.focus.right_ssv(cljs.core.first(nwp),ssv,zprint.focus.down_ssv(ssv,idx));
-var G__16457 = cljs.core.next(nwp);
-idx = G__16456;
-nwp = G__16457;
+var G__16471 = zprint.focus.right_ssv(cljs.core.first(nwp),ssv,zprint.focus.down_ssv(ssv,idx));
+var G__16472 = cljs.core.next(nwp);
+idx = G__16471;
+nwp = G__16472;
 continue;
 }
 } else {

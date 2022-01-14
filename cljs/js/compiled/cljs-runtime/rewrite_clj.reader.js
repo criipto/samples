@@ -11,14 +11,14 @@ rewrite_clj.reader.read_string = cljs.tools.reader.read_string;
  */
 rewrite_clj.reader.throw_reader = (function rewrite_clj$reader$throw_reader(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___17958 = arguments.length;
-var i__4865__auto___17959 = (0);
+var len__4864__auto___17951 = arguments.length;
+var i__4865__auto___17952 = (0);
 while(true){
-if((i__4865__auto___17959 < len__4864__auto___17958)){
-args__4870__auto__.push((arguments[i__4865__auto___17959]));
+if((i__4865__auto___17952 < len__4864__auto___17951)){
+args__4870__auto__.push((arguments[i__4865__auto___17952]));
 
-var G__17960 = (i__4865__auto___17959 + (1));
-i__4865__auto___17959 = G__17960;
+var G__17953 = (i__4865__auto___17952 + (1));
+i__4865__auto___17952 = G__17953;
 continue;
 } else {
 }
@@ -216,10 +216,10 @@ if((c < n)){
 var temp__5751__auto__ = (read_fn.cljs$core$IFn$_invoke$arity$1 ? read_fn.cljs$core$IFn$_invoke$arity$1(reader) : read_fn.call(null,reader));
 if(cljs.core.truth_(temp__5751__auto__)){
 var v = temp__5751__auto__;
-var G__17962 = (cljs.core.truth_((p_QMARK_.cljs$core$IFn$_invoke$arity$1 ? p_QMARK_.cljs$core$IFn$_invoke$arity$1(v) : p_QMARK_.call(null,v)))?(c + (1)):c);
-var G__17963 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(vs,v);
-c = G__17962;
-vs = G__17963;
+var G__17955 = (cljs.core.truth_((p_QMARK_.cljs$core$IFn$_invoke$arity$1 ? p_QMARK_.cljs$core$IFn$_invoke$arity$1(v) : p_QMARK_.call(null,v)))?(c + (1)):c);
+var G__17956 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(vs,v);
+c = G__17955;
+vs = G__17956;
 continue;
 } else {
 return rewrite_clj.reader.throw_reader.cljs$core$IFn$_invoke$arity$variadic(reader,"%s node expects %d value%s.",cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([node_tag,n,((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(n,(1)))?"":"s")], 0));

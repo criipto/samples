@@ -27,8 +27,8 @@ return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(path_prefix),cljs.core.str.c
 return t;
 });
 pushy.core.new_history = (function pushy$core$new_history(var_args){
-var G__21817 = arguments.length;
-switch (G__21817) {
+var G__21811 = arguments.length;
+switch (G__21811) {
 case 0:
 return pushy.core.new_history.cljs$core$IFn$_invoke$arity$0();
 
@@ -59,9 +59,9 @@ return pushy.core.update_history_BANG_((new goog.history.Html5History(window,tra
  */
 pushy.core.IHistory = function(){};
 
-var pushy$core$IHistory$set_token_BANG_$dyn_21875 = (function() {
-var G__21876 = null;
-var G__21876__2 = (function (this$,token){
+var pushy$core$IHistory$set_token_BANG_$dyn_21865 = (function() {
+var G__21866 = null;
+var G__21866__2 = (function (this$,token){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (pushy.core.set_token_BANG_[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -75,7 +75,7 @@ throw cljs.core.missing_protocol("IHistory.set-token!",this$);
 }
 }
 });
-var G__21876__3 = (function (this$,token,title){
+var G__21866__3 = (function (this$,token,title){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (pushy.core.set_token_BANG_[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -89,18 +89,18 @@ throw cljs.core.missing_protocol("IHistory.set-token!",this$);
 }
 }
 });
-G__21876 = function(this$,token,title){
+G__21866 = function(this$,token,title){
 switch(arguments.length){
 case 2:
-return G__21876__2.call(this,this$,token);
+return G__21866__2.call(this,this$,token);
 case 3:
-return G__21876__3.call(this,this$,token,title);
+return G__21866__3.call(this,this$,token,title);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__21876.cljs$core$IFn$_invoke$arity$2 = G__21876__2;
-G__21876.cljs$core$IFn$_invoke$arity$3 = G__21876__3;
-return G__21876;
+G__21866.cljs$core$IFn$_invoke$arity$2 = G__21866__2;
+G__21866.cljs$core$IFn$_invoke$arity$3 = G__21866__3;
+return G__21866;
 })()
 ;
 pushy.core.set_token_BANG_ = (function pushy$core$set_token_BANG_(var_args){
@@ -124,7 +124,7 @@ throw (new Error(["Invalid arity: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(
 if((((!((this$ == null)))) && ((!((this$.pushy$core$IHistory$set_token_BANG_$arity$2 == null)))))){
 return this$.pushy$core$IHistory$set_token_BANG_$arity$2(this$,token);
 } else {
-return pushy$core$IHistory$set_token_BANG_$dyn_21875(this$,token);
+return pushy$core$IHistory$set_token_BANG_$dyn_21865(this$,token);
 }
 }));
 
@@ -132,16 +132,16 @@ return pushy$core$IHistory$set_token_BANG_$dyn_21875(this$,token);
 if((((!((this$ == null)))) && ((!((this$.pushy$core$IHistory$set_token_BANG_$arity$3 == null)))))){
 return this$.pushy$core$IHistory$set_token_BANG_$arity$3(this$,token,title);
 } else {
-return pushy$core$IHistory$set_token_BANG_$dyn_21875(this$,token,title);
+return pushy$core$IHistory$set_token_BANG_$dyn_21865(this$,token,title);
 }
 }));
 
 (pushy.core.set_token_BANG_.cljs$lang$maxFixedArity = 3);
 
 
-var pushy$core$IHistory$replace_token_BANG_$dyn_21878 = (function() {
-var G__21879 = null;
-var G__21879__2 = (function (this$,token){
+var pushy$core$IHistory$replace_token_BANG_$dyn_21868 = (function() {
+var G__21869 = null;
+var G__21869__2 = (function (this$,token){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (pushy.core.replace_token_BANG_[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -155,7 +155,7 @@ throw cljs.core.missing_protocol("IHistory.replace-token!",this$);
 }
 }
 });
-var G__21879__3 = (function (this$,token,title){
+var G__21869__3 = (function (this$,token,title){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (pushy.core.replace_token_BANG_[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -169,18 +169,18 @@ throw cljs.core.missing_protocol("IHistory.replace-token!",this$);
 }
 }
 });
-G__21879 = function(this$,token,title){
+G__21869 = function(this$,token,title){
 switch(arguments.length){
 case 2:
-return G__21879__2.call(this,this$,token);
+return G__21869__2.call(this,this$,token);
 case 3:
-return G__21879__3.call(this,this$,token,title);
+return G__21869__3.call(this,this$,token,title);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__21879.cljs$core$IFn$_invoke$arity$2 = G__21879__2;
-G__21879.cljs$core$IFn$_invoke$arity$3 = G__21879__3;
-return G__21879;
+G__21869.cljs$core$IFn$_invoke$arity$2 = G__21869__2;
+G__21869.cljs$core$IFn$_invoke$arity$3 = G__21869__3;
+return G__21869;
 })()
 ;
 pushy.core.replace_token_BANG_ = (function pushy$core$replace_token_BANG_(var_args){
@@ -204,7 +204,7 @@ throw (new Error(["Invalid arity: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(
 if((((!((this$ == null)))) && ((!((this$.pushy$core$IHistory$replace_token_BANG_$arity$2 == null)))))){
 return this$.pushy$core$IHistory$replace_token_BANG_$arity$2(this$,token);
 } else {
-return pushy$core$IHistory$replace_token_BANG_$dyn_21878(this$,token);
+return pushy$core$IHistory$replace_token_BANG_$dyn_21868(this$,token);
 }
 }));
 
@@ -212,14 +212,14 @@ return pushy$core$IHistory$replace_token_BANG_$dyn_21878(this$,token);
 if((((!((this$ == null)))) && ((!((this$.pushy$core$IHistory$replace_token_BANG_$arity$3 == null)))))){
 return this$.pushy$core$IHistory$replace_token_BANG_$arity$3(this$,token,title);
 } else {
-return pushy$core$IHistory$replace_token_BANG_$dyn_21878(this$,token,title);
+return pushy$core$IHistory$replace_token_BANG_$dyn_21868(this$,token,title);
 }
 }));
 
 (pushy.core.replace_token_BANG_.cljs$lang$maxFixedArity = 3);
 
 
-var pushy$core$IHistory$get_token$dyn_21881 = (function (this$){
+var pushy$core$IHistory$get_token$dyn_21871 = (function (this$){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (pushy.core.get_token[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -237,11 +237,11 @@ pushy.core.get_token = (function pushy$core$get_token(this$){
 if((((!((this$ == null)))) && ((!((this$.pushy$core$IHistory$get_token$arity$1 == null)))))){
 return this$.pushy$core$IHistory$get_token$arity$1(this$);
 } else {
-return pushy$core$IHistory$get_token$dyn_21881(this$);
+return pushy$core$IHistory$get_token$dyn_21871(this$);
 }
 });
 
-var pushy$core$IHistory$start_BANG_$dyn_21882 = (function (this$){
+var pushy$core$IHistory$start_BANG_$dyn_21872 = (function (this$){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (pushy.core.start_BANG_[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -259,11 +259,11 @@ pushy.core.start_BANG_ = (function pushy$core$start_BANG_(this$){
 if((((!((this$ == null)))) && ((!((this$.pushy$core$IHistory$start_BANG_$arity$1 == null)))))){
 return this$.pushy$core$IHistory$start_BANG_$arity$1(this$);
 } else {
-return pushy$core$IHistory$start_BANG_$dyn_21882(this$);
+return pushy$core$IHistory$start_BANG_$dyn_21872(this$);
 }
 });
 
-var pushy$core$IHistory$stop_BANG_$dyn_21883 = (function (this$){
+var pushy$core$IHistory$stop_BANG_$dyn_21873 = (function (this$){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (pushy.core.stop_BANG_[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -281,7 +281,7 @@ pushy.core.stop_BANG_ = (function pushy$core$stop_BANG_(this$){
 if((((!((this$ == null)))) && ((!((this$.pushy$core$IHistory$stop_BANG_$arity$1 == null)))))){
 return this$.pushy$core$IHistory$stop_BANG_$arity$1(this$);
 } else {
-return pushy$core$IHistory$stop_BANG_$dyn_21883(this$);
+return pushy$core$IHistory$stop_BANG_$dyn_21873(this$);
 }
 });
 
@@ -305,14 +305,14 @@ return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(path),"?",cljs.core.str.cljs
  */
 pushy.core.pushy = (function pushy$core$pushy(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___21884 = arguments.length;
-var i__4865__auto___21885 = (0);
+var len__4864__auto___21874 = arguments.length;
+var i__4865__auto___21875 = (0);
 while(true){
-if((i__4865__auto___21885 < len__4864__auto___21884)){
-args__4870__auto__.push((arguments[i__4865__auto___21885]));
+if((i__4865__auto___21875 < len__4864__auto___21874)){
+args__4870__auto__.push((arguments[i__4865__auto___21875]));
 
-var G__21886 = (i__4865__auto___21885 + (1));
-i__4865__auto___21885 = G__21886;
+var G__21876 = (i__4865__auto___21875 + (1));
+i__4865__auto___21875 = G__21876;
 continue;
 } else {
 }
@@ -404,10 +404,10 @@ var this$__$1 = this;
 this$__$1.pushy$core$IHistory$stop_BANG_$arity$1(null);
 
 cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$3(self__.event_keys,cljs.core.conj,goog.events.listen(self__.history,goog.history.EventType.NAVIGATE,(function (e){
-var temp__5753__auto__ = (function (){var G__21837 = (function (){var G__21838 = e.token;
-return (self__.match_fn.cljs$core$IFn$_invoke$arity$1 ? self__.match_fn.cljs$core$IFn$_invoke$arity$1(G__21838) : self__.match_fn.call(null,G__21838));
+var temp__5753__auto__ = (function (){var G__21840 = (function (){var G__21841 = e.token;
+return (self__.match_fn.cljs$core$IFn$_invoke$arity$1 ? self__.match_fn.cljs$core$IFn$_invoke$arity$1(G__21841) : self__.match_fn.call(null,G__21841));
 })();
-return (self__.identity_fn.cljs$core$IFn$_invoke$arity$1 ? self__.identity_fn.cljs$core$IFn$_invoke$arity$1(G__21837) : self__.identity_fn.call(null,G__21837));
+return (self__.identity_fn.cljs$core$IFn$_invoke$arity$1 ? self__.identity_fn.cljs$core$IFn$_invoke$arity$1(G__21840) : self__.identity_fn.call(null,G__21840));
 })();
 if(cljs.core.truth_(temp__5753__auto__)){
 var match = temp__5753__auto__;
@@ -579,8 +579,8 @@ return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__21830,G__21831
  * Returns whether Html5History is supported
  */
 pushy.core.supported_QMARK_ = (function pushy$core$supported_QMARK_(var_args){
-var G__21871 = arguments.length;
-switch (G__21871) {
+var G__21856 = arguments.length;
+switch (G__21856) {
 case 0:
 return pushy.core.supported_QMARK_.cljs$core$IFn$_invoke$arity$0();
 
@@ -606,8 +606,8 @@ return goog.history.Html5History.isSupported(window);
 (pushy.core.supported_QMARK_.cljs$lang$maxFixedArity = 1);
 
 pushy.core.push_state_BANG_ = (function pushy$core$push_state_BANG_(var_args){
-var G__21873 = arguments.length;
-switch (G__21873) {
+var G__21858 = arguments.length;
+switch (G__21858) {
 case 2:
 return pushy.core.push_state_BANG_.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 

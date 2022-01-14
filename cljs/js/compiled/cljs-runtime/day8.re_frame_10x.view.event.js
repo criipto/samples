@@ -31,8 +31,8 @@ return new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMP
  * Like re-seq but returns matches and indices
  */
 day8.re_frame_10x.view.event.re_seq_idx = (function day8$re_frame_10x$view$event$re_seq_idx(var_args){
-var G__19976 = arguments.length;
-switch (G__19976) {
+var G__19971 = arguments.length;
+switch (G__19971) {
 case 2:
 return day8.re_frame_10x.view.event.re_seq_idx.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -129,9 +129,9 @@ day8.re_frame_10x.view.event.find_bounds = (function day8$re_frame_10x$view$even
 if((search_str == null)){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(0)], null);
 } else {
-var vec__19977 = day8.re_frame_10x.view.event.collapse_whitespace_and_index(form_str);
-var form_str__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19977,(0),null);
-var reindex = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19977,(1),null);
+var vec__19976 = day8.re_frame_10x.view.event.collapse_whitespace_and_index(form_str);
+var form_str__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19976,(0),null);
+var reindex = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19976,(1),null);
 var esc_str = goog.string.regExpEscape(search_str);
 var regex = ["(\\s|\\(|\\[|\\{)","(",cljs.core.str.cljs$core$IFn$_invoke$arity$1(esc_str),")(\\s|\\)|\\]|\\})"].join('');
 var re = cljs.core.re_pattern(regex);
@@ -149,32 +149,32 @@ return and__4251__auto__;
 }
 })())){
 var result = cljs.core.nth.cljs$core$IFn$_invoke$arity$2(results,(num_seen - (1)));
-var vec__19980 = result;
-var vec__19983 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19980,(0),null);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19983,(0),null);
-var pre_match = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19983,(1),null);
-var matched_form = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19983,(2),null);
-var index = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19980,(1),null);
+var vec__19979 = result;
+var vec__19982 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19979,(0),null);
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19982,(0),null);
+var pre_match = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19982,(1),null);
+var matched_form = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19982,(2),null);
+var index = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__19979,(1),null);
 var index__$1 = (index + cljs.core.count(pre_match));
 var start = cljs.core.nth.cljs$core$IFn$_invoke$arity$2(reindex,index__$1);
 var stop = cljs.core.nth.cljs$core$IFn$_invoke$arity$2(reindex,(index__$1 + cljs.core.count(matched_form)));
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [start,stop], null);
 } else {
-var start = (function (){var G__19986 = form_str__$1;
-var G__19986__$1 = (((G__19986 == null))?null:clojure.string.index_of.cljs$core$IFn$_invoke$arity$2(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([search_str], 0)),G__19986));
+var start = (function (){var G__19985 = form_str__$1;
+var G__19985__$1 = (((G__19985 == null))?null:clojure.string.index_of.cljs$core$IFn$_invoke$arity$2(cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([search_str], 0)),G__19985));
+if((G__19985__$1 == null)){
+return null;
+} else {
+return cljs.core.nth.cljs$core$IFn$_invoke$arity$2(reindex,G__19985__$1);
+}
+})();
+var length = (((!((start == null))))?((cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([search_str], 0))).length):(1));
+var end = (function (){var G__19986 = start;
+var G__19986__$1 = (((G__19986 == null))?null:(length + G__19986));
 if((G__19986__$1 == null)){
 return null;
 } else {
 return cljs.core.nth.cljs$core$IFn$_invoke$arity$2(reindex,G__19986__$1);
-}
-})();
-var length = (((!((start == null))))?((cljs.core.pr_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([search_str], 0))).length):(1));
-var end = (function (){var G__19987 = start;
-var G__19987__$1 = (((G__19987 == null))?null:(length + G__19987));
-if((G__19987__$1 == null)){
-return null;
-} else {
-return cljs.core.nth.cljs$core$IFn$_invoke$arity$2(reindex,G__19987__$1);
 }
 })();
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [start,end], null);

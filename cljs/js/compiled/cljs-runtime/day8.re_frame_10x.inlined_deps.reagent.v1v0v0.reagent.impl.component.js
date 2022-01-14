@@ -130,33 +130,33 @@ return day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.protocols.as_e
 if(cljs.core.ifn_QMARK_(res)){
 var f__$1 = ((day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.component.reagent_class_QMARK_(res))?((function (c,compiler,f,_,res){
 return (function() { 
-var G__14418__delegate = function (args){
+var G__14420__delegate = function (args){
 return day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.protocols.as_element(compiler,cljs.core.apply.cljs$core$IFn$_invoke$arity$3(cljs.core.vector,res,args));
 };
-var G__14418 = function (var_args){
+var G__14420 = function (var_args){
 var args = null;
 if (arguments.length > 0) {
-var G__14419__i = 0, G__14419__a = new Array(arguments.length -  0);
-while (G__14419__i < G__14419__a.length) {G__14419__a[G__14419__i] = arguments[G__14419__i + 0]; ++G__14419__i;}
-  args = new cljs.core.IndexedSeq(G__14419__a,0,null);
+var G__14421__i = 0, G__14421__a = new Array(arguments.length -  0);
+while (G__14421__i < G__14421__a.length) {G__14421__a[G__14421__i] = arguments[G__14421__i + 0]; ++G__14421__i;}
+  args = new cljs.core.IndexedSeq(G__14421__a,0,null);
 } 
-return G__14418__delegate.call(this,args);};
-G__14418.cljs$lang$maxFixedArity = 0;
-G__14418.cljs$lang$applyTo = (function (arglist__14420){
-var args = cljs.core.seq(arglist__14420);
-return G__14418__delegate(args);
+return G__14420__delegate.call(this,args);};
+G__14420.cljs$lang$maxFixedArity = 0;
+G__14420.cljs$lang$applyTo = (function (arglist__14422){
+var args = cljs.core.seq(arglist__14422);
+return G__14420__delegate(args);
 });
-G__14418.cljs$core$IFn$_invoke$arity$variadic = G__14418__delegate;
-return G__14418;
+G__14420.cljs$core$IFn$_invoke$arity$variadic = G__14420__delegate;
+return G__14420;
 })()
 ;})(c,compiler,f,_,res))
 :res);
 (c.reagentRender = f__$1);
 
-var G__14421 = c;
-var G__14422 = compiler;
-c = G__14421;
-compiler = G__14422;
+var G__14423 = c;
+var G__14424 = compiler;
+c = G__14423;
+compiler = G__14424;
 continue;
 } else {
 return res;
@@ -625,33 +625,33 @@ return day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.protocols.as_e
 if(cljs.core.ifn_QMARK_(res)){
 var f__$1 = ((day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.component.reagent_class_QMARK_(res))?((function (compiler,c,f,_,argv,res){
 return (function() { 
-var G__14429__delegate = function (args){
+var G__14430__delegate = function (args){
 return day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.protocols.as_element(compiler,cljs.core.apply.cljs$core$IFn$_invoke$arity$3(cljs.core.vector,res,args));
 };
-var G__14429 = function (var_args){
+var G__14430 = function (var_args){
 var args = null;
 if (arguments.length > 0) {
-var G__14430__i = 0, G__14430__a = new Array(arguments.length -  0);
-while (G__14430__i < G__14430__a.length) {G__14430__a[G__14430__i] = arguments[G__14430__i + 0]; ++G__14430__i;}
-  args = new cljs.core.IndexedSeq(G__14430__a,0,null);
+var G__14431__i = 0, G__14431__a = new Array(arguments.length -  0);
+while (G__14431__i < G__14431__a.length) {G__14431__a[G__14431__i] = arguments[G__14431__i + 0]; ++G__14431__i;}
+  args = new cljs.core.IndexedSeq(G__14431__a,0,null);
 } 
-return G__14429__delegate.call(this,args);};
-G__14429.cljs$lang$maxFixedArity = 0;
-G__14429.cljs$lang$applyTo = (function (arglist__14431){
-var args = cljs.core.seq(arglist__14431);
-return G__14429__delegate(args);
+return G__14430__delegate.call(this,args);};
+G__14430.cljs$lang$maxFixedArity = 0;
+G__14430.cljs$lang$applyTo = (function (arglist__14432){
+var args = cljs.core.seq(arglist__14432);
+return G__14430__delegate(args);
 });
-G__14429.cljs$core$IFn$_invoke$arity$variadic = G__14429__delegate;
-return G__14429;
+G__14430.cljs$core$IFn$_invoke$arity$variadic = G__14430__delegate;
+return G__14430;
 })()
 ;})(compiler,c,f,_,argv,res))
 :res);
 (c.reagentRender = f__$1);
 
-var G__14432 = compiler;
-var G__14433 = c;
-compiler = G__14432;
-c = G__14433;
+var G__14433 = compiler;
+var G__14434 = c;
+compiler = G__14433;
+c = G__14434;
 continue;
 } else {
 return res;

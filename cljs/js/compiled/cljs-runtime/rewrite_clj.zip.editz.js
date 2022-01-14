@@ -24,14 +24,14 @@ return (rewrite_clj.node.coerce.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node
  */
 rewrite_clj.zip.editz.edit = (function rewrite_clj$zip$editz$edit(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___18196 = arguments.length;
-var i__4865__auto___18197 = (0);
+var len__4864__auto___18194 = arguments.length;
+var i__4865__auto___18195 = (0);
 while(true){
-if((i__4865__auto___18197 < len__4864__auto___18196)){
-args__4870__auto__.push((arguments[i__4865__auto___18197]));
+if((i__4865__auto___18195 < len__4864__auto___18194)){
+args__4870__auto__.push((arguments[i__4865__auto___18195]));
 
-var G__18198 = (i__4865__auto___18197 + (1));
-i__4865__auto___18197 = G__18198;
+var G__18196 = (i__4865__auto___18195 + (1));
+i__4865__auto___18195 = G__18196;
 continue;
 } else {
 }
