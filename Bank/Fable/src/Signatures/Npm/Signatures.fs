@@ -30,7 +30,7 @@ module Client =
         }
 
     type Client(apiRoot, token) = 
-        let private post (json : string) = 
+        let post (operation : Operation) (json : string) = 
             async{
                 let url = sprintf "%s%A" apiRoot operation
                 let! response =
@@ -40,7 +40,7 @@ module Client =
                     |> Http.content (BodyContent.Text json)
                     |> Http.send
 
-                response.statusCode, response.responseText
+                return response.statusCode, response.responseText
             } |> Async.StartAsPromise
 
         member __.createSignatureOrder(title : string, documents : DocumentInfo [])  =
@@ -79,10 +79,10 @@ module Client =
 
                 |}
             |} |> Json.serialize
-            |> post token AddSignatory AddSignatoryResponse
+            |> post AddSignatory
 
 
         member __.cancelSignatureOrder(orderId : string) =
             orderId
             |> Json.serialize
-            |> post token CancelOrder id
+            |> post CancelOrder

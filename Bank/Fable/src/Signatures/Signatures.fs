@@ -6,10 +6,7 @@ module Signatures =
 
     open Fable.Core
 
-    [<Literal>]
-    let private apiRoot = "https://demo-app-signature-api.azurewebsites.net/api/"
-
-    let private client token = Signatures.Client.Client(apiRoot,token)
+    let inline client token = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
 
     type SignatureOrderResponse = Fable.JsonProvider.Generator<"""{
         "id" : "id-string"
@@ -28,7 +25,7 @@ module Signatures =
             StatusCode : int
         }
 
-    let inline private parse parser (statusCode,responseText) = 
+    let inline parse parser (statusCode,responseText) = 
         match statusCode with
         | 200 ->
             let response =responseText

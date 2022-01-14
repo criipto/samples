@@ -2,6 +2,7 @@ namespace App.Components
 
 open Feliz
 open Feliz.Bulma
+open Signatures
 
 type Page() =
     static let mutable accordions = [||]
@@ -19,7 +20,7 @@ type Page() =
                     printfn "Cancel: %A" res
                     removeMessage identifyMessage
                 | Error e ->
-                    eprintfn "Failed to cancel %s. Errors: %s" orderId e
+                    eprintfn "Failed to cancel %s. Errors: %A" orderId e
             } |> Async.StartImmediate
     static let createOrder (user : Models.User) (documents : Models.Document list) addMessages = 
         
@@ -57,10 +58,10 @@ type Page() =
                                     }
                                 msg |> addMessages
                             | Error e -> 
-                                eprintfn "Erros while adding signatory %s" e
+                                eprintfn "Erros while adding signatory %A" e
                         } |> Async.StartImmediate
                     | Error e -> 
-                        printfn "Error occurred while creating signature order %s" e
+                        printfn "Error occurred while creating signature order %A" e
                     
                 } 
     [<ReactComponent>]
