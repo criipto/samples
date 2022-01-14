@@ -20,8 +20,8 @@ return or__4253__auto__;
 return top;
 }
 } else {
-var G__18103 = (function (){var G__18090 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [node], null);
-return (rewrite_clj.node.forms_node.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.forms_node.cljs$core$IFn$_invoke$arity$1(G__18090) : rewrite_clj.node.forms_node.call(null,G__18090));
+var G__18103 = (function (){var G__18091 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [node], null);
+return (rewrite_clj.node.forms_node.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.forms_node.cljs$core$IFn$_invoke$arity$1(G__18091) : rewrite_clj.node.forms_node.call(null,G__18091));
 })();
 node = G__18103;
 continue;
@@ -45,36 +45,36 @@ return (rewrite_clj.node.tag.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.ta
  * Get sexpr represented by the given node.
  */
 rewrite_clj.zip.base.sexpr = (function rewrite_clj$zip$base$sexpr(zloc){
-var G__18095 = zloc;
-var G__18095__$1 = (((G__18095 == null))?null:clojure.zip.node(G__18095));
-if((G__18095__$1 == null)){
+var G__18093 = zloc;
+var G__18093__$1 = (((G__18093 == null))?null:clojure.zip.node(G__18093));
+if((G__18093__$1 == null)){
 return null;
 } else {
-return (rewrite_clj.node.sexpr.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.sexpr.cljs$core$IFn$_invoke$arity$1(G__18095__$1) : rewrite_clj.node.sexpr.call(null,G__18095__$1));
+return (rewrite_clj.node.sexpr.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.sexpr.cljs$core$IFn$_invoke$arity$1(G__18093__$1) : rewrite_clj.node.sexpr.call(null,G__18093__$1));
 }
 });
 /**
  * Get children as s-expressions.
  */
 rewrite_clj.zip.base.child_sexprs = (function rewrite_clj$zip$base$child_sexprs(zloc){
-var G__18098 = zloc;
-var G__18098__$1 = (((G__18098 == null))?null:clojure.zip.node(G__18098));
-if((G__18098__$1 == null)){
+var G__18094 = zloc;
+var G__18094__$1 = (((G__18094 == null))?null:clojure.zip.node(G__18094));
+if((G__18094__$1 == null)){
 return null;
 } else {
-return (rewrite_clj.node.child_sexprs.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.child_sexprs.cljs$core$IFn$_invoke$arity$1(G__18098__$1) : rewrite_clj.node.child_sexprs.call(null,G__18098__$1));
+return (rewrite_clj.node.child_sexprs.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.child_sexprs.cljs$core$IFn$_invoke$arity$1(G__18094__$1) : rewrite_clj.node.child_sexprs.call(null,G__18094__$1));
 }
 });
 /**
  * Get length of printable string for the given zipper location.
  */
 rewrite_clj.zip.base.length = (function rewrite_clj$zip$base$length(zloc){
-var or__4253__auto__ = (function (){var G__18099 = zloc;
-var G__18099__$1 = (((G__18099 == null))?null:clojure.zip.node(G__18099));
-if((G__18099__$1 == null)){
+var or__4253__auto__ = (function (){var G__18096 = zloc;
+var G__18096__$1 = (((G__18096 == null))?null:clojure.zip.node(G__18096));
+if((G__18096__$1 == null)){
 return null;
 } else {
-return (rewrite_clj.node.length.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.length.cljs$core$IFn$_invoke$arity$1(G__18099__$1) : rewrite_clj.node.length.call(null,G__18099__$1));
+return (rewrite_clj.node.length.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node.length.cljs$core$IFn$_invoke$arity$1(G__18096__$1) : rewrite_clj.node.length.call(null,G__18096__$1));
 }
 })();
 if(cljs.core.truth_(or__4253__auto__)){
@@ -87,12 +87,12 @@ return (0);
  * Create zipper from String.
  */
 rewrite_clj.zip.base.of_string = (function rewrite_clj$zip$base$of_string(s){
-var G__18100 = s;
-var G__18100__$1 = (((G__18100 == null))?null:rewrite_clj.parser.parse_string_all(G__18100));
-if((G__18100__$1 == null)){
+var G__18098 = s;
+var G__18098__$1 = (((G__18098 == null))?null:rewrite_clj.parser.parse_string_all(G__18098));
+if((G__18098__$1 == null)){
 return null;
 } else {
-return rewrite_clj.zip.base.edn(G__18100__$1);
+return rewrite_clj.zip.base.edn(G__18098__$1);
 }
 });
 /**

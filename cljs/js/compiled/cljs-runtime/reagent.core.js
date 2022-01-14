@@ -37,13 +37,13 @@ break;
 default:
 var args_arr__4885__auto__ = [];
 var len__4864__auto___16228 = arguments.length;
-var i__4865__auto___16229 = (0);
+var i__4865__auto___16233 = (0);
 while(true){
-if((i__4865__auto___16229 < len__4864__auto___16228)){
-args_arr__4885__auto__.push((arguments[i__4865__auto___16229]));
+if((i__4865__auto___16233 < len__4864__auto___16228)){
+args_arr__4885__auto__.push((arguments[i__4865__auto___16233]));
 
-var G__16230 = (i__4865__auto___16229 + (1));
-i__4865__auto___16229 = G__16230;
+var G__16237 = (i__4865__auto___16233 + (1));
+i__4865__auto___16233 = G__16237;
 continue;
 } else {
 }
@@ -223,8 +223,8 @@ return reagent.impl.component.reactify_component(c,compiler);
  *   React built-in static methods or properties are automatically defined as statics.
  */
 reagent.core.create_class = (function reagent$core$create_class(var_args){
-var G__16147 = arguments.length;
-switch (G__16147) {
+var G__16143 = arguments.length;
+switch (G__16143) {
 case 1:
 return reagent.core.create_class.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -320,8 +320,8 @@ return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$3(reagent.core.state_ato
  *   re-rendered, even is their arguments have not changed.
  */
 reagent.core.force_update = (function reagent$core$force_update(var_args){
-var G__16196 = arguments.length;
-switch (G__16196) {
+var G__16170 = arguments.length;
+switch (G__16170) {
 case 1:
 return reagent.core.force_update.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

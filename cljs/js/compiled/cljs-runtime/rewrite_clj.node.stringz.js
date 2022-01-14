@@ -248,11 +248,11 @@ return (new rewrite_clj.node.stringz.StringNode(lines,null,null,null));
  * Factory function for rewrite-clj.node.stringz/StringNode, taking a map of keywords to field values.
  */
 rewrite_clj.node.stringz.map__GT_StringNode = (function rewrite_clj$node$stringz$map__GT_StringNode(G__17715){
-var extmap__4542__auto__ = (function (){var G__17730 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__17715,new cljs.core.Keyword(null,"lines","lines",-700165781));
+var extmap__4542__auto__ = (function (){var G__17735 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__17715,new cljs.core.Keyword(null,"lines","lines",-700165781));
 if(cljs.core.record_QMARK_(G__17715)){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__17730);
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__17735);
 } else {
-return G__17730;
+return G__17735;
 }
 })();
 return (new rewrite_clj.node.stringz.StringNode(new cljs.core.Keyword(null,"lines","lines",-700165781).cljs$core$IFn$_invoke$arity$1(G__17715),null,cljs.core.not_empty(extmap__4542__auto__),null));

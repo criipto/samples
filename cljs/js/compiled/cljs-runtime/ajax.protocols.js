@@ -229,7 +229,7 @@ return ajax$protocols$AjaxResponse$_was_aborted$dyn_21263(this$);
  */
 ajax.protocols.Interceptor = function(){};
 
-var ajax$protocols$Interceptor$_process_request$dyn_21264 = (function (this$,request){
+var ajax$protocols$Interceptor$_process_request$dyn_21266 = (function (this$,request){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (ajax.protocols._process_request[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -250,11 +250,11 @@ ajax.protocols._process_request = (function ajax$protocols$_process_request(this
 if((((!((this$ == null)))) && ((!((this$.ajax$protocols$Interceptor$_process_request$arity$2 == null)))))){
 return this$.ajax$protocols$Interceptor$_process_request$arity$2(this$,request);
 } else {
-return ajax$protocols$Interceptor$_process_request$dyn_21264(this$,request);
+return ajax$protocols$Interceptor$_process_request$dyn_21266(this$,request);
 }
 });
 
-var ajax$protocols$Interceptor$_process_response$dyn_21265 = (function (this$,response){
+var ajax$protocols$Interceptor$_process_response$dyn_21268 = (function (this$,response){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (ajax.protocols._process_response[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -275,7 +275,7 @@ ajax.protocols._process_response = (function ajax$protocols$_process_response(th
 if((((!((this$ == null)))) && ((!((this$.ajax$protocols$Interceptor$_process_response$arity$2 == null)))))){
 return this$.ajax$protocols$Interceptor$_process_response$arity$2(this$,response);
 } else {
-return ajax$protocols$Interceptor$_process_response$dyn_21265(this$,response);
+return ajax$protocols$Interceptor$_process_response$dyn_21268(this$,response);
 }
 });
 
