@@ -1,4 +1,4 @@
-(ns cljs-re-frame.authentication
+(ns Authentication.authentication
   (:require ["@criipto/auth-js" :as auth]
             [goog.crypt.base64 :as b64]
             [clojure.string :as str]
