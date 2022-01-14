@@ -2,8 +2,8 @@ goog.provide('day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.registrar'
 day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.registrar.kinds = new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"sub","sub",-2093760025),null,new cljs.core.Keyword(null,"event","event",301435442),null,new cljs.core.Keyword(null,"cofx","cofx",2013202907),null,new cljs.core.Keyword(null,"fx","fx",-1237829572),null], null), null);
 day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.registrar.kind__GT_id__GT_handler = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(cljs.core.PersistentArrayMap.EMPTY);
 day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.registrar.get_handler = (function day8$re_frame_10x$inlined_deps$re_frame$v1v1v2$re_frame$registrar$get_handler(var_args){
-var G__14608 = arguments.length;
-switch (G__14608) {
+var G__14607 = arguments.length;
+switch (G__14607) {
 case 1:
 return day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.registrar.get_handler.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -71,8 +71,8 @@ cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(day8.re_frame_10x.inlined_dep
 return handler_fn;
 });
 day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.registrar.clear_handlers = (function day8$re_frame_10x$inlined_deps$re_frame$v1v1v2$re_frame$registrar$clear_handlers(var_args){
-var G__14610 = arguments.length;
-switch (G__14610) {
+var G__14609 = arguments.length;
+switch (G__14609) {
 case 0:
 return day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.registrar.clear_handlers.cljs$core$IFn$_invoke$arity$0();
 

@@ -6,7 +6,7 @@ goog.provide('rewrite_clj.node.protocols');
  */
 rewrite_clj.node.protocols.Node = function(){};
 
-var rewrite_clj$node$protocols$Node$tag$dyn_17593 = (function (_){
+var rewrite_clj$node$protocols$Node$tag$dyn_17594 = (function (_){
 var x__4550__auto__ = (((_ == null))?null:_);
 var m__4551__auto__ = (rewrite_clj.node.protocols.tag[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -27,11 +27,11 @@ rewrite_clj.node.protocols.tag = (function rewrite_clj$node$protocols$tag(_){
 if((((!((_ == null)))) && ((!((_.rewrite_clj$node$protocols$Node$tag$arity$1 == null)))))){
 return _.rewrite_clj$node$protocols$Node$tag$arity$1(_);
 } else {
-return rewrite_clj$node$protocols$Node$tag$dyn_17593(_);
+return rewrite_clj$node$protocols$Node$tag$dyn_17594(_);
 }
 });
 
-var rewrite_clj$node$protocols$Node$printable_only_QMARK_$dyn_17594 = (function (_){
+var rewrite_clj$node$protocols$Node$printable_only_QMARK_$dyn_17595 = (function (_){
 var x__4550__auto__ = (((_ == null))?null:_);
 var m__4551__auto__ = (rewrite_clj.node.protocols.printable_only_QMARK_[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -53,7 +53,7 @@ rewrite_clj.node.protocols.printable_only_QMARK_ = (function rewrite_clj$node$pr
 if((((!((_ == null)))) && ((!((_.rewrite_clj$node$protocols$Node$printable_only_QMARK_$arity$1 == null)))))){
 return _.rewrite_clj$node$protocols$Node$printable_only_QMARK_$arity$1(_);
 } else {
-return rewrite_clj$node$protocols$Node$printable_only_QMARK_$dyn_17594(_);
+return rewrite_clj$node$protocols$Node$printable_only_QMARK_$dyn_17595(_);
 }
 });
 
@@ -204,7 +204,7 @@ return rewrite_clj$node$protocols$InnerNode$inner_QMARK_$dyn_17599(_);
 }
 });
 
-var rewrite_clj$node$protocols$InnerNode$children$dyn_17602 = (function (_){
+var rewrite_clj$node$protocols$InnerNode$children$dyn_17600 = (function (_){
 var x__4550__auto__ = (((_ == null))?null:_);
 var m__4551__auto__ = (rewrite_clj.node.protocols.children[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -225,11 +225,11 @@ rewrite_clj.node.protocols.children = (function rewrite_clj$node$protocols$child
 if((((!((_ == null)))) && ((!((_.rewrite_clj$node$protocols$InnerNode$children$arity$1 == null)))))){
 return _.rewrite_clj$node$protocols$InnerNode$children$arity$1(_);
 } else {
-return rewrite_clj$node$protocols$InnerNode$children$dyn_17602(_);
+return rewrite_clj$node$protocols$InnerNode$children$dyn_17600(_);
 }
 });
 
-var rewrite_clj$node$protocols$InnerNode$replace_children$dyn_17605 = (function (_,children){
+var rewrite_clj$node$protocols$InnerNode$replace_children$dyn_17601 = (function (_,children){
 var x__4550__auto__ = (((_ == null))?null:_);
 var m__4551__auto__ = (rewrite_clj.node.protocols.replace_children[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -250,7 +250,7 @@ rewrite_clj.node.protocols.replace_children = (function rewrite_clj$node$protoco
 if((((!((_ == null)))) && ((!((_.rewrite_clj$node$protocols$InnerNode$replace_children$arity$2 == null)))))){
 return _.rewrite_clj$node$protocols$InnerNode$replace_children$arity$2(_,children);
 } else {
-return rewrite_clj$node$protocols$InnerNode$replace_children$dyn_17605(_,children);
+return rewrite_clj$node$protocols$InnerNode$replace_children$dyn_17601(_,children);
 }
 });
 
@@ -284,7 +284,7 @@ return null;
  */
 rewrite_clj.node.protocols.NodeCoerceable = function(){};
 
-var rewrite_clj$node$protocols$NodeCoerceable$coerce$dyn_17622 = (function (_){
+var rewrite_clj$node$protocols$NodeCoerceable$coerce$dyn_17602 = (function (_){
 var x__4550__auto__ = (((_ == null))?null:_);
 var m__4551__auto__ = (rewrite_clj.node.protocols.coerce[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -302,7 +302,7 @@ rewrite_clj.node.protocols.coerce = (function rewrite_clj$node$protocols$coerce(
 if((((!((_ == null)))) && ((!((_.rewrite_clj$node$protocols$NodeCoerceable$coerce$arity$1 == null)))))){
 return _.rewrite_clj$node$protocols$NodeCoerceable$coerce$arity$1(_);
 } else {
-return rewrite_clj$node$protocols$NodeCoerceable$coerce$dyn_17622(_);
+return rewrite_clj$node$protocols$NodeCoerceable$coerce$dyn_17602(_);
 }
 });
 
