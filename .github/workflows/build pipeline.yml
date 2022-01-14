@@ -124,7 +124,7 @@ jobs:
     - uses: actions/upload-artifact@master
       with:
         name: cljs-demo
-        path: ./deployment-cljs-source/public/
+        path: ./deployment-cljs-source/resources/public/
 
   test-feliz-template:
     needs: build-template-project
