@@ -16,7 +16,14 @@ return bidi.bidi.match_route(cljs_re_frame.router.routes,uri);
 cljs_re_frame.router.start_BANG_ = (function cljs_re_frame$router$start_BANG_(){
 return cljs_re_frame.router.history.pushy$core$IHistory$start_BANG_$arity$1(null);
 });
-cljs_re_frame.router.path_for = cljs.core.partial.cljs$core$IFn$_invoke$arity$2(bidi.bidi.path_for,cljs_re_frame.router.routes);
+cljs_re_frame.router.path_for = (function cljs_re_frame$router$path_for(page){
+var path = bidi.bidi.path_for(cljs_re_frame.router.routes,page);
+console.log(["path-for: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(page)].join(''));
+
+console.log(path);
+
+return path;
+});
 cljs_re_frame.router.set_token_BANG_ = (function cljs_re_frame$router$set_token_BANG_(token){
 return cljs_re_frame.router.history.pushy$core$IHistory$set_token_BANG_$arity$2(null,token);
 });

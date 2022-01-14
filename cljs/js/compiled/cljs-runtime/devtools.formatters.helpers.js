@@ -50,7 +50,7 @@ return false;
 } else {
 return cljs.core.native_satisfies_QMARK_(cljs.core.IPrintWithWriter,value);
 }
-}catch (e11241){var _e__8838__auto__ = e11241;
+}catch (e11234){var _e__8602__auto__ = e11234;
 return false;
 }})();
 if(cljs.core.truth_(or__4253__auto__)){
@@ -69,7 +69,7 @@ return false;
 } else {
 return cljs.core.native_satisfies_QMARK_(devtools.format.IDevtoolsFormat,value);
 }
-}catch (e11243){var _e__8838__auto__ = e11243;
+}catch (e11239){var _e__8602__auto__ = e11239;
 return false;
 }})();
 if(cljs.core.truth_(or__4253__auto____$1)){
@@ -88,7 +88,7 @@ return false;
 } else {
 return cljs.core.native_satisfies_QMARK_(devtools.protocols.IFormat,value);
 }
-}catch (e11245){var _e__8838__auto__ = e11245;
+}catch (e11243){var _e__8602__auto__ = e11243;
 return false;
 }}
 }

@@ -7,14 +7,14 @@ return markdown.common.freeze_string.cljs$core$IFn$_invoke$arity$variadic(cljs.c
 });
 markdown.links.img = (function markdown$links$img(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___22329 = arguments.length;
-var i__4865__auto___22330 = (0);
+var len__4864__auto___22315 = arguments.length;
+var i__4865__auto___22316 = (0);
 while(true){
-if((i__4865__auto___22330 < len__4864__auto___22329)){
-args__4870__auto__.push((arguments[i__4865__auto___22330]));
+if((i__4865__auto___22316 < len__4864__auto___22315)){
+args__4870__auto__.push((arguments[i__4865__auto___22316]));
 
-var G__22331 = (i__4865__auto___22330 + (1));
-i__4865__auto___22330 = G__22331;
+var G__22317 = (i__4865__auto___22316 + (1));
+i__4865__auto___22316 = G__22317;
 continue;
 } else {
 }
@@ -109,24 +109,24 @@ var vec__22268 = cljs.core.split_with(cljs.core.partial.cljs$core$IFn$_invoke$ar
 var link__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22268,(0),null);
 var tail = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22268,(1),null);
 if((((cljs.core.count(link__$1) < (2))) || ((((cljs.core.count(tail) < (1))) || ((cljs.core.count(dud) > (1))))))){
-var G__22337 = cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(out,head,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([markdown.links.process_link_title(title,state),dud,link__$1], 0));
-var G__22338 = tail;
-var G__22339 = loop_state__$1;
-out = G__22337;
-tokens = G__22338;
-loop_state = G__22339;
+var G__22318 = cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(out,head,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([markdown.links.process_link_title(title,state),dud,link__$1], 0));
+var G__22319 = tail;
+var G__22320 = loop_state__$1;
+out = G__22318;
+tokens = G__22319;
+loop_state = G__22320;
 continue;
 } else {
 if(((cljs.core.not(img_QMARK_)) && (cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.last(head),"!")))){
 var vec__22271 = markdown.links.href(cljs.core.rest(markdown.links.process_link_title(title,state)),cljs.core.rest(link__$1),loop_state__$1);
 var link_text = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22271,(0),null);
 var new_loop_state = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22271,(1),null);
-var G__22340 = cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(out,head,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([link_text], 0));
-var G__22341 = cljs.core.rest(tail);
-var G__22342 = new_loop_state;
-out = G__22340;
-tokens = G__22341;
-loop_state = G__22342;
+var G__22321 = cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(out,head,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([link_text], 0));
+var G__22322 = cljs.core.rest(tail);
+var G__22323 = new_loop_state;
+out = G__22321;
+tokens = G__22322;
+loop_state = G__22323;
 continue;
 } else {
 if(cljs.core.truth_((function (){var and__4251__auto__ = img_QMARK_;
@@ -144,12 +144,12 @@ var title__$2 = markdown.links.process_link_title(clojure.string.join.cljs$core$
 var vec__22277 = markdown.links.img.cljs$core$IFn$_invoke$arity$variadic(alt,url,loop_state__$1,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([title__$2], 0));
 var img_text = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22277,(0),null);
 var new_loop_state = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22277,(1),null);
-var G__22343 = cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(out,cljs.core.butlast(head),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([img_text], 0));
-var G__22344 = cljs.core.rest(tail);
-var G__22345 = new_loop_state;
-out = G__22343;
-tokens = G__22344;
-loop_state = G__22345;
+var G__22324 = cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(out,cljs.core.butlast(head),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([img_text], 0));
+var G__22325 = cljs.core.rest(tail);
+var G__22326 = new_loop_state;
+out = G__22324;
+tokens = G__22325;
+loop_state = G__22326;
 continue;
 } else {
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [clojure.string.join.cljs$core$IFn$_invoke$arity$1(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(out,tokens)),loop_state__$1], null);
@@ -267,12 +267,12 @@ var next_fn_id = new cljs.core.Keyword(null,"next-fn-id","next-fn-id",738579636)
 var link = ["#fn-",cljs.core.str.cljs$core$IFn$_invoke$arity$1(next_fn_id)].join('');
 return ["<a href='",link,"' id='fnref",cljs.core.str.cljs$core$IFn$_invoke$arity$1(next_fn_id),"'><sup>",cljs.core.str.cljs$core$IFn$_invoke$arity$1(next_fn_id),"</sup></a>"].join('');
 });
-markdown.links.replace_all_footnote_links = (function markdown$links$replace_all_footnote_links(text,p__22314){
+markdown.links.replace_all_footnote_links = (function markdown$links$replace_all_footnote_links(text,p__22300){
 while(true){
-var map__22315 = p__22314;
-var map__22315__$1 = cljs.core.__destructure_map(map__22315);
-var state = map__22315__$1;
-var footnotes = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22315__$1,new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205));
+var map__22301 = p__22300;
+var map__22301__$1 = cljs.core.__destructure_map(map__22301);
+var state = map__22301__$1;
+var footnotes = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22301__$1,new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205));
 var matcher = /\[\^[a-zA-Z0-9_-]+\]/;
 var match = cljs.core.re_find(matcher,text);
 if((match == null)){
@@ -280,22 +280,22 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 } else {
 var next_text = clojure.string.replace_first(text,matcher,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(markdown.links.replace_footnote_link,footnotes));
 var next_state = cljs.core.assoc_in(cljs.core.update_in.cljs$core$IFn$_invoke$arity$3(state,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205),new cljs.core.Keyword(null,"next-fn-id","next-fn-id",738579636)], null),cljs.core.inc),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205),new cljs.core.Keyword(null,"processed","processed",800622264),cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(state,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205),new cljs.core.Keyword(null,"next-fn-id","next-fn-id",738579636)], null))], null),cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(state,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205),new cljs.core.Keyword(null,"unprocessed","unprocessed",766771972),match], null)));
-var G__22347 = next_text;
-var G__22348 = next_state;
-text = G__22347;
-p__22314 = G__22348;
+var G__22327 = next_text;
+var G__22328 = next_state;
+text = G__22327;
+p__22300 = G__22328;
 continue;
 }
 break;
 }
 });
-markdown.links.footnote_link = (function markdown$links$footnote_link(text,p__22316){
-var map__22317 = p__22316;
-var map__22317__$1 = cljs.core.__destructure_map(map__22317);
-var state = map__22317__$1;
-var code = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22317__$1,new cljs.core.Keyword(null,"code","code",1586293142));
-var codeblock = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22317__$1,new cljs.core.Keyword(null,"codeblock","codeblock",-851153855));
-var footnotes = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22317__$1,new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205));
+markdown.links.footnote_link = (function markdown$links$footnote_link(text,p__22302){
+var map__22303 = p__22302;
+var map__22303__$1 = cljs.core.__destructure_map(map__22303);
+var state = map__22303__$1;
+var code = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22303__$1,new cljs.core.Keyword(null,"code","code",1586293142));
+var codeblock = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22303__$1,new cljs.core.Keyword(null,"codeblock","codeblock",-851153855));
+var footnotes = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22303__$1,new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205));
 if(cljs.core.truth_((function (){var or__4253__auto__ = (new cljs.core.Keyword(null,"unprocessed","unprocessed",766771972).cljs$core$IFn$_invoke$arity$1(footnotes) == null);
 if(or__4253__auto__){
 return or__4253__auto__;
@@ -313,9 +313,9 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 if(cljs.core.truth_(markdown.links.footnote(clojure.string.trim(text)))){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["",state], null);
 } else {
-var vec__22318 = markdown.links.replace_all_footnote_links(text,state);
-var text__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22318,(0),null);
-var state__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22318,(1),null);
+var vec__22304 = markdown.links.replace_all_footnote_links(text,state);
+var text__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22304,(0),null);
+var state__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22304,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [text__$1,state__$1], null);
 
 }
@@ -325,11 +325,11 @@ markdown.links.make_image_reference = (function markdown$links$make_image_refere
 var title_text = (cljs.core.truth_(title)?["\" title=",clojure.string.join.cljs$core$IFn$_invoke$arity$1(title),""].join(''):"\"");
 return ["<img src=\"",cljs.core.str.cljs$core$IFn$_invoke$arity$1(src),"\" alt=\"",cljs.core.str.cljs$core$IFn$_invoke$arity$1(alt),title_text," />"].join('');
 });
-markdown.links.image_reference_link = (function markdown$links$image_reference_link(text,p__22321){
-var map__22322 = p__22321;
-var map__22322__$1 = cljs.core.__destructure_map(map__22322);
-var state = map__22322__$1;
-var references = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22322__$1,new cljs.core.Keyword(null,"references","references",882562509));
+markdown.links.image_reference_link = (function markdown$links$image_reference_link(text,p__22307){
+var map__22308 = p__22307;
+var map__22308__$1 = cljs.core.__destructure_map(map__22308);
+var state = map__22308__$1;
+var references = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22308__$1,new cljs.core.Keyword(null,"references","references",882562509));
 if(((cljs.core.not(new cljs.core.Keyword(null,"reference-links?","reference-links?",-2003778981).cljs$core$IFn$_invoke$arity$1(state))) || (cljs.core.empty_QMARK_(references)))){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [text,state], null);
 } else {
@@ -339,16 +339,16 @@ var ms = matches;
 var new_text = text;
 while(true){
 if(cljs.core.seq(ms)){
-var vec__22326 = cljs.core.first(ms);
-var m = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22326,(0),null);
-var alt = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22326,(1),null);
-var ref = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22326,(2),null);
+var vec__22312 = cljs.core.first(ms);
+var m = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22312,(0),null);
+var alt = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22312,(1),null);
+var ref = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22312,(2),null);
 var refval = cljs.core.get.cljs$core$IFn$_invoke$arity$2(references,ref);
 var im = markdown.links.make_image_reference(cljs.core.first(refval),alt,cljs.core.second(refval));
-var G__22349 = cljs.core.rest(ms);
-var G__22350 = clojure.string.replace(new_text,m,im);
-ms = G__22349;
-new_text = G__22350;
+var G__22329 = cljs.core.rest(ms);
+var G__22330 = clojure.string.replace(new_text,m,im);
+ms = G__22329;
+new_text = G__22330;
 continue;
 } else {
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new_text,state], null);

@@ -3,8 +3,8 @@ goog.provide('day8.re_frame_10x.metamorphic');
  * Returns a transducer that filters for :id between beginning and ending. Inclusive on both ends.
  */
 day8.re_frame_10x.metamorphic.id_between_xf = (function day8$re_frame_10x$metamorphic$id_between_xf(beginning,ending){
-return cljs.core.filter.cljs$core$IFn$_invoke$arity$1((function (p1__20654_SHARP_){
-return (((beginning <= new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__20654_SHARP_))) && ((new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__20654_SHARP_) <= ending)));
+return cljs.core.filter.cljs$core$IFn$_invoke$arity$1((function (p1__20632_SHARP_){
+return (((beginning <= new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__20632_SHARP_))) && ((new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__20632_SHARP_) <= ending)));
 }));
 });
 day8.re_frame_10x.metamorphic.fsm_trigger_QMARK_ = (function day8$re_frame_10x$metamorphic$fsm_trigger_QMARK_(event){
@@ -62,9 +62,9 @@ return false;
  * Is this part of re-frame internals?
  */
 day8.re_frame_10x.metamorphic.low_level_re_frame_trace_QMARK_ = (function day8$re_frame_10x$metamorphic$low_level_re_frame_trace_QMARK_(trace){
-var G__20655 = new cljs.core.Keyword(null,"op-type","op-type",-1636141668).cljs$core$IFn$_invoke$arity$1(trace);
-var G__20655__$1 = (((G__20655 instanceof cljs.core.Keyword))?G__20655.fqn:null);
-switch (G__20655__$1) {
+var G__20653 = new cljs.core.Keyword(null,"op-type","op-type",-1636141668).cljs$core$IFn$_invoke$arity$1(trace);
+var G__20653__$1 = (((G__20653 instanceof cljs.core.Keyword))?G__20653.fqn:null);
+switch (G__20653__$1) {
 case "re-frame.router/fsm-trigger":
 return true;
 
@@ -86,8 +86,8 @@ return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"
 day8.re_frame_10x.metamorphic.unchanged_l2_subscription_QMARK_ = (function day8$re_frame_10x$metamorphic$unchanged_l2_subscription_QMARK_(sub){
 var and__4251__auto__ = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(sub,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("sub","traits","sub/traits",1778340671),new cljs.core.Keyword(null,"unchanged?","unchanged?",1212001763)], null));
 if(cljs.core.truth_(and__4251__auto__)){
-return ((cljs.core.not_any_QMARK_((function (p1__20656_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("sub","dispose","sub/dispose",365440536),p1__20656_SHARP_);
+return ((cljs.core.not_any_QMARK_((function (p1__20654_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("sub","dispose","sub/dispose",365440536),p1__20654_SHARP_);
 }),new cljs.core.Keyword(null,"order","order",-1254677256).cljs$core$IFn$_invoke$arity$1(sub))) && (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((2),cljs.core.get.cljs$core$IFn$_invoke$arity$2(sub,new cljs.core.Keyword(null,"layer","layer",-1601820589)))));
 } else {
 return and__4251__auto__;
