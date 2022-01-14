@@ -1,10 +1,10 @@
 goog.provide('markdown_to_hiccup.core');
 cljs.spec.alpha.def_impl(new cljs.core.Keyword("markdown-to-hiccup.core","markdown","markdown-to-hiccup.core/markdown",1289845536),new cljs.core.Symbol("cljs.core","string?","cljs.core/string?",-2072921719,null),cljs.core.string_QMARK_);
 cljs.spec.alpha.def_impl(new cljs.core.Keyword("markdown-to-hiccup.core","hiccup","markdown-to-hiccup.core/hiccup",1147350639),new cljs.core.Symbol("cljs.core","vector?","cljs.core/vector?",-1550392028,null),cljs.core.vector_QMARK_);
-cljs.spec.alpha.def_impl(new cljs.core.Keyword("markdown-to-hiccup.core","options","markdown-to-hiccup.core/options",439665020),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","keys","cljs.spec.alpha/keys",1109346032,null),new cljs.core.Keyword(null,"opt-un","opt-un",883442496),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("markdown-to-hiccup.core","encode?","markdown-to-hiccup.core/encode?",-1516433262)], null)),cljs.spec.alpha.map_spec_impl(cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"req-un","req-un",1074571008),new cljs.core.Keyword(null,"opt-un","opt-un",883442496),new cljs.core.Keyword(null,"gfn","gfn",791517474),new cljs.core.Keyword(null,"pred-exprs","pred-exprs",1792271395),new cljs.core.Keyword(null,"keys-pred","keys-pred",858984739),new cljs.core.Keyword(null,"opt-keys","opt-keys",1262688261),new cljs.core.Keyword(null,"req-specs","req-specs",553962313),new cljs.core.Keyword(null,"req","req",-326448303),new cljs.core.Keyword(null,"req-keys","req-keys",514319221),new cljs.core.Keyword(null,"opt-specs","opt-specs",-384905450),new cljs.core.Keyword(null,"pred-forms","pred-forms",172611832),new cljs.core.Keyword(null,"opt","opt",-794706369)],[null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("markdown-to-hiccup.core","encode?","markdown-to-hiccup.core/encode?",-1516433262)], null),null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (G__22483){
-return cljs.core.map_QMARK_(G__22483);
-})], null),(function (G__22483){
-return cljs.core.map_QMARK_(G__22483);
+cljs.spec.alpha.def_impl(new cljs.core.Keyword("markdown-to-hiccup.core","options","markdown-to-hiccup.core/options",439665020),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","keys","cljs.spec.alpha/keys",1109346032,null),new cljs.core.Keyword(null,"opt-un","opt-un",883442496),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("markdown-to-hiccup.core","encode?","markdown-to-hiccup.core/encode?",-1516433262)], null)),cljs.spec.alpha.map_spec_impl(cljs.core.PersistentHashMap.fromArrays([new cljs.core.Keyword(null,"req-un","req-un",1074571008),new cljs.core.Keyword(null,"opt-un","opt-un",883442496),new cljs.core.Keyword(null,"gfn","gfn",791517474),new cljs.core.Keyword(null,"pred-exprs","pred-exprs",1792271395),new cljs.core.Keyword(null,"keys-pred","keys-pred",858984739),new cljs.core.Keyword(null,"opt-keys","opt-keys",1262688261),new cljs.core.Keyword(null,"req-specs","req-specs",553962313),new cljs.core.Keyword(null,"req","req",-326448303),new cljs.core.Keyword(null,"req-keys","req-keys",514319221),new cljs.core.Keyword(null,"opt-specs","opt-specs",-384905450),new cljs.core.Keyword(null,"pred-forms","pred-forms",172611832),new cljs.core.Keyword(null,"opt","opt",-794706369)],[null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("markdown-to-hiccup.core","encode?","markdown-to-hiccup.core/encode?",-1516433262)], null),null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (G__22509){
+return cljs.core.map_QMARK_(G__22509);
+})], null),(function (G__22509){
+return cljs.core.map_QMARK_(G__22509);
 }),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"encode?","encode?",-640109139)], null),cljs.core.PersistentVector.EMPTY,null,cljs.core.PersistentVector.EMPTY,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("markdown-to-hiccup.core","encode?","markdown-to-hiccup.core/encode?",-1516433262)], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.list(new cljs.core.Symbol("cljs.core","fn","cljs.core/fn",-1065745098,null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Symbol(null,"%","%",-950237169,null)], null),cljs.core.list(new cljs.core.Symbol("cljs.core","map?","cljs.core/map?",-1390345523,null),new cljs.core.Symbol(null,"%","%",-950237169,null)))], null),null])));
 cljs.spec.alpha.def_impl(new cljs.core.Symbol("markdown-to-hiccup.core","md->hiccup","markdown-to-hiccup.core/md->hiccup",1623858518,null),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","fspec","cljs.spec.alpha/fspec",-1289128341,null),new cljs.core.Keyword(null,"args","args",1315556576),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","cat","cljs.spec.alpha/cat",-1471398329,null),new cljs.core.Keyword(null,"md-str","md-str",-1726634417),new cljs.core.Keyword("markdown-to-hiccup.core","markdown","markdown-to-hiccup.core/markdown",1289845536),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword("markdown-to-hiccup.core","options","markdown-to-hiccup.core/options",439665020)),new cljs.core.Keyword(null,"ret","ret",-468222814),new cljs.core.Keyword("markdown-to-hiccup.core","hiccup","markdown-to-hiccup.core/hiccup",1147350639)),cljs.spec.alpha.fspec_impl(cljs.spec.alpha.spec_impl.cljs$core$IFn$_invoke$arity$4(cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","cat","cljs.spec.alpha/cat",-1471398329,null),new cljs.core.Keyword(null,"md-str","md-str",-1726634417),new cljs.core.Keyword("markdown-to-hiccup.core","markdown","markdown-to-hiccup.core/markdown",1289845536),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword("markdown-to-hiccup.core","options","markdown-to-hiccup.core/options",439665020)),cljs.spec.alpha.cat_impl(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"md-str","md-str",-1726634417),new cljs.core.Keyword(null,"params","params",710516235)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("markdown-to-hiccup.core","markdown","markdown-to-hiccup.core/markdown",1289845536),new cljs.core.Keyword("markdown-to-hiccup.core","options","markdown-to-hiccup.core/options",439665020)], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("markdown-to-hiccup.core","markdown","markdown-to-hiccup.core/markdown",1289845536),new cljs.core.Keyword("markdown-to-hiccup.core","options","markdown-to-hiccup.core/options",439665020)], null)),null,null),cljs.core.list(new cljs.core.Symbol("cljs.spec.alpha","cat","cljs.spec.alpha/cat",-1471398329,null),new cljs.core.Keyword(null,"md-str","md-str",-1726634417),new cljs.core.Keyword("markdown-to-hiccup.core","markdown","markdown-to-hiccup.core/markdown",1289845536),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword("markdown-to-hiccup.core","options","markdown-to-hiccup.core/options",439665020)),cljs.spec.alpha.spec_impl.cljs$core$IFn$_invoke$arity$4(new cljs.core.Keyword("markdown-to-hiccup.core","hiccup","markdown-to-hiccup.core/hiccup",1147350639),new cljs.core.Keyword("markdown-to-hiccup.core","hiccup","markdown-to-hiccup.core/hiccup",1147350639),null,null),new cljs.core.Keyword("markdown-to-hiccup.core","hiccup","markdown-to-hiccup.core/hiccup",1147350639),null,null,null));
 /**
@@ -14,8 +14,8 @@ cljs.spec.alpha.def_impl(new cljs.core.Symbol("markdown-to-hiccup.core","md->hic
  *  (md->hiccup "#Title" {:encode? true})
  */
 markdown_to_hiccup.core.md__GT_hiccup = (function markdown_to_hiccup$core$md__GT_hiccup(var_args){
-var G__22485 = arguments.length;
-switch (G__22485) {
+var G__22511 = arguments.length;
+switch (G__22511) {
 case 2:
 return markdown_to_hiccup.core.md__GT_hiccup.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -57,14 +57,14 @@ return markdown_to_hiccup.core.md__GT_hiccup.cljs$core$IFn$_invoke$arity$2(md_st
  */
 markdown_to_hiccup.core.hicc_in = (function markdown_to_hiccup$core$hicc_in(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___22557 = arguments.length;
-var i__4865__auto___22558 = (0);
+var len__4864__auto___22565 = arguments.length;
+var i__4865__auto___22566 = (0);
 while(true){
-if((i__4865__auto___22558 < len__4864__auto___22557)){
-args__4870__auto__.push((arguments[i__4865__auto___22558]));
+if((i__4865__auto___22566 < len__4864__auto___22565)){
+args__4870__auto__.push((arguments[i__4865__auto___22566]));
 
-var G__22559 = (i__4865__auto___22558 + (1));
-i__4865__auto___22558 = G__22559;
+var G__22567 = (i__4865__auto___22566 + (1));
+i__4865__auto___22566 = G__22567;
 continue;
 } else {
 }
@@ -86,35 +86,35 @@ if(cljs.core.empty_QMARK_(hiccup)){
 return cljs.core.PersistentVector.EMPTY;
 } else {
 if(cljs.core.map_QMARK_(root)){
-var G__22560 = cljs.core.rest(hiccup);
-var G__22561 = kws;
-hiccup = G__22560;
-kws = G__22561;
+var G__22568 = cljs.core.rest(hiccup);
+var G__22569 = kws;
+hiccup = G__22568;
+kws = G__22569;
 continue;
 } else {
 if(cljs.core.vector_QMARK_(root)){
 var branch_result = cljs.core.apply.cljs$core$IFn$_invoke$arity$3(markdown_to_hiccup.core.hicc_in,root,kws);
 if(cljs.core.empty_QMARK_(branch_result)){
-var G__22562 = cljs.core.rest(hiccup);
-var G__22563 = kws;
-hiccup = G__22562;
-kws = G__22563;
+var G__22570 = cljs.core.rest(hiccup);
+var G__22571 = kws;
+hiccup = G__22570;
+kws = G__22571;
 continue;
 } else {
 return branch_result;
 }
 } else {
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(root,kw)){
-var G__22564 = hiccup;
-var G__22565 = cljs.core.rest(kws);
-hiccup = G__22564;
-kws = G__22565;
+var G__22572 = hiccup;
+var G__22573 = cljs.core.rest(kws);
+hiccup = G__22572;
+kws = G__22573;
 continue;
 } else {
-var G__22566 = cljs.core.rest(hiccup);
-var G__22567 = kws;
-hiccup = G__22566;
-kws = G__22567;
+var G__22574 = cljs.core.rest(hiccup);
+var G__22575 = kws;
+hiccup = G__22574;
+kws = G__22575;
 continue;
 
 }
@@ -129,23 +129,23 @@ break;
 (markdown_to_hiccup.core.hicc_in.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(markdown_to_hiccup.core.hicc_in.cljs$lang$applyTo = (function (seq22512){
-var G__22513 = cljs.core.first(seq22512);
-var seq22512__$1 = cljs.core.next(seq22512);
+(markdown_to_hiccup.core.hicc_in.cljs$lang$applyTo = (function (seq22545){
+var G__22546 = cljs.core.first(seq22545);
+var seq22545__$1 = cljs.core.next(seq22545);
 var self__4851__auto__ = this;
-return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22513,seq22512__$1);
+return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22546,seq22545__$1);
 }));
 
 markdown_to_hiccup.core.keywords_QMARK_ = (function markdown_to_hiccup$core$keywords_QMARK_(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___22568 = arguments.length;
-var i__4865__auto___22569 = (0);
+var len__4864__auto___22576 = arguments.length;
+var i__4865__auto___22577 = (0);
 while(true){
-if((i__4865__auto___22569 < len__4864__auto___22568)){
-args__4870__auto__.push((arguments[i__4865__auto___22569]));
+if((i__4865__auto___22577 < len__4864__auto___22576)){
+args__4870__auto__.push((arguments[i__4865__auto___22577]));
 
-var G__22570 = (i__4865__auto___22569 + (1));
-i__4865__auto___22569 = G__22570;
+var G__22578 = (i__4865__auto___22577 + (1));
+i__4865__auto___22577 = G__22578;
 continue;
 } else {
 }
@@ -163,9 +163,9 @@ return cljs.core.every_QMARK_(cljs.core.keyword_QMARK_,args);
 (markdown_to_hiccup.core.keywords_QMARK_.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(markdown_to_hiccup.core.keywords_QMARK_.cljs$lang$applyTo = (function (seq22514){
+(markdown_to_hiccup.core.keywords_QMARK_.cljs$lang$applyTo = (function (seq22547){
 var self__4852__auto__ = this;
-return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22514));
+return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq22547));
 }));
 
 /**
@@ -175,9 +175,9 @@ return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq
  * count value for the first pair.
  */
 markdown_to_hiccup.core.dec_front = (function markdown_to_hiccup$core$dec_front(kw_pairs){
-var vec__22534 = cljs.core.first(kw_pairs);
-var kw = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22534,(0),null);
-var count = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22534,(1),null);
+var vec__22548 = cljs.core.first(kw_pairs);
+var kw = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22548,(0),null);
+var count = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22548,(1),null);
 var new_count = (count - (1));
 var new_pair = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [kw,new_count], null);
 if((new_count < (0))){
@@ -206,16 +206,16 @@ return cljs.core.partition.cljs$core$IFn$_invoke$arity$2((2),ret_vec);
 }
 } else {
 if(markdown_to_hiccup.core.keywords_QMARK_.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([curr_arg,prev_arg], 0))){
-var G__22571 = cljs.core.rest(arglist);
-var G__22572 = cljs.core.conj.cljs$core$IFn$_invoke$arity$variadic(ret_vec,(0),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([curr_arg], 0));
-arglist = G__22571;
-ret_vec = G__22572;
+var G__22579 = cljs.core.rest(arglist);
+var G__22580 = cljs.core.conj.cljs$core$IFn$_invoke$arity$variadic(ret_vec,(0),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([curr_arg], 0));
+arglist = G__22579;
+ret_vec = G__22580;
 continue;
 } else {
-var G__22573 = cljs.core.rest(arglist);
-var G__22574 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(ret_vec,curr_arg);
-arglist = G__22573;
-ret_vec = G__22574;
+var G__22581 = cljs.core.rest(arglist);
+var G__22582 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(ret_vec,curr_arg);
+arglist = G__22581;
+ret_vec = G__22582;
 continue;
 
 }
@@ -243,10 +243,10 @@ if((kw == null)){
 return hiccup;
 } else {
 if(cljs.core.map_QMARK_(front)){
-var G__22575 = remaining;
-var G__22576 = kw_pairs;
-hiccup = G__22575;
-kw_pairs = G__22576;
+var G__22583 = remaining;
+var G__22584 = kw_pairs;
+hiccup = G__22583;
+kw_pairs = G__22584;
 continue;
 } else {
 if(cljs.core.vector_QMARK_(front)){
@@ -254,16 +254,16 @@ var branch_result = (markdown_to_hiccup.core.get_nested_hiccup.cljs$core$IFn$_in
 if(cljs.core.empty_QMARK_(branch_result)){
 var nested_front = cljs.core.first(front);
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(nested_front,kw)){
-var G__22577 = remaining;
-var G__22578 = markdown_to_hiccup.core.dec_front(kw_pairs);
-hiccup = G__22577;
-kw_pairs = G__22578;
+var G__22585 = remaining;
+var G__22586 = markdown_to_hiccup.core.dec_front(kw_pairs);
+hiccup = G__22585;
+kw_pairs = G__22586;
 continue;
 } else {
-var G__22579 = remaining;
-var G__22580 = kw_pairs;
-hiccup = G__22579;
-kw_pairs = G__22580;
+var G__22587 = remaining;
+var G__22588 = kw_pairs;
+hiccup = G__22587;
+kw_pairs = G__22588;
 continue;
 }
 } else {
@@ -275,18 +275,18 @@ var new_pairs = markdown_to_hiccup.core.dec_front(kw_pairs);
 if(cljs.core.empty_QMARK_(new_pairs)){
 return hiccup;
 } else {
-var G__22581 = remaining;
-var G__22582 = new_pairs;
-hiccup = G__22581;
-kw_pairs = G__22582;
+var G__22589 = remaining;
+var G__22590 = new_pairs;
+hiccup = G__22589;
+kw_pairs = G__22590;
 continue;
 
 }
 } else {
-var G__22583 = remaining;
-var G__22584 = kw_pairs;
-hiccup = G__22583;
-kw_pairs = G__22584;
+var G__22591 = remaining;
+var G__22592 = kw_pairs;
+hiccup = G__22591;
+kw_pairs = G__22592;
 continue;
 
 }
@@ -306,14 +306,14 @@ break;
  */
 markdown_to_hiccup.core.hiccup_in = (function markdown_to_hiccup$core$hiccup_in(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___22585 = arguments.length;
-var i__4865__auto___22586 = (0);
+var len__4864__auto___22593 = arguments.length;
+var i__4865__auto___22594 = (0);
 while(true){
-if((i__4865__auto___22586 < len__4864__auto___22585)){
-args__4870__auto__.push((arguments[i__4865__auto___22586]));
+if((i__4865__auto___22594 < len__4864__auto___22593)){
+args__4870__auto__.push((arguments[i__4865__auto___22594]));
 
-var G__22587 = (i__4865__auto___22586 + (1));
-i__4865__auto___22586 = G__22587;
+var G__22595 = (i__4865__auto___22594 + (1));
+i__4865__auto___22594 = G__22595;
 continue;
 } else {
 }

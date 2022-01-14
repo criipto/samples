@@ -36,14 +36,14 @@ return reagent.core.create_element.cljs$core$IFn$_invoke$arity$3((arguments[(0)]
 break;
 default:
 var args_arr__4885__auto__ = [];
-var len__4864__auto___16232 = arguments.length;
-var i__4865__auto___16233 = (0);
+var len__4864__auto___16228 = arguments.length;
+var i__4865__auto___16229 = (0);
 while(true){
-if((i__4865__auto___16233 < len__4864__auto___16232)){
-args_arr__4885__auto__.push((arguments[i__4865__auto___16233]));
+if((i__4865__auto___16229 < len__4864__auto___16228)){
+args_arr__4885__auto__.push((arguments[i__4865__auto___16229]));
 
-var G__16234 = (i__4865__auto___16233 + (1));
-i__4865__auto___16233 = G__16234;
+var G__16230 = (i__4865__auto___16229 + (1));
+i__4865__auto___16229 = G__16230;
 continue;
 } else {
 }
@@ -223,8 +223,8 @@ return reagent.impl.component.reactify_component(c,compiler);
  *   React built-in static methods or properties are automatically defined as statics.
  */
 reagent.core.create_class = (function reagent$core$create_class(var_args){
-var G__16143 = arguments.length;
-switch (G__16143) {
+var G__16147 = arguments.length;
+switch (G__16147) {
 case 1:
 return reagent.core.create_class.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
