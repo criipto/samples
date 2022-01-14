@@ -4,7 +4,18 @@
             [re-frame.core :as rf]))
 
 (def routes
-  (let [routes* {""                      :front-page
+  ["/samples/cljs/"
+   {""                      :front-page
+    "profile"               :profile
+    "overview"              :overview
+    "auth"                  :auth
+    "accounts"              :accounts
+    "payments-and-transfer" :payments-and-transfer
+    "investment"            :investment
+    "pension-and-insurance" :pension-and-insurance
+    "messages"              :messages
+    "developer-support"     :developer-support}]
+  #_(let [routes* {""                      :front-page
                  "profile"               :profile
                  "overview"              :overview
                  "auth"                  :auth
