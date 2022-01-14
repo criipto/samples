@@ -177,6 +177,7 @@ jobs:
     needs: 
     - test-feliz-template
     - build-feliz
+    - test-cljs-template
     runs-on: ubuntu-latest
     steps:
     - name: Download cljs build artefacts
