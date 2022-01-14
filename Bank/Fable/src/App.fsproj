@@ -9,6 +9,9 @@
     <None Include="index.html" />
     <Compile Include="Authentication/OidcClient.fs" />
     <Compile Include="Authentication/Identity.fs" />
+    <Compile Include="Signatures/Npm/Types.fs" />
+    <Compile Include="Signatures/Npm/Implementation.fs" />
+    <Compile Include="Signatures/Npm/Client.fs" />
     <Compile Include="Signatures/Signatures.fs" />
     <Compile Include="App/Models.fs" />
     <Compile Include="App/Data/Documents.fs" />
