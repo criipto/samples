@@ -1,5 +1,6 @@
 {
     "stacks" : [ 
-        {"displayName" : "feliz","sampleName":"CriiptoFelizSample","executeCommand" : "npm start"}
+        {"displayName" : "feliz","sampleName":"CriiptoFelizSample","executeCommand" : "npm run start:clean"},
+        {"displayName" : "cljs","sampleName":"CriiptoCljsSample","executeCommand" : "npm start"}
     ]
 }

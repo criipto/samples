@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Criipto ApS",
+    "classifications": [ "Common", "Web", "ClojureScript", "Re-frame"],
+    "identity": "Criipto.ClojureScript Sample",
+    "name": "Criipto Bank ClojureScript SPA Sample",
+    "shortName": "CriiptoCljsSample",
+    "tags": {
+      "language": "ClojureScript",
+      "type": "project"
+    },
+    "symbols": {
+        "domain":{
+            "type" : "parameter",
+            "replaces" : "fablecriipto-test.criipto.id",
+            "defaultValue" : "fablecriipto-test.criipto.id"
+        },
+        "clientid":{
+            "type" : "parameter",
+            "dataType" : "text",
+            "replaces": "urn:my:application:identifier:1744",
+            "defaultValue": "urn:my:application:identifier:1744"
+        },
+        "companyName":{
+            "type" : "parameter",
+            "dataType" : "text",
+            "replaces": "%APPNAME%",
+            "defaultValue": "Criipto"
+        }
+
+    },
+    "sources": [
+        {
+          "exclude" : ".git",
+          "modifiers": [{
+            "exclude": [ 
+              ".github/**",
+              ".template.config/**", 
+              "out/**",
+              "resources/public/js/compiled/**",
+              "target/**",
+              "*-init.clj",
+              "*.log",
+              ".git*",
+              ".lein-*",
+              ".nrepl-port",
+              ".shadow-cljs/**",
+              "node_modules/**",
+              ]
+          }]
+        }
+      ]
+  }

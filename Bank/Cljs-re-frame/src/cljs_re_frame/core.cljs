@@ -16,7 +16,7 @@
       [:div.navbar-start
        [:div.navbar-item {:class "icon credit-card-logo"}]
        [:div.navbar-item {:class "logo-text"}
-        [:span.app-name "%APP-NAME%"]
+        [:span.app-name "%APPNAME%"]
         [:span.bank "Bank"]]]
       [:div.navbar-end
        [:div.navbar-item

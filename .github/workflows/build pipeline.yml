@@ -7,6 +7,24 @@ on:
     branches: [ master ]
 
 jobs:
+  build-cljs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - name: Restore js dependencies
+      run: npm install
+      working-directory: ./Bank/Cljs-re-frame
+    - name: Test build the project
+      run: npm run build
+      working-directory: ./Bank/Cljs-re-frame
+
   build-feliz:
 
     runs-on: ubuntu-latest
@@ -58,6 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
     - build-feliz
+    - build-cljs
     steps:
     - name: checkout
       uses: actions/checkout@v2
@@ -72,6 +91,40 @@ jobs:
       with:
         name: template-package
         path: ./build/
+
+  test-cljs-template:
+    needs: build-template-project
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download build artefactsß
+      uses: actions/download-artifact@master
+      with:
+        name: template-package
+        path: ./build/
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+        
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - name: Install template
+      run: dotnet new -i $(ls ./build/*.* | grep Criipto)
+      working-directory: ./
+    - name: create cljs project from template
+      run: dotnet new CriiptoCljsSample -o deployment-cljs-source
+    - name: Restore js dependencies
+      run: npm install
+      working-directory: deployment-cljs-source
+    - name: Test build the project
+      run: npm run build
+      working-directory: deployment-cljs-source
+    - uses: actions/upload-artifact@master
+      with:
+        name: cljs-demo
+        path: ./deployment-cljs-source/resources/public/
 
   test-feliz-template:
     needs: build-template-project
@@ -119,8 +172,14 @@ jobs:
     needs: 
     - test-feliz-template
     - build-feliz
+    - test-cljs-template
     runs-on: ubuntu-latest
     steps:
+    - name: Download cljs build artefacts
+      uses: actions/download-artifact@master
+      with:
+        name: cljs-demo
+        path: releases/cljs/
     - name: Download feliz build artefacts
       uses: actions/download-artifact@master
       with:
@@ -143,6 +202,7 @@ jobs:
   push-template-package:
     needs: 
     - test-feliz-template
+    - test-cljs-template
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@master
