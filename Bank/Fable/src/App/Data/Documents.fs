@@ -8,7 +8,7 @@ type private document = Fable.JsonProvider.Generator<"../public/documents.json">
 let mutable documents = None
 let sources = 
   [
-      "https://criipto-bank.netlify.app/feliz/documents.json" //try online first
+      "https://criipto.github.io/samples/static/documents.json" //try online first
       "/documents.json" //fallback to local if online is unavailable
   ]
 let fetch(setDocuments) = 
@@ -22,7 +22,6 @@ let fetch(setDocuments) =
                 match response.statusCode with
                 | 200 ->
                     Some response.responseText
-
                 | errorStatus ->
                     let errors = response.responseText
                     printfn "Error retrieving document: %s" errors
