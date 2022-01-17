@@ -77,48 +77,48 @@ try{var G__20219_20235 = cljs.core.deref(re_frame.trace.traces);
 re_frame.loggers.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"error","error",-978969032),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["Error thrown from trace cb",k_20233,"while storing",cljs.core.deref(re_frame.trace.traces),e_20236], 0));
 }
 
-var G__20238 = seq__20201_20228;
-var G__20239 = chunk__20202_20229;
-var G__20240 = count__20203_20230;
-var G__20241 = (i__20204_20231 + (1));
-seq__20201_20228 = G__20238;
-chunk__20202_20229 = G__20239;
-count__20203_20230 = G__20240;
-i__20204_20231 = G__20241;
+var G__20237 = seq__20201_20228;
+var G__20238 = chunk__20202_20229;
+var G__20239 = count__20203_20230;
+var G__20240 = (i__20204_20231 + (1));
+seq__20201_20228 = G__20237;
+chunk__20202_20229 = G__20238;
+count__20203_20230 = G__20239;
+i__20204_20231 = G__20240;
 continue;
 } else {
-var temp__5753__auto___20242 = cljs.core.seq(seq__20201_20228);
-if(temp__5753__auto___20242){
-var seq__20201_20243__$1 = temp__5753__auto___20242;
-if(cljs.core.chunked_seq_QMARK_(seq__20201_20243__$1)){
-var c__4679__auto___20244 = cljs.core.chunk_first(seq__20201_20243__$1);
-var G__20245 = cljs.core.chunk_rest(seq__20201_20243__$1);
-var G__20246 = c__4679__auto___20244;
-var G__20247 = cljs.core.count(c__4679__auto___20244);
-var G__20248 = (0);
-seq__20201_20228 = G__20245;
-chunk__20202_20229 = G__20246;
-count__20203_20230 = G__20247;
-i__20204_20231 = G__20248;
+var temp__5753__auto___20241 = cljs.core.seq(seq__20201_20228);
+if(temp__5753__auto___20241){
+var seq__20201_20242__$1 = temp__5753__auto___20241;
+if(cljs.core.chunked_seq_QMARK_(seq__20201_20242__$1)){
+var c__4679__auto___20243 = cljs.core.chunk_first(seq__20201_20242__$1);
+var G__20244 = cljs.core.chunk_rest(seq__20201_20242__$1);
+var G__20245 = c__4679__auto___20243;
+var G__20246 = cljs.core.count(c__4679__auto___20243);
+var G__20247 = (0);
+seq__20201_20228 = G__20244;
+chunk__20202_20229 = G__20245;
+count__20203_20230 = G__20246;
+i__20204_20231 = G__20247;
 continue;
 } else {
-var vec__20220_20249 = cljs.core.first(seq__20201_20243__$1);
-var k_20250 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20220_20249,(0),null);
-var cb_20251 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20220_20249,(1),null);
-try{var G__20224_20252 = cljs.core.deref(re_frame.trace.traces);
-(cb_20251.cljs$core$IFn$_invoke$arity$1 ? cb_20251.cljs$core$IFn$_invoke$arity$1(G__20224_20252) : cb_20251.call(null,G__20224_20252));
-}catch (e20223){var e_20253 = e20223;
-re_frame.loggers.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"error","error",-978969032),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["Error thrown from trace cb",k_20250,"while storing",cljs.core.deref(re_frame.trace.traces),e_20253], 0));
+var vec__20220_20248 = cljs.core.first(seq__20201_20242__$1);
+var k_20249 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20220_20248,(0),null);
+var cb_20250 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20220_20248,(1),null);
+try{var G__20224_20251 = cljs.core.deref(re_frame.trace.traces);
+(cb_20250.cljs$core$IFn$_invoke$arity$1 ? cb_20250.cljs$core$IFn$_invoke$arity$1(G__20224_20251) : cb_20250.call(null,G__20224_20251));
+}catch (e20223){var e_20252 = e20223;
+re_frame.loggers.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"error","error",-978969032),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["Error thrown from trace cb",k_20249,"while storing",cljs.core.deref(re_frame.trace.traces),e_20252], 0));
 }
 
-var G__20254 = cljs.core.next(seq__20201_20243__$1);
-var G__20255 = null;
+var G__20253 = cljs.core.next(seq__20201_20242__$1);
+var G__20254 = null;
+var G__20255 = (0);
 var G__20256 = (0);
-var G__20257 = (0);
-seq__20201_20228 = G__20254;
-chunk__20202_20229 = G__20255;
-count__20203_20230 = G__20256;
-i__20204_20231 = G__20257;
+seq__20201_20228 = G__20253;
+chunk__20202_20229 = G__20254;
+count__20203_20230 = G__20255;
+i__20204_20231 = G__20256;
 continue;
 }
 } else {

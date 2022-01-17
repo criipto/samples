@@ -23,8 +23,8 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 });})(i__20671,match_info,match,c__4650__auto__,size__4651__auto__,b__20672,s__20670__$2,temp__5753__auto__,current_match))
 ,day8.re_frame_10x.metamorphic.summarise_match(match_info)))], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(cljs.core.first(match_info))], null)));
 
-var G__20673 = (i__20671 + (1));
-i__20671 = G__20673;
+var G__20677 = (i__20671 + (1));
+i__20671 = G__20677;
 continue;
 } else {
 return true;

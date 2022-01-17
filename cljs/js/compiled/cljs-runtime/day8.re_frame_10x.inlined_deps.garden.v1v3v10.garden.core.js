@@ -66,9 +66,9 @@ return day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.compiler.compile_sty
 (day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.core.style.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.core.style.cljs$lang$applyTo = (function (seq14208){
+(day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.core.style.cljs$lang$applyTo = (function (seq14210){
 var self__4852__auto__ = this;
-return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14208));
+return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq14210));
 }));
 
 

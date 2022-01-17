@@ -13,14 +13,14 @@ return day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.core.dispatch(new
 });
 day8.re_frame_10x.view.app_db.pod_header_section = (function day8$re_frame_10x$view$app_db$pod_header_section(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___16368 = arguments.length;
-var i__4865__auto___16369 = (0);
+var len__4864__auto___16363 = arguments.length;
+var i__4865__auto___16364 = (0);
 while(true){
-if((i__4865__auto___16369 < len__4864__auto___16368)){
-args__4870__auto__.push((arguments[i__4865__auto___16369]));
+if((i__4865__auto___16364 < len__4864__auto___16363)){
+args__4870__auto__.push((arguments[i__4865__auto___16364]));
 
-var G__16370 = (i__4865__auto___16369 + (1));
-i__4865__auto___16369 = G__16370;
+var G__16365 = (i__4865__auto___16364 + (1));
+i__4865__auto___16364 = G__16365;
 continue;
 } else {
 }
@@ -51,9 +51,9 @@ return new cljs.core.PersistentVector(null, 21, 5, cljs.core.PersistentVector.EM
 (day8.re_frame_10x.view.app_db.pod_header_section.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(day8.re_frame_10x.view.app_db.pod_header_section.cljs$lang$applyTo = (function (seq16348){
+(day8.re_frame_10x.view.app_db.pod_header_section.cljs$lang$applyTo = (function (seq16345){
 var self__4852__auto__ = this;
-return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq16348));
+return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq16345));
 }));
 
 day8.re_frame_10x.view.app_db.pod_header = (function day8$re_frame_10x$view$app_db$pod_header(p__16352){
@@ -133,8 +133,8 @@ if((i__16361 < size__4651__auto__)){
 var p = cljs.core._nth(c__4650__auto__,i__16361);
 cljs.core.chunk_append(b__16362,cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [day8.re_frame_10x.view.app_db.pod,p], null),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"key","key",-1516042587),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p)], null)));
 
-var G__16371 = (i__16361 + (1));
-i__16361 = G__16371;
+var G__16366 = (i__16361 + (1));
+i__16361 = G__16366;
 continue;
 } else {
 return true;

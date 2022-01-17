@@ -718,11 +718,11 @@ return day8$re_frame_10x$inlined_deps$re_frame$v1v1v2$re_frame$subs$subs_handler
 (day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.subs.reg_sub.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.subs.reg_sub.cljs$lang$applyTo = (function (seq15254){
-var G__15255 = cljs.core.first(seq15254);
-var seq15254__$1 = cljs.core.next(seq15254);
+(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.subs.reg_sub.cljs$lang$applyTo = (function (seq15253){
+var G__15254 = cljs.core.first(seq15253);
+var seq15253__$1 = cljs.core.next(seq15253);
 var self__4851__auto__ = this;
-return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__15255,seq15254__$1);
+return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__15254,seq15253__$1);
 }));
 
 

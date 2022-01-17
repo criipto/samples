@@ -24,14 +24,14 @@ return (rewrite_clj.node.coerce.cljs$core$IFn$_invoke$arity$1 ? rewrite_clj.node
  */
 rewrite_clj.zip.editz.edit = (function rewrite_clj$zip$editz$edit(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___18194 = arguments.length;
-var i__4865__auto___18195 = (0);
+var len__4864__auto___18195 = arguments.length;
+var i__4865__auto___18196 = (0);
 while(true){
-if((i__4865__auto___18195 < len__4864__auto___18194)){
-args__4870__auto__.push((arguments[i__4865__auto___18195]));
+if((i__4865__auto___18196 < len__4864__auto___18195)){
+args__4870__auto__.push((arguments[i__4865__auto___18196]));
 
-var G__18196 = (i__4865__auto___18195 + (1));
-i__4865__auto___18195 = G__18196;
+var G__18197 = (i__4865__auto___18196 + (1));
+i__4865__auto___18196 = G__18197;
 continue;
 } else {
 }
@@ -130,12 +130,12 @@ throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$ari
 }
 });
 rewrite_clj.zip.editz.suffix = (function rewrite_clj$zip$editz$suffix(zloc,s){
-var G__18193 = rewrite_clj.zip.base.tag(zloc);
-var G__18193__$1 = (((G__18193 instanceof cljs.core.Keyword))?G__18193.fqn:null);
-switch (G__18193__$1) {
+var G__18194 = rewrite_clj.zip.base.tag(zloc);
+var G__18194__$1 = (((G__18194 instanceof cljs.core.Keyword))?G__18194.fqn:null);
+switch (G__18194__$1) {
 case "token":
-return rewrite_clj.zip.editz.edit_token(zloc,(function (p1__18192_SHARP_){
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__18192_SHARP_),cljs.core.str.cljs$core$IFn$_invoke$arity$1(s)].join('');
+return rewrite_clj.zip.editz.edit_token(zloc,(function (p1__18193_SHARP_){
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(p1__18193_SHARP_),cljs.core.str.cljs$core$IFn$_invoke$arity$1(s)].join('');
 }));
 
 break;
@@ -150,7 +150,7 @@ return cljs.core.concat.cljs$core$IFn$_invoke$arity$2(cljs.core.butlast(lines),[
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__18193__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__18194__$1)].join('')));
 
 }
 });
