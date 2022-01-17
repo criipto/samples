@@ -35,13 +35,11 @@ module Signatures =
             } |> Error
 
     let createSignatureOrder token title documents  =
-        printfn "Making order ready"
+        
         let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
-        printfn "Client created"
+        
         promise {
-            printfn "Creating order now"
             let! res = client.createSignatureOrder(title,documents)
-            printfn "Order created %A" res
             return res |> parse SignatureOrderResponse
         } |> Async.AwaitPromise
         

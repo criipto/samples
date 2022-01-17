@@ -23,8 +23,7 @@ let fetch(setDocuments) =
                 | 200 ->
                     Some response.responseText
                 | errorStatus ->
-                    let errors = response.responseText
-                    printfn "Error retrieving document: %s" errors
+                    eprintfn "Error retrieving document from %s - %d" doc.documentUrl errorStatus
                     None
             let doc = 
                 content
