@@ -38,9 +38,9 @@ return this__4502__auto____$1.cljs$core$ILookup$_lookup$arity$3(null,k__4503__au
 (ajax.interceptors.StandardInterceptor.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__4504__auto__,k21351,else__4505__auto__){
 var self__ = this;
 var this__4504__auto____$1 = this;
-var G__21357 = k21351;
-var G__21357__$1 = (((G__21357 instanceof cljs.core.Keyword))?G__21357.fqn:null);
-switch (G__21357__$1) {
+var G__21356 = k21351;
+var G__21356__$1 = (((G__21356 instanceof cljs.core.Keyword))?G__21356.fqn:null);
+switch (G__21356__$1) {
 case "name":
 return self__.name;
 
@@ -276,14 +276,14 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(response,new cljs.co
 });
 ajax.interceptors.fail = (function ajax$interceptors$fail(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___21465 = arguments.length;
-var i__4865__auto___21466 = (0);
+var len__4864__auto___21469 = arguments.length;
+var i__4865__auto___21470 = (0);
 while(true){
-if((i__4865__auto___21466 < len__4864__auto___21465)){
-args__4870__auto__.push((arguments[i__4865__auto___21466]));
+if((i__4865__auto___21470 < len__4864__auto___21469)){
+args__4870__auto__.push((arguments[i__4865__auto___21470]));
 
-var G__21467 = (i__4865__auto___21466 + (1));
-i__4865__auto___21466 = G__21467;
+var G__21471 = (i__4865__auto___21470 + (1));
+i__4865__auto___21470 = G__21471;
 continue;
 } else {
 }

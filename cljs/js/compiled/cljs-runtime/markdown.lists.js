@@ -1,25 +1,25 @@
 goog.provide('markdown.lists');
 markdown.lists.close_lists = (function markdown$lists$close_lists(lists){
-return clojure.string.join.cljs$core$IFn$_invoke$arity$1((function (){var iter__4652__auto__ = (function markdown$lists$close_lists_$_iter__22059(s__22060){
+return clojure.string.join.cljs$core$IFn$_invoke$arity$1((function (){var iter__4652__auto__ = (function markdown$lists$close_lists_$_iter__21957(s__21958){
 return (new cljs.core.LazySeq(null,(function (){
-var s__22060__$1 = s__22060;
+var s__21958__$1 = s__21958;
 while(true){
-var temp__5753__auto__ = cljs.core.seq(s__22060__$1);
+var temp__5753__auto__ = cljs.core.seq(s__21958__$1);
 if(temp__5753__auto__){
-var s__22060__$2 = temp__5753__auto__;
-if(cljs.core.chunked_seq_QMARK_(s__22060__$2)){
-var c__4650__auto__ = cljs.core.chunk_first(s__22060__$2);
+var s__21958__$2 = temp__5753__auto__;
+if(cljs.core.chunked_seq_QMARK_(s__21958__$2)){
+var c__4650__auto__ = cljs.core.chunk_first(s__21958__$2);
 var size__4651__auto__ = cljs.core.count(c__4650__auto__);
-var b__22062 = cljs.core.chunk_buffer(size__4651__auto__);
-if((function (){var i__22061 = (0);
+var b__21960 = cljs.core.chunk_buffer(size__4651__auto__);
+if((function (){var i__21959 = (0);
 while(true){
-if((i__22061 < size__4651__auto__)){
-var vec__22063 = cljs.core._nth(c__4650__auto__,i__22061);
-var list_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22063,(0),null);
-cljs.core.chunk_append(b__22062,["</li></",cljs.core.name(list_type),">"].join(''));
+if((i__21959 < size__4651__auto__)){
+var vec__21961 = cljs.core._nth(c__4650__auto__,i__21959);
+var list_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__21961,(0),null);
+cljs.core.chunk_append(b__21960,["</li></",cljs.core.name(list_type),">"].join(''));
 
-var G__22094 = (i__22061 + (1));
-i__22061 = G__22094;
+var G__21976 = (i__21959 + (1));
+i__21959 = G__21976;
 continue;
 } else {
 return true;
@@ -27,14 +27,14 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons(cljs.core.chunk(b__22062),markdown$lists$close_lists_$_iter__22059(cljs.core.chunk_rest(s__22060__$2)));
+return cljs.core.chunk_cons(cljs.core.chunk(b__21960),markdown$lists$close_lists_$_iter__21957(cljs.core.chunk_rest(s__21958__$2)));
 } else {
-return cljs.core.chunk_cons(cljs.core.chunk(b__22062),null);
+return cljs.core.chunk_cons(cljs.core.chunk(b__21960),null);
 }
 } else {
-var vec__22072 = cljs.core.first(s__22060__$2);
-var list_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22072,(0),null);
-return cljs.core.cons(["</li></",cljs.core.name(list_type),">"].join(''),markdown$lists$close_lists_$_iter__22059(cljs.core.rest(s__22060__$2)));
+var vec__21964 = cljs.core.first(s__21958__$2);
+var list_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__21964,(0),null);
+return cljs.core.cons(["</li></",cljs.core.name(list_type),">"].join(''),markdown$lists$close_lists_$_iter__21957(cljs.core.rest(s__21958__$2)));
 }
 } else {
 return null;
@@ -49,8 +49,8 @@ return iter__4652__auto__(lists);
 markdown.lists.add_row = (function markdown$lists$add_row(row_type,list_type,num_indents,indents,content,state){
 if(cljs.core.truth_(list_type)){
 if((num_indents < indents)){
-var lists_to_close = cljs.core.take_while.cljs$core$IFn$_invoke$arity$2((function (p1__22078_SHARP_){
-return (cljs.core.second(p1__22078_SHARP_) > num_indents);
+var lists_to_close = cljs.core.take_while.cljs$core$IFn$_invoke$arity$2((function (p1__21967_SHARP_){
+return (cljs.core.second(p1__21967_SHARP_) > num_indents);
 }),cljs.core.reverse(new cljs.core.Keyword(null,"lists","lists",-884730684).cljs$core$IFn$_invoke$arity$1(state)));
 var remaining_lists = cljs.core.vec(cljs.core.drop_last.cljs$core$IFn$_invoke$arity$2(cljs.core.count(lists_to_close),new cljs.core.Keyword(null,"lists","lists",-884730684).cljs$core$IFn$_invoke$arity$1(state)));
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.apply.cljs$core$IFn$_invoke$arity$4(cljs.core.str,markdown.lists.close_lists(lists_to_close),"</li><li>",content),cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(state,new cljs.core.Keyword(null,"lists","lists",-884730684),(((num_indents > cljs.core.second(cljs.core.last(remaining_lists))))?cljs.core.conj.cljs$core$IFn$_invoke$arity$2(remaining_lists,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [row_type,num_indents], null)):remaining_lists))], null);
@@ -70,9 +70,9 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 }
 });
 markdown.lists.ul = (function markdown$lists$ul(text,state){
-var vec__22083 = cljs.core.last(new cljs.core.Keyword(null,"lists","lists",-884730684).cljs$core$IFn$_invoke$arity$1(state));
-var list_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22083,(0),null);
-var indents = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22083,(1),null);
+var vec__21968 = cljs.core.last(new cljs.core.Keyword(null,"lists","lists",-884730684).cljs$core$IFn$_invoke$arity$1(state));
+var list_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__21968,(0),null);
+var indents = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__21968,(1),null);
 var num_indents = cljs.core.count(cljs.core.take_while.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core._EQ_," "),text));
 var content = clojure.string.trim(markdown.common._STAR_substring_STAR_.call(null,text,(num_indents + (1))));
 return markdown.lists.add_row(new cljs.core.Keyword(null,"ul","ul",-1349521403),list_type,num_indents,indents,(function (){var or__4253__auto__ = markdown.common.make_heading(content,false);
@@ -84,9 +84,9 @@ return content;
 })(),state);
 });
 markdown.lists.ol = (function markdown$lists$ol(text,state){
-var vec__22086 = cljs.core.last(new cljs.core.Keyword(null,"lists","lists",-884730684).cljs$core$IFn$_invoke$arity$1(state));
-var list_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22086,(0),null);
-var indents = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22086,(1),null);
+var vec__21971 = cljs.core.last(new cljs.core.Keyword(null,"lists","lists",-884730684).cljs$core$IFn$_invoke$arity$1(state));
+var list_type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__21971,(0),null);
+var indents = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__21971,(1),null);
 var num_indents = cljs.core.count(cljs.core.take_while.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core._EQ_," "),text));
 var content = clojure.string.trim(clojure.string.join.cljs$core$IFn$_invoke$arity$1(cljs.core.drop_while.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.not_EQ_," "),clojure.string.trim(text))));
 return markdown.lists.add_row(new cljs.core.Keyword(null,"ol","ol",932524051),list_type,num_indents,indents,(function (){var or__4253__auto__ = markdown.common.make_heading(content,false);
@@ -97,14 +97,14 @@ return content;
 }
 })(),state);
 });
-markdown.lists.li = (function markdown$lists$li(text,p__22089){
-var map__22090 = p__22089;
-var map__22090__$1 = cljs.core.__destructure_map(map__22090);
-var state = map__22090__$1;
-var codeblock = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22090__$1,new cljs.core.Keyword(null,"codeblock","codeblock",-851153855));
-var last_line_empty_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22090__$1,new cljs.core.Keyword(null,"last-line-empty?","last-line-empty?",1279111527));
-var eof = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22090__$1,new cljs.core.Keyword(null,"eof","eof",-489063237));
-var lists = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22090__$1,new cljs.core.Keyword(null,"lists","lists",-884730684));
+markdown.lists.li = (function markdown$lists$li(text,p__21974){
+var map__21975 = p__21974;
+var map__21975__$1 = cljs.core.__destructure_map(map__21975);
+var state = map__21975__$1;
+var codeblock = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21975__$1,new cljs.core.Keyword(null,"codeblock","codeblock",-851153855));
+var last_line_empty_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21975__$1,new cljs.core.Keyword(null,"last-line-empty?","last-line-empty?",1279111527));
+var eof = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21975__$1,new cljs.core.Keyword(null,"eof","eof",-489063237));
+var lists = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21975__$1,new cljs.core.Keyword(null,"lists","lists",-884730684));
 if(cljs.core.truth_((function (){var and__4251__auto__ = last_line_empty_QMARK_;
 if(cljs.core.truth_(and__4251__auto__)){
 return clojure.string.blank_QMARK_(text);

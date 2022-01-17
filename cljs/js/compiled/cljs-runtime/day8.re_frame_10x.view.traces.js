@@ -15,22 +15,22 @@ return day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.core.dispatch(new
 });
 day8.re_frame_10x.view.traces.render_traces = (function day8$re_frame_10x$view$traces$render_traces(visible_traces,filter_items,filter_input,trace_detail_expansions){
 var debug_QMARK_ = cljs.core.deref(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("settings","debug?","settings/debug?",-128490920)], null)));
-return cljs.core.doall.cljs$core$IFn$_invoke$arity$1(cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2((function (index,p__20037){
-var map__20038 = p__20037;
-var map__20038__$1 = cljs.core.__destructure_map(map__20038);
-var trace = map__20038__$1;
-var op_type = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20038__$1,new cljs.core.Keyword(null,"op-type","op-type",-1636141668));
-var id = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20038__$1,new cljs.core.Keyword(null,"id","id",-1388402092));
-var operation = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20038__$1,new cljs.core.Keyword(null,"operation","operation",-1267664310));
-var tags = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20038__$1,new cljs.core.Keyword(null,"tags","tags",1771418977));
-var duration = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20038__$1,new cljs.core.Keyword(null,"duration","duration",1444101068));
+return cljs.core.doall.cljs$core$IFn$_invoke$arity$1(cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2((function (index,p__20039){
+var map__20040 = p__20039;
+var map__20040__$1 = cljs.core.__destructure_map(map__20040);
+var trace = map__20040__$1;
+var op_type = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20040__$1,new cljs.core.Keyword(null,"op-type","op-type",-1636141668));
+var id = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20040__$1,new cljs.core.Keyword(null,"id","id",-1388402092));
+var operation = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20040__$1,new cljs.core.Keyword(null,"operation","operation",-1267664310));
+var tags = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20040__$1,new cljs.core.Keyword(null,"tags","tags",1771418977));
+var duration = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20040__$1,new cljs.core.Keyword(null,"duration","duration",1444101068));
 var show_row_QMARK_ = cljs.core.get_in.cljs$core$IFn$_invoke$arity$3(cljs.core.deref(trace_detail_expansions),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"overrides","overrides",1738628867),id], null),new cljs.core.Keyword(null,"show-all?","show-all?",503618702).cljs$core$IFn$_invoke$arity$1(cljs.core.deref(trace_detail_expansions)));
 var op_name = ((cljs.core.vector_QMARK_(operation))?cljs.core.second(operation):operation);
 return (new cljs.core.List(null,new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"tr","tr",-1424774646),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"key","key",-1516042587),id,new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (){
 return day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.core.dispatch(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("traces","toggle-trace","traces/toggle-trace",-995872006),id], null));
-}),new cljs.core.Keyword(null,"class","class",-2030961996),clojure.string.join.cljs$core$IFn$_invoke$arity$2(" ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["trace--trace",(function (){var G__20040 = op_type;
-var G__20040__$1 = (((G__20040 instanceof cljs.core.Keyword))?G__20040.fqn:null);
-switch (G__20040__$1) {
+}),new cljs.core.Keyword(null,"class","class",-2030961996),clojure.string.join.cljs$core$IFn$_invoke$arity$2(" ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["trace--trace",(function (){var G__20041 = op_type;
+var G__20041__$1 = (((G__20041 instanceof cljs.core.Keyword))?G__20041.fqn:null);
+switch (G__20041__$1) {
 case "sub/create":
 return "trace--sub-create";
 

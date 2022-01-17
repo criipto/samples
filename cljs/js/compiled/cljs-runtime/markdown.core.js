@@ -1,10 +1,10 @@
 goog.provide('markdown.core');
-markdown.core.init_transformer = (function markdown$core$init_transformer(p__22149){
-var map__22150 = p__22149;
-var map__22150__$1 = cljs.core.__destructure_map(map__22150);
-var replacement_transformers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22150__$1,new cljs.core.Keyword(null,"replacement-transformers","replacement-transformers",-2028552897));
-var custom_transformers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22150__$1,new cljs.core.Keyword(null,"custom-transformers","custom-transformers",1440601790));
-var inhibit_separator = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22150__$1,new cljs.core.Keyword(null,"inhibit-separator","inhibit-separator",1268116222));
+markdown.core.init_transformer = (function markdown$core$init_transformer(p__22145){
+var map__22146 = p__22145;
+var map__22146__$1 = cljs.core.__destructure_map(map__22146);
+var replacement_transformers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22146__$1,new cljs.core.Keyword(null,"replacement-transformers","replacement-transformers",-2028552897));
+var custom_transformers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22146__$1,new cljs.core.Keyword(null,"custom-transformers","custom-transformers",1440601790));
+var inhibit_separator = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22146__$1,new cljs.core.Keyword(null,"inhibit-separator","inhibit-separator",1268116222));
 return (function (html,line,next_line,state){
 var _STAR_inhibit_separator_STAR__orig_val__22151 = markdown.common._STAR_inhibit_separator_STAR_;
 var _STAR_inhibit_separator_STAR__temp_val__22152 = inhibit_separator;
@@ -218,16 +218,16 @@ var vec__22183 = (cljs.core.truth_(new cljs.core.Keyword(null,"parse-meta?","par
 var metadata = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22183,(0),null);
 var lines__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22183,(1),null);
 var transformer = markdown.core.init_transformer(params__$1);
-var G__22189_22250 = lines__$1;
-var vec__22190_22251 = G__22189_22250;
-var seq__22191_22252 = cljs.core.seq(vec__22190_22251);
-var first__22192_22253 = cljs.core.first(seq__22191_22252);
-var seq__22191_22254__$1 = cljs.core.next(seq__22191_22252);
-var line_22255 = first__22192_22253;
-var more_22256 = seq__22191_22254__$1;
-var state_22257 = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"clojurescript","clojurescript",-299769403),true,new cljs.core.Keyword(null,"references","references",882562509),references,new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205),footnotes,new cljs.core.Keyword(null,"last-line-empty?","last-line-empty?",1279111527),true], null),params__$1], 0));
-var G__22189_22259__$1 = G__22189_22250;
-var state_22260__$1 = state_22257;
+var G__22189_22251 = lines__$1;
+var vec__22190_22252 = G__22189_22251;
+var seq__22191_22253 = cljs.core.seq(vec__22190_22252);
+var first__22192_22254 = cljs.core.first(seq__22191_22253);
+var seq__22191_22255__$1 = cljs.core.next(seq__22191_22253);
+var line_22256 = first__22192_22254;
+var more_22257 = seq__22191_22255__$1;
+var state_22258 = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"clojurescript","clojurescript",-299769403),true,new cljs.core.Keyword(null,"references","references",882562509),references,new cljs.core.Keyword(null,"footnotes","footnotes",-1842778205),footnotes,new cljs.core.Keyword(null,"last-line-empty?","last-line-empty?",1279111527),true], null),params__$1], 0));
+var G__22189_22259__$1 = G__22189_22251;
+var state_22260__$1 = state_22258;
 while(true){
 var vec__22196_22261 = G__22189_22259__$1;
 var seq__22197_22262 = cljs.core.seq(vec__22196_22261);
