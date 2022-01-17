@@ -6,8 +6,6 @@
  [[reagent "1.1.0"]
   [re-frame "1.2.0"]
   [re-promise "0.1.1"]
-  [bidi "2.1.6"]
-  [kibu/pushy "0.3.8"]
   [cljs-ajax "0.7.5"]
   [day8.re-frame/http-fx "0.2.4"]
   [binaryage/devtools "1.0.3"]

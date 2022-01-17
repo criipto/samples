@@ -5,10 +5,7 @@
             [re-frame.core :as rf]))
 
 (def redirect-uri
-  (delay
-    (if (= (.-hostname (.-location js/window)) "localhost")
-      (str "http://" (.-host (.-location js/window)) "/samples/cljs/")
-      (str "https://" (.-host (.-location js/window)) "/samples/cljs/"))))
+  (delay (.-href (.-location js/window))))
 
 (def auth-domain "mnie-test.criipto.id")
 
@@ -34,8 +31,6 @@
     authenticator))
 
 (defn login []
-  (js/console.log "redirect uri")
-  (js/console.log (deref redirect-uri))
   (let [args (clj->js {:redirectUri (deref redirect-uri)
                        :acrValues acr-mitid})]
     (.redirect.authorize authenticator args)))
@@ -54,8 +49,15 @@
 (def js-storage-key-for-auth
   (str "oidc.user:" auth-domain ":" client-id))
 
+(defn clear-url-params! []
+  (.replaceState (.-history js/window)
+                 (clj->js {})
+                 (.-title js/document)
+                 (.-pathname js/location)))
+
 (defn save-token-to-js-storage! [js-storage]
   (fn [{:keys [authorization-result] :as _db}]
+    (clear-url-params!) ;; clearing away the 'code' url-parameter such that page reloads doesn't trigger call to get token (`../oauth2/token`)
     (let [error? (boolean (get-in authorization-result [:raw :error]))]
       (when (not error?)
         (.setItem js-storage js-storage-key-for-auth (str (:raw (:token authorization-result))))))))
