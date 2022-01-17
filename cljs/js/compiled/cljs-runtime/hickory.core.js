@@ -7,7 +7,7 @@ goog.provide('hickory.core');
  */
 hickory.core.HiccupRepresentable = function(){};
 
-var hickory$core$HiccupRepresentable$as_hiccup$dyn_21902 = (function (this$){
+var hickory$core$HiccupRepresentable$as_hiccup$dyn_21918 = (function (this$){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (hickory.core.as_hiccup[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -30,7 +30,7 @@ hickory.core.as_hiccup = (function hickory$core$as_hiccup(this$){
 if((((!((this$ == null)))) && ((!((this$.hickory$core$HiccupRepresentable$as_hiccup$arity$1 == null)))))){
 return this$.hickory$core$HiccupRepresentable$as_hiccup$arity$1(this$);
 } else {
-return hickory$core$HiccupRepresentable$as_hiccup$dyn_21902(this$);
+return hickory$core$HiccupRepresentable$as_hiccup$dyn_21918(this$);
 }
 });
 
@@ -117,30 +117,30 @@ return ["<!DOCTYPE ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(name),">"].join
 (hickory.core.HiccupRepresentable["object"] = true);
 
 (hickory.core.as_hiccup["object"] = (function (this$){
-var pred__21891 = cljs.core._EQ_;
-var expr__21892 = (this$["nodeType"]);
-if(cljs.core.truth_((pred__21891.cljs$core$IFn$_invoke$arity$2 ? pred__21891.cljs$core$IFn$_invoke$arity$2(hickory.core.Attribute,expr__21892) : pred__21891.call(null,hickory.core.Attribute,expr__21892)))){
+var pred__21894 = cljs.core._EQ_;
+var expr__21895 = (this$["nodeType"]);
+if(cljs.core.truth_((pred__21894.cljs$core$IFn$_invoke$arity$2 ? pred__21894.cljs$core$IFn$_invoke$arity$2(hickory.core.Attribute,expr__21895) : pred__21894.call(null,hickory.core.Attribute,expr__21895)))){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [hickory.utils.lower_case_keyword((this$["name"])),(this$["value"])], null);
 } else {
-if(cljs.core.truth_((pred__21891.cljs$core$IFn$_invoke$arity$2 ? pred__21891.cljs$core$IFn$_invoke$arity$2(hickory.core.Comment,expr__21892) : pred__21891.call(null,hickory.core.Comment,expr__21892)))){
+if(cljs.core.truth_((pred__21894.cljs$core$IFn$_invoke$arity$2 ? pred__21894.cljs$core$IFn$_invoke$arity$2(hickory.core.Comment,expr__21895) : pred__21894.call(null,hickory.core.Comment,expr__21895)))){
 return ["<!--",cljs.core.str.cljs$core$IFn$_invoke$arity$1((this$["data"])),"-->"].join('');
 } else {
-if(cljs.core.truth_((pred__21891.cljs$core$IFn$_invoke$arity$2 ? pred__21891.cljs$core$IFn$_invoke$arity$2(hickory.core.Document,expr__21892) : pred__21891.call(null,hickory.core.Document,expr__21892)))){
+if(cljs.core.truth_((pred__21894.cljs$core$IFn$_invoke$arity$2 ? pred__21894.cljs$core$IFn$_invoke$arity$2(hickory.core.Document,expr__21895) : pred__21894.call(null,hickory.core.Document,expr__21895)))){
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(hickory.core.as_hiccup,(this$["childNodes"]));
 } else {
-if(cljs.core.truth_((pred__21891.cljs$core$IFn$_invoke$arity$2 ? pred__21891.cljs$core$IFn$_invoke$arity$2(hickory.core.DocumentType,expr__21892) : pred__21891.call(null,hickory.core.DocumentType,expr__21892)))){
+if(cljs.core.truth_((pred__21894.cljs$core$IFn$_invoke$arity$2 ? pred__21894.cljs$core$IFn$_invoke$arity$2(hickory.core.DocumentType,expr__21895) : pred__21894.call(null,hickory.core.DocumentType,expr__21895)))){
 return hickory.core.format_doctype(this$);
 } else {
-if(cljs.core.truth_((pred__21891.cljs$core$IFn$_invoke$arity$2 ? pred__21891.cljs$core$IFn$_invoke$arity$2(hickory.core.Element,expr__21892) : pred__21891.call(null,hickory.core.Element,expr__21892)))){
+if(cljs.core.truth_((pred__21894.cljs$core$IFn$_invoke$arity$2 ? pred__21894.cljs$core$IFn$_invoke$arity$2(hickory.core.Element,expr__21895) : pred__21894.call(null,hickory.core.Element,expr__21895)))){
 var tag = hickory.utils.lower_case_keyword((this$["tagName"]));
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentVector.EMPTY,cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [tag,cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.cljs$core$IFn$_invoke$arity$2(hickory.core.as_hiccup,(this$["attributes"])))], null),(cljs.core.truth_((hickory.utils.unescapable_content.cljs$core$IFn$_invoke$arity$1 ? hickory.utils.unescapable_content.cljs$core$IFn$_invoke$arity$1(tag) : hickory.utils.unescapable_content.call(null,tag)))?cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__21890_SHARP_){
-return (p1__21890_SHARP_["wholeText"]);
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentVector.EMPTY,cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [tag,cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.cljs$core$IFn$_invoke$arity$2(hickory.core.as_hiccup,(this$["attributes"])))], null),(cljs.core.truth_((hickory.utils.unescapable_content.cljs$core$IFn$_invoke$arity$1 ? hickory.utils.unescapable_content.cljs$core$IFn$_invoke$arity$1(tag) : hickory.utils.unescapable_content.call(null,tag)))?cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__21893_SHARP_){
+return (p1__21893_SHARP_["wholeText"]);
 }),(this$["childNodes"])):cljs.core.map.cljs$core$IFn$_invoke$arity$2(hickory.core.as_hiccup,(this$["childNodes"])))));
 } else {
-if(cljs.core.truth_((pred__21891.cljs$core$IFn$_invoke$arity$2 ? pred__21891.cljs$core$IFn$_invoke$arity$2(hickory.core.Text,expr__21892) : pred__21891.call(null,hickory.core.Text,expr__21892)))){
+if(cljs.core.truth_((pred__21894.cljs$core$IFn$_invoke$arity$2 ? pred__21894.cljs$core$IFn$_invoke$arity$2(hickory.core.Text,expr__21895) : pred__21894.call(null,hickory.core.Text,expr__21895)))){
 return hickory.utils.html_escape((this$["wholeText"]));
 } else {
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__21892)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__21895)].join('')));
 }
 }
 }

@@ -176,9 +176,9 @@ return (new rewrite_clj.node.stringz.StringNode(self__.lines,self__.__meta,cljs.
 (rewrite_clj.node.stringz.StringNode.prototype.cljs$core$IAssociative$_contains_key_QMARK_$arity$2 = (function (this__4509__auto__,k17712){
 var self__ = this;
 var this__4509__auto____$1 = this;
-var G__17721 = k17712;
-var G__17721__$1 = (((G__17721 instanceof cljs.core.Keyword))?G__17721.fqn:null);
-switch (G__17721__$1) {
+var G__17731 = k17712;
+var G__17731__$1 = (((G__17731 instanceof cljs.core.Keyword))?G__17731.fqn:null);
+switch (G__17731__$1) {
 case "lines":
 return true;
 
@@ -192,9 +192,9 @@ return cljs.core.contains_QMARK_(self__.__extmap,k17712);
 (rewrite_clj.node.stringz.StringNode.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__4510__auto__,k__4511__auto__,G__17711){
 var self__ = this;
 var this__4510__auto____$1 = this;
-var pred__17722 = cljs.core.keyword_identical_QMARK_;
-var expr__17723 = k__4511__auto__;
-if(cljs.core.truth_((pred__17722.cljs$core$IFn$_invoke$arity$2 ? pred__17722.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"lines","lines",-700165781),expr__17723) : pred__17722.call(null,new cljs.core.Keyword(null,"lines","lines",-700165781),expr__17723)))){
+var pred__17736 = cljs.core.keyword_identical_QMARK_;
+var expr__17737 = k__4511__auto__;
+if(cljs.core.truth_((pred__17736.cljs$core$IFn$_invoke$arity$2 ? pred__17736.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"lines","lines",-700165781),expr__17737) : pred__17736.call(null,new cljs.core.Keyword(null,"lines","lines",-700165781),expr__17737)))){
 return (new rewrite_clj.node.stringz.StringNode(G__17711,self__.__meta,self__.__extmap,null));
 } else {
 return (new rewrite_clj.node.stringz.StringNode(self__.lines,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__4511__auto__,G__17711),null));
@@ -248,11 +248,11 @@ return (new rewrite_clj.node.stringz.StringNode(lines,null,null,null));
  * Factory function for rewrite-clj.node.stringz/StringNode, taking a map of keywords to field values.
  */
 rewrite_clj.node.stringz.map__GT_StringNode = (function rewrite_clj$node$stringz$map__GT_StringNode(G__17715){
-var extmap__4542__auto__ = (function (){var G__17725 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__17715,new cljs.core.Keyword(null,"lines","lines",-700165781));
+var extmap__4542__auto__ = (function (){var G__17739 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__17715,new cljs.core.Keyword(null,"lines","lines",-700165781));
 if(cljs.core.record_QMARK_(G__17715)){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__17725);
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__17739);
 } else {
-return G__17725;
+return G__17739;
 }
 })();
 return (new rewrite_clj.node.stringz.StringNode(new cljs.core.Keyword(null,"lines","lines",-700165781).cljs$core$IFn$_invoke$arity$1(G__17715),null,cljs.core.not_empty(extmap__4542__auto__),null));

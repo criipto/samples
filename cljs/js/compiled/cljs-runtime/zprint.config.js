@@ -62,14 +62,14 @@ return val_in_latter;
  */
 zprint.config.merge_deep = (function zprint$config$merge_deep(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___18593 = arguments.length;
-var i__4865__auto___18594 = (0);
+var len__4864__auto___18601 = arguments.length;
+var i__4865__auto___18602 = (0);
 while(true){
-if((i__4865__auto___18594 < len__4864__auto___18593)){
-args__4870__auto__.push((arguments[i__4865__auto___18594]));
+if((i__4865__auto___18602 < len__4864__auto___18601)){
+args__4870__auto__.push((arguments[i__4865__auto___18602]));
 
-var G__18595 = (i__4865__auto___18594 + (1));
-i__4865__auto___18594 = G__18595;
+var G__18603 = (i__4865__auto___18602 + (1));
+i__4865__auto___18602 = G__18603;
 continue;
 } else {
 }
@@ -108,14 +108,14 @@ return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"fr
  */
 zprint.config.merge_deep_doc = (function zprint$config$merge_deep_doc(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___18596 = arguments.length;
-var i__4865__auto___18597 = (0);
+var len__4864__auto___18604 = arguments.length;
+var i__4865__auto___18605 = (0);
 while(true){
-if((i__4865__auto___18597 < len__4864__auto___18596)){
-args__4870__auto__.push((arguments[i__4865__auto___18597]));
+if((i__4865__auto___18605 < len__4864__auto___18604)){
+args__4870__auto__.push((arguments[i__4865__auto___18605]));
 
-var G__18599 = (i__4865__auto___18597 + (1));
-i__4865__auto___18597 = G__18599;
+var G__18606 = (i__4865__auto___18605 + (1));
+i__4865__auto___18605 = G__18606;
 continue;
 } else {
 }
