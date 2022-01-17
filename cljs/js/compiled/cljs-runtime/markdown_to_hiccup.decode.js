@@ -62,13 +62,13 @@ return (markdown_to_hiccup.decode.decode.cljs$core$IFn$_invoke$arity$2 ? markdow
 markdown_to_hiccup.decode.dispatch = (function markdown_to_hiccup$decode$dispatch(var_args){
 var args__4870__auto__ = [];
 var len__4864__auto___21883 = arguments.length;
-var i__4865__auto___21884 = (0);
+var i__4865__auto___21885 = (0);
 while(true){
-if((i__4865__auto___21884 < len__4864__auto___21883)){
-args__4870__auto__.push((arguments[i__4865__auto___21884]));
+if((i__4865__auto___21885 < len__4864__auto___21883)){
+args__4870__auto__.push((arguments[i__4865__auto___21885]));
 
-var G__21885 = (i__4865__auto___21884 + (1));
-i__4865__auto___21884 = G__21885;
+var G__21886 = (i__4865__auto___21885 + (1));
+i__4865__auto___21885 = G__21886;
 continue;
 } else {
 }
@@ -125,91 +125,91 @@ return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("ma
 })();
 }
 markdown_to_hiccup.decode.decode.cljs$core$IMultiFn$_add_method$arity$3(null,new cljs.core.Keyword("markdown-to-hiccup.decode","string","markdown-to-hiccup.decode/string",-2048172350),(function() {
-var G__21886 = null;
-var G__21886__1 = (function (s){
+var G__21890 = null;
+var G__21890__1 = (function (s){
 return markdown_to_hiccup.decode.decode_string.cljs$core$IFn$_invoke$arity$1(s);
 });
-var G__21886__2 = (function (s,transform){
+var G__21890__2 = (function (s,transform){
 return markdown_to_hiccup.decode.decode_string.cljs$core$IFn$_invoke$arity$2(s,transform);
 });
-G__21886 = function(s,transform){
+G__21890 = function(s,transform){
 switch(arguments.length){
 case 1:
-return G__21886__1.call(this,s);
+return G__21890__1.call(this,s);
 case 2:
-return G__21886__2.call(this,s,transform);
+return G__21890__2.call(this,s,transform);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__21886.cljs$core$IFn$_invoke$arity$1 = G__21886__1;
-G__21886.cljs$core$IFn$_invoke$arity$2 = G__21886__2;
-return G__21886;
+G__21890.cljs$core$IFn$_invoke$arity$1 = G__21890__1;
+G__21890.cljs$core$IFn$_invoke$arity$2 = G__21890__2;
+return G__21890;
 })()
 );
 markdown_to_hiccup.decode.decode.cljs$core$IMultiFn$_add_method$arity$3(null,new cljs.core.Keyword("markdown-to-hiccup.decode","map","markdown-to-hiccup.decode/map",1547761649),(function() {
-var G__21887 = null;
-var G__21887__1 = (function (m){
+var G__21891 = null;
+var G__21891__1 = (function (m){
 return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.sorted_map(),markdown_to_hiccup.decode.decode_iseq.cljs$core$IFn$_invoke$arity$1(m));
 });
-var G__21887__2 = (function (m,transform){
+var G__21891__2 = (function (m,transform){
 return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.sorted_map(),markdown_to_hiccup.decode.decode_iseq.cljs$core$IFn$_invoke$arity$2(m,transform));
 });
-G__21887 = function(m,transform){
+G__21891 = function(m,transform){
 switch(arguments.length){
 case 1:
-return G__21887__1.call(this,m);
+return G__21891__1.call(this,m);
 case 2:
-return G__21887__2.call(this,m,transform);
+return G__21891__2.call(this,m,transform);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__21887.cljs$core$IFn$_invoke$arity$1 = G__21887__1;
-G__21887.cljs$core$IFn$_invoke$arity$2 = G__21887__2;
-return G__21887;
+G__21891.cljs$core$IFn$_invoke$arity$1 = G__21891__1;
+G__21891.cljs$core$IFn$_invoke$arity$2 = G__21891__2;
+return G__21891;
 })()
 );
 markdown_to_hiccup.decode.decode.cljs$core$IMultiFn$_add_method$arity$3(null,new cljs.core.Keyword("markdown-to-hiccup.decode","vector","markdown-to-hiccup.decode/vector",1979814818),(function() {
-var G__21888 = null;
-var G__21888__1 = (function (v){
+var G__21892 = null;
+var G__21892__1 = (function (v){
 return cljs.core.vec(markdown_to_hiccup.decode.decode_iseq.cljs$core$IFn$_invoke$arity$1(v));
 });
-var G__21888__2 = (function (v,transform){
+var G__21892__2 = (function (v,transform){
 return cljs.core.vec(markdown_to_hiccup.decode.decode_iseq.cljs$core$IFn$_invoke$arity$2(v,transform));
 });
-G__21888 = function(v,transform){
+G__21892 = function(v,transform){
 switch(arguments.length){
 case 1:
-return G__21888__1.call(this,v);
+return G__21892__1.call(this,v);
 case 2:
-return G__21888__2.call(this,v,transform);
+return G__21892__2.call(this,v,transform);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__21888.cljs$core$IFn$_invoke$arity$1 = G__21888__1;
-G__21888.cljs$core$IFn$_invoke$arity$2 = G__21888__2;
-return G__21888;
+G__21892.cljs$core$IFn$_invoke$arity$1 = G__21892__1;
+G__21892.cljs$core$IFn$_invoke$arity$2 = G__21892__2;
+return G__21892;
 })()
 );
 markdown_to_hiccup.decode.decode.cljs$core$IMultiFn$_add_method$arity$3(null,new cljs.core.Keyword("markdown-to-hiccup.decode","pass","markdown-to-hiccup.decode/pass",1096198285),(function() {
-var G__21889 = null;
-var G__21889__1 = (function (x){
+var G__21893 = null;
+var G__21893__1 = (function (x){
 return cljs.core.identity(x);
 });
-var G__21889__2 = (function (x,f){
+var G__21893__2 = (function (x,f){
 return cljs.core.identity(x);
 });
-G__21889 = function(x,f){
+G__21893 = function(x,f){
 switch(arguments.length){
 case 1:
-return G__21889__1.call(this,x);
+return G__21893__1.call(this,x);
 case 2:
-return G__21889__2.call(this,x,f);
+return G__21893__2.call(this,x,f);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__21889.cljs$core$IFn$_invoke$arity$1 = G__21889__1;
-G__21889.cljs$core$IFn$_invoke$arity$2 = G__21889__2;
-return G__21889;
+G__21893.cljs$core$IFn$_invoke$arity$1 = G__21893__1;
+G__21893.cljs$core$IFn$_invoke$arity$2 = G__21893__2;
+return G__21893;
 })()
 );
 

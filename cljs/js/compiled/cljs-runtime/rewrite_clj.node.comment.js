@@ -166,9 +166,9 @@ return (new rewrite_clj.node.comment.CommentNode(self__.s,self__.__meta,cljs.cor
 (rewrite_clj.node.comment.CommentNode.prototype.cljs$core$IAssociative$_contains_key_QMARK_$arity$2 = (function (this__4509__auto__,k17629){
 var self__ = this;
 var this__4509__auto____$1 = this;
-var G__17640 = k17629;
-var G__17640__$1 = (((G__17640 instanceof cljs.core.Keyword))?G__17640.fqn:null);
-switch (G__17640__$1) {
+var G__17638 = k17629;
+var G__17638__$1 = (((G__17638 instanceof cljs.core.Keyword))?G__17638.fqn:null);
+switch (G__17638__$1) {
 case "s":
 return true;
 
@@ -182,9 +182,9 @@ return cljs.core.contains_QMARK_(self__.__extmap,k17629);
 (rewrite_clj.node.comment.CommentNode.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__4510__auto__,k__4511__auto__,G__17628){
 var self__ = this;
 var this__4510__auto____$1 = this;
-var pred__17641 = cljs.core.keyword_identical_QMARK_;
-var expr__17642 = k__4511__auto__;
-if(cljs.core.truth_((pred__17641.cljs$core$IFn$_invoke$arity$2 ? pred__17641.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"s","s",1705939918),expr__17642) : pred__17641.call(null,new cljs.core.Keyword(null,"s","s",1705939918),expr__17642)))){
+var pred__17639 = cljs.core.keyword_identical_QMARK_;
+var expr__17640 = k__4511__auto__;
+if(cljs.core.truth_((pred__17639.cljs$core$IFn$_invoke$arity$2 ? pred__17639.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"s","s",1705939918),expr__17640) : pred__17639.call(null,new cljs.core.Keyword(null,"s","s",1705939918),expr__17640)))){
 return (new rewrite_clj.node.comment.CommentNode(G__17628,self__.__meta,self__.__extmap,null));
 } else {
 return (new rewrite_clj.node.comment.CommentNode(self__.s,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__4511__auto__,G__17628),null));
@@ -238,11 +238,11 @@ return (new rewrite_clj.node.comment.CommentNode(s,null,null,null));
  * Factory function for rewrite-clj.node.comment/CommentNode, taking a map of keywords to field values.
  */
 rewrite_clj.node.comment.map__GT_CommentNode = (function rewrite_clj$node$comment$map__GT_CommentNode(G__17632){
-var extmap__4542__auto__ = (function (){var G__17644 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__17632,new cljs.core.Keyword(null,"s","s",1705939918));
+var extmap__4542__auto__ = (function (){var G__17642 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__17632,new cljs.core.Keyword(null,"s","s",1705939918));
 if(cljs.core.record_QMARK_(G__17632)){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__17644);
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__17642);
 } else {
-return G__17644;
+return G__17642;
 }
 })();
 return (new rewrite_clj.node.comment.CommentNode(new cljs.core.Keyword(null,"s","s",1705939918).cljs$core$IFn$_invoke$arity$1(G__17632),null,cljs.core.not_empty(extmap__4542__auto__),null));

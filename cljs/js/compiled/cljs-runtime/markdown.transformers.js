@@ -18,12 +18,12 @@ return markdown.transformers.heading_QMARK_(text,"=");
 markdown.transformers.h2_QMARK_ = (function markdown$transformers$h2_QMARK_(text){
 return markdown.transformers.heading_QMARK_(text,"-");
 });
-markdown.transformers.empty_line = (function markdown$transformers$empty_line(text,p__22091){
-var map__22092 = p__22091;
-var map__22092__$1 = cljs.core.__destructure_map(map__22092);
-var state = map__22092__$1;
-var code = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22092__$1,new cljs.core.Keyword(null,"code","code",1586293142));
-var codeblock = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22092__$1,new cljs.core.Keyword(null,"codeblock","codeblock",-851153855));
+markdown.transformers.empty_line = (function markdown$transformers$empty_line(text,p__22095){
+var map__22096 = p__22095;
+var map__22096__$1 = cljs.core.__destructure_map(map__22096);
+var state = map__22096__$1;
+var code = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22096__$1,new cljs.core.Keyword(null,"code","code",1586293142));
+var codeblock = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22096__$1,new cljs.core.Keyword(null,"codeblock","codeblock",-851153855));
 if(cljs.core.truth_((function (){var or__4253__auto__ = code;
 if(cljs.core.truth_(or__4253__auto__)){
 return or__4253__auto__;
@@ -54,16 +54,16 @@ if(cljs.core.empty_QMARK_(remaining)){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [clojure.string.join.cljs$core$IFn$_invoke$arity$1(buf),state], null);
 } else {
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.first(remaining),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["^"], null))){
-var G__22164 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(buf,cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq("<sup>"),cljs.core.second(remaining),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.seq("</sup>")], 0)));
-var G__22165 = cljs.core.drop.cljs$core$IFn$_invoke$arity$2((2),remaining);
-buf = G__22164;
-remaining = G__22165;
+var G__22145 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(buf,cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq("<sup>"),cljs.core.second(remaining),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.seq("</sup>")], 0)));
+var G__22146 = cljs.core.drop.cljs$core$IFn$_invoke$arity$2((2),remaining);
+buf = G__22145;
+remaining = G__22146;
 continue;
 } else {
-var G__22166 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(buf,cljs.core.first(remaining));
-var G__22167 = cljs.core.rest(remaining);
-buf = G__22166;
-remaining = G__22167;
+var G__22147 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(buf,cljs.core.first(remaining));
+var G__22148 = cljs.core.rest(remaining);
+buf = G__22147;
+remaining = G__22148;
 continue;
 
 }
@@ -588,12 +588,12 @@ var prev_val = cljs.core.get.cljs$core$IFn$_invoke$arity$3(acc,key,cljs.core.Per
 var postfix = ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [" "," "], null),cljs.core.take_last((2),val)))?"\n":"");
 var norm_val = [clojure.string.trim(val),postfix].join('');
 var new_val = (((!(cljs.core.empty_QMARK_(norm_val))))?cljs.core.conj.cljs$core$IFn$_invoke$arity$2(prev_val,norm_val):prev_val);
-var G__22198 = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([acc,cljs.core.PersistentArrayMap.createAsIfByAssoc([key,new_val])], 0));
-var G__22199 = cljs.core.rest(remain);
-var G__22200 = key;
-acc = G__22198;
-remain = G__22199;
-prev_key = G__22200;
+var G__22168 = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([acc,cljs.core.PersistentArrayMap.createAsIfByAssoc([key,new_val])], 0));
+var G__22169 = cljs.core.rest(remain);
+var G__22170 = key;
+acc = G__22168;
+remain = G__22169;
+prev_key = G__22170;
 continue;
 } else {
 return acc;
