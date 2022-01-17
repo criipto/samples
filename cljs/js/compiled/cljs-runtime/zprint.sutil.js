@@ -59,15 +59,15 @@ var sloc = sexpr;
 var i = (0);
 while(true){
 if(cljs.core.truth_(sloc)){
-if(cljs.core.truth_((function (){var G__18691 = cljs.core.first(sloc);
-return (zthing_QMARK_.cljs$core$IFn$_invoke$arity$1 ? zthing_QMARK_.cljs$core$IFn$_invoke$arity$1(G__18691) : zthing_QMARK_.call(null,G__18691));
+if(cljs.core.truth_((function (){var G__18732 = cljs.core.first(sloc);
+return (zthing_QMARK_.cljs$core$IFn$_invoke$arity$1 ? zthing_QMARK_.cljs$core$IFn$_invoke$arity$1(G__18732) : zthing_QMARK_.call(null,G__18732));
 })())){
 return i;
 } else {
-var G__18878 = cljs.core.next(sloc);
-var G__18879 = (i + (1));
-sloc = G__18878;
-i = G__18879;
+var G__18904 = cljs.core.next(sloc);
+var G__18905 = (i + (1));
+sloc = G__18904;
+i = G__18905;
 continue;
 }
 } else {
@@ -219,8 +219,8 @@ return null;
  *   anything, so there isn't a particularly good sentinal here.
  */
 zprint.sutil.sobj_to_vec = (function zprint$sutil$sobj_to_vec(var_args){
-var G__18728 = arguments.length;
-switch (G__18728) {
+var G__18741 = arguments.length;
+switch (G__18741) {
 case 2:
 return zprint.sutil.sobj_to_vec.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -278,14 +278,14 @@ return (((x instanceof cljs.core.Keyword)) || (((typeof x === 'string') || (((ty
  *   in seqs with more than one element have the same namespace. Returns
  *   the [namespace pair-seq] or nil.
  */
-zprint.sutil.slift_ns = (function zprint$sutil$slift_ns(p__18729,pair_seq,ns){
-var map__18730 = p__18729;
-var map__18730__$1 = cljs.core.__destructure_map(map__18730);
-var map_options = map__18730__$1;
-var in_code_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__18730__$1,new cljs.core.Keyword(null,"in-code?","in-code?",194866464));
-var lift_ns_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__18730__$1,new cljs.core.Keyword(null,"lift-ns?","lift-ns?",2021372853));
-var lift_ns_in_code_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__18730__$1,new cljs.core.Keyword(null,"lift-ns-in-code?","lift-ns-in-code?",1444279377));
-var unlift_ns_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__18730__$1,new cljs.core.Keyword(null,"unlift-ns?","unlift-ns?",1065087867));
+zprint.sutil.slift_ns = (function zprint$sutil$slift_ns(p__18758,pair_seq,ns){
+var map__18759 = p__18758;
+var map__18759__$1 = cljs.core.__destructure_map(map__18759);
+var map_options = map__18759__$1;
+var in_code_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__18759__$1,new cljs.core.Keyword(null,"in-code?","in-code?",194866464));
+var lift_ns_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__18759__$1,new cljs.core.Keyword(null,"lift-ns?","lift-ns?",2021372853));
+var lift_ns_in_code_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__18759__$1,new cljs.core.Keyword(null,"lift-ns-in-code?","lift-ns-in-code?",1444279377));
+var unlift_ns_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__18759__$1,new cljs.core.Keyword(null,"unlift-ns?","unlift-ns?",1065087867));
 if(cljs.core.truth_((function (){var and__4251__auto__ = lift_ns_QMARK_;
 if(cljs.core.truth_(and__4251__auto__)){
 if(cljs.core.truth_(in_code_QMARK_)){
@@ -308,13 +308,13 @@ var ns__$1 = null;
 var pair_seq__$1 = pair_seq;
 var out = cljs.core.PersistentVector.EMPTY;
 while(true){
-var vec__18742 = cljs.core.first(pair_seq__$1);
-var seq__18743 = cljs.core.seq(vec__18742);
-var first__18744 = cljs.core.first(seq__18743);
-var seq__18743__$1 = cljs.core.next(seq__18743);
-var k = first__18744;
-var rest_of_pair = seq__18743__$1;
-var pair = vec__18742;
+var vec__18763 = cljs.core.first(pair_seq__$1);
+var seq__18764 = cljs.core.seq(vec__18763);
+var first__18765 = cljs.core.first(seq__18764);
+var seq__18764__$1 = cljs.core.next(seq__18764);
+var k = first__18765;
+var rest_of_pair = seq__18764__$1;
+var pair = vec__18763;
 var current_ns = ((((rest_of_pair) && ((((k instanceof cljs.core.Keyword)) || ((k instanceof cljs.core.Symbol))))))?cljs.core.namespace(k):null);
 if(cljs.core.not(k)){
 if(cljs.core.truth_(ns__$1)){
@@ -326,33 +326,33 @@ return null;
 if(cljs.core.truth_(current_ns)){
 if(cljs.core.truth_(ns__$1)){
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(ns__$1,current_ns)){
-var G__18891 = ns__$1;
-var G__18892 = cljs.core.next(pair_seq__$1);
-var G__18893 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons(strip_ns(k),rest_of_pair));
-ns__$1 = G__18891;
-pair_seq__$1 = G__18892;
-out = G__18893;
+var G__18913 = ns__$1;
+var G__18914 = cljs.core.next(pair_seq__$1);
+var G__18915 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons(strip_ns(k),rest_of_pair));
+ns__$1 = G__18913;
+pair_seq__$1 = G__18914;
+out = G__18915;
 continue;
 } else {
 return null;
 }
 } else {
-var G__18894 = current_ns;
-var G__18895 = cljs.core.next(pair_seq__$1);
-var G__18896 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons(strip_ns(k),rest_of_pair));
-ns__$1 = G__18894;
-pair_seq__$1 = G__18895;
-out = G__18896;
+var G__18916 = current_ns;
+var G__18917 = cljs.core.next(pair_seq__$1);
+var G__18918 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,cljs.core.cons(strip_ns(k),rest_of_pair));
+ns__$1 = G__18916;
+pair_seq__$1 = G__18917;
+out = G__18918;
 continue;
 }
 } else {
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(pair),(1))){
-var G__18897 = ns__$1;
-var G__18898 = cljs.core.next(pair_seq__$1);
-var G__18899 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,pair);
-ns__$1 = G__18897;
-pair_seq__$1 = G__18898;
-out = G__18899;
+var G__18919 = ns__$1;
+var G__18920 = cljs.core.next(pair_seq__$1);
+var G__18921 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(out,pair);
+ns__$1 = G__18919;
+pair_seq__$1 = G__18920;
+out = G__18921;
 continue;
 } else {
 return null;
@@ -370,402 +370,402 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
  *   call the function of no arguments passed in.
  */
 zprint.sutil.sredef_call = (function zprint$sutil$sredef_call(body_fn){
-var zstring_orig_val__18745 = zprint.zfns.zstring;
-var znumstr_orig_val__18746 = zprint.zfns.znumstr;
-var zcomment_QMARK__orig_val__18747 = zprint.zfns.zcomment_QMARK_;
-var zsexpr_orig_val__18748 = zprint.zfns.zsexpr;
-var zseqnws_orig_val__18749 = zprint.zfns.zseqnws;
-var zseqnws_w_nl_orig_val__18750 = zprint.zfns.zseqnws_w_nl;
-var zseqnws_w_bl_orig_val__18751 = zprint.zfns.zseqnws_w_bl;
-var zfocus_style_orig_val__18752 = zprint.zfns.zfocus_style;
-var zstart_orig_val__18753 = zprint.zfns.zstart;
-var zfirst_orig_val__18754 = zprint.zfns.zfirst;
-var zfirst_no_comment_orig_val__18755 = zprint.zfns.zfirst_no_comment;
-var zsecond_orig_val__18756 = zprint.zfns.zsecond;
-var zsecond_no_comment_orig_val__18757 = zprint.zfns.zsecond_no_comment;
-var zthird_orig_val__18758 = zprint.zfns.zthird;
-var zthird_no_comment_orig_val__18759 = zprint.zfns.zthird_no_comment;
-var zfourth_orig_val__18760 = zprint.zfns.zfourth;
-var znextnws_orig_val__18761 = zprint.zfns.znextnws;
-var znextnws_w_nl_orig_val__18762 = zprint.zfns.znextnws_w_nl;
-var znthnext_orig_val__18763 = zprint.zfns.znthnext;
-var zcount_orig_val__18764 = zprint.zfns.zcount;
-var zcount_zloc_seq_nc_nws_orig_val__18765 = zprint.zfns.zcount_zloc_seq_nc_nws;
-var zmap_orig_val__18766 = zprint.zfns.zmap;
-var zmap_w_nl_orig_val__18767 = zprint.zfns.zmap_w_nl;
-var zmap_w_bl_orig_val__18768 = zprint.zfns.zmap_w_bl;
-var zmap_w_nl_comma_orig_val__18769 = zprint.zfns.zmap_w_nl_comma;
-var zanonfn_QMARK__orig_val__18770 = zprint.zfns.zanonfn_QMARK_;
-var zfn_obj_QMARK__orig_val__18771 = zprint.zfns.zfn_obj_QMARK_;
-var zfocus_orig_val__18772 = zprint.zfns.zfocus;
-var zfind_path_orig_val__18773 = zprint.zfns.zfind_path;
-var zwhitespace_QMARK__orig_val__18774 = zprint.zfns.zwhitespace_QMARK_;
-var zlist_QMARK__orig_val__18775 = zprint.zfns.zlist_QMARK_;
-var zvector_QMARK__orig_val__18776 = zprint.zfns.zvector_QMARK_;
-var zmap_QMARK__orig_val__18777 = zprint.zfns.zmap_QMARK_;
-var znamespacedmap_QMARK__orig_val__18778 = zprint.zfns.znamespacedmap_QMARK_;
-var zset_QMARK__orig_val__18779 = zprint.zfns.zset_QMARK_;
-var zcoll_QMARK__orig_val__18780 = zprint.zfns.zcoll_QMARK_;
-var zmeta_QMARK__orig_val__18781 = zprint.zfns.zmeta_QMARK_;
-var zuneval_QMARK__orig_val__18782 = zprint.zfns.zuneval_QMARK_;
-var ztag_orig_val__18783 = zprint.zfns.ztag;
-var zlast_orig_val__18784 = zprint.zfns.zlast;
-var zarray_QMARK__orig_val__18785 = zprint.zfns.zarray_QMARK_;
-var zatom_QMARK__orig_val__18786 = zprint.zfns.zatom_QMARK_;
-var zderef_orig_val__18787 = zprint.zfns.zderef;
-var zrecord_QMARK__orig_val__18788 = zprint.zfns.zrecord_QMARK_;
-var zns_QMARK__orig_val__18789 = zprint.zfns.zns_QMARK_;
-var zobj_to_vec_orig_val__18790 = zprint.zfns.zobj_to_vec;
-var zexpandarray_orig_val__18791 = zprint.zfns.zexpandarray;
-var znewline_QMARK__orig_val__18792 = zprint.zfns.znewline_QMARK_;
-var zwhitespaceorcomment_QMARK__orig_val__18793 = zprint.zfns.zwhitespaceorcomment_QMARK_;
-var zmap_all_orig_val__18794 = zprint.zfns.zmap_all;
-var zfuture_QMARK__orig_val__18795 = zprint.zfns.zfuture_QMARK_;
-var zpromise_QMARK__orig_val__18796 = zprint.zfns.zpromise_QMARK_;
-var zkeyword_QMARK__orig_val__18797 = zprint.zfns.zkeyword_QMARK_;
-var zdelay_QMARK__orig_val__18798 = zprint.zfns.zdelay_QMARK_;
-var zconstant_QMARK__orig_val__18799 = zprint.zfns.zconstant_QMARK_;
-var zagent_QMARK__orig_val__18800 = zprint.zfns.zagent_QMARK_;
-var zreader_macro_QMARK__orig_val__18801 = zprint.zfns.zreader_macro_QMARK_;
-var zarray_to_shift_seq_orig_val__18802 = zprint.zfns.zarray_to_shift_seq;
-var zdotdotdot_orig_val__18803 = zprint.zfns.zdotdotdot;
-var zsymbol_QMARK__orig_val__18804 = zprint.zfns.zsymbol_QMARK_;
-var znil_QMARK__orig_val__18805 = zprint.zfns.znil_QMARK_;
-var zreader_cond_w_symbol_QMARK__orig_val__18806 = zprint.zfns.zreader_cond_w_symbol_QMARK_;
-var zreader_cond_w_coll_QMARK__orig_val__18807 = zprint.zfns.zreader_cond_w_coll_QMARK_;
-var zlift_ns_orig_val__18808 = zprint.zfns.zlift_ns;
-var zfind_orig_val__18809 = zprint.zfns.zfind;
-var ztake_append_orig_val__18810 = zprint.zfns.ztake_append;
-var zstring_temp_val__18811 = zprint.sutil.sstring;
-var znumstr_temp_val__18812 = zprint.sutil.snumstr;
-var zcomment_QMARK__temp_val__18813 = cljs.core.constantly(false);
-var zsexpr_temp_val__18814 = cljs.core.identity;
-var zseqnws_temp_val__18815 = zprint.sutil.sseqnws;
-var zseqnws_w_nl_temp_val__18816 = zprint.sutil.sseqnws;
-var zseqnws_w_bl_temp_val__18817 = zprint.sutil.sseqnws;
-var zfocus_style_temp_val__18818 = zprint.sutil.sfocus_style;
-var zstart_temp_val__18819 = zprint.sutil.sfirst;
-var zfirst_temp_val__18820 = zprint.sutil.sfirst;
-var zfirst_no_comment_temp_val__18821 = zprint.sutil.sfirst;
-var zsecond_temp_val__18822 = zprint.sutil.ssecond;
-var zsecond_no_comment_temp_val__18823 = zprint.sutil.ssecond;
-var zthird_temp_val__18824 = zprint.sutil.sthird;
-var zthird_no_comment_temp_val__18825 = zprint.sutil.sthird;
-var zfourth_temp_val__18826 = zprint.sutil.sfourth;
-var znextnws_temp_val__18827 = cljs.core.next;
-var znextnws_w_nl_temp_val__18828 = cljs.core.next;
-var znthnext_temp_val__18829 = zprint.sutil.snthnext;
-var zcount_temp_val__18830 = zprint.sutil.scount;
-var zcount_zloc_seq_nc_nws_temp_val__18831 = zprint.sutil.scount;
-var zmap_temp_val__18832 = zprint.sutil.smap;
-var zmap_w_nl_temp_val__18833 = zprint.sutil.smap;
-var zmap_w_bl_temp_val__18834 = zprint.sutil.smap;
-var zmap_w_nl_comma_temp_val__18835 = zprint.sutil.smap;
-var zanonfn_QMARK__temp_val__18836 = cljs.core.constantly(false);
-var zfn_obj_QMARK__temp_val__18837 = cljs.core.fn_QMARK_;
-var zfocus_temp_val__18838 = zprint.sutil.sfocus;
-var zfind_path_temp_val__18839 = zprint.sutil.sfind_root_and_path;
-var zwhitespace_QMARK__temp_val__18840 = zprint.sutil.swhitespace_QMARK_;
-var zlist_QMARK__temp_val__18841 = zprint.sutil.slist_QMARK_;
-var zvector_QMARK__temp_val__18842 = cljs.core.vector_QMARK_;
-var zmap_QMARK__temp_val__18843 = cljs.core.map_QMARK_;
-var znamespacedmap_QMARK__temp_val__18844 = cljs.core.constantly(false);
-var zset_QMARK__temp_val__18845 = cljs.core.set_QMARK_;
-var zcoll_QMARK__temp_val__18846 = cljs.core.coll_QMARK_;
-var zmeta_QMARK__temp_val__18847 = cljs.core.constantly(false);
-var zuneval_QMARK__temp_val__18848 = cljs.core.constantly(false);
-var ztag_temp_val__18849 = cljs.core.constantly(null);
-var zlast_temp_val__18850 = zprint.sutil.slast;
-var zarray_QMARK__temp_val__18851 = zprint.sutil.sarray_QMARK_;
-var zatom_QMARK__temp_val__18852 = zprint.sutil.satom_QMARK_;
-var zderef_temp_val__18853 = zprint.sutil.sderef;
-var zrecord_QMARK__temp_val__18854 = cljs.core.record_QMARK_;
-var zns_QMARK__temp_val__18855 = cljs.core.constantly(false);
-var zobj_to_vec_temp_val__18856 = zprint.sutil.sobj_to_vec;
-var zexpandarray_temp_val__18857 = zprint.sutil.sexpandarray;
-var znewline_QMARK__temp_val__18858 = cljs.core.constantly(false);
-var zwhitespaceorcomment_QMARK__temp_val__18859 = cljs.core.constantly(false);
-var zmap_all_temp_val__18860 = cljs.core.map;
-var zfuture_QMARK__temp_val__18861 = cljs.core.constantly(false);
-var zpromise_QMARK__temp_val__18862 = zprint.sutil.spromise_QMARK_;
-var zkeyword_QMARK__temp_val__18863 = cljs.core.keyword_QMARK_;
-var zdelay_QMARK__temp_val__18864 = cljs.core.delay_QMARK_;
-var zconstant_QMARK__temp_val__18865 = zprint.sutil.sconstant_QMARK_;
-var zagent_QMARK__temp_val__18866 = zprint.sutil.sagent_QMARK_;
-var zreader_macro_QMARK__temp_val__18867 = cljs.core.constantly(false);
-var zarray_to_shift_seq_temp_val__18868 = null;
-var zdotdotdot_temp_val__18869 = cljs.core.constantly(new cljs.core.Symbol(null,"...","...",-1926939749,null));
-var zsymbol_QMARK__temp_val__18870 = cljs.core.symbol_QMARK_;
-var znil_QMARK__temp_val__18871 = cljs.core.nil_QMARK_;
-var zreader_cond_w_symbol_QMARK__temp_val__18872 = cljs.core.constantly(false);
-var zreader_cond_w_coll_QMARK__temp_val__18873 = cljs.core.constantly(false);
-var zlift_ns_temp_val__18874 = zprint.sutil.slift_ns;
-var zfind_temp_val__18875 = zprint.sutil.sfind;
-var ztake_append_temp_val__18876 = zprint.sutil.stake_append;
-(zprint.zfns.zstring = zstring_temp_val__18811);
+var zstring_orig_val__18766 = zprint.zfns.zstring;
+var znumstr_orig_val__18767 = zprint.zfns.znumstr;
+var zcomment_QMARK__orig_val__18768 = zprint.zfns.zcomment_QMARK_;
+var zsexpr_orig_val__18769 = zprint.zfns.zsexpr;
+var zseqnws_orig_val__18770 = zprint.zfns.zseqnws;
+var zseqnws_w_nl_orig_val__18771 = zprint.zfns.zseqnws_w_nl;
+var zseqnws_w_bl_orig_val__18772 = zprint.zfns.zseqnws_w_bl;
+var zfocus_style_orig_val__18773 = zprint.zfns.zfocus_style;
+var zstart_orig_val__18774 = zprint.zfns.zstart;
+var zfirst_orig_val__18775 = zprint.zfns.zfirst;
+var zfirst_no_comment_orig_val__18776 = zprint.zfns.zfirst_no_comment;
+var zsecond_orig_val__18777 = zprint.zfns.zsecond;
+var zsecond_no_comment_orig_val__18778 = zprint.zfns.zsecond_no_comment;
+var zthird_orig_val__18779 = zprint.zfns.zthird;
+var zthird_no_comment_orig_val__18780 = zprint.zfns.zthird_no_comment;
+var zfourth_orig_val__18781 = zprint.zfns.zfourth;
+var znextnws_orig_val__18782 = zprint.zfns.znextnws;
+var znextnws_w_nl_orig_val__18783 = zprint.zfns.znextnws_w_nl;
+var znthnext_orig_val__18784 = zprint.zfns.znthnext;
+var zcount_orig_val__18785 = zprint.zfns.zcount;
+var zcount_zloc_seq_nc_nws_orig_val__18786 = zprint.zfns.zcount_zloc_seq_nc_nws;
+var zmap_orig_val__18787 = zprint.zfns.zmap;
+var zmap_w_nl_orig_val__18788 = zprint.zfns.zmap_w_nl;
+var zmap_w_bl_orig_val__18789 = zprint.zfns.zmap_w_bl;
+var zmap_w_nl_comma_orig_val__18790 = zprint.zfns.zmap_w_nl_comma;
+var zanonfn_QMARK__orig_val__18791 = zprint.zfns.zanonfn_QMARK_;
+var zfn_obj_QMARK__orig_val__18792 = zprint.zfns.zfn_obj_QMARK_;
+var zfocus_orig_val__18793 = zprint.zfns.zfocus;
+var zfind_path_orig_val__18794 = zprint.zfns.zfind_path;
+var zwhitespace_QMARK__orig_val__18795 = zprint.zfns.zwhitespace_QMARK_;
+var zlist_QMARK__orig_val__18796 = zprint.zfns.zlist_QMARK_;
+var zvector_QMARK__orig_val__18797 = zprint.zfns.zvector_QMARK_;
+var zmap_QMARK__orig_val__18798 = zprint.zfns.zmap_QMARK_;
+var znamespacedmap_QMARK__orig_val__18799 = zprint.zfns.znamespacedmap_QMARK_;
+var zset_QMARK__orig_val__18800 = zprint.zfns.zset_QMARK_;
+var zcoll_QMARK__orig_val__18801 = zprint.zfns.zcoll_QMARK_;
+var zmeta_QMARK__orig_val__18803 = zprint.zfns.zmeta_QMARK_;
+var zuneval_QMARK__orig_val__18806 = zprint.zfns.zuneval_QMARK_;
+var ztag_orig_val__18807 = zprint.zfns.ztag;
+var zlast_orig_val__18808 = zprint.zfns.zlast;
+var zarray_QMARK__orig_val__18809 = zprint.zfns.zarray_QMARK_;
+var zatom_QMARK__orig_val__18810 = zprint.zfns.zatom_QMARK_;
+var zderef_orig_val__18811 = zprint.zfns.zderef;
+var zrecord_QMARK__orig_val__18812 = zprint.zfns.zrecord_QMARK_;
+var zns_QMARK__orig_val__18816 = zprint.zfns.zns_QMARK_;
+var zobj_to_vec_orig_val__18817 = zprint.zfns.zobj_to_vec;
+var zexpandarray_orig_val__18818 = zprint.zfns.zexpandarray;
+var znewline_QMARK__orig_val__18819 = zprint.zfns.znewline_QMARK_;
+var zwhitespaceorcomment_QMARK__orig_val__18820 = zprint.zfns.zwhitespaceorcomment_QMARK_;
+var zmap_all_orig_val__18821 = zprint.zfns.zmap_all;
+var zfuture_QMARK__orig_val__18822 = zprint.zfns.zfuture_QMARK_;
+var zpromise_QMARK__orig_val__18823 = zprint.zfns.zpromise_QMARK_;
+var zkeyword_QMARK__orig_val__18824 = zprint.zfns.zkeyword_QMARK_;
+var zdelay_QMARK__orig_val__18825 = zprint.zfns.zdelay_QMARK_;
+var zconstant_QMARK__orig_val__18826 = zprint.zfns.zconstant_QMARK_;
+var zagent_QMARK__orig_val__18827 = zprint.zfns.zagent_QMARK_;
+var zreader_macro_QMARK__orig_val__18828 = zprint.zfns.zreader_macro_QMARK_;
+var zarray_to_shift_seq_orig_val__18829 = zprint.zfns.zarray_to_shift_seq;
+var zdotdotdot_orig_val__18830 = zprint.zfns.zdotdotdot;
+var zsymbol_QMARK__orig_val__18831 = zprint.zfns.zsymbol_QMARK_;
+var znil_QMARK__orig_val__18832 = zprint.zfns.znil_QMARK_;
+var zreader_cond_w_symbol_QMARK__orig_val__18833 = zprint.zfns.zreader_cond_w_symbol_QMARK_;
+var zreader_cond_w_coll_QMARK__orig_val__18834 = zprint.zfns.zreader_cond_w_coll_QMARK_;
+var zlift_ns_orig_val__18835 = zprint.zfns.zlift_ns;
+var zfind_orig_val__18836 = zprint.zfns.zfind;
+var ztake_append_orig_val__18837 = zprint.zfns.ztake_append;
+var zstring_temp_val__18838 = zprint.sutil.sstring;
+var znumstr_temp_val__18839 = zprint.sutil.snumstr;
+var zcomment_QMARK__temp_val__18840 = cljs.core.constantly(false);
+var zsexpr_temp_val__18841 = cljs.core.identity;
+var zseqnws_temp_val__18842 = zprint.sutil.sseqnws;
+var zseqnws_w_nl_temp_val__18843 = zprint.sutil.sseqnws;
+var zseqnws_w_bl_temp_val__18844 = zprint.sutil.sseqnws;
+var zfocus_style_temp_val__18845 = zprint.sutil.sfocus_style;
+var zstart_temp_val__18846 = zprint.sutil.sfirst;
+var zfirst_temp_val__18847 = zprint.sutil.sfirst;
+var zfirst_no_comment_temp_val__18848 = zprint.sutil.sfirst;
+var zsecond_temp_val__18849 = zprint.sutil.ssecond;
+var zsecond_no_comment_temp_val__18850 = zprint.sutil.ssecond;
+var zthird_temp_val__18851 = zprint.sutil.sthird;
+var zthird_no_comment_temp_val__18852 = zprint.sutil.sthird;
+var zfourth_temp_val__18853 = zprint.sutil.sfourth;
+var znextnws_temp_val__18854 = cljs.core.next;
+var znextnws_w_nl_temp_val__18855 = cljs.core.next;
+var znthnext_temp_val__18856 = zprint.sutil.snthnext;
+var zcount_temp_val__18857 = zprint.sutil.scount;
+var zcount_zloc_seq_nc_nws_temp_val__18858 = zprint.sutil.scount;
+var zmap_temp_val__18859 = zprint.sutil.smap;
+var zmap_w_nl_temp_val__18860 = zprint.sutil.smap;
+var zmap_w_bl_temp_val__18861 = zprint.sutil.smap;
+var zmap_w_nl_comma_temp_val__18862 = zprint.sutil.smap;
+var zanonfn_QMARK__temp_val__18863 = cljs.core.constantly(false);
+var zfn_obj_QMARK__temp_val__18864 = cljs.core.fn_QMARK_;
+var zfocus_temp_val__18865 = zprint.sutil.sfocus;
+var zfind_path_temp_val__18866 = zprint.sutil.sfind_root_and_path;
+var zwhitespace_QMARK__temp_val__18867 = zprint.sutil.swhitespace_QMARK_;
+var zlist_QMARK__temp_val__18868 = zprint.sutil.slist_QMARK_;
+var zvector_QMARK__temp_val__18869 = cljs.core.vector_QMARK_;
+var zmap_QMARK__temp_val__18870 = cljs.core.map_QMARK_;
+var znamespacedmap_QMARK__temp_val__18871 = cljs.core.constantly(false);
+var zset_QMARK__temp_val__18872 = cljs.core.set_QMARK_;
+var zcoll_QMARK__temp_val__18873 = cljs.core.coll_QMARK_;
+var zmeta_QMARK__temp_val__18874 = cljs.core.constantly(false);
+var zuneval_QMARK__temp_val__18875 = cljs.core.constantly(false);
+var ztag_temp_val__18876 = cljs.core.constantly(null);
+var zlast_temp_val__18877 = zprint.sutil.slast;
+var zarray_QMARK__temp_val__18878 = zprint.sutil.sarray_QMARK_;
+var zatom_QMARK__temp_val__18879 = zprint.sutil.satom_QMARK_;
+var zderef_temp_val__18880 = zprint.sutil.sderef;
+var zrecord_QMARK__temp_val__18881 = cljs.core.record_QMARK_;
+var zns_QMARK__temp_val__18882 = cljs.core.constantly(false);
+var zobj_to_vec_temp_val__18883 = zprint.sutil.sobj_to_vec;
+var zexpandarray_temp_val__18884 = zprint.sutil.sexpandarray;
+var znewline_QMARK__temp_val__18885 = cljs.core.constantly(false);
+var zwhitespaceorcomment_QMARK__temp_val__18886 = cljs.core.constantly(false);
+var zmap_all_temp_val__18887 = cljs.core.map;
+var zfuture_QMARK__temp_val__18888 = cljs.core.constantly(false);
+var zpromise_QMARK__temp_val__18889 = zprint.sutil.spromise_QMARK_;
+var zkeyword_QMARK__temp_val__18890 = cljs.core.keyword_QMARK_;
+var zdelay_QMARK__temp_val__18891 = cljs.core.delay_QMARK_;
+var zconstant_QMARK__temp_val__18892 = zprint.sutil.sconstant_QMARK_;
+var zagent_QMARK__temp_val__18893 = zprint.sutil.sagent_QMARK_;
+var zreader_macro_QMARK__temp_val__18894 = cljs.core.constantly(false);
+var zarray_to_shift_seq_temp_val__18895 = null;
+var zdotdotdot_temp_val__18896 = cljs.core.constantly(new cljs.core.Symbol(null,"...","...",-1926939749,null));
+var zsymbol_QMARK__temp_val__18897 = cljs.core.symbol_QMARK_;
+var znil_QMARK__temp_val__18898 = cljs.core.nil_QMARK_;
+var zreader_cond_w_symbol_QMARK__temp_val__18899 = cljs.core.constantly(false);
+var zreader_cond_w_coll_QMARK__temp_val__18900 = cljs.core.constantly(false);
+var zlift_ns_temp_val__18901 = zprint.sutil.slift_ns;
+var zfind_temp_val__18902 = zprint.sutil.sfind;
+var ztake_append_temp_val__18903 = zprint.sutil.stake_append;
+(zprint.zfns.zstring = zstring_temp_val__18838);
 
-(zprint.zfns.znumstr = znumstr_temp_val__18812);
+(zprint.zfns.znumstr = znumstr_temp_val__18839);
 
-(zprint.zfns.zcomment_QMARK_ = zcomment_QMARK__temp_val__18813);
+(zprint.zfns.zcomment_QMARK_ = zcomment_QMARK__temp_val__18840);
 
-(zprint.zfns.zsexpr = zsexpr_temp_val__18814);
+(zprint.zfns.zsexpr = zsexpr_temp_val__18841);
 
-(zprint.zfns.zseqnws = zseqnws_temp_val__18815);
+(zprint.zfns.zseqnws = zseqnws_temp_val__18842);
 
-(zprint.zfns.zseqnws_w_nl = zseqnws_w_nl_temp_val__18816);
+(zprint.zfns.zseqnws_w_nl = zseqnws_w_nl_temp_val__18843);
 
-(zprint.zfns.zseqnws_w_bl = zseqnws_w_bl_temp_val__18817);
+(zprint.zfns.zseqnws_w_bl = zseqnws_w_bl_temp_val__18844);
 
-(zprint.zfns.zfocus_style = zfocus_style_temp_val__18818);
+(zprint.zfns.zfocus_style = zfocus_style_temp_val__18845);
 
-(zprint.zfns.zstart = zstart_temp_val__18819);
+(zprint.zfns.zstart = zstart_temp_val__18846);
 
-(zprint.zfns.zfirst = zfirst_temp_val__18820);
+(zprint.zfns.zfirst = zfirst_temp_val__18847);
 
-(zprint.zfns.zfirst_no_comment = zfirst_no_comment_temp_val__18821);
+(zprint.zfns.zfirst_no_comment = zfirst_no_comment_temp_val__18848);
 
-(zprint.zfns.zsecond = zsecond_temp_val__18822);
+(zprint.zfns.zsecond = zsecond_temp_val__18849);
 
-(zprint.zfns.zsecond_no_comment = zsecond_no_comment_temp_val__18823);
+(zprint.zfns.zsecond_no_comment = zsecond_no_comment_temp_val__18850);
 
-(zprint.zfns.zthird = zthird_temp_val__18824);
+(zprint.zfns.zthird = zthird_temp_val__18851);
 
-(zprint.zfns.zthird_no_comment = zthird_no_comment_temp_val__18825);
+(zprint.zfns.zthird_no_comment = zthird_no_comment_temp_val__18852);
 
-(zprint.zfns.zfourth = zfourth_temp_val__18826);
+(zprint.zfns.zfourth = zfourth_temp_val__18853);
 
-(zprint.zfns.znextnws = znextnws_temp_val__18827);
+(zprint.zfns.znextnws = znextnws_temp_val__18854);
 
-(zprint.zfns.znextnws_w_nl = znextnws_w_nl_temp_val__18828);
+(zprint.zfns.znextnws_w_nl = znextnws_w_nl_temp_val__18855);
 
-(zprint.zfns.znthnext = znthnext_temp_val__18829);
+(zprint.zfns.znthnext = znthnext_temp_val__18856);
 
-(zprint.zfns.zcount = zcount_temp_val__18830);
+(zprint.zfns.zcount = zcount_temp_val__18857);
 
-(zprint.zfns.zcount_zloc_seq_nc_nws = zcount_zloc_seq_nc_nws_temp_val__18831);
+(zprint.zfns.zcount_zloc_seq_nc_nws = zcount_zloc_seq_nc_nws_temp_val__18858);
 
-(zprint.zfns.zmap = zmap_temp_val__18832);
+(zprint.zfns.zmap = zmap_temp_val__18859);
 
-(zprint.zfns.zmap_w_nl = zmap_w_nl_temp_val__18833);
+(zprint.zfns.zmap_w_nl = zmap_w_nl_temp_val__18860);
 
-(zprint.zfns.zmap_w_bl = zmap_w_bl_temp_val__18834);
+(zprint.zfns.zmap_w_bl = zmap_w_bl_temp_val__18861);
 
-(zprint.zfns.zmap_w_nl_comma = zmap_w_nl_comma_temp_val__18835);
+(zprint.zfns.zmap_w_nl_comma = zmap_w_nl_comma_temp_val__18862);
 
-(zprint.zfns.zanonfn_QMARK_ = zanonfn_QMARK__temp_val__18836);
+(zprint.zfns.zanonfn_QMARK_ = zanonfn_QMARK__temp_val__18863);
 
-(zprint.zfns.zfn_obj_QMARK_ = zfn_obj_QMARK__temp_val__18837);
+(zprint.zfns.zfn_obj_QMARK_ = zfn_obj_QMARK__temp_val__18864);
 
-(zprint.zfns.zfocus = zfocus_temp_val__18838);
+(zprint.zfns.zfocus = zfocus_temp_val__18865);
 
-(zprint.zfns.zfind_path = zfind_path_temp_val__18839);
+(zprint.zfns.zfind_path = zfind_path_temp_val__18866);
 
-(zprint.zfns.zwhitespace_QMARK_ = zwhitespace_QMARK__temp_val__18840);
+(zprint.zfns.zwhitespace_QMARK_ = zwhitespace_QMARK__temp_val__18867);
 
-(zprint.zfns.zlist_QMARK_ = zlist_QMARK__temp_val__18841);
+(zprint.zfns.zlist_QMARK_ = zlist_QMARK__temp_val__18868);
 
-(zprint.zfns.zvector_QMARK_ = zvector_QMARK__temp_val__18842);
+(zprint.zfns.zvector_QMARK_ = zvector_QMARK__temp_val__18869);
 
-(zprint.zfns.zmap_QMARK_ = zmap_QMARK__temp_val__18843);
+(zprint.zfns.zmap_QMARK_ = zmap_QMARK__temp_val__18870);
 
-(zprint.zfns.znamespacedmap_QMARK_ = znamespacedmap_QMARK__temp_val__18844);
+(zprint.zfns.znamespacedmap_QMARK_ = znamespacedmap_QMARK__temp_val__18871);
 
-(zprint.zfns.zset_QMARK_ = zset_QMARK__temp_val__18845);
+(zprint.zfns.zset_QMARK_ = zset_QMARK__temp_val__18872);
 
-(zprint.zfns.zcoll_QMARK_ = zcoll_QMARK__temp_val__18846);
+(zprint.zfns.zcoll_QMARK_ = zcoll_QMARK__temp_val__18873);
 
-(zprint.zfns.zmeta_QMARK_ = zmeta_QMARK__temp_val__18847);
+(zprint.zfns.zmeta_QMARK_ = zmeta_QMARK__temp_val__18874);
 
-(zprint.zfns.zuneval_QMARK_ = zuneval_QMARK__temp_val__18848);
+(zprint.zfns.zuneval_QMARK_ = zuneval_QMARK__temp_val__18875);
 
-(zprint.zfns.ztag = ztag_temp_val__18849);
+(zprint.zfns.ztag = ztag_temp_val__18876);
 
-(zprint.zfns.zlast = zlast_temp_val__18850);
+(zprint.zfns.zlast = zlast_temp_val__18877);
 
-(zprint.zfns.zarray_QMARK_ = zarray_QMARK__temp_val__18851);
+(zprint.zfns.zarray_QMARK_ = zarray_QMARK__temp_val__18878);
 
-(zprint.zfns.zatom_QMARK_ = zatom_QMARK__temp_val__18852);
+(zprint.zfns.zatom_QMARK_ = zatom_QMARK__temp_val__18879);
 
-(zprint.zfns.zderef = zderef_temp_val__18853);
+(zprint.zfns.zderef = zderef_temp_val__18880);
 
-(zprint.zfns.zrecord_QMARK_ = zrecord_QMARK__temp_val__18854);
+(zprint.zfns.zrecord_QMARK_ = zrecord_QMARK__temp_val__18881);
 
-(zprint.zfns.zns_QMARK_ = zns_QMARK__temp_val__18855);
+(zprint.zfns.zns_QMARK_ = zns_QMARK__temp_val__18882);
 
-(zprint.zfns.zobj_to_vec = zobj_to_vec_temp_val__18856);
+(zprint.zfns.zobj_to_vec = zobj_to_vec_temp_val__18883);
 
-(zprint.zfns.zexpandarray = zexpandarray_temp_val__18857);
+(zprint.zfns.zexpandarray = zexpandarray_temp_val__18884);
 
-(zprint.zfns.znewline_QMARK_ = znewline_QMARK__temp_val__18858);
+(zprint.zfns.znewline_QMARK_ = znewline_QMARK__temp_val__18885);
 
-(zprint.zfns.zwhitespaceorcomment_QMARK_ = zwhitespaceorcomment_QMARK__temp_val__18859);
+(zprint.zfns.zwhitespaceorcomment_QMARK_ = zwhitespaceorcomment_QMARK__temp_val__18886);
 
-(zprint.zfns.zmap_all = zmap_all_temp_val__18860);
+(zprint.zfns.zmap_all = zmap_all_temp_val__18887);
 
-(zprint.zfns.zfuture_QMARK_ = zfuture_QMARK__temp_val__18861);
+(zprint.zfns.zfuture_QMARK_ = zfuture_QMARK__temp_val__18888);
 
-(zprint.zfns.zpromise_QMARK_ = zpromise_QMARK__temp_val__18862);
+(zprint.zfns.zpromise_QMARK_ = zpromise_QMARK__temp_val__18889);
 
-(zprint.zfns.zkeyword_QMARK_ = zkeyword_QMARK__temp_val__18863);
+(zprint.zfns.zkeyword_QMARK_ = zkeyword_QMARK__temp_val__18890);
 
-(zprint.zfns.zdelay_QMARK_ = zdelay_QMARK__temp_val__18864);
+(zprint.zfns.zdelay_QMARK_ = zdelay_QMARK__temp_val__18891);
 
-(zprint.zfns.zconstant_QMARK_ = zconstant_QMARK__temp_val__18865);
+(zprint.zfns.zconstant_QMARK_ = zconstant_QMARK__temp_val__18892);
 
-(zprint.zfns.zagent_QMARK_ = zagent_QMARK__temp_val__18866);
+(zprint.zfns.zagent_QMARK_ = zagent_QMARK__temp_val__18893);
 
-(zprint.zfns.zreader_macro_QMARK_ = zreader_macro_QMARK__temp_val__18867);
+(zprint.zfns.zreader_macro_QMARK_ = zreader_macro_QMARK__temp_val__18894);
 
-(zprint.zfns.zarray_to_shift_seq = zarray_to_shift_seq_temp_val__18868);
+(zprint.zfns.zarray_to_shift_seq = zarray_to_shift_seq_temp_val__18895);
 
-(zprint.zfns.zdotdotdot = zdotdotdot_temp_val__18869);
+(zprint.zfns.zdotdotdot = zdotdotdot_temp_val__18896);
 
-(zprint.zfns.zsymbol_QMARK_ = zsymbol_QMARK__temp_val__18870);
+(zprint.zfns.zsymbol_QMARK_ = zsymbol_QMARK__temp_val__18897);
 
-(zprint.zfns.znil_QMARK_ = znil_QMARK__temp_val__18871);
+(zprint.zfns.znil_QMARK_ = znil_QMARK__temp_val__18898);
 
-(zprint.zfns.zreader_cond_w_symbol_QMARK_ = zreader_cond_w_symbol_QMARK__temp_val__18872);
+(zprint.zfns.zreader_cond_w_symbol_QMARK_ = zreader_cond_w_symbol_QMARK__temp_val__18899);
 
-(zprint.zfns.zreader_cond_w_coll_QMARK_ = zreader_cond_w_coll_QMARK__temp_val__18873);
+(zprint.zfns.zreader_cond_w_coll_QMARK_ = zreader_cond_w_coll_QMARK__temp_val__18900);
 
-(zprint.zfns.zlift_ns = zlift_ns_temp_val__18874);
+(zprint.zfns.zlift_ns = zlift_ns_temp_val__18901);
 
-(zprint.zfns.zfind = zfind_temp_val__18875);
+(zprint.zfns.zfind = zfind_temp_val__18902);
 
-(zprint.zfns.ztake_append = ztake_append_temp_val__18876);
+(zprint.zfns.ztake_append = ztake_append_temp_val__18903);
 
 try{return (body_fn.cljs$core$IFn$_invoke$arity$0 ? body_fn.cljs$core$IFn$_invoke$arity$0() : body_fn.call(null));
-}finally {(zprint.zfns.ztake_append = ztake_append_orig_val__18810);
+}finally {(zprint.zfns.ztake_append = ztake_append_orig_val__18837);
 
-(zprint.zfns.zfind = zfind_orig_val__18809);
+(zprint.zfns.zfind = zfind_orig_val__18836);
 
-(zprint.zfns.zlift_ns = zlift_ns_orig_val__18808);
+(zprint.zfns.zlift_ns = zlift_ns_orig_val__18835);
 
-(zprint.zfns.zreader_cond_w_coll_QMARK_ = zreader_cond_w_coll_QMARK__orig_val__18807);
+(zprint.zfns.zreader_cond_w_coll_QMARK_ = zreader_cond_w_coll_QMARK__orig_val__18834);
 
-(zprint.zfns.zreader_cond_w_symbol_QMARK_ = zreader_cond_w_symbol_QMARK__orig_val__18806);
+(zprint.zfns.zreader_cond_w_symbol_QMARK_ = zreader_cond_w_symbol_QMARK__orig_val__18833);
 
-(zprint.zfns.znil_QMARK_ = znil_QMARK__orig_val__18805);
+(zprint.zfns.znil_QMARK_ = znil_QMARK__orig_val__18832);
 
-(zprint.zfns.zsymbol_QMARK_ = zsymbol_QMARK__orig_val__18804);
+(zprint.zfns.zsymbol_QMARK_ = zsymbol_QMARK__orig_val__18831);
 
-(zprint.zfns.zdotdotdot = zdotdotdot_orig_val__18803);
+(zprint.zfns.zdotdotdot = zdotdotdot_orig_val__18830);
 
-(zprint.zfns.zarray_to_shift_seq = zarray_to_shift_seq_orig_val__18802);
+(zprint.zfns.zarray_to_shift_seq = zarray_to_shift_seq_orig_val__18829);
 
-(zprint.zfns.zreader_macro_QMARK_ = zreader_macro_QMARK__orig_val__18801);
+(zprint.zfns.zreader_macro_QMARK_ = zreader_macro_QMARK__orig_val__18828);
 
-(zprint.zfns.zagent_QMARK_ = zagent_QMARK__orig_val__18800);
+(zprint.zfns.zagent_QMARK_ = zagent_QMARK__orig_val__18827);
 
-(zprint.zfns.zconstant_QMARK_ = zconstant_QMARK__orig_val__18799);
+(zprint.zfns.zconstant_QMARK_ = zconstant_QMARK__orig_val__18826);
 
-(zprint.zfns.zdelay_QMARK_ = zdelay_QMARK__orig_val__18798);
+(zprint.zfns.zdelay_QMARK_ = zdelay_QMARK__orig_val__18825);
 
-(zprint.zfns.zkeyword_QMARK_ = zkeyword_QMARK__orig_val__18797);
+(zprint.zfns.zkeyword_QMARK_ = zkeyword_QMARK__orig_val__18824);
 
-(zprint.zfns.zpromise_QMARK_ = zpromise_QMARK__orig_val__18796);
+(zprint.zfns.zpromise_QMARK_ = zpromise_QMARK__orig_val__18823);
 
-(zprint.zfns.zfuture_QMARK_ = zfuture_QMARK__orig_val__18795);
+(zprint.zfns.zfuture_QMARK_ = zfuture_QMARK__orig_val__18822);
 
-(zprint.zfns.zmap_all = zmap_all_orig_val__18794);
+(zprint.zfns.zmap_all = zmap_all_orig_val__18821);
 
-(zprint.zfns.zwhitespaceorcomment_QMARK_ = zwhitespaceorcomment_QMARK__orig_val__18793);
+(zprint.zfns.zwhitespaceorcomment_QMARK_ = zwhitespaceorcomment_QMARK__orig_val__18820);
 
-(zprint.zfns.znewline_QMARK_ = znewline_QMARK__orig_val__18792);
+(zprint.zfns.znewline_QMARK_ = znewline_QMARK__orig_val__18819);
 
-(zprint.zfns.zexpandarray = zexpandarray_orig_val__18791);
+(zprint.zfns.zexpandarray = zexpandarray_orig_val__18818);
 
-(zprint.zfns.zobj_to_vec = zobj_to_vec_orig_val__18790);
+(zprint.zfns.zobj_to_vec = zobj_to_vec_orig_val__18817);
 
-(zprint.zfns.zns_QMARK_ = zns_QMARK__orig_val__18789);
+(zprint.zfns.zns_QMARK_ = zns_QMARK__orig_val__18816);
 
-(zprint.zfns.zrecord_QMARK_ = zrecord_QMARK__orig_val__18788);
+(zprint.zfns.zrecord_QMARK_ = zrecord_QMARK__orig_val__18812);
 
-(zprint.zfns.zderef = zderef_orig_val__18787);
+(zprint.zfns.zderef = zderef_orig_val__18811);
 
-(zprint.zfns.zatom_QMARK_ = zatom_QMARK__orig_val__18786);
+(zprint.zfns.zatom_QMARK_ = zatom_QMARK__orig_val__18810);
 
-(zprint.zfns.zarray_QMARK_ = zarray_QMARK__orig_val__18785);
+(zprint.zfns.zarray_QMARK_ = zarray_QMARK__orig_val__18809);
 
-(zprint.zfns.zlast = zlast_orig_val__18784);
+(zprint.zfns.zlast = zlast_orig_val__18808);
 
-(zprint.zfns.ztag = ztag_orig_val__18783);
+(zprint.zfns.ztag = ztag_orig_val__18807);
 
-(zprint.zfns.zuneval_QMARK_ = zuneval_QMARK__orig_val__18782);
+(zprint.zfns.zuneval_QMARK_ = zuneval_QMARK__orig_val__18806);
 
-(zprint.zfns.zmeta_QMARK_ = zmeta_QMARK__orig_val__18781);
+(zprint.zfns.zmeta_QMARK_ = zmeta_QMARK__orig_val__18803);
 
-(zprint.zfns.zcoll_QMARK_ = zcoll_QMARK__orig_val__18780);
+(zprint.zfns.zcoll_QMARK_ = zcoll_QMARK__orig_val__18801);
 
-(zprint.zfns.zset_QMARK_ = zset_QMARK__orig_val__18779);
+(zprint.zfns.zset_QMARK_ = zset_QMARK__orig_val__18800);
 
-(zprint.zfns.znamespacedmap_QMARK_ = znamespacedmap_QMARK__orig_val__18778);
+(zprint.zfns.znamespacedmap_QMARK_ = znamespacedmap_QMARK__orig_val__18799);
 
-(zprint.zfns.zmap_QMARK_ = zmap_QMARK__orig_val__18777);
+(zprint.zfns.zmap_QMARK_ = zmap_QMARK__orig_val__18798);
 
-(zprint.zfns.zvector_QMARK_ = zvector_QMARK__orig_val__18776);
+(zprint.zfns.zvector_QMARK_ = zvector_QMARK__orig_val__18797);
 
-(zprint.zfns.zlist_QMARK_ = zlist_QMARK__orig_val__18775);
+(zprint.zfns.zlist_QMARK_ = zlist_QMARK__orig_val__18796);
 
-(zprint.zfns.zwhitespace_QMARK_ = zwhitespace_QMARK__orig_val__18774);
+(zprint.zfns.zwhitespace_QMARK_ = zwhitespace_QMARK__orig_val__18795);
 
-(zprint.zfns.zfind_path = zfind_path_orig_val__18773);
+(zprint.zfns.zfind_path = zfind_path_orig_val__18794);
 
-(zprint.zfns.zfocus = zfocus_orig_val__18772);
+(zprint.zfns.zfocus = zfocus_orig_val__18793);
 
-(zprint.zfns.zfn_obj_QMARK_ = zfn_obj_QMARK__orig_val__18771);
+(zprint.zfns.zfn_obj_QMARK_ = zfn_obj_QMARK__orig_val__18792);
 
-(zprint.zfns.zanonfn_QMARK_ = zanonfn_QMARK__orig_val__18770);
+(zprint.zfns.zanonfn_QMARK_ = zanonfn_QMARK__orig_val__18791);
 
-(zprint.zfns.zmap_w_nl_comma = zmap_w_nl_comma_orig_val__18769);
+(zprint.zfns.zmap_w_nl_comma = zmap_w_nl_comma_orig_val__18790);
 
-(zprint.zfns.zmap_w_bl = zmap_w_bl_orig_val__18768);
+(zprint.zfns.zmap_w_bl = zmap_w_bl_orig_val__18789);
 
-(zprint.zfns.zmap_w_nl = zmap_w_nl_orig_val__18767);
+(zprint.zfns.zmap_w_nl = zmap_w_nl_orig_val__18788);
 
-(zprint.zfns.zmap = zmap_orig_val__18766);
+(zprint.zfns.zmap = zmap_orig_val__18787);
 
-(zprint.zfns.zcount_zloc_seq_nc_nws = zcount_zloc_seq_nc_nws_orig_val__18765);
+(zprint.zfns.zcount_zloc_seq_nc_nws = zcount_zloc_seq_nc_nws_orig_val__18786);
 
-(zprint.zfns.zcount = zcount_orig_val__18764);
+(zprint.zfns.zcount = zcount_orig_val__18785);
 
-(zprint.zfns.znthnext = znthnext_orig_val__18763);
+(zprint.zfns.znthnext = znthnext_orig_val__18784);
 
-(zprint.zfns.znextnws_w_nl = znextnws_w_nl_orig_val__18762);
+(zprint.zfns.znextnws_w_nl = znextnws_w_nl_orig_val__18783);
 
-(zprint.zfns.znextnws = znextnws_orig_val__18761);
+(zprint.zfns.znextnws = znextnws_orig_val__18782);
 
-(zprint.zfns.zfourth = zfourth_orig_val__18760);
+(zprint.zfns.zfourth = zfourth_orig_val__18781);
 
-(zprint.zfns.zthird_no_comment = zthird_no_comment_orig_val__18759);
+(zprint.zfns.zthird_no_comment = zthird_no_comment_orig_val__18780);
 
-(zprint.zfns.zthird = zthird_orig_val__18758);
+(zprint.zfns.zthird = zthird_orig_val__18779);
 
-(zprint.zfns.zsecond_no_comment = zsecond_no_comment_orig_val__18757);
+(zprint.zfns.zsecond_no_comment = zsecond_no_comment_orig_val__18778);
 
-(zprint.zfns.zsecond = zsecond_orig_val__18756);
+(zprint.zfns.zsecond = zsecond_orig_val__18777);
 
-(zprint.zfns.zfirst_no_comment = zfirst_no_comment_orig_val__18755);
+(zprint.zfns.zfirst_no_comment = zfirst_no_comment_orig_val__18776);
 
-(zprint.zfns.zfirst = zfirst_orig_val__18754);
+(zprint.zfns.zfirst = zfirst_orig_val__18775);
 
-(zprint.zfns.zstart = zstart_orig_val__18753);
+(zprint.zfns.zstart = zstart_orig_val__18774);
 
-(zprint.zfns.zfocus_style = zfocus_style_orig_val__18752);
+(zprint.zfns.zfocus_style = zfocus_style_orig_val__18773);
 
-(zprint.zfns.zseqnws_w_bl = zseqnws_w_bl_orig_val__18751);
+(zprint.zfns.zseqnws_w_bl = zseqnws_w_bl_orig_val__18772);
 
-(zprint.zfns.zseqnws_w_nl = zseqnws_w_nl_orig_val__18750);
+(zprint.zfns.zseqnws_w_nl = zseqnws_w_nl_orig_val__18771);
 
-(zprint.zfns.zseqnws = zseqnws_orig_val__18749);
+(zprint.zfns.zseqnws = zseqnws_orig_val__18770);
 
-(zprint.zfns.zsexpr = zsexpr_orig_val__18748);
+(zprint.zfns.zsexpr = zsexpr_orig_val__18769);
 
-(zprint.zfns.zcomment_QMARK_ = zcomment_QMARK__orig_val__18747);
+(zprint.zfns.zcomment_QMARK_ = zcomment_QMARK__orig_val__18768);
 
-(zprint.zfns.znumstr = znumstr_orig_val__18746);
+(zprint.zfns.znumstr = znumstr_orig_val__18767);
 
-(zprint.zfns.zstring = zstring_orig_val__18745);
+(zprint.zfns.zstring = zstring_orig_val__18766);
 }});
 
 //# sourceMappingURL=zprint.sutil.js.map

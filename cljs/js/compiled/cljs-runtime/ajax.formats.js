@@ -6,8 +6,8 @@ goog.provide('ajax.formats');
  * is nonetheless really rather useful.
  */
 ajax.formats.raw_response_format = (function ajax$formats$raw_response_format(var_args){
-var G__21622 = arguments.length;
-switch (G__21622) {
+var G__21635 = arguments.length;
+switch (G__21635) {
 case 0:
 return ajax.formats.raw_response_format.cljs$core$IFn$_invoke$arity$0();
 
