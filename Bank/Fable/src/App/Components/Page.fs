@@ -3,6 +3,7 @@ namespace App.Components
 open Feliz
 open Feliz.Bulma
 open Signatures
+open Fable.Core
 
 type Page() =
     static let mutable accordions = [||]
@@ -23,15 +24,26 @@ type Page() =
                     eprintfn "Failed to cancel %s. Errors: %A" orderId e
             } |> Async.StartImmediate
     static let createOrder (user : Models.User) (documents : Models.Document list) addMessages = 
-        
+                printfn "About to create order"
                 async{
                     
                     let doc = documents |> List.head
                     let docName = doc.Name.Replace("%USERNAME%", user.Name)
                     let content = doc.Content.Replace("%USERNAME%", user.Name)
                     let userToken = user.Token 
-                    let! signatureOrderResult = Signatures.createSignatureOrder userToken "Signature order" [|{Title = docName; Content = content; Reference = None} |] 
-                    
+                    let orderTitle = "Signature order"
+                    let docs = [||] 
+                    printfn "Even more about to create order"
+                    let! signatureOrderResult = 
+                        printfn "Creating client"
+                        let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",userToken)
+                        printfn "Client created"
+                        promise {
+                            printfn "Executing"
+                            let! res = client.createSignatureOrder(orderTitle,docs)
+                            printfn "Order created %A" res
+                            return res |> Signatures.parse Signatures.SignatureOrderResponse
+                        } |> Async.AwaitPromise
                     match signatureOrderResult with
                     Ok order  -> 
                         
@@ -42,6 +54,7 @@ type Page() =
                                 |> System.Convert.ToBase64String
                             
                             let! signatoryAddedResult = 
+                                printfn "Adding signatory"
                                 Signatures.addSignatory userToken order.id userRef    
                             match signatoryAddedResult with
                             Ok signatoryAdded ->
@@ -62,7 +75,6 @@ type Page() =
                         } |> Async.StartImmediate
                     | Error e -> 
                         printfn "Error occurred while creating signature order %A" e
-                    
                 } 
     [<ReactComponent>]
     static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, documents : Models.Document list, setMessages) =
@@ -125,8 +137,11 @@ type Page() =
                     Bulma.button.button [
                         prop.text "Apply"
                         prop.onClick(fun _ -> 
-                            createOrder user documents (fun msg -> msg::messages |> setMessages)
-                            |> Async.StartImmediate
+                            printfn "Creating order"
+                            async {
+                                let! _ = createOrder user documents (fun msg -> msg::messages |> setMessages)
+                                printfn "Order away"
+                            } |> Async.StartImmediate
                         )
                     ]
                 ]

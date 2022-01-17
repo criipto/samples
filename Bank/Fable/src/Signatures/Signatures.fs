@@ -6,8 +6,6 @@ module Signatures =
 
     open Fable.Core
 
-    let inline client token = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
-
     type SignatureOrderResponse = Fable.JsonProvider.Generator<"""{
         "id" : "id-string"
     }""">
@@ -36,24 +34,28 @@ module Signatures =
                 StatusCode = errorStatus
             } |> Error
 
-    let inline createSignatureOrder token title documents  =
-        let client = client token
+    let createSignatureOrder token title documents  =
+        printfn "Making order ready"
+        let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
+        printfn "Client created"
         promise {
+            printfn "Creating order now"
             let! res = client.createSignatureOrder(title,documents)
+            printfn "Order created %A" res
             return res |> parse SignatureOrderResponse
         } |> Async.AwaitPromise
         
 
-    let inline addSignatory (token : string) (orderId : string) (userRef : string) =
-        let client = client token
+    let addSignatory (token : string) (orderId : string) (userRef : string) =
+        let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
         promise {
             let! res = client.addSignatory(orderId,userRef)
             return res |> parse AddSignatoryResponse
         } |> Async.AwaitPromise
 
 
-    let inline cancelSignatureOrder (token : string) (orderId : string) =
-        let client = client token
+    let cancelSignatureOrder (token : string) (orderId : string) =
+        let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
         promise {
             let! res = client.cancelSignatureOrder orderId
             return res |> parse id
