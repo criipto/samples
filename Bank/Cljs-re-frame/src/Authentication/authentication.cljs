@@ -4,10 +4,10 @@
             [clojure.string :as str]
             [re-frame.core :as rf]))
 
-;; TODO use environment variable?
-(def redirect-uri "http://localhost:3000/auth")
+(def redirect-uri
+  (delay (.-href (.-location js/window))))
 
-(def domain "mnie-test.criipto.id")
+(def auth-domain "mnie-test.criipto.id")
 
 (def client-id "urn:mnie:1010")
 
@@ -15,15 +15,14 @@
 
 (defonce ^Object authenticator
   (let [session-storage js/sessionStorage
-        args (clj->js {:domain domain
+        args (clj->js {:domain auth-domain
                        :clientID client-id
                        :store session-storage})
         authenticator (auth. args)
         match-object (.redirect.match authenticator)]
     (.. match-object
         (then (fn [result]
-                (when-let [parsed-result (some->> result
-                                                  js->clj)]
+                (when-let [parsed-result (some->> result js->clj)]
                   (if (nil? (get parsed-result "error"))
                     (rf/dispatch [:authorized parsed-result])
                     (rf/dispatch [:authorization-error parsed-result])))))
@@ -32,7 +31,7 @@
     authenticator))
 
 (defn login []
-  (let [args (clj->js {:redirectUri redirect-uri
+  (let [args (clj->js {:redirectUri (deref redirect-uri)
                        :acrValues acr-mitid})]
     (.redirect.authorize authenticator args)))
 
@@ -48,10 +47,17 @@
      :signature signature}))
 
 (def js-storage-key-for-auth
-  (str "oidc.user:" domain ":" client-id))
+  (str "oidc.user:" auth-domain ":" client-id))
+
+(defn clear-url-params! []
+  (.replaceState (.-history js/window)
+                 (clj->js {})
+                 (.-title js/document)
+                 (.-pathname js/location)))
 
 (defn save-token-to-js-storage! [js-storage]
   (fn [{:keys [authorization-result] :as _db}]
+    (clear-url-params!) ;; clearing away the 'code' url-parameter such that page reloads doesn't trigger call to get token (`../oauth2/token`)
     (let [error? (boolean (get-in authorization-result [:raw :error]))]
       (when (not error?)
         (.setItem js-storage js-storage-key-for-auth (str (:raw (:token authorization-result))))))))

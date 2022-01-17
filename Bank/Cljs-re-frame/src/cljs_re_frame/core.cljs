@@ -1,7 +1,6 @@
 (ns cljs-re-frame.core
   (:require [cljs-re-frame.config :as config]
             [cljs-re-frame.events :as events]
-            [cljs-re-frame.router :as router]
             [cljs-re-frame.subs :as subs]
             [cljs-re-frame.views :refer [front-page pages navigation-menu log-in-button]]
             [re-frame.core :as rf]
@@ -9,8 +8,7 @@
 
 (defn app []
   (let [auth-error (deref (rf/subscribe [::subs/auth-error]))
-        auth-user-info (deref (rf/subscribe [::subs/auth-user]))
-        active-page (deref (rf/subscribe [::subs/active-page]))]
+        auth-user-info (deref (rf/subscribe [::subs/auth-user]))]
     [:div
      [:div.navbar-menu
       [:div.navbar-start
@@ -36,10 +34,9 @@
                        :style {:margin-top "40px"}}
          [navigation-menu]
          [:div.column
-          [:div.container
-           [pages active-page]]]]]
+          [:div.container [pages]]]]]
 
-       :default
+       :else
        [front-page])]))
 
 (defn dev-setup []
@@ -53,7 +50,6 @@
     (rdom/render [app] root-el)))
 
 (defn init []
-  (router/start!)
   (rf/dispatch-sync [::events/initialize-db])
   (dev-setup)
   (start))

@@ -56,9 +56,8 @@
         button (fn [text on-click-fn]
                  [:a.button {:style button-style
                              :on-click on-click-fn}
-                  [:<>
-                   [:span.navbar-item text]
-                   [:div.icon.power-off-white]]])]
+                  [:span.navbar-item text]
+                  [:div.icon.power-off-white]])]
     [:div.buttons
      (if (nil? auth-user-info)
        [button "Log on" log-in-fn]
@@ -81,16 +80,15 @@
     [page-content
      :page-type :profile
      :content (fn []
-       [:div
-        (when auth-user-info
-          [:<>
-           (for [[k v] auth-user-info]
-             (create-columns {:key (str "auth-user-info-" (name k))}
-                             {:content (str/capitalize (name k))} {:content v}))
-           [:button.button.is-danger {:on-click (fn [_] (rf/dispatch [::events/logout]))}
-            "Log off"]])
-        (when auth-error
-          [:p (str "auth error: " auth-error)])])]))
+                (when auth-user-info
+                  [:<>
+                   (for [[k v] auth-user-info]
+                     (create-columns {:key (str "auth-user-info-" (name k))}
+                                     {:content (str/capitalize (name k))} {:content v}))
+                   [:button.button.is-danger {:on-click (fn [_] (rf/dispatch [::events/logout]))}
+                    "Log off"]])
+                (when auth-error
+                  [:p (str "auth error: " auth-error)]))]))
 
 (defn accounts-view []
   (let [accounts (deref (rf/subscribe [::subs/accounts]))]
@@ -125,10 +123,11 @@
    :page-type :pension-and-insurance
    :content (fn [] [:div])])
 
-(defn message-view [{:keys [index from title content date read? id]}]
-  [:article.accordion.message-item
-   [:div.accordion-header.message-item.toggle {:class (str "message-item-" index)
-                                               :on-click #(rf/dispatch [::events/message-read id])}
+(defn message-view [{:keys [index from title content date read? id unfolded?]}]
+  [:article.accordion.message-item (when unfolded? {:class "is-active"})
+   [:div.accordion-header.message-item.toggle
+    {:class (str "message-item-" index)
+     :on-click #(rf/dispatch [::events/toggle-message id])}
     [:div.message-item.from
      (when (not read?)
        [:div.icon.dot {:style {:margin-right "12px"}}])
@@ -153,7 +152,7 @@
                          (sort-by :date #(compare %2 %1)))]
        [:section.accordions
         (for [[index {:keys [id] :as message}] (map-indexed vector messages)]
-          [:div {:key (str "message-" id)}
+          [:<> {:key (str "message-" id)}
            [message-view (assoc message :index index)]])]))])
 
 (defn developer-support []
@@ -229,41 +228,42 @@
     :content (fn []
                (let [messages (->> (deref (rf/subscribe [::subs/messages]))
                                    vals
-                                   (remove :read?)
                                    (sort-by :date #(compare %2 %1))
                                    (take 2))]
                  [:section.accordions
                   (for [[index {:keys [id] :as message}] (map-indexed vector messages)]
-                    [:div {:key (str "message-" id)}
+                    [:<> {:key (str "message-" id)}
                      [message-view (assoc message :index index)]])]))]
    [page-content
     :page-type :accounts
     :content (fn [] [accounts-view])]])
 
-(defn pages [page-name]
-  (case page-name
-    :accounts              [accounts]
-    :developer-support     [developer-support]
-    :investment            [investment]
-    :messages              [messages]
-    :overview              [overview]
-    :payments-and-transfer [payments-and-transfer]
-    :pension-and-insurance [pension-and-insurance]
-    :profile               [profile]
-    [overview]))
+(defn pages []
+  (let [active-page (deref (rf/subscribe [::subs/active-page]))]
+    (case active-page
+      :accounts              [accounts]
+      :developer-support     [developer-support]
+      :investment            [investment]
+      :messages              [messages]
+      :overview              [overview]
+      :payments-and-transfer [payments-and-transfer]
+      :pension-and-insurance [pension-and-insurance]
+      :profile               [profile]
+      [overview])))
 
 (defn navigation-menu []
-  (let [number-of-unread-messages (deref (rf/subscribe [::subs/number-of-unread-messages]))]
+  (let [active-page (deref (rf/subscribe [::subs/active-page]))
+        number-of-unread-messages (deref (rf/subscribe [::subs/number-of-unread-messages]))]
     [:div.column.is-one-quarter.is-one-fifth-fullhd
      [:nav.panel {:style {:box-shadow "none"}}
-      [:div
        (for [{:keys [id icon text]} (vals nav-items)]
-         [:div {:key id}
-          [:div.menu-item.panel-block {:on-click #(rf/dispatch [::events/set-active-page id])}
+         [:<> {:key (str "nav-menu-item-" id)}
+          [:div.menu-item.panel-block {:class (when (= id active-page) "is-active")
+                                       :on-click #(rf/dispatch [::events/set-active-page id])}
            [:span.panel-icon
             [:div.icon {:class icon}
              (when (and (= id :messages) (< 0 number-of-unread-messages))
                [:span.badge {:class "is-danger"}
                 number-of-unread-messages])]]
            [:span text]]
-          [:br]])]]]))
+          [:br]])]]))

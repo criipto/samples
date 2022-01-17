@@ -2,7 +2,6 @@
   (:require [ajax.core :as ajax]
             [Authentication.authentication :as auth]
             [cljs-re-frame.db :as db]
-            [cljs-re-frame.router :as router]
             [cljs.reader :refer [read-string]]
             [clojure.walk :refer [keywordize-keys]]
             [day8.re-frame.http-fx]
@@ -10,16 +9,10 @@
 
 (def messages-url "https://criipto-bank.netlify.app/feliz/messages.json")
 
-(def js-storage js/sessionStorage)
-
-(def set-token-interceptor
-  [(rf/after (auth/save-token-to-js-storage! js-storage))])
-
-(def remove-token-interceptor
-  [(rf/after (auth/remove-token-from-js-storage! js-storage))])
+(def js-token-storage js/sessionStorage)
 
 (defn read-local-storage [k]
-  (some->> (.getItem js-storage k)
+  (some->> (.getItem js-token-storage k)
            read-string))
 
 (rf/reg-cofx
@@ -32,15 +25,15 @@
 (rf/reg-event-fx
  ::set-active-page
  (fn [{:keys [db]} [_ active-page]]
-   {:db (assoc-in db [:nav :active-page] active-page)
-    :navigate-to {:path (router/path-for active-page)}}))
+   (cond-> {:db (assoc-in db [:nav :active-page] active-page)}
+     (#{:overview :messages} active-page) (assoc :dispatch [::get-messages]))))
 
 (defn token-payload->user-profile [payload]
   (select-keys payload [:name :birthdate :age :cprNumberIdentifier :country]))
 
 (rf/reg-event-fx
  :authorized
- set-token-interceptor
+ [(rf/after (auth/save-token-to-js-storage! js-token-storage))]
  (fn [{:keys [db] :as _cofx} [_ result]]
    (let [result* (keywordize-keys result)
          parsed-result (some-> result*
@@ -66,28 +59,12 @@
    (let [parsed-token (some-> local-store-token
                               :id_token
                               auth/parse-id-token)]
-     {:db (-> db/default-db
-              (assoc-in [:authorization-result :token] {:raw local-store-token :parsed parsed-token})
-              (assoc :user-profile (some-> parsed-token
-                                           :payload
-                                           token-payload->user-profile)))})))
-
-(rf/reg-fx
- :navigate-to
- (fn [{:keys [path]}]
-   (router/set-token! path)))
-
-(rf/reg-event-fx
- ::router/route-changed
- (fn [{:keys [db] :as _cofx} [_ {:keys [handler]}]]
-   (case handler
-     :auth {:db (assoc-in db [:nav :active-page] :overview)
-            :navigate-to {:path (router/path-for :overview)}}
-     :messages {:db (assoc-in db [:nav :active-page] :messages)
-                :dispatch [::get-messages]}
-     :overview {:db (assoc-in db [:nav :active-page] :overview)
-                :dispatch [::get-messages]}
-     {:db (assoc-in db [:nav :active-page] handler)})))
+     (cond-> {:db (-> db/default-db
+                      (assoc-in [:authorization-result :token] {:raw local-store-token :parsed parsed-token})
+                      (assoc :user-profile (some-> parsed-token
+                                                   :payload
+                                                   token-payload->user-profile)))}
+       (some? local-store-token) (assoc :dispatch [::get-messages])))))
 
 (rf/reg-event-fx
  ::get-messages
@@ -122,12 +99,14 @@
 
 (rf/reg-event-fx
  ::logout
- remove-token-interceptor
+ [(rf/after (auth/remove-token-from-js-storage! js-token-storage))]
  (fn [{:keys [db]} _]
    {:db (dissoc db :authorization-result :user-profile)
     :dispatch [::set-active-page :front-page]}))
 
 (rf/reg-event-db
- ::message-read
+ ::toggle-message
  (fn [db [_ id]]
-   (assoc-in db [:messages id :read?] true)))
+   (-> db
+       (update-in [:messages id :unfolded?] (fnil not false))
+       (assoc-in [:messages id :read?] true))))
