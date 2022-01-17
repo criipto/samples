@@ -18,13 +18,11 @@ type Page() =
                 let! res = Signatures.cancelSignatureOrder userToken orderId
                 match res with
                 Ok res -> 
-                    printfn "Cancel: %A" res
                     removeMessage identifyMessage
                 | Error e ->
                     eprintfn "Failed to cancel %s. Errors: %A" orderId e
             } |> Async.StartImmediate
     static let createOrder (user : Models.User) (documents : Models.Document list) addMessages = 
-                printfn "About to create order"
                 async{
                     
                     let doc = documents |> List.head
@@ -33,15 +31,10 @@ type Page() =
                     let userToken = user.Token 
                     let orderTitle = "Signature order"
                     let docs = [||] 
-                    printfn "Even more about to create order"
                     let! signatureOrderResult = 
-                        printfn "Creating client"
                         let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",userToken)
-                        printfn "Client created"
                         promise {
-                            printfn "Executing"
                             let! res = client.createSignatureOrder(orderTitle,docs)
-                            printfn "Order created %A" res
                             return res |> Signatures.parse Signatures.SignatureOrderResponse
                         } |> Async.AwaitPromise
                     match signatureOrderResult with
@@ -54,7 +47,6 @@ type Page() =
                                 |> System.Convert.ToBase64String
                             
                             let! signatoryAddedResult = 
-                                printfn "Adding signatory"
                                 Signatures.addSignatory userToken order.id userRef    
                             match signatoryAddedResult with
                             Ok signatoryAdded ->
@@ -74,7 +66,7 @@ type Page() =
                                 eprintfn "Erros while adding signatory %A" e
                         } |> Async.StartImmediate
                     | Error e -> 
-                        printfn "Error occurred while creating signature order %A" e
+                        eprintfn "Error occurred while creating signature order %A" e
                 } 
     [<ReactComponent>]
     static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, documents : Models.Document list, setMessages) =
@@ -137,11 +129,8 @@ type Page() =
                     Bulma.button.button [
                         prop.text "Apply"
                         prop.onClick(fun _ -> 
-                            printfn "Creating order"
-                            async {
-                                let! _ = createOrder user documents (fun msg -> msg::messages |> setMessages)
-                                printfn "Order away"
-                            } |> Async.StartImmediate
+                            createOrder user documents (fun msg -> msg::messages |> setMessages)
+                            |> Async.StartImmediate
                         )
                     ]
                 ]
