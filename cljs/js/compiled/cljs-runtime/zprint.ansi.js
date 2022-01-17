@@ -31,11 +31,11 @@ return ["\u001B","[",cljs.core.str.cljs$core$IFn$_invoke$arity$1(ansi_str),"m",c
 (zprint.ansi.color_str.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(zprint.ansi.color_str.cljs$lang$applyTo = (function (seq16443){
-var G__16444 = cljs.core.first(seq16443);
-var seq16443__$1 = cljs.core.next(seq16443);
+(zprint.ansi.color_str.cljs$lang$applyTo = (function (seq16445){
+var G__16446 = cljs.core.first(seq16445);
+var seq16445__$1 = cljs.core.next(seq16445);
 var self__4851__auto__ = this;
-return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__16444,seq16443__$1);
+return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__16446,seq16445__$1);
 }));
 
 

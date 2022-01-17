@@ -10,8 +10,8 @@ throw (new Error("Assert failed: (day8.re-frame-10x.inlined-deps.re-frame.v1v1v2
  *   This function is 9/10 about giving good error messages.
  */
 day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.events.flatten_and_remove_nils = (function day8$re_frame_10x$inlined_deps$re_frame$v1v1v2$re_frame$events$flatten_and_remove_nils(id,interceptors){
-var make_chain = (function (p1__15197_SHARP_){
-return cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.nil_QMARK_,cljs.core.flatten(p1__15197_SHARP_));
+var make_chain = (function (p1__15194_SHARP_){
+return cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.nil_QMARK_,cljs.core.flatten(p1__15194_SHARP_));
 });
 if((!(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.interop.debug_enabled_QMARK_))){
 return make_chain(interceptors);
@@ -66,9 +66,9 @@ var interceptors = temp__5751__auto__;
 if(cljs.core.truth_(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.events._STAR_handling_STAR_)){
 return day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.loggers.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"error","error",-978969032),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["re-frame: while handling",day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.events._STAR_handling_STAR_,", dispatch-sync was called for",event_v,". You can't call dispatch-sync within an event handler."], 0));
 } else {
-var _STAR_handling_STAR__orig_val__15205 = day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.events._STAR_handling_STAR_;
-var _STAR_handling_STAR__temp_val__15206 = event_v;
-(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.events._STAR_handling_STAR_ = _STAR_handling_STAR__temp_val__15206);
+var _STAR_handling_STAR__orig_val__15195 = day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.events._STAR_handling_STAR_;
+var _STAR_handling_STAR__temp_val__15196 = event_v;
+(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.events._STAR_handling_STAR_ = _STAR_handling_STAR__temp_val__15196);
 
 try{if(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.trace.is_trace_enabled_QMARK_()){
 var _STAR_current_trace_STAR__orig_val__15207 = day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.trace._STAR_current_trace_STAR_;
@@ -120,7 +120,7 @@ return null;
 return null;
 }
 }
-}finally {(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.events._STAR_handling_STAR_ = _STAR_handling_STAR__orig_val__15205);
+}finally {(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.events._STAR_handling_STAR_ = _STAR_handling_STAR__orig_val__15195);
 }}
 } else {
 return null;

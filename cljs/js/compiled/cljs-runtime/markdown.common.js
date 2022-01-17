@@ -11,14 +11,14 @@ return [markdown.common.escape_delimiter,cljs.core.str.cljs$core$IFn$_invoke$ari
  */
 markdown.common.freeze_string = (function markdown$common$freeze_string(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___21924 = arguments.length;
-var i__4865__auto___21925 = (0);
+var len__4864__auto___21922 = arguments.length;
+var i__4865__auto___21924 = (0);
 while(true){
-if((i__4865__auto___21925 < len__4864__auto___21924)){
-args__4870__auto__.push((arguments[i__4865__auto___21925]));
+if((i__4865__auto___21924 < len__4864__auto___21922)){
+args__4870__auto__.push((arguments[i__4865__auto___21924]));
 
-var G__21926 = (i__4865__auto___21925 + (1));
-i__4865__auto___21925 = G__21926;
+var G__21926 = (i__4865__auto___21924 + (1));
+i__4865__auto___21924 = G__21926;
 continue;
 } else {
 }
@@ -229,10 +229,10 @@ markdown.common.heading_text = (function markdown$common$heading_text(text){
 return clojure.string.trim(clojure.string.replace(clojure.string.replace(text,/^([ ]+)?[#]+/,""),/[#]+$/,""));
 });
 markdown.common.heading_level = (function markdown$common$heading_level(text){
-var num_hashes = cljs.core.count(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__21922_SHARP_){
-return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(" ",p1__21922_SHARP_);
-}),cljs.core.take_while.cljs$core$IFn$_invoke$arity$2((function (p1__21923_SHARP_){
-return ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("#",p1__21923_SHARP_)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(" ",p1__21923_SHARP_)));
+var num_hashes = cljs.core.count(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__21918_SHARP_){
+return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(" ",p1__21918_SHARP_);
+}),cljs.core.take_while.cljs$core$IFn$_invoke$arity$2((function (p1__21919_SHARP_){
+return ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("#",p1__21919_SHARP_)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(" ",p1__21919_SHARP_)));
 }),cljs.core.seq(text))));
 if((num_hashes > (0))){
 return num_hashes;

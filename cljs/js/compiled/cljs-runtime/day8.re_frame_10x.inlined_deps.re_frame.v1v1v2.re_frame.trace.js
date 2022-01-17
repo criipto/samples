@@ -89,20 +89,20 @@ continue;
 } else {
 var temp__5753__auto___15155 = cljs.core.seq(seq__15115_15142);
 if(temp__5753__auto___15155){
-var seq__15115_15156__$1 = temp__5753__auto___15155;
-if(cljs.core.chunked_seq_QMARK_(seq__15115_15156__$1)){
-var c__4679__auto___15157 = cljs.core.chunk_first(seq__15115_15156__$1);
-var G__15158 = cljs.core.chunk_rest(seq__15115_15156__$1);
-var G__15159 = c__4679__auto___15157;
-var G__15160 = cljs.core.count(c__4679__auto___15157);
-var G__15161 = (0);
-seq__15115_15142 = G__15158;
-chunk__15116_15143 = G__15159;
-count__15117_15144 = G__15160;
-i__15118_15145 = G__15161;
+var seq__15115_15157__$1 = temp__5753__auto___15155;
+if(cljs.core.chunked_seq_QMARK_(seq__15115_15157__$1)){
+var c__4679__auto___15158 = cljs.core.chunk_first(seq__15115_15157__$1);
+var G__15159 = cljs.core.chunk_rest(seq__15115_15157__$1);
+var G__15160 = c__4679__auto___15158;
+var G__15161 = cljs.core.count(c__4679__auto___15158);
+var G__15162 = (0);
+seq__15115_15142 = G__15159;
+chunk__15116_15143 = G__15160;
+count__15117_15144 = G__15161;
+i__15118_15145 = G__15162;
 continue;
 } else {
-var vec__15134_15163 = cljs.core.first(seq__15115_15156__$1);
+var vec__15134_15163 = cljs.core.first(seq__15115_15157__$1);
 var k_15164 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15134_15163,(0),null);
 var cb_15165 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__15134_15163,(1),null);
 try{var G__15138_15166 = cljs.core.deref(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.trace.traces);
@@ -111,7 +111,7 @@ try{var G__15138_15166 = cljs.core.deref(day8.re_frame_10x.inlined_deps.re_frame
 day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.loggers.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"error","error",-978969032),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["Error thrown from trace cb",k_15164,"while storing",cljs.core.deref(day8.re_frame_10x.inlined_deps.re_frame.v1v1v2.re_frame.trace.traces),e_15167], 0));
 }
 
-var G__15168 = cljs.core.next(seq__15115_15156__$1);
+var G__15168 = cljs.core.next(seq__15115_15157__$1);
 var G__15169 = null;
 var G__15170 = (0);
 var G__15171 = (0);

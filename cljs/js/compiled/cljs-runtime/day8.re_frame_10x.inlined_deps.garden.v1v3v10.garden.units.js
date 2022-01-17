@@ -38,11 +38,11 @@ return cljs.core.contains_QMARK_(day8.re_frame_10x.inlined_deps.garden.v1v3v10.g
 /**
  * Convert a Unit with :unit left to a Unit with :unit right if possible.
  */
-day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.units.convert = (function day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$convert(p__12909,right){
-var map__12910 = p__12909;
-var map__12910__$1 = cljs.core.__destructure_map(map__12910);
-var m = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12910__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
-var left = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12910__$1,new cljs.core.Keyword(null,"unit","unit",375175175));
+day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.units.convert = (function day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$convert(p__12907,right){
+var map__12908 = p__12907;
+var map__12908__$1 = cljs.core.__destructure_map(map__12908);
+var m = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12908__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
+var left = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12908__$1,new cljs.core.Keyword(null,"unit","unit",375175175));
 if(cljs.core.every_QMARK_(day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.units.convertable_QMARK_,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [left,right], null))){
 var v1 = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.units.conversions,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [left,right], null));
 var v2 = cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.units.conversions,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [right,left], null));
@@ -72,10 +72,10 @@ day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.units.unit_re = /([+-]?\d+(
 day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.units.read_unit = (function day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$read_unit(s){
 var temp__5753__auto__ = cljs.core.re_matches(day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.units.unit_re,s);
 if(cljs.core.truth_(temp__5753__auto__)){
-var vec__12930 = temp__5753__auto__;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12930,(0),null);
-var magnitude = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12930,(1),null);
-var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12930,(2),null);
+var vec__12912 = temp__5753__auto__;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12912,(0),null);
+var magnitude = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12912,(1),null);
+var unit = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__12912,(2),null);
 var unit__$1 = cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(unit);
 var magnitude__$1 = (cljs.core.truth_(magnitude)?cljs.reader.read_string.cljs$core$IFn$_invoke$arity$1(magnitude):(0));
 return (new day8.re_frame_10x.inlined_deps.garden.v1v3v10.garden.types.CSSUnit(unit__$1,magnitude__$1,null,null,null));
@@ -131,12 +131,12 @@ var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_adder_$
 return u(x);
 });
 var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_adder_$_u_PLUS___2 = (function (x,y){
-var map__12933 = u(x);
-var map__12933__$1 = cljs.core.__destructure_map(map__12933);
-var m1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12933__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
-var map__12934 = u(y);
-var map__12934__$1 = cljs.core.__destructure_map(map__12934);
-var m2 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12934__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
+var map__12915 = u(x);
+var map__12915__$1 = cljs.core.__destructure_map(map__12915);
+var m1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12915__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
+var map__12916 = u(y);
+var map__12916__$1 = cljs.core.__destructure_map(map__12916);
+var m2 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12916__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
 return u((m1 + m2));
 });
 var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_adder_$_u_PLUS___3 = (function() { 
@@ -203,12 +203,12 @@ var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_subtrac
 return u((- x));
 });
 var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_subtractor_$_u___2 = (function (x,y){
-var map__12943 = u(x);
-var map__12943__$1 = cljs.core.__destructure_map(map__12943);
-var m1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12943__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
-var map__12944 = u(y);
-var map__12944__$1 = cljs.core.__destructure_map(map__12944);
-var m2 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12944__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
+var map__12917 = u(x);
+var map__12917__$1 = cljs.core.__destructure_map(map__12917);
+var m1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12917__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
+var map__12918 = u(y);
+var map__12918__$1 = cljs.core.__destructure_map(map__12918);
+var m2 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12918__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
 return u((m1 - m2));
 });
 var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_subtractor_$_u___3 = (function() { 
@@ -278,12 +278,12 @@ var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_multipl
 return u(x);
 });
 var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_multiplier_$_u_STAR___2 = (function (x,y){
-var map__12945 = u(x);
-var map__12945__$1 = cljs.core.__destructure_map(map__12945);
-var m1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12945__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
-var map__12946 = u(y);
-var map__12946__$1 = cljs.core.__destructure_map(map__12946);
-var m2 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12946__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
+var map__12950 = u(x);
+var map__12950__$1 = cljs.core.__destructure_map(map__12950);
+var m1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12950__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
+var map__12951 = u(y);
+var map__12951__$1 = cljs.core.__destructure_map(map__12951);
+var m2 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12951__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
 return u((op.cljs$core$IFn$_invoke$arity$2 ? op.cljs$core$IFn$_invoke$arity$2(m1,m2) : op.call(null,m1,m2)));
 });
 var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_multiplier_$_u_STAR___3 = (function() { 
@@ -353,12 +353,12 @@ var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_divider
 return u(((1) / x));
 });
 var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_divider_$_ud__2 = (function (x,y){
-var map__12948 = u(x);
-var map__12948__$1 = cljs.core.__destructure_map(map__12948);
-var m1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12948__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
-var map__12949 = u(y);
-var map__12949__$1 = cljs.core.__destructure_map(map__12949);
-var m2 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12949__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
+var map__12952 = u(x);
+var map__12952__$1 = cljs.core.__destructure_map(map__12952);
+var m1 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12952__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
+var map__12953 = u(y);
+var map__12953__$1 = cljs.core.__destructure_map(map__12953);
+var m2 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__12953__$1,new cljs.core.Keyword(null,"magnitude","magnitude",1924274222));
 return u((op.cljs$core$IFn$_invoke$arity$2 ? op.cljs$core$IFn$_invoke$arity$2(m1,m2) : op.call(null,m1,m2)));
 });
 var day8$re_frame_10x$inlined_deps$garden$v1v3v10$garden$units$make_unit_divider_$_ud__3 = (function() { 

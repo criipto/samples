@@ -197,9 +197,9 @@ return (new rewrite_clj.node.keyword.KeywordNode(self__.k,self__.namespaced_QMAR
 (rewrite_clj.node.keyword.KeywordNode.prototype.cljs$core$IAssociative$_contains_key_QMARK_$arity$2 = (function (this__4509__auto__,k17663){
 var self__ = this;
 var this__4509__auto____$1 = this;
-var G__17673 = k17663;
-var G__17673__$1 = (((G__17673 instanceof cljs.core.Keyword))?G__17673.fqn:null);
-switch (G__17673__$1) {
+var G__17672 = k17663;
+var G__17672__$1 = (((G__17672 instanceof cljs.core.Keyword))?G__17672.fqn:null);
+switch (G__17672__$1) {
 case "k":
 case "namespaced?":
 return true;
@@ -214,12 +214,12 @@ return cljs.core.contains_QMARK_(self__.__extmap,k17663);
 (rewrite_clj.node.keyword.KeywordNode.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__4510__auto__,k__4511__auto__,G__17662){
 var self__ = this;
 var this__4510__auto____$1 = this;
-var pred__17674 = cljs.core.keyword_identical_QMARK_;
-var expr__17675 = k__4511__auto__;
-if(cljs.core.truth_((pred__17674.cljs$core$IFn$_invoke$arity$2 ? pred__17674.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"k","k",-2146297393),expr__17675) : pred__17674.call(null,new cljs.core.Keyword(null,"k","k",-2146297393),expr__17675)))){
+var pred__17673 = cljs.core.keyword_identical_QMARK_;
+var expr__17674 = k__4511__auto__;
+if(cljs.core.truth_((pred__17673.cljs$core$IFn$_invoke$arity$2 ? pred__17673.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"k","k",-2146297393),expr__17674) : pred__17673.call(null,new cljs.core.Keyword(null,"k","k",-2146297393),expr__17674)))){
 return (new rewrite_clj.node.keyword.KeywordNode(G__17662,self__.namespaced_QMARK_,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_((pred__17674.cljs$core$IFn$_invoke$arity$2 ? pred__17674.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"namespaced?","namespaced?",-877312877),expr__17675) : pred__17674.call(null,new cljs.core.Keyword(null,"namespaced?","namespaced?",-877312877),expr__17675)))){
+if(cljs.core.truth_((pred__17673.cljs$core$IFn$_invoke$arity$2 ? pred__17673.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"namespaced?","namespaced?",-877312877),expr__17674) : pred__17673.call(null,new cljs.core.Keyword(null,"namespaced?","namespaced?",-877312877),expr__17674)))){
 return (new rewrite_clj.node.keyword.KeywordNode(self__.k,G__17662,self__.__meta,self__.__extmap,null));
 } else {
 return (new rewrite_clj.node.keyword.KeywordNode(self__.k,self__.namespaced_QMARK_,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__4511__auto__,G__17662),null));

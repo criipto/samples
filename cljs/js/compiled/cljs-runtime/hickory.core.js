@@ -7,7 +7,7 @@ goog.provide('hickory.core');
  */
 hickory.core.HiccupRepresentable = function(){};
 
-var hickory$core$HiccupRepresentable$as_hiccup$dyn_21918 = (function (this$){
+var hickory$core$HiccupRepresentable$as_hiccup$dyn_21920 = (function (this$){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (hickory.core.as_hiccup[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -30,7 +30,7 @@ hickory.core.as_hiccup = (function hickory$core$as_hiccup(this$){
 if((((!((this$ == null)))) && ((!((this$.hickory$core$HiccupRepresentable$as_hiccup$arity$1 == null)))))){
 return this$.hickory$core$HiccupRepresentable$as_hiccup$arity$1(this$);
 } else {
-return hickory$core$HiccupRepresentable$as_hiccup$dyn_21918(this$);
+return hickory$core$HiccupRepresentable$as_hiccup$dyn_21920(this$);
 }
 });
 
@@ -51,7 +51,7 @@ return hickory$core$HiccupRepresentable$as_hiccup$dyn_21918(this$);
  */
 hickory.core.HickoryRepresentable = function(){};
 
-var hickory$core$HickoryRepresentable$as_hickory$dyn_21919 = (function (this$){
+var hickory$core$HickoryRepresentable$as_hickory$dyn_21921 = (function (this$){
 var x__4550__auto__ = (((this$ == null))?null:this$);
 var m__4551__auto__ = (hickory.core.as_hickory[goog.typeOf(x__4550__auto__)]);
 if((!((m__4551__auto__ == null)))){
@@ -74,7 +74,7 @@ hickory.core.as_hickory = (function hickory$core$as_hickory(this$){
 if((((!((this$ == null)))) && ((!((this$.hickory$core$HickoryRepresentable$as_hickory$arity$1 == null)))))){
 return this$.hickory$core$HickoryRepresentable$as_hickory$arity$1(this$);
 } else {
-return hickory$core$HickoryRepresentable$as_hickory$dyn_21919(this$);
+return hickory$core$HickoryRepresentable$as_hickory$dyn_21921(this$);
 }
 });
 
@@ -215,11 +215,11 @@ if(cljs.core.truth_(hickory.core.extract_doctype(s))){
 hickory.core.remove_el(doctype_el);
 }
 
-var temp__5753__auto___21920 = cljs.core.first((doc["head"]["childNodes"]));
-if(cljs.core.truth_(temp__5753__auto___21920)){
-var title_el_21921 = temp__5753__auto___21920;
-if(cljs.core.empty_QMARK_((title_el_21921["text"]))){
-hickory.core.remove_el(title_el_21921);
+var temp__5753__auto___21923 = cljs.core.first((doc["head"]["childNodes"]));
+if(cljs.core.truth_(temp__5753__auto___21923)){
+var title_el_21925 = temp__5753__auto___21923;
+if(cljs.core.empty_QMARK_((title_el_21925["text"]))){
+hickory.core.remove_el(title_el_21925);
 } else {
 }
 } else {

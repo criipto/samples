@@ -5,24 +5,24 @@ devtools.formatters.budgeting.add_over_budget_value_BANG_ = (function devtools$f
 if(cljs.core.volatile_QMARK_(devtools.formatters.budgeting.over_budget_values)){
 return cljs.core.vreset_BANG_(devtools.formatters.budgeting.over_budget_values,cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cljs.core.deref(devtools.formatters.budgeting.over_budget_values),value));
 } else {
-var o__8548__auto__ = devtools.formatters.budgeting.over_budget_values;
-return (o__8548__auto__["add"]).call(o__8548__auto__,value);
+var o__8635__auto__ = devtools.formatters.budgeting.over_budget_values;
+return (o__8635__auto__["add"]).call(o__8635__auto__,value);
 }
 });
 devtools.formatters.budgeting.delete_over_budget_value_BANG_ = (function devtools$formatters$budgeting$delete_over_budget_value_BANG_(value){
 if(cljs.core.volatile_QMARK_(devtools.formatters.budgeting.over_budget_values)){
 return cljs.core.vreset_BANG_(devtools.formatters.budgeting.over_budget_values,cljs.core.disj.cljs$core$IFn$_invoke$arity$2(cljs.core.deref(devtools.formatters.budgeting.over_budget_values),value));
 } else {
-var o__8548__auto__ = devtools.formatters.budgeting.over_budget_values;
-return (o__8548__auto__["delete"]).call(o__8548__auto__,value);
+var o__8635__auto__ = devtools.formatters.budgeting.over_budget_values;
+return (o__8635__auto__["delete"]).call(o__8635__auto__,value);
 }
 });
 devtools.formatters.budgeting.has_over_budget_value_QMARK_ = (function devtools$formatters$budgeting$has_over_budget_value_QMARK_(value){
 if(cljs.core.volatile_QMARK_(devtools.formatters.budgeting.over_budget_values)){
 return cljs.core.contains_QMARK_(cljs.core.deref(devtools.formatters.budgeting.over_budget_values),value);
 } else {
-var o__8548__auto__ = devtools.formatters.budgeting.over_budget_values;
-return (o__8548__auto__["has"]).call(o__8548__auto__,value);
+var o__8635__auto__ = devtools.formatters.budgeting.over_budget_values;
+return (o__8635__auto__["has"]).call(o__8635__auto__,value);
 }
 });
 devtools.formatters.budgeting.object_reference_QMARK_ = (function devtools$formatters$budgeting$object_reference_QMARK_(json_ml){
@@ -55,16 +55,16 @@ throw (new Error("Assert failed: (not (neg? depth-budget))"));
 var data = cljs.core.second(object_reference);
 var _ = ((cljs.core.object_QMARK_(data))?null:(function(){throw (new Error("Assert failed: (object? data)"))})());
 var config = (data["config"]);
-var G__11584 = data;
-var target__8553__auto__ = G__11584;
-if(cljs.core.truth_(target__8553__auto__)){
+var G__11571 = data;
+var target__8640__auto__ = G__11571;
+if(cljs.core.truth_(target__8640__auto__)){
 } else {
-throw (new Error(["Assert failed: ",["unable to locate object path ",null," in ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__11584)].join(''),"\n","target__8553__auto__"].join('')));
+throw (new Error(["Assert failed: ",["unable to locate object path ",null," in ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__11571)].join(''),"\n","target__8640__auto__"].join('')));
 }
 
-(target__8553__auto__["config"] = devtools.formatters.state.set_depth_budget(config,depth_budget));
+(target__8640__auto__["config"] = devtools.formatters.state.set_depth_budget(config,depth_budget));
 
-return G__11584;
+return G__11571;
 });
 devtools.formatters.budgeting.distribute_budget_BANG_ = (function devtools$formatters$budgeting$distribute_budget_BANG_(json_ml,depth_budget){
 if((!((depth_budget < (0))))){
