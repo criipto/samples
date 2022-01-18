@@ -2,8 +2,6 @@ namespace Signatures
 
 module Signatures = 
 
-//this assumes that the server is using the criipto signatures docker image criipto/signatures
-
     open Fable.Core
 
     type SignatureOrderResponse = Fable.JsonProvider.Generator<"""{
@@ -22,7 +20,7 @@ module Signatures =
             Error : string
             StatusCode : int
         }
-
+    let client token = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
     let inline parse parser (statusCode,responseText) = 
         match statusCode with
         | 200 ->
@@ -35,9 +33,7 @@ module Signatures =
             } |> Error
 
     let createSignatureOrder token title documents  =
-        
-        let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
-        
+        let client = client token
         promise {
             let! res = client.createSignatureOrder(title,documents)
             return res |> parse SignatureOrderResponse
@@ -45,7 +41,7 @@ module Signatures =
         
 
     let addSignatory (token : string) (orderId : string) (userRef : string) =
-        let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
+        let client = client token
         promise {
             let! res = client.addSignatory(orderId,userRef)
             return res |> parse AddSignatoryResponse
@@ -53,7 +49,7 @@ module Signatures =
 
 
     let cancelSignatureOrder (token : string) (orderId : string) =
-        let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",token)
+        let client = client token
         promise {
             let! res = client.cancelSignatureOrder orderId
             return res |> parse id

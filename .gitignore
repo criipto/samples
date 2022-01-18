@@ -238,3 +238,4 @@ deployment-feliz-source/
 # development tool artifacts
 .lsp/
 .clj-kondo/
+.webpack/
