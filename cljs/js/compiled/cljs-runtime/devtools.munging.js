@@ -31,8 +31,8 @@ return null;
 });
 devtools.munging.get_fn_source_safely = (function devtools$munging$get_fn_source_safely(f){
 try{if(cljs.core.truth_("toString" in f)){
-var o__8625__auto__ = f;
-return (o__8625__auto__["toString"]).call(o__8625__auto__);
+var o__8556__auto__ = f;
+return (o__8556__auto__["toString"]).call(o__8556__auto__);
 } else {
 return "";
 }
@@ -51,9 +51,9 @@ return (f["cljs$lang$maxFixedArity"]);
 devtools.munging.get_type_name = (function devtools$munging$get_type_name(t){
 var sb = (new goog.string.StringBuffer());
 var writer = (new cljs.core.StringBufferWriter(sb));
-try{var o__8625__auto___11228 = t;
-(o__8625__auto___11228["cljs$lang$ctorPrWriter"]).call(o__8625__auto___11228,t,writer);
-}catch (e11151){var __11229 = e11151;
+try{var o__8556__auto___11234 = t;
+(o__8556__auto___11234["cljs$lang$ctorPrWriter"]).call(o__8556__auto___11234,t,writer);
+}catch (e11151){var __11235 = e11151;
 }
 writer.cljs$core$IWriter$_flush$arity$1(null);
 
@@ -74,13 +74,13 @@ if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(char$),(1))){
 throw (new Error("Assert failed: (= (count char) 1)"));
 }
 
-var char_code = (function (){var o__8625__auto__ = (new String(char$));
-return (o__8625__auto__["charCodeAt"]).call(o__8625__auto__,(0));
+var char_code = (function (){var o__8556__auto__ = (new String(char$));
+return (o__8556__auto__["charCodeAt"]).call(o__8556__auto__,(0));
 })();
 var num_code = (char_code - (48));
 var subscript_code = ((8320) + num_code);
-var o__8625__auto__ = String;
-return (o__8625__auto__["fromCharCode"]).call(o__8625__auto__,subscript_code);
+var o__8556__auto__ = String;
+return (o__8556__auto__["fromCharCode"]).call(o__8556__auto__,subscript_code);
 });
 /**
  * Given a subscript number converts it into a string representation consisting of unicode subscript characters (digits).
@@ -108,8 +108,8 @@ if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(char$),(1))){
 throw (new Error("Assert failed: (= (count char) 1)"));
 }
 
-var char_code = (function (){var o__8625__auto__ = (new String(char$));
-return (o__8625__auto__["charCodeAt"]).call(o__8625__auto__,(0));
+var char_code = (function (){var o__8556__auto__ = (new String(char$));
+return (o__8556__auto__["charCodeAt"]).call(o__8556__auto__,(0));
 })();
 var num_code = (char_code - (48));
 var superscript_code = (function (){var G__11152 = num_code;
@@ -131,8 +131,8 @@ return ((8304) + num_code);
 
 }
 })();
-var o__8625__auto__ = String;
-return (o__8625__auto__["fromCharCode"]).call(o__8625__auto__,superscript_code);
+var o__8556__auto__ = String;
+return (o__8556__auto__["fromCharCode"]).call(o__8556__auto__,superscript_code);
 });
 /**
  * Given a superscript number converts it into a string representation consisting of unicode superscript characters (digits).
@@ -201,7 +201,7 @@ return (((!((cljs.core.re_matches(/function\s*\(\s*\)\s*\{\s*\}\s*/,fn_source) =
  */
 devtools.munging.cljs_fn_QMARK_ = (function devtools$munging$cljs_fn_QMARK_(f){
 if(cljs.core.truth_((function (){try{return cljs.core.fn_QMARK_(f);
-}catch (e11153){var _e__8638__auto__ = e11153;
+}catch (e11153){var _e__8563__auto__ = e11153;
 return false;
 }})())){
 var name = (f[cljs.core.name]);
@@ -282,14 +282,14 @@ return cljs.core.object_QMARK_(ns_obj);
  */
 devtools.munging.detect_namespace_prefix = (function devtools$munging$detect_namespace_prefix(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___11235 = arguments.length;
-var i__4865__auto___11236 = (0);
+var len__4864__auto___11237 = arguments.length;
+var i__4865__auto___11238 = (0);
 while(true){
-if((i__4865__auto___11236 < len__4864__auto___11235)){
-args__4870__auto__.push((arguments[i__4865__auto___11236]));
+if((i__4865__auto___11238 < len__4864__auto___11237)){
+args__4870__auto__.push((arguments[i__4865__auto___11238]));
 
-var G__11238 = (i__4865__auto___11236 + (1));
-i__4865__auto___11236 = G__11238;
+var G__11239 = (i__4865__auto___11238 + (1));
+i__4865__auto___11238 = G__11239;
 continue;
 } else {
 }
@@ -598,8 +598,8 @@ while(true){
 if((arity > max_arity)){
 return collection;
 } else {
-var G__11247 = (arity + (1));
-var G__11248 = (function (){var temp__5751__auto__ = devtools.munging.get_fn_fixed_arity(f,arity);
+var G__11251 = (arity + (1));
+var G__11252 = (function (){var temp__5751__auto__ = devtools.munging.get_fn_fixed_arity(f,arity);
 if(cljs.core.truth_(temp__5751__auto__)){
 var arity_fn = temp__5751__auto__;
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(collection,arity,arity_fn);
@@ -607,8 +607,8 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(collection,arity,arity_fn);
 return collection;
 }
 })();
-arity = G__11247;
-collection = G__11248;
+arity = G__11251;
+collection = G__11252;
 continue;
 }
 break;
@@ -725,14 +725,14 @@ return sorted_args_lists;
  */
 devtools.munging.arities_to_args_lists = (function devtools$munging$arities_to_args_lists(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___11252 = arguments.length;
-var i__4865__auto___11253 = (0);
+var len__4864__auto___11253 = arguments.length;
+var i__4865__auto___11254 = (0);
 while(true){
-if((i__4865__auto___11253 < len__4864__auto___11252)){
-args__4870__auto__.push((arguments[i__4865__auto___11253]));
+if((i__4865__auto___11254 < len__4864__auto___11253)){
+args__4870__auto__.push((arguments[i__4865__auto___11254]));
 
-var G__11254 = (i__4865__auto___11253 + (1));
-i__4865__auto___11253 = G__11254;
+var G__11255 = (i__4865__auto___11254 + (1));
+i__4865__auto___11254 = G__11255;
 continue;
 } else {
 }
@@ -863,8 +863,8 @@ return fn_part;
 }
 });
 devtools.munging.get_basis = (function devtools$munging$get_basis(f){
-var o__8625__auto__ = f;
-return (o__8625__auto__["getBasis"]).call(o__8625__auto__);
+var o__8556__auto__ = f;
+return (o__8556__auto__["getBasis"]).call(o__8556__auto__);
 });
 /**
  * Given a Javascript constructor function tries to retrieve [ns name basis]. Returns nil if not a cljs type.
@@ -880,7 +880,7 @@ return and__4251__auto__;
 var type_name = devtools.munging.get_type_name(f);
 var parts = type_name.split(/\//);
 var basis = (function (){try{return devtools.munging.get_basis(f);
-}catch (e11214){var _e__8638__auto__ = e11214;
+}catch (e11214){var _e__8563__auto__ = e11214;
 return cljs.core.PersistentVector.EMPTY;
 }})();
 if((cljs.core.count(parts) <= (2))){
@@ -914,10 +914,10 @@ if(cljs.core.empty_QMARK_(path)){
 return obj;
 } else {
 if(cljs.core.truth_(goog.isObject(obj))){
-var G__11257 = (obj[cljs.core.first(path)]);
-var G__11258 = cljs.core.rest(path);
-obj = G__11257;
-path = G__11258;
+var G__11259 = (obj[cljs.core.first(path)]);
+var G__11260 = cljs.core.rest(path);
+obj = G__11259;
+path = G__11260;
 continue;
 } else {
 return null;

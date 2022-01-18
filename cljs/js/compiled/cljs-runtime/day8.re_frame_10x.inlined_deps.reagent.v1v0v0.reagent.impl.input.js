@@ -123,8 +123,8 @@ delete jsprops["value"];
 
 (jsprops.defaultValue = value);
 
-(jsprops.onChange = (function (p1__14419_SHARP_){
-return day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.input.input_handle_change(this$,on_change,p1__14419_SHARP_);
+(jsprops.onChange = (function (p1__14426_SHARP_){
+return day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.input.input_handle_change(this$,on_change,p1__14426_SHARP_);
 }));
 
 return (jsprops.ref = this$.reagentRefFn);
@@ -136,8 +136,8 @@ day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.input.input_unmount =
 return (this$.cljsInputLive = null);
 });
 day8.re_frame_10x.inlined_deps.reagent.v1v0v0.reagent.impl.input.input_component_QMARK_ = (function day8$re_frame_10x$inlined_deps$reagent$v1v0v0$reagent$impl$input$input_component_QMARK_(x){
-var G__14427 = x;
-switch (G__14427) {
+var G__14435 = x;
+switch (G__14435) {
 case "input":
 case "textarea":
 return true;

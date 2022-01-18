@@ -276,14 +276,14 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(response,new cljs.co
 });
 ajax.interceptors.fail = (function ajax$interceptors$fail(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___21464 = arguments.length;
-var i__4865__auto___21465 = (0);
+var len__4864__auto___21466 = arguments.length;
+var i__4865__auto___21467 = (0);
 while(true){
-if((i__4865__auto___21465 < len__4864__auto___21464)){
-args__4870__auto__.push((arguments[i__4865__auto___21465]));
+if((i__4865__auto___21467 < len__4864__auto___21466)){
+args__4870__auto__.push((arguments[i__4865__auto___21467]));
 
-var G__21466 = (i__4865__auto___21465 + (1));
-i__4865__auto___21465 = G__21466;
+var G__21468 = (i__4865__auto___21467 + (1));
+i__4865__auto___21467 = G__21468;
 continue;
 } else {
 }

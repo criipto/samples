@@ -297,10 +297,10 @@ while(true){
 if(cljs.core.not(nloc)){
 return ploc;
 } else {
-var G__18420 = zprint.zutil.zrightnws(nloc);
-var G__18421 = nloc;
-nloc = G__18420;
-ploc = G__18421;
+var G__18409 = zprint.zutil.zrightnws(nloc);
+var G__18410 = nloc;
+nloc = G__18409;
+ploc = G__18410;
 continue;
 }
 break;
@@ -332,10 +332,10 @@ while(true){
 if(cljs.core.not(nloc)){
 return ploc;
 } else {
-var G__18422 = zprint.zutil.zleftnws(nloc);
-var G__18423 = nloc;
-nloc = G__18422;
-ploc = G__18423;
+var G__18412 = zprint.zutil.zleftnws(nloc);
+var G__18413 = nloc;
+nloc = G__18412;
+ploc = G__18413;
 continue;
 }
 break;
@@ -363,10 +363,10 @@ while(true){
 if((((nloc == null)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(i,(0))))){
 return nloc;
 } else {
-var G__18424 = zprint.zutil.zrightnws(nloc);
-var G__18425 = (i - (1));
-nloc = G__18424;
-i = G__18425;
+var G__18418 = zprint.zutil.zrightnws(nloc);
+var G__18419 = (i - (1));
+nloc = G__18418;
+i = G__18419;
 continue;
 }
 break;
@@ -384,10 +384,10 @@ if((!((nloc == null)))){
 if(cljs.core.truth_((zthing_QMARK_.cljs$core$IFn$_invoke$arity$1 ? zthing_QMARK_.cljs$core$IFn$_invoke$arity$1(nloc) : zthing_QMARK_.call(null,nloc)))){
 return i;
 } else {
-var G__18426 = zprint.zutil.zrightnws(nloc);
-var G__18427 = (i + (1));
-nloc = G__18426;
-i = G__18427;
+var G__18421 = zprint.zutil.zrightnws(nloc);
+var G__18422 = (i + (1));
+nloc = G__18421;
+i = G__18422;
 continue;
 }
 } else {
