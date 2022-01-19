@@ -134,6 +134,7 @@ type Page() =
                         )
                     ]
                 ]
+            | Profile -> [Components.IdCard(user)]
             | v -> [placeholderContent v]
         Bulma.container components
         
