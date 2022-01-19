@@ -53,12 +53,12 @@ return reagent.impl.component.extract_children(v);
 }
 });
 reagent.impl.component.reagent_class_QMARK_ = (function reagent$impl$component$reagent_class_QMARK_(c){
-return ((cljs.core.fn_QMARK_(c)) && ((!(((function (){var G__15953 = c;
-var G__15953__$1 = (((G__15953 == null))?null:G__15953.prototype);
-if((G__15953__$1 == null)){
+return ((cljs.core.fn_QMARK_(c)) && ((!(((function (){var G__15959 = c;
+var G__15959__$1 = (((G__15959 == null))?null:G__15959.prototype);
+if((G__15959__$1 == null)){
 return null;
 } else {
-return G__15953__$1.reagentRender;
+return G__15959__$1.reagentRender;
 }
 })() == null)))));
 });
@@ -167,23 +167,23 @@ break;
 }
 });
 reagent.impl.component.component_name = (function reagent$impl$component$component_name(c){
-var or__4253__auto__ = (function (){var G__15968 = c;
-var G__15968__$1 = (((G__15968 == null))?null:G__15968.constructor);
-if((G__15968__$1 == null)){
+var or__4253__auto__ = (function (){var G__16004 = c;
+var G__16004__$1 = (((G__16004 == null))?null:G__16004.constructor);
+if((G__16004__$1 == null)){
 return null;
 } else {
-return G__15968__$1.displayName;
+return G__16004__$1.displayName;
 }
 })();
 if(cljs.core.truth_(or__4253__auto__)){
 return or__4253__auto__;
 } else {
-var G__15976 = c;
-var G__15976__$1 = (((G__15976 == null))?null:G__15976.constructor);
-if((G__15976__$1 == null)){
+var G__16005 = c;
+var G__16005__$1 = (((G__16005 == null))?null:G__16005.constructor);
+if((G__16005__$1 == null)){
 return null;
 } else {
-return G__15976__$1.name;
+return G__16005__$1.name;
 }
 }
 });
@@ -198,18 +198,18 @@ return "";
 
 });
 reagent.impl.component.do_render = (function reagent$impl$component$do_render(c,compiler){
-var _STAR_current_component_STAR__orig_val__16006 = reagent.impl.component._STAR_current_component_STAR_;
-var _STAR_current_component_STAR__temp_val__16007 = c;
-(reagent.impl.component._STAR_current_component_STAR_ = _STAR_current_component_STAR__temp_val__16007);
+var _STAR_current_component_STAR__orig_val__16023 = reagent.impl.component._STAR_current_component_STAR_;
+var _STAR_current_component_STAR__temp_val__16024 = c;
+(reagent.impl.component._STAR_current_component_STAR_ = _STAR_current_component_STAR__temp_val__16024);
 
 try{return reagent.impl.component.wrap_render(c,compiler);
-}finally {(reagent.impl.component._STAR_current_component_STAR_ = _STAR_current_component_STAR__orig_val__16006);
+}finally {(reagent.impl.component._STAR_current_component_STAR_ = _STAR_current_component_STAR__orig_val__16023);
 }});
 reagent.impl.component.rat_opts = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"no-cache","no-cache",1588056370),true], null);
 reagent.impl.component.custom_wrapper = (function reagent$impl$component$custom_wrapper(key,f){
-var G__16035 = key;
-var G__16035__$1 = (((G__16035 instanceof cljs.core.Keyword))?G__16035.fqn:null);
-switch (G__16035__$1) {
+var G__16042 = key;
+var G__16042__$1 = (((G__16042 instanceof cljs.core.Keyword))?G__16042.fqn:null);
+switch (G__16042__$1) {
 case "getDefaultProps":
 throw (new Error("getDefaultProps not supported"));
 

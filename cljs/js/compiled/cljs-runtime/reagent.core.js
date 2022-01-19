@@ -36,14 +36,14 @@ return reagent.core.create_element.cljs$core$IFn$_invoke$arity$3((arguments[(0)]
 break;
 default:
 var args_arr__4885__auto__ = [];
-var len__4864__auto___16232 = arguments.length;
-var i__4865__auto___16233 = (0);
+var len__4864__auto___16228 = arguments.length;
+var i__4865__auto___16229 = (0);
 while(true){
-if((i__4865__auto___16233 < len__4864__auto___16232)){
-args_arr__4885__auto__.push((arguments[i__4865__auto___16233]));
+if((i__4865__auto___16229 < len__4864__auto___16228)){
+args_arr__4885__auto__.push((arguments[i__4865__auto___16229]));
 
-var G__16234 = (i__4865__auto___16233 + (1));
-i__4865__auto___16233 = G__16234;
+var G__16230 = (i__4865__auto___16229 + (1));
+i__4865__auto___16229 = G__16230;
 continue;
 } else {
 }
@@ -106,8 +106,8 @@ return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__16134,G__16135
  *   unchanged if it is not a vector.
  */
 reagent.core.as_element = (function reagent$core$as_element(var_args){
-var G__16161 = arguments.length;
-switch (G__16161) {
+var G__16139 = arguments.length;
+switch (G__16139) {
 case 1:
 return reagent.core.as_element.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -150,8 +150,8 @@ return reagent.impl.template.adapt_react_class(c);
  *   the component, converted to a map.
  */
 reagent.core.reactify_component = (function reagent$core$reactify_component(var_args){
-var G__16167 = arguments.length;
-switch (G__16167) {
+var G__16141 = arguments.length;
+switch (G__16141) {
 case 1:
 return reagent.core.reactify_component.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -223,8 +223,8 @@ return reagent.impl.component.reactify_component(c,compiler);
  *   React built-in static methods or properties are automatically defined as statics.
  */
 reagent.core.create_class = (function reagent$core$create_class(var_args){
-var G__16194 = arguments.length;
-switch (G__16194) {
+var G__16143 = arguments.length;
+switch (G__16143) {
 case 1:
 return reagent.core.create_class.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -320,8 +320,8 @@ return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$3(reagent.core.state_ato
  *   re-rendered, even is their arguments have not changed.
  */
 reagent.core.force_update = (function reagent$core$force_update(var_args){
-var G__16196 = arguments.length;
-switch (G__16196) {
+var G__16158 = arguments.length;
+switch (G__16158) {
 case 1:
 return reagent.core.force_update.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

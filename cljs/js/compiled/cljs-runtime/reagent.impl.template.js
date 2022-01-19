@@ -158,24 +158,24 @@ return cljs.core.clj__GT_js(x);
 } else {
 if(cljs.core.ifn_QMARK_(x)){
 return (function() { 
-var G__16094__delegate = function (args){
+var G__16096__delegate = function (args){
 return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(x,args);
 };
-var G__16094 = function (var_args){
+var G__16096 = function (var_args){
 var args = null;
 if (arguments.length > 0) {
-var G__16095__i = 0, G__16095__a = new Array(arguments.length -  0);
-while (G__16095__i < G__16095__a.length) {G__16095__a[G__16095__i] = arguments[G__16095__i + 0]; ++G__16095__i;}
-  args = new cljs.core.IndexedSeq(G__16095__a,0,null);
+var G__16097__i = 0, G__16097__a = new Array(arguments.length -  0);
+while (G__16097__i < G__16097__a.length) {G__16097__a[G__16097__i] = arguments[G__16097__i + 0]; ++G__16097__i;}
+  args = new cljs.core.IndexedSeq(G__16097__a,0,null);
 } 
-return G__16094__delegate.call(this,args);};
-G__16094.cljs$lang$maxFixedArity = 0;
-G__16094.cljs$lang$applyTo = (function (arglist__16096){
-var args = cljs.core.seq(arglist__16096);
-return G__16094__delegate(args);
+return G__16096__delegate.call(this,args);};
+G__16096.cljs$lang$maxFixedArity = 0;
+G__16096.cljs$lang$applyTo = (function (arglist__16098){
+var args = cljs.core.seq(arglist__16098);
+return G__16096__delegate(args);
 });
-G__16094.cljs$core$IFn$_invoke$arity$variadic = G__16094__delegate;
-return G__16094;
+G__16096.cljs$core$IFn$_invoke$arity$variadic = G__16096__delegate;
+return G__16096;
 })()
 ;
 } else {
@@ -476,10 +476,10 @@ throw (new Error(["Assert failed: ",reagent.impl.util.hiccup_err.cljs$core$IFn$_
 
 break;
 default:
-var G__16115 = cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.subs.cljs$core$IFn$_invoke$arity$3(n,(0),pos),cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.with_meta(v,null),(0),cljs.core.subs.cljs$core$IFn$_invoke$arity$2(n,(pos + (1))))], null),cljs.core.meta(v));
-var G__16116 = compiler;
-v = G__16115;
-compiler = G__16116;
+var G__16119 = cljs.core.with_meta(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.subs.cljs$core$IFn$_invoke$arity$3(n,(0),pos),cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(cljs.core.with_meta(v,null),(0),cljs.core.subs.cljs$core$IFn$_invoke$arity$2(n,(pos + (1))))], null),cljs.core.meta(v));
+var G__16120 = compiler;
+v = G__16119;
+compiler = G__16120;
 continue;
 
 }

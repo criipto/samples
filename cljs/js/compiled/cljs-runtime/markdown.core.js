@@ -37,14 +37,14 @@ return new_state;
  */
 markdown.core.format = (function markdown$core$format(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___22206 = arguments.length;
-var i__4865__auto___22207 = (0);
+var len__4864__auto___22205 = arguments.length;
+var i__4865__auto___22206 = (0);
 while(true){
-if((i__4865__auto___22207 < len__4864__auto___22206)){
-args__4870__auto__.push((arguments[i__4865__auto___22207]));
+if((i__4865__auto___22206 < len__4864__auto___22205)){
+args__4870__auto__.push((arguments[i__4865__auto___22206]));
 
-var G__22208 = (i__4865__auto___22207 + (1));
-i__4865__auto___22207 = G__22208;
+var G__22207 = (i__4865__auto___22206 + (1));
+i__4865__auto___22206 = G__22207;
 continue;
 } else {
 }
@@ -291,14 +291,14 @@ return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22200,seq22199
 
 markdown.core.md__GT_html_with_meta = (function markdown$core$md__GT_html_with_meta(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___22279 = arguments.length;
-var i__4865__auto___22280 = (0);
+var len__4864__auto___22275 = arguments.length;
+var i__4865__auto___22276 = (0);
 while(true){
-if((i__4865__auto___22280 < len__4864__auto___22279)){
-args__4870__auto__.push((arguments[i__4865__auto___22280]));
+if((i__4865__auto___22276 < len__4864__auto___22275)){
+args__4870__auto__.push((arguments[i__4865__auto___22276]));
 
-var G__22281 = (i__4865__auto___22280 + (1));
-i__4865__auto___22280 = G__22281;
+var G__22277 = (i__4865__auto___22276 + (1));
+i__4865__auto___22276 = G__22277;
 continue;
 } else {
 }
@@ -328,14 +328,14 @@ return self__4851__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22202,seq22201
  */
 markdown.core.mdToHtml = (function markdown$core$mdToHtml(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___22282 = arguments.length;
-var i__4865__auto___22283 = (0);
+var len__4864__auto___22278 = arguments.length;
+var i__4865__auto___22279 = (0);
 while(true){
-if((i__4865__auto___22283 < len__4864__auto___22282)){
-args__4870__auto__.push((arguments[i__4865__auto___22283]));
+if((i__4865__auto___22279 < len__4864__auto___22278)){
+args__4870__auto__.push((arguments[i__4865__auto___22279]));
 
-var G__22284 = (i__4865__auto___22283 + (1));
-i__4865__auto___22283 = G__22284;
+var G__22280 = (i__4865__auto___22279 + (1));
+i__4865__auto___22279 = G__22280;
 continue;
 } else {
 }
@@ -364,14 +364,14 @@ return self__4852__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq
  */
 markdown.core.mdToHtmlWithMeta = (function markdown$core$mdToHtmlWithMeta(var_args){
 var args__4870__auto__ = [];
-var len__4864__auto___22285 = arguments.length;
-var i__4865__auto___22286 = (0);
+var len__4864__auto___22281 = arguments.length;
+var i__4865__auto___22282 = (0);
 while(true){
-if((i__4865__auto___22286 < len__4864__auto___22285)){
-args__4870__auto__.push((arguments[i__4865__auto___22286]));
+if((i__4865__auto___22282 < len__4864__auto___22281)){
+args__4870__auto__.push((arguments[i__4865__auto___22282]));
 
-var G__22287 = (i__4865__auto___22286 + (1));
-i__4865__auto___22286 = G__22287;
+var G__22283 = (i__4865__auto___22282 + (1));
+i__4865__auto___22282 = G__22283;
 continue;
 } else {
 }

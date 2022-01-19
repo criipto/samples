@@ -192,9 +192,9 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(this$__$1,new cljs.core.Key
 (rewrite_clj.node.forms.FormsNode.prototype.cljs$core$IAssociative$_contains_key_QMARK_$arity$2 = (function (this__4509__auto__,k17646){
 var self__ = this;
 var this__4509__auto____$1 = this;
-var G__17656 = k17646;
-var G__17656__$1 = (((G__17656 instanceof cljs.core.Keyword))?G__17656.fqn:null);
-switch (G__17656__$1) {
+var G__17655 = k17646;
+var G__17655__$1 = (((G__17655 instanceof cljs.core.Keyword))?G__17655.fqn:null);
+switch (G__17655__$1) {
 case "children":
 return true;
 
@@ -208,9 +208,9 @@ return cljs.core.contains_QMARK_(self__.__extmap,k17646);
 (rewrite_clj.node.forms.FormsNode.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__4510__auto__,k__4511__auto__,G__17645){
 var self__ = this;
 var this__4510__auto____$1 = this;
-var pred__17657 = cljs.core.keyword_identical_QMARK_;
-var expr__17658 = k__4511__auto__;
-if(cljs.core.truth_((pred__17657.cljs$core$IFn$_invoke$arity$2 ? pred__17657.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"children","children",-940561982),expr__17658) : pred__17657.call(null,new cljs.core.Keyword(null,"children","children",-940561982),expr__17658)))){
+var pred__17656 = cljs.core.keyword_identical_QMARK_;
+var expr__17657 = k__4511__auto__;
+if(cljs.core.truth_((pred__17656.cljs$core$IFn$_invoke$arity$2 ? pred__17656.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"children","children",-940561982),expr__17657) : pred__17656.call(null,new cljs.core.Keyword(null,"children","children",-940561982),expr__17657)))){
 return (new rewrite_clj.node.forms.FormsNode(G__17645,self__.__meta,self__.__extmap,null));
 } else {
 return (new rewrite_clj.node.forms.FormsNode(self__.children,self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__4511__auto__,G__17645),null));
@@ -264,11 +264,11 @@ return (new rewrite_clj.node.forms.FormsNode(children,null,null,null));
  * Factory function for rewrite-clj.node.forms/FormsNode, taking a map of keywords to field values.
  */
 rewrite_clj.node.forms.map__GT_FormsNode = (function rewrite_clj$node$forms$map__GT_FormsNode(G__17649){
-var extmap__4542__auto__ = (function (){var G__17661 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__17649,new cljs.core.Keyword(null,"children","children",-940561982));
+var extmap__4542__auto__ = (function (){var G__17659 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$2(G__17649,new cljs.core.Keyword(null,"children","children",-940561982));
 if(cljs.core.record_QMARK_(G__17649)){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__17661);
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__17659);
 } else {
-return G__17661;
+return G__17659;
 }
 })();
 return (new rewrite_clj.node.forms.FormsNode(new cljs.core.Keyword(null,"children","children",-940561982).cljs$core$IFn$_invoke$arity$1(G__17649),null,cljs.core.not_empty(extmap__4542__auto__),null));
