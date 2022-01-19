@@ -80,7 +80,8 @@
     [page-content
      :page-type :profile
      :content (fn []
-                (when auth-user-info
+                [:<>
+                 (when auth-user-info
                   [:<>
                    (for [[k v] auth-user-info]
                      (create-columns {:key (str "auth-user-info-" (name k))}
@@ -88,7 +89,7 @@
                    [:button.button.is-danger {:on-click (fn [_] (rf/dispatch [::events/logout]))}
                     "Log off"]])
                 (when auth-error
-                  [:p (str "auth error: " auth-error)]))]))
+                  [:p (str "auth error: " auth-error)])])]))
 
 (defn accounts-view []
   (let [accounts (deref (rf/subscribe [::subs/accounts]))]
@@ -158,7 +159,10 @@
 (defn developer-support []
   [page-content
    :page-type :developer-support
-   :content (fn [] [:h4 "http://criipto.slack.com/"])])
+   :content (fn []
+              [:<>
+               [:div [:a {:href "mailto:support@criipto.com"} "support@criipto.com"]]
+               [:div [:a {:href "https://criipto.slack.com/"} "Slack"]]])])
 
 (def front-page-icons
   [{:icon "apartment"
