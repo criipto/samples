@@ -10,6 +10,6 @@ importSideEffects "./styles/global.scss"
 document.title <- "%APPNAME% Bank"
 
 ReactDOM.render(
-    Page.Layout(),
+    Page.PageLayout(),
     document.getElementById "app"
 )

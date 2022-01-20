@@ -4,6 +4,9 @@ open Feliz
 open Feliz.Bulma
 open Signatures
 open Fable.Core
+open App.Components.SidePanelMenu
+open App.Components.Navbar
+open App.Components.Layout
 
 type Page() =
     static let mutable accordions = [||]
@@ -68,12 +71,14 @@ type Page() =
                     | Error e -> 
                         eprintfn "Error occurred while creating signature order %A" e
                 } 
-    [<ReactComponent>]
-    static member Overview(user : Models.User, activeView,setView,messages : Models.Message list, documents : Models.Document list, setMessages) =
+    
+    static let viewRenderer (messages : Models.Message list) (documents : Models.Document list) setMessages =
+        
         let removeMessage predicate =
             messages
             |> List.filter(predicate >> not)
             |> setMessages
+
         let placeholderContent (v : View) = 
             Bulma.card [
                 prop.style[
@@ -98,50 +103,58 @@ type Page() =
                     ]
                 ]
             ]
-        let cancelSignatureOrder = cancelSignatureOrder removeMessage user.Token
-        let components = 
+        
+        
+        fun (user : Models.User) activeView  (setView : View option -> unit) ->
+            let cancelSignatureOrder = cancelSignatureOrder removeMessage user.Token
+            let showAccount (account : Models.Account) = account.Name |> View.Account |> Some |> setView
             match activeView with
-            Overview ->
-                [
-                    Components.IdCard(user)
-                    Message.List("New messages",messages, setMessages, setView, Some 2, cancelSignatureOrder)
-                    Account.Box(user.Accounts,fun name -> name |> View.Account |> setView)
-                ]
-            | Accounts ->
-                [
-                    Account.Box(user.Accounts,fun name -> name |> View.Account |> setView)
-                ]
-            | View.Account name ->
-                let account = 
-                    user.Accounts
-                    |> List.find(fun a -> a.Name = name)
-                [
-                   Account.Transactions(account)
-                ]
-            | Messages ->
-                [
-                    Message.List("Messages",messages, setMessages,setView, None, cancelSignatureOrder)
-                ]
-            | Pensions ->
-                
-                [
-                    placeholderContent Pensions
-                    Bulma.button.button [
-                        prop.text "Apply"
-                        prop.onClick(fun _ -> 
-                            createOrder user documents (fun msg -> msg::messages |> setMessages)
-                            |> Async.StartImmediate
-                        )
-                    ]
-                ]
-            | Profile -> [Components.IdCard(user)]
-            | v -> [placeholderContent v]
-        Bulma.container components
+            None -> 
+                Overview |> Some |> setView
+                Bulma.container []
+            | Some v -> 
+                let components = 
+                    match v with
+                    Overview ->
+                        [
+                            Components.IdCard(user)
+                            Message.List("New messages",messages, setMessages, Some >> setView, Some 2, cancelSignatureOrder)
+                            Account.Box(user.Accounts,Some showAccount)
+                        ]
+                    | Accounts ->
+                        [
+                            Account.Box(user.Accounts,Some showAccount)
+                        ]
+                    | View.Account name ->
+                        let account = 
+                            user.Accounts
+                            |> List.find(fun a -> a.Name = name)
+                        [
+                        Account.Transactions(account)
+                        ]
+                    | Messages ->
+                        [
+                            Message.List("Messages",messages, setMessages,Some >> setView, None, cancelSignatureOrder)
+                        ]
+                    | Pensions ->
+                        
+                        [
+                            placeholderContent Pensions
+                            Bulma.button.button [
+                                prop.text "Apply"
+                                prop.onClick(fun _ -> 
+                                    createOrder user documents (fun msg -> msg::messages |> setMessages)
+                                    |> Async.StartImmediate
+                                )
+                            ]
+                        ]
+                    | Profile -> [Components.IdCard(user)]
+                    | v -> [placeholderContent v]
+                Bulma.container components
+        
         
     [<ReactComponent>]
-    static member Layout() =
-        let view,setView = React.useState Overview
-        let user, _setUser = React.useState None
+    static member PageLayout() =
         let messages,_setMessages = React.useState []
         let documents,setDocuments = React.useState []
         let unreadCount,setUnread = React.useState 0
@@ -155,55 +168,49 @@ type Page() =
             _setMessages msgs
         Messages.fetch(setMessages)
         Documents.fetch(setDocuments)
-        let setUser (oidcUser : Oidc.UserInfo option) = 
-            let user = 
-                oidcUser |> Option.map(fun ou -> 
-                    {
-                        Name = ou.profile.name
-                        DateOfBirth = ou.profile.birthdate
-                        Accounts = Statements.generate ou.profile.name 200
-                        Token = ou.id_token
-                    }  : Models.User
-                ) 
-            match user with
-            Some _ -> user |> _setUser
-            | None -> ()
-        match user with
-        None -> 
-            if Identity.hasRequestedAuthentication() |> not then
-                Html.div[
-                    Navigation.Topbar("Log on",fun _ -> Identity.logIn())
-                    Components.Splash()
-                ]
-            else
-               Identity.isAuthenticated(setUser) |> ignore
-               Html.div[]
-        | Some user -> 
-            Html.div[
-                Navigation.Topbar("Log off",Identity.logOut)
-                Bulma.container [
-                    Bulma.columns[
-                        prop.style [
-                            style.marginTop 40
-                        ]
-                        columns.isCentered
-                        prop.children[
-                            Bulma.column [
-                                prop.style[
-                                    style.boxShadow.none
-                                ]
-                                column.isOneQuarter
-                                column.isOneFifthFullHd
-                                prop.children[
-                                    Navigation.SidePanel (unreadCount,view,setView)
-                                ]
-                            ]
-                            Bulma.column [
-                                prop.children [
-                                    Page.Overview (user,view,setView, messages,documents,setMessages)
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+       
+        let menuItems = 
+            [
+                Overview, None
+                Accounts,None
+                Transfer, None
+                Invest, None
+                Pensions, None
+                Messages, if unreadCount > 0 then Some unreadCount else None
+                Profile, None
+                DevSupport,None
+            ] |> List.map(fun (view,notification) ->
+                 {
+                    Data = view
+                    IsActive = view = Overview
+                    Notification = notification
+                    IconName = Some view.IconName
+                }        
+            )
+        let options = 
+            {
+                MenuItems = menuItems
+                ViewRenderer = viewRenderer messages documents setMessages
+                SplashRenderer = Components.Splash
+                UserManager = {
+                    new IUserManager<Models.User> with
+                        member __.HasRequestedAuthentication() = Identity.hasRequestedAuthentication()
+                        member __.LogIn() = Identity.logIn()
+                        member __.LogOut() = Identity.logOut()
+                        member __.IsAuthenticated(_setUser) = 
+                            let setUser (oidcUser : Oidc.UserInfo option) = 
+                                let user = 
+                                    oidcUser |> Option.map(fun ou -> 
+                                        {
+                                            Name = ou.profile.name
+                                            DateOfBirth = ou.profile.birthdate
+                                            Accounts = Statements.generate ou.profile.name 200
+                                            Token = ou.id_token
+                                        }  : Models.User
+                                    ) 
+                                user |> _setUser
+                                
+                            Identity.isAuthenticated(setUser)
+                }
+            }
+        Layout options

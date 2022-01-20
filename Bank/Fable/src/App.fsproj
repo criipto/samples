@@ -15,6 +15,10 @@
     <Compile Include="App/Data/Documents.fs" />
     <Compile Include="App/Data/Messages.fs" />
     <Compile Include="App/Data/Statements.fs" />
+    <Compile Include="App/Components/Generics/SidePanelMenu.fs" />
+    <Compile Include="App/Components/Generics/Navbar.fs" />
+    <Compile Include="App/Components/Generics/Table.fs" />
+    <Compile Include="App/Components/Generics/Layout.fs" />
     <Compile Include="App/Components/Elements.fs" />
     <Compile Include="App/Components/Navigation.fs" />
     <Compile Include="App/Components/Components.fs" />

@@ -2,145 +2,92 @@ namespace App.Components
 
 open Feliz
 open Feliz.Bulma
+open App.Components.Table
 
 type Account = 
 
-    [<ReactComponent>]
     static member Transactions(account : Models.Account) = 
-        let header = 
-            Bulma.columns [
-                prop.className "account header"
-                [
-                    "Date"
-                    "Message"
-                    "Amount"
-                ] |> List.map(fun name ->
-                    Bulma.column [
-                        prop.className name
-                        column.is4
-                        prop.text name
-                    ]
-                ) |> prop.children 
-            ]
-        let transactions = 
-            account.Ledger
-            |> List.map(fun ledgerEntry ->
-                let formatCurrency = sprintf "%.2f"
-                Bulma.columns [
-                    prop.className "transaction"
-                    prop.children [
-                        Bulma.column [
-                            column.is4
-                            prop.text (ledgerEntry.Date.ToShortDateString())
-                        ] 
-                        Bulma.column [
-                            prop.text ledgerEntry.Text
-                        ]
-                        Bulma.column [
-                            column.is4
-                            prop.children [
-                                Html.div [
-                                    prop.className "ledger-entry amount"
-                                    ledgerEntry.Amount |> formatCurrency |> prop.text  
-                                ]
-                                Html.div [
-                                    prop.className "ledger-entry balance"
-                                    ledgerEntry.Balance |> formatCurrency |> prop.text  
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+        let columnOptions =
+            [
+                "Date",(fun (ledgerEntry : Models.LedgerEntry) -> prop.text (ledgerEntry.Date.ToShortDateString()))
+                "Message",(fun (ledgerEntry : Models.LedgerEntry) -> prop.text ledgerEntry.Text)
+                "Amount",(fun (ledgerEntry : Models.LedgerEntry) -> 
+                                let formatCurrency = sprintf "%.2f"
+                                prop.children [
+                                    Html.div [
+                                        prop.className "ledger-entry amount"
+                                        ledgerEntry.Amount |> formatCurrency |> prop.text  
+                                    ]
+                                    Html.div [
+                                        prop.className "ledger-entry balance"
+                                        ledgerEntry.Balance |> formatCurrency |> prop.text  
+                                    ]
+                                ])
+            ] |> List.map(fun (name,formatter) ->
+                {
+                    Header = Some {
+                                    ClassNames = Some [name]
+                                    Text = name
+                                }
+                    Cell =  {
+                        Formatter = formatter
+                        ClassNames = if name = "Message" then None else Some ["is-4"]
+                    }
+                }
             )
-        Bulma.card [
-            prop.style[
-                style.boxShadow.none
-                style.backgroundColor.white
-            ]
-            prop.children [
-                Bulma.cardContent [
-                    Bulma.media [
-                        Bulma.mediaLeft [
-                            Bulma.image [
-                                prop.className "is-32x32 icon vbars"
-                            ]
-                        ]
-                    ]
-                    
-                    (Bulma.title [
-                        prop.text account.Name
-                    ])::header::transactions
-                    |> Bulma.content
-                ]
-            ]
-        ]
-
+        Table({
+            ColumnOptions = columnOptions
+            TableClass = Some "account-overview"
+            RowClass = Some "transaction"
+            RowSelected = None
+            Icon = Some {
+                Size = Is32x32
+                Name = "vbars"
+            }
+            Title = Some account.Name
+        },account.Ledger)
     
     [<ReactComponent>]
     static member Box(accounts : Models.Account list, viewAccount) = 
-        let header = 
-            Bulma.columns [
-                prop.className "account header"
-                [
-                    "Name"
-                    "Balance"
-                    "Recent transactions"
-                ] |> List.map(fun name ->
-                    Bulma.column [
-                        column.is4
-                        prop.text name
-                    ]
-                ) |> prop.children 
-            ]
-        let accounts = 
-            accounts
-            |> List.map(fun account ->
-                    Bulma.columns [
-                        prop.onClick(fun _ -> 
-                            Browser.Dom.window.location.href <- sprintf "#%s" account.Name
-                            viewAccount account.Name)
-                        prop.className "account"
-                        prop.children [
-                            Bulma.column [
-                                column.is4
-                                prop.text account.Name
-                            ] 
-                            Bulma.column [
-                                yield column.is4
+        let columnOptions =    
+            [
+                "Name",(fun (account : Models.Account) -> prop.text account.Name)
+                "Balance",(fun (account : Models.Account) -> 
                                 if account.Balance < 0m then 
-                                    yield prop.style [
-                                        style.color.indianRed
+                                    prop.children [
+                                        Html.span [
+                                            prop.style [
+                                                style.color.indianRed
+                                            ]
+                                            prop.text (sprintf "%.2f" account.Balance)
+                                        ]
                                     ]
-                                yield prop.text (sprintf "%.2f" account.Balance)
-                            ]
-                            Bulma.column [
-                                column.is4
-                                prop.text (account.LatestMovement.ToShortDateString())
-                            ]
-                        ]
-                    ]
-            )
-        Bulma.card [
-            prop.style[
-                style.boxShadow.none
-                style.backgroundColor.white
-            ]
-            prop.children [
-                Bulma.cardContent [
-                    Bulma.media [
-                        Bulma.mediaLeft [
-                            Bulma.image [
-                                prop.className "is-32x32 icon vbars"
-                            ]
-                        ]
-                    ]
-                
-                    
-                    (Bulma.title [
-                        prop.text "Accounts"
-                    ])::header::accounts
-                    |> Bulma.content 
-                    
-                ]
-            ]
-        ]
+                                else
+                                    prop.text (sprintf "%.2f" account.Balance)
+                )
+                "Recent transactions",(fun (account : Models.Account) -> account.LatestMovement.ToShortDateString() |> prop.text)
+                ] |> List.map(fun (name,formatter) ->
+                    {
+                        Header = Some {
+                                        ClassNames = Some [name]
+                                        Text = name
+                                    }
+                        Cell =  {
+                            Formatter = formatter
+                            ClassNames = Some ["is-4"]
+                        }
+                    }
+                )
+            
+        Table({
+            ColumnOptions = columnOptions
+            TableClass = Some "account header"
+            RowClass = Some "account"
+            RowSelected = viewAccount
+            Icon = Some {
+                Size = Is32x32
+                Name = "vbars"
+            }
+            Title = Some "Accounts"
+        },accounts)
+        
