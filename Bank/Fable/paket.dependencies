@@ -3,6 +3,7 @@ source https://api.nuget.org/v3/index.json
 storage: none
 framework: auto-detect
 
+nuget Criipto.designtoolbox.react
 nuget Fable.Core
 nuget Fable.Formatting.Markdown
 nuget Fable.Remoting.json

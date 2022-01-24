@@ -2,7 +2,8 @@ namespace App.Components
 
 open Feliz
 open Feliz.Bulma
-open App.Components.Table
+open Criipto.React
+open Criipto.React.Table
 
 type Account = 
 

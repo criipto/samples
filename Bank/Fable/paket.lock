@@ -2,6 +2,19 @@ STORAGE: NONE
 RESTRICTION: == net6.0
 NUGET
   remote: https://api.nuget.org/v3/index.json
+    Criipto.designtoolbox.react (0.1.19)
+      Fable.Core (>= 3.6.1)
+      Fable.DateFunctions (>= 3.8.1)
+      Fable.Formatting.Markdown (>= 1.0.1)
+      Fable.JsonProvider (>= 1.0.1)
+      Fable.Promise (>= 3.1.3)
+      Fable.Remoting.Json (>= 2.20)
+      Fable.SimpleHttp (>= 3.0)
+      Fable.SimpleJson (>= 3.22)
+      Feliz (>= 1.57)
+      Feliz.Bulma (>= 2.18)
+      Feliz.Router (>= 3.8)
+      FSharp.Core (>= 6.0.1)
     Fable.AST (3.1.1)
     Fable.Browser.Blob (1.1.4)
       Fable.Core (>= 3.0)
