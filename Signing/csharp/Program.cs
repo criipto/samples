@@ -18,7 +18,8 @@ var documents = new List<CriiptoSignatures.Types.DocumentInput>{
     new CriiptoSignatures.Types.DocumentInput {
         pdf = new CriiptoSignatures.Types.PadesDocumentInput {
             title = "Dotnet Sample",
-            blob = Convert.ToBase64String(pdf)
+            blob = Convert.ToBase64String(pdf),
+            storageMode = CriiptoSignatures.Types.DocumentStorageMode.Temporary
         }
     }
 };
