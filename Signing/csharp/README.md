@@ -1,0 +1,1 @@
+`List<SignatureEvidenceProvider>` will have to be manually converted to `List<object>` due to a current shortcoming with graphql-codegen-c-sharp
