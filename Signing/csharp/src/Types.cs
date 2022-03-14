@@ -638,7 +638,7 @@ namespace CriiptoSignatures {
     }
     #endregion
     
-    public interface Document {
+    public class Document {
       [JsonProperty("blob")]
       string blob { get; set; }
     
