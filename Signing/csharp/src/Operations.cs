@@ -82,4 +82,74 @@ namespace CriiptoSignatures {
       
     }
     
+
+    public class CloseSignatureOrderGQL {
+      /// <summary>
+      /// CloseSignatureOrderGQL.Request 
+      /// <para>Required variables:<br/> { input=(CloseSignatureOrderInput) }</para>
+      /// <para>Optional variables:<br/> {  }</para>
+      /// </summary>
+      public static GraphQLRequest Request(object variables = null) {
+        return new GraphQLRequest {
+          Query = CloseSignatureOrderDocument,
+          OperationName = "closeSignatureOrder",
+          Variables = variables
+        };
+      }
+
+      /// <remarks>This method is obsolete. Use Request instead.</remarks>
+      public static GraphQLRequest getCloseSignatureOrderGQL() {
+        return Request();
+      }
+      
+      public static string CloseSignatureOrderDocument = @"
+        mutation closeSignatureOrder($input: CloseSignatureOrderInput!) {
+          closeSignatureOrder(input: $input) {
+            signatureOrder {
+              id
+              documents {
+                id
+                blob
+              }
+            }
+          }
+        }
+        ";
+      
+    }
+    
+
+    public class SignatureOrderGQL {
+      /// <summary>
+      /// SignatureOrderGQL.Request 
+      /// <para>Required variables:<br/> { id=(string) }</para>
+      /// <para>Optional variables:<br/> {  }</para>
+      /// </summary>
+      public static GraphQLRequest Request(object variables = null) {
+        return new GraphQLRequest {
+          Query = SignatureOrderDocument,
+          OperationName = "signatureOrder",
+          Variables = variables
+        };
+      }
+
+      /// <remarks>This method is obsolete. Use Request instead.</remarks>
+      public static GraphQLRequest getSignatureOrderGQL() {
+        return Request();
+      }
+      
+      public static string SignatureOrderDocument = @"
+        query signatureOrder($id: ID!) {
+          signatureOrder(id: $id) {
+            status
+            signatories {
+              id
+              status
+            }
+          }
+        }
+        ";
+      
+    }
+    
 }

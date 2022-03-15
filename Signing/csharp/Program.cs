@@ -5,12 +5,34 @@ using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
 using System.Net.Http.Headers;
 using System.IO;
+using System.Threading;
 
 var clientId = "";
 var clientSecret = "";
 using var graphQLClient = new GraphQLHttpClient("https://signatures-api.criipto.com/v1/graphql", new NewtonsoftJsonSerializer());
 graphQLClient.HttpClient.DefaultRequestHeaders.Authorization
     = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes($"{clientId}:{clientSecret}")));
+
+static async Task<CriiptoSignatures.Types.SignatureOrder> fetchSignatureOrder(GraphQLHttpClient graphQLClient, string id) {
+    var response =
+        await graphQLClient.SendQueryAsync<CriiptoSignatures.Types.Query>(
+            CriiptoSignatures.SignatureOrderGQL.Request(new { id = id})
+        );
+
+    return response.Data.signatureOrder;
+}
+
+static async Task<CriiptoSignatures.Types.SignatureOrder> pollSignatureOrderComplete(GraphQLHttpClient graphQLClient, string id) {
+    var signatureOrder = await fetchSignatureOrder(graphQLClient, id);
+
+    var allComplete =
+        signatureOrder.signatories.Where(s => s.status != CriiptoSignatures.Types.SignatoryStatus.OPEN).Count()
+        == signatureOrder.signatories.Count();
+
+    if (allComplete) return signatureOrder;
+    await Task.Delay(5000);
+    return await pollSignatureOrderComplete(graphQLClient, id);
+}
 
 var pdf = File.ReadAllBytes("./input-sample.pdf");
 
@@ -56,3 +78,31 @@ if (addSignatoryResponse.Errors?.Length > 0) {
 }
 
 Console.WriteLine(addSignatoryResponse.Data.addSignatory.signatory.href);
+
+var signatureOrder = await pollSignatureOrderComplete(graphQLClient, signatureOrderId);
+
+Console.WriteLine("complete");
+
+foreach (var signatory in signatureOrder.signatories) {
+    if (signatory.status == CriiptoSignatures.Types.SignatoryStatus.ERROR || signatory.status == CriiptoSignatures.Types.SignatoryStatus.REJECTED) {
+        throw new Exception("A signatory failed or declined to sign");
+    }
+}
+
+var closeSignatureOrderInput = new CriiptoSignatures.Types.CloseSignatureOrderInput {
+    signatureOrderId = signatureOrderId
+};
+var closeSignatureOrderResponse =
+    await graphQLClient.SendMutationAsync(
+        CriiptoSignatures.CloseSignatureOrderGQL.Request(new { input = closeSignatureOrderInput}),
+        () => new {closeSignatureOrder = new CriiptoSignatures.Types.CloseSignatureOrderOutput()}
+    );
+
+if (closeSignatureOrderResponse.Errors?.Length > 0) {
+    Console.WriteLine(closeSignatureOrderResponse.Errors.ToString());
+    return;
+}
+
+foreach (var document in closeSignatureOrderResponse.Data.closeSignatureOrder.signatureOrder.documents) {
+    Console.WriteLine(document.blob);
+}

@@ -1,2 +1,1 @@
-`List<SignatureEvidenceProvider>` will have to be manually converted to `List<object>` due to a current shortcoming with graphql-codegen-c-sharp
-`public interface Document` must be manually changed to `public class Document`
+`List<SignatureEvidenceProvider>` will have to be manually converted to `List<object>` and `List<Document>` to `List<PdfDocument>` due to a current shortcoming with graphql-codegen-c-sharp
