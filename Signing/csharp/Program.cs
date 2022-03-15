@@ -24,18 +24,35 @@ var documents = new List<CriiptoSignatures.Types.DocumentInput>{
     }
 };
 
-var input = new CriiptoSignatures.Types.CreateSignatureOrderInput {
+var createSignatureOrderInput = new CriiptoSignatures.Types.CreateSignatureOrderInput {
     title = "Dotnet Sample",
     documents = documents
 };
-var response =
+var createSignatureOrderResponse =
     await graphQLClient.SendMutationAsync(
-        CriiptoSignatures.CreateSignatureOrderGQL.Request(new { input = input}),
+        CriiptoSignatures.CreateSignatureOrderGQL.Request(new { input = createSignatureOrderInput}),
         () => new {createSignatureOrder = new CriiptoSignatures.Types.CreateSignatureOrderOutput()}
     );
 
-if (response.Errors?.Length > 0) {
-    Console.WriteLine(response.Errors.ToString());
-} else {
-    Console.WriteLine(response.Data.createSignatureOrder.signatureOrder.id);
+if (createSignatureOrderResponse.Errors?.Length > 0) {
+    Console.WriteLine(createSignatureOrderResponse.Errors.ToString());
+    return;
 }
+
+var signatureOrderId = createSignatureOrderResponse.Data.createSignatureOrder.signatureOrder.id;
+
+var addSignatoryInput = new CriiptoSignatures.Types.AddSignatoryInput {
+    signatureOrderId = signatureOrderId
+};
+var addSignatoryResponse =
+    await graphQLClient.SendMutationAsync(
+        CriiptoSignatures.AddSignatoryGQL.Request(new { input = addSignatoryInput}),
+        () => new {addSignatory = new CriiptoSignatures.Types.AddSignatoryOutput()}
+    );
+
+if (addSignatoryResponse.Errors?.Length > 0) {
+    Console.WriteLine(addSignatoryResponse.Errors.ToString());
+    return;
+}
+
+Console.WriteLine(addSignatoryResponse.Data.addSignatory.signatory.href);

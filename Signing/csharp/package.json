@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "codegen": "graphql-codegen"
+    "codegen": "graphql-codegen && node fix-types.js"
   },
   "author": "",
   "license": "ISC",

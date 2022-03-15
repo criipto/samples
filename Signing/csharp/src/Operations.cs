@@ -43,4 +43,43 @@ namespace CriiptoSignatures {
       
     }
     
+
+    public class AddSignatoryGQL {
+      /// <summary>
+      /// AddSignatoryGQL.Request 
+      /// <para>Required variables:<br/> { input=(AddSignatoryInput) }</para>
+      /// <para>Optional variables:<br/> {  }</para>
+      /// </summary>
+      public static GraphQLRequest Request(object variables = null) {
+        return new GraphQLRequest {
+          Query = AddSignatoryDocument,
+          OperationName = "addSignatory",
+          Variables = variables
+        };
+      }
+
+      /// <remarks>This method is obsolete. Use Request instead.</remarks>
+      public static GraphQLRequest getAddSignatoryGQL() {
+        return Request();
+      }
+      
+      public static string AddSignatoryDocument = @"
+        mutation addSignatory($input: AddSignatoryInput!) {
+          addSignatory(input: $input) {
+            signatureOrder {
+              signatories {
+                id
+                href
+              }
+            }
+            signatory {
+              id
+              href
+            }
+          }
+        }
+        ";
+      
+    }
+    
 }
