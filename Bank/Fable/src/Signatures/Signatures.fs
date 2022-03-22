@@ -31,11 +31,12 @@ module Signatures =
                 Error = responseText
                 StatusCode = errorStatus
             } |> Error
-
-    let createSignatureOrder token title documents  =
+    let rnd = System.Random()
+    let createSignatureOrder token title documents expires =
         let client = client token
+
         promise {
-            let! res = client.createSignatureOrder(title,documents)
+            let! res = client.createSignatureOrder(title,expires,documents)
             return res |> parse SignatureOrderResponse
         } |> Async.AwaitPromise
         

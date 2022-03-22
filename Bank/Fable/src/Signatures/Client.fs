@@ -12,7 +12,7 @@ module Client =
 
     [<Import("IClient", from="@criipto/signatures/Client.js")>]
     type IClient = 
-        abstract member createSignatureOrder : string * DocumentInfo [] -> JS.Promise<int*string>
+        abstract member createSignatureOrder : string * int option * DocumentInfo [] -> JS.Promise<int*string>
         abstract member addSignatory : string * string -> JS.Promise<int*string>
         abstract member cancelSignatureOrder : string -> JS.Promise<int*string>
     

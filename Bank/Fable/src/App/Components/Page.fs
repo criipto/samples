@@ -26,6 +26,7 @@ type Page() =
                 | Error e ->
                     eprintfn "Failed to cancel %s. Errors: %A" orderId e
             } |> Async.StartImmediate
+    static let rnd = System.Random()
     static let createOrder (user : Models.User) (documents : Models.Document list) addMessages = 
                 async{
                     
@@ -36,11 +37,17 @@ type Page() =
                     let orderTitle = "Signature order"
                     let docs = [||] 
                     let! signatureOrderResult = 
-                        let client = Client.Client("https://demo-app-signature-api.azurewebsites.net/api/",userToken)
-                        promise {
-                            let! res = client.createSignatureOrder(orderTitle,docs)
+                        
+                        async {
+                            let exp = 
+                                match rnd.Next(0,3) with
+                                0 -> None
+                                | 1 -> Some 1
+                                | 2 -> Some 2
+                                | _ -> Some 4
+                            let! res = Signatures.createSignatureOrder(user.Token,orderTitle,docs,exp)
                             return res |> Signatures.parse Signatures.SignatureOrderResponse
-                        } |> Async.AwaitPromise
+                        } |> Async.StartImmediate
                     match signatureOrderResult with
                     Ok order  -> 
                         
