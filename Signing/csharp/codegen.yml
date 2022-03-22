@@ -1,0 +1,20 @@
+schema: https://signatures-api.criipto.com/v1/graphql
+generates:
+  src/Types.cs:
+    documents: './src/**/*.graphql'
+    plugins:
+      - c-sharp
+    config:
+      namespaceName: CriiptoSignatures
+      emitRecords: false
+      scalars:
+        Blob: string
+        DateTime: string
+      mapping:
+        SignatureEvidenceProvider: object
+  src/Operations.cs:
+    documents: './src/**/*.graphql'
+    plugins:
+      - c-sharp-operations
+    config:
+      namespaceName: CriiptoSignatures
