@@ -7,7 +7,7 @@ const samplePdf = readFileSync(__dirname + '/../input-sample.pdf');
 
 if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET) throw new Error('Environment variables CLIENT_ID and CLIENT_SECRET must be defined. They are available when you create a signature application on https://manage.criipto.id');
 
-const client = new GraphQLClient('https://signatures-api-prod.azurewebsites.net/v1/graphql', {
+const client = new GraphQLClient('https://signatures-api.criipto.com/v1/graphql', {
   headers: {
     Authorization: `Basic ${Buffer.from(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64')}`
   }
