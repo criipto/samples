@@ -1,0 +1,757 @@
+"""Defers the resolution of this field or fragment"""
+directive @defer on FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"""Streams the resolution of this field or fragment"""
+directive @stream on FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"""Subscribes for live updates of this field or fragment"""
+directive @live on FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+input AddSignatoriesInput {
+  signatureOrderId: ID!
+  signatories: [CreateSignatureOrderSignatoryInput!]!
+}
+
+type AddSignatoriesOutput {
+  signatories: [Signatory!]!
+  signatureOrder: SignatureOrder!
+}
+
+input AddSignatoryInput {
+  signatureOrderId: ID!
+
+  """
+  Will not be displayed to signatories, can be used as a reference to your own system.
+  """
+  reference: String
+  documents: [SignatoryDocumentInput!]
+
+  """Selectively enable evidence providers for this signatory."""
+  evidenceProviders: [SignatoryEvidenceProviderInput!]
+  evidenceValidation: [SignatoryEvidenceValidationInput!]
+}
+
+type AddSignatoryOutput {
+  signatory: Signatory!
+  signatureOrder: SignatureOrder!
+}
+
+type AnonymousViewer implements Viewer {
+  authenticated: Boolean!
+  id: ID!
+}
+
+type Application implements Viewer {
+  apiKeys: [ApplicationApiKey!]!
+  id: ID!
+  name: String!
+  signatureOrders(after: String, first: Int, status: SignatureOrderStatus): SignatureOrderConnection!
+
+  """Tenants are only accessable from user viewers"""
+  tenant: Tenant
+  verifyApplication: VerifyApplication!
+}
+
+type ApplicationApiKey {
+  clientId: String!
+  clientSecret: String
+  id: ID!
+  mode: ApplicationApiKeyMode!
+  note: String
+}
+
+enum ApplicationApiKeyMode {
+  READ_WRITE
+  READ_ONLY
+}
+
+"""
+The `Blob` scalar type represents a byte array. The Blob type appears in a JSON response as a Base64 String.
+"""
+scalar Blob
+
+input CancelSignatureOrderInput {
+  signatureOrderId: ID!
+}
+
+type CancelSignatureOrderOutput {
+  signatureOrder: SignatureOrder!
+}
+
+input ChangeSignatoryInput {
+  signatoryId: ID!
+
+  """
+  Will not be displayed to signatories, can be used as a reference to your own system.
+  """
+  reference: String
+  documents: [SignatoryDocumentInput!]
+
+  """Selectively enable evidence providers for this signatory."""
+  evidenceProviders: [SignatoryEvidenceProviderInput!]
+  evidenceValidation: [SignatoryEvidenceValidationInput!]
+}
+
+type ChangeSignatoryOutput {
+  signatory: Signatory!
+  signatureOrder: SignatureOrder!
+}
+
+input CleanupSignatureOrderInput {
+  signatureOrderId: ID!
+}
+
+type CleanupSignatureOrderOutput {
+  signatureOrder: SignatureOrder!
+}
+
+input CloseSignatureOrderInput {
+  signatureOrderId: ID!
+
+  """
+  Retains documents on Criipto servers after closing a signature order. You MUST
+  manually call the cleanupSignatureOrder mutation when you are sure you have
+  downloaded the blobs. Maximum value is 7 days.
+  """
+  retainDocumentsForDays: Int
+}
+
+type CloseSignatureOrderOutput {
+  signatureOrder: SignatureOrder!
+}
+
+input CreateApplicationApiKeyInput {
+  applicationId: ID!
+  mode: ApplicationApiKeyMode
+  note: String
+}
+
+type CreateApplicationApiKeyOutput {
+  apiKey: ApplicationApiKey!
+  application: Application!
+}
+
+input CreateApplicationInput {
+  tenantId: ID!
+  name: String!
+  verifyApplicationRealm: String!
+  verifyApplicationDomain: String!
+  verifyApplicationEnvironment: VerifyApplicationEnvironment!
+}
+
+type CreateApplicationOutput {
+  apiKey: ApplicationApiKey!
+  application: Application!
+  tenant: Tenant!
+}
+
+input CreateSignatureOrderInput {
+  title: String
+
+  """
+  By default signatories will be prompted to sign with a Criipto Verify based e-ID, this setting disables it.
+  """
+  disableVerifyEvidenceProvider: Boolean
+
+  """
+  Attempt to automatically fix document formatting errors if possible. Default 'true'.
+  """
+  fixDocumentFormattingErrors: Boolean
+
+  """
+  Max allowed signatories (as it influences pages needed for seals). Default 14.
+  """
+  maxSignatories: Int = 14
+
+  """When this signature order will auto-close/expire. Default 90 days."""
+  expiresInDays: Int = 90
+
+  """Timezone to render signature seals in, default UTC."""
+  timezone: String
+  signatories: [CreateSignatureOrderSignatoryInput!]
+  documents: [DocumentInput!]!
+
+  """
+  Define evidence providers for signature order if not using built-in Criipto Verify for e-IDs
+  """
+  evidenceProviders: [EvidenceProviderInput!]
+
+  """Various settings for how the UI is presented to the signatory."""
+  ui: CreateSignatureOrderUIInput
+
+  """Signature order webhook settings"""
+  webhook: CreateSignatureOrderWebhookInput
+
+  """Configure appearance of signatures inside documents"""
+  signatureAppearance: SignatureAppearanceInput
+}
+
+type CreateSignatureOrderOutput {
+  application: Application!
+  signatureOrder: SignatureOrder!
+}
+
+input CreateSignatureOrderSignatoryInput {
+  """
+  Will not be displayed to signatories, can be used as a reference to your own system.
+  """
+  reference: String
+  documents: [SignatoryDocumentInput!]
+
+  """Selectively enable evidence providers for this signatory."""
+  evidenceProviders: [SignatoryEvidenceProviderInput!]
+  evidenceValidation: [SignatoryEvidenceValidationInput!]
+}
+
+input CreateSignatureOrderUIInput {
+  """
+  The signatory will be redirected to this URL after signing or rejected the signature order.
+  """
+  signatoryRedirectUri: String
+
+  """The language of texts rendered to the signatory."""
+  language: Language = EN_US
+
+  """Define a logo to be shown in the signatory UI."""
+  logo: SignatureOrderUILogoInput
+
+  """Add stylesheet/css via an absolute HTTPS URL."""
+  stylesheet: String
+
+  """Removes the UI options to reject a document or signature order."""
+  disableRejection: Boolean
+}
+
+input CreateSignatureOrderWebhookInput {
+  """
+  Webhook url. POST requests will be executed towards this URL on certain signatory events.
+  """
+  url: String!
+}
+
+"""Criipto Verify based evidence for signatures."""
+input CriiptoVerifyProviderInput {
+  acrValues: [String!]
+  alwaysRedirect: Boolean
+
+  """
+  Enforces that signatories sign by unique evidence by comparing the values of
+  previous evidence on the key you define. For Criipto Verify you likely want to
+  use `sub` which is a unique pseudonym value present in all e-ID tokens issued.
+  """
+  uniqueEvidenceKey: String
+}
+
+"""
+The `Date` scalar type represents a Date value with Time component. The Date
+type appears in a JSON response as a String representation compatible with
+ISO-8601 format.
+"""
+scalar Date
+
+"""
+The `DateTime` scalar type represents a Date value with Time component. The Date
+type appears in a JSON response as a String representation compatible with
+ISO-8601 format.
+"""
+scalar DateTime
+
+input DeleteApplicationApiKeyInput {
+  applicationId: ID!
+  apiKeyId: ID!
+}
+
+type DeleteApplicationApiKeyOutput {
+  application: Application!
+}
+
+input DeleteSignatoryInput {
+  signatureOrderId: ID!
+  signatoryId: ID!
+}
+
+type DeleteSignatoryOutput {
+  signatureOrder: SignatureOrder!
+}
+
+interface Document {
+  blob: Blob
+  id: ID!
+  reference: String
+  title: String!
+}
+
+input DocumentInput {
+  pdf: PadesDocumentInput!
+}
+
+"""
+Document storage mode. Temporary documents will be deleted once completed.
+"""
+enum DocumentStorageMode {
+  """Temporary documents will be deleted once completed."""
+  Temporary
+}
+
+"""Hand drawn signature evidence for signatures."""
+input DrawableEvidenceProviderInput {
+  requireName: Boolean
+}
+
+type DrawableSignatureEvidenceProvider {
+  id: ID!
+  requireName: Boolean!
+}
+
+"""Must define either oidc or noop subsection."""
+input EvidenceProviderInput {
+  """OIDC/JWT based evidence for signatures."""
+  oidc: OidcEvidenceProviderInput
+
+  """Criipto Verify based evidence for signatures."""
+  criiptoVerify: CriiptoVerifyProviderInput
+
+  """
+  TEST environment only. Does not manipulate the PDF, use for integration or webhook testing.
+  """
+  noop: NoopEvidenceProviderInput
+
+  """
+  Determined if this evidence provider should be enabled by signatories by default. Default true
+  """
+  enabledByDefault: Boolean
+
+  """Hand drawn signature evidence for signatures."""
+  drawable: DrawableEvidenceProviderInput
+}
+
+input ExtendSignatureOrderInput {
+  signatureOrderId: ID!
+  additionalExpirationInDays: Int!
+}
+
+type ExtendSignatureOrderOutput {
+  signatureOrder: SignatureOrder!
+}
+
+enum Language {
+  DA_DK
+  EN_US
+  SV_SE
+}
+
+type Mutation {
+  """Add multiple signatures to your signature order."""
+  addSignatories(input: AddSignatoriesInput!): AddSignatoriesOutput
+
+  """Add a signatory to your signature order."""
+  addSignatory(input: AddSignatoryInput!): AddSignatoryOutput
+
+  """
+  Cancels the signature order without closing it, use if you no longer need a
+  signature order. Documents are deleted from storage after cancelling.
+  """
+  cancelSignatureOrder(input: CancelSignatureOrderInput!): CancelSignatureOrderOutput
+
+  """Change an existing signatory"""
+  changeSignatory(input: ChangeSignatoryInput!): ChangeSignatoryOutput
+
+  """
+  Cleans up the signature order and removes any saved documents from the servers.
+  """
+  cleanupSignatureOrder(input: CleanupSignatureOrderInput!): CleanupSignatureOrderOutput
+
+  """
+  Finalizes the documents in the signature order and returns them to you as
+  blobs. Documents are deleted from storage after closing.
+  """
+  closeSignatureOrder(input: CloseSignatureOrderInput!): CloseSignatureOrderOutput
+
+  """Creates a signature application for a given tenant."""
+  createApplication(input: CreateApplicationInput!): CreateApplicationOutput
+
+  """Creates a new set of api credentials for an existing application."""
+  createApplicationApiKey(input: CreateApplicationApiKeyInput!): CreateApplicationApiKeyOutput
+
+  """Creates a signature order to be signed."""
+  createSignatureOrder(input: CreateSignatureOrderInput!): CreateSignatureOrderOutput
+
+  """Deletes a set of API credentials for an application."""
+  deleteApplicationApiKey(input: DeleteApplicationApiKeyInput!): DeleteApplicationApiKeyOutput
+
+  """Delete a signatory from a signature order"""
+  deleteSignatory(input: DeleteSignatoryInput!): DeleteSignatoryOutput
+
+  """Extends the expiration of the signature order."""
+  extendSignatureOrder(input: ExtendSignatureOrderInput!): ExtendSignatureOrderOutput
+
+  """
+  Refreshes the client secret for an existing set of API credentials. Warning:
+  The old client secret will stop working immediately.
+  """
+  refreshApplicationApiKey(input: RefreshApplicationApiKeyInput!): RefreshApplicationApiKeyOutput
+
+  """Used by Signatory frontends to reject a signature order in full."""
+  rejectSignatureOrder(input: RejectSignatureOrderInput!): RejectSignatureOrderOutput
+
+  """
+  Used by Signatory frontends to sign the documents in a signature order.
+  """
+  sign(input: SignInput!): SignOutput
+
+  """Signatory frontend use only."""
+  signatoryBeacon(input: SignatoryBeaconInput!): SignatoryBeaconOutput
+
+  """
+  Used by Signatory frontends sign the documents in a signature order with OIDC/JWT evidence.
+  """
+  signWithOidcJWT(input: SignWithOidcJWTInput!): SignWithOidcJWTOutput
+
+  """
+  Used by Signatory frontends to mark documents as opened, approved or rejected.
+  """
+  updateSignatoryDocumentStatus(input: UpdateSignatoryDocumentStatusInput!): UpdateSignatoryDocumentStatusOutput
+}
+
+"""TEST only. Allows empty signatures for testing."""
+input NoopEvidenceProviderInput {
+  name: String!
+}
+
+type NoopSignatureEvidenceProvider {
+  id: ID!
+  name: String!
+}
+
+"""OIDC/JWT based evidence for signatures."""
+input OidcEvidenceProviderInput {
+  name: String!
+  domain: String!
+  clientID: String!
+  audience: String!
+  acrValues: [String!]
+  alwaysRedirect: Boolean
+
+  """
+  Enforces that signatories sign by unique evidence by comparing the values of previous evidence on the key you define.
+  """
+  uniqueEvidenceKey: String
+}
+
+type OidcJWTSignatureEvidenceProvider {
+  acrValues: [String!]!
+  alwaysRedirect: Boolean!
+  clientID: String!
+  domain: String!
+  id: ID!
+  name: String!
+}
+
+input PadesDocumentInput {
+  title: String!
+
+  """
+  Will not be displayed to signatories, can be used as a reference to your own system.
+  """
+  reference: String
+  blob: Blob!
+  storageMode: DocumentStorageMode!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+}
+
+type PdfDocument implements Document {
+  blob: Blob
+  id: ID!
+  reference: String
+  title: String!
+}
+
+type Query {
+  application(id: ID!): Application
+
+  """Query a signatory by id. Useful when using webhooks."""
+  signatory(id: ID!): Signatory
+  signatureOrder(id: ID!): SignatureOrder
+
+  """Tenants are only accessable from user viewers"""
+  tenant(id: ID!): Tenant
+  timezones: [String!]!
+  viewer: Viewer!
+}
+
+input RefreshApplicationApiKeyInput {
+  applicationId: ID!
+  apiKeyId: ID!
+}
+
+type RefreshApplicationApiKeyOutput {
+  apiKey: ApplicationApiKey!
+  application: Application!
+}
+
+input RejectSignatureOrderInput {
+  dummy: Boolean!
+  reason: String
+}
+
+type RejectSignatureOrderOutput {
+  viewer: Viewer!
+}
+
+type Signatory {
+  documents: SignatoryDocumentConnection!
+  evidenceProviders: [SignatureEvidenceProvider!]!
+
+  """
+  A link to the signatures frontend, you can send this link to your users to enable them to sign your documents.
+  """
+  href: String!
+  id: ID!
+  reference: String
+
+  """Signature order for the signatory."""
+  signatureOrder: SignatureOrder!
+
+  """The current status of the signatory."""
+  status: SignatoryStatus!
+
+  """The reason for the signatory status (rejection reason when rejected)."""
+  statusReason: String
+
+  """
+  The signature frontend authentication token, only required if you need to build a custom url.
+  """
+  token: String!
+}
+
+input SignatoryBeaconInput {
+  lastActionAt: DateTime!
+}
+
+type SignatoryBeaconOutput {
+  viewer: Viewer!
+}
+
+type SignatoryDocumentConnection {
+  edges: [SignatoryDocumentEdge!]!
+}
+
+type SignatoryDocumentEdge {
+  node: Document!
+  status: SignatoryDocumentStatus
+}
+
+input SignatoryDocumentInput {
+  id: ID!
+  preapproved: Boolean
+}
+
+enum SignatoryDocumentStatus {
+  OPENED
+  APPROVED
+  REJECTED
+  PREAPPROVED
+}
+
+input SignatoryEvidenceProviderInput {
+  id: ID!
+}
+
+input SignatoryEvidenceValidationInput {
+  key: String!
+  value: String!
+}
+
+enum SignatoryStatus {
+  OPEN
+  SIGNED
+  REJECTED
+  ERROR
+  DELETED
+}
+
+type SignatoryViewer implements Viewer {
+  authenticated: Boolean!
+  documents: SignatoryDocumentConnection!
+  evidenceProviders: [SignatureEvidenceProvider!]!
+  id: ID!
+  signatoryId: ID!
+  signer: Boolean!
+  status: SignatoryStatus!
+  ui: SignatureOrderUI!
+}
+
+input SignatureAppearanceInput {
+  """
+  Render evidence claim as identifier in the signature appearance inside the
+  document. You can supply multiple keys and they will be tried in order. If no
+  key is found a GUID will be rendered.
+  """
+  identifierFromEvidence: [String!]!
+}
+
+union SignatureEvidenceProvider = OidcJWTSignatureEvidenceProvider | NoopSignatureEvidenceProvider | DrawableSignatureEvidenceProvider
+
+type SignatureOrder {
+  application: Application
+  closedAt: DateTime
+  createdAt: DateTime!
+  documents: [Document!]!
+  evidenceProviders: [SignatureEvidenceProvider!]!
+  expiresAt: DateTime!
+  id: ID!
+
+  """List of signatories for the signature order."""
+  signatories: [Signatory!]!
+  status: SignatureOrderStatus!
+
+  """Tenants are only accessable from user viewers"""
+  tenant: Tenant
+  timezone: String!
+  title: String
+  ui: SignatureOrderUI!
+}
+
+"""
+A connection from an object to a list of objects of type SignatureOrder
+"""
+type SignatureOrderConnection {
+  """Information to aid in pagination."""
+  edges: [SignatureOrderEdge!]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """
+  A count of the total number of objects in this connection, ignoring
+  pagination. This allows a client to fetch the first five objects by passing
+  \"5\" as the argument to `first`, then fetch the total count so it could
+  display \"5 of 83\", for example. In cases where we employ infinite scrolling
+  or don't have an exact count of entries, this field will return `null`.
+  """
+  totalCount: Int
+}
+
+"""
+An edge in a connection from an object to another object of type SignatureOrder
+"""
+type SignatureOrderEdge {
+  """A cursor for use in pagination"""
+  cursor: String!
+
+  """The item at the end of the edge. Must NOT be an enumerable collection."""
+  node: SignatureOrder!
+}
+
+enum SignatureOrderStatus {
+  OPEN
+  CLOSED
+  CANCELLED
+  EXPIRED
+}
+
+type SignatureOrderUI {
+  disableRejection: Boolean!
+  language: Language!
+  logo: SignatureOrderUILogo
+  signatoryRedirectUri: String
+  stylesheet: String
+}
+
+type SignatureOrderUILogo {
+  href: String
+  src: String!
+}
+
+input SignatureOrderUILogoInput {
+  """The image source for the logo. Must be an absolute HTTPS URL."""
+  src: String!
+
+  """Turns your logo into a link with the defined href."""
+  href: String
+}
+
+input SignDrawableInput {
+  name: String
+  image: Blob!
+}
+
+input SignInput {
+  id: ID!
+  oidc: SignOidcInput
+  drawable: SignDrawableInput
+  noop: Boolean
+}
+
+input SignOidcInput {
+  jwt: String!
+}
+
+type SignOutput {
+  viewer: Viewer!
+}
+
+input SignWithOidcJWTInput {
+  id: ID!
+  jwt: String!
+}
+
+type SignWithOidcJWTOutput {
+  viewer: Viewer!
+}
+
+type Tenant {
+  applications: [Application!]!
+  id: ID!
+}
+
+input UpdateSignatoryDocumentStatusInput {
+  documentId: ID!
+  status: SignatoryDocumentStatus!
+}
+
+type UpdateSignatoryDocumentStatusOutput {
+  documentEdge: SignatoryDocumentEdge!
+  viewer: Viewer!
+}
+
+"""
+The `URI` scalar type represents a string resource identifier compatible with
+URI standard. The URI type appears in a JSON response as a String.
+"""
+scalar URI
+
+type UserViewer implements Viewer {
+  authenticated: Boolean!
+  id: ID!
+  tenants: [Tenant!]!
+}
+
+type VerifyApplication {
+  domain: String!
+  environment: VerifyApplicationEnvironment!
+  realm: String!
+}
+
+enum VerifyApplicationEnvironment {
+  PRODUCTION
+  TEST
+}
+
+interface Viewer {
+  id: ID!
+}

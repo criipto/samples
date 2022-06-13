@@ -1,0 +1,12 @@
+{
+    "require": {
+        "spawnia/sailor": "^0.21.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "vlucas/phpdotenv": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+          "Criipto\\SignaturesApi\\": "generated/criipto-signatures/"
+        }
+    }
+}
