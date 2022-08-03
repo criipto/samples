@@ -29,7 +29,6 @@ type Page() =
     static let rnd = System.Random()
     static let createOrder (user : Models.User) (documents : Models.Document list) addMessages = 
                 async{
-                    
                     let doc = documents |> List.head
                     let docName = doc.Name.Replace("%USERNAME%", user.Name)
                     let content = doc.Content.Replace("%USERNAME%", user.Name)
@@ -37,7 +36,6 @@ type Page() =
                     let orderTitle = "Signature order"
                     let docs = [||] 
                     let! signatureOrderResult = 
-                        
                         async {
                             let exp = 
                                 match rnd.Next(0,3) with
@@ -45,12 +43,10 @@ type Page() =
                                 | 1 -> Some 1
                                 | 2 -> Some 2
                                 | _ -> Some 4
-                            let! res = Signatures.createSignatureOrder(user.Token,orderTitle,docs,exp)
-                            return res |> Signatures.parse Signatures.SignatureOrderResponse
-                        } |> Async.StartImmediate
+                            return! Signatures.createSignatureOrder user.Token orderTitle docs exp
+                        }
                     match signatureOrderResult with
                     Ok order  -> 
-                        
                         async {
                             let userRef = 
                                 user.Name
