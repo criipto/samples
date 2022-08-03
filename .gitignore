@@ -207,6 +207,7 @@ out
 
 .paket/
 dist/
+!Verify/dotnet-core-v6.x/wwwroot/lib/*/dist
 **/.DS_Store
 
 **/fable_modules/
