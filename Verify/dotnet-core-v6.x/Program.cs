@@ -27,6 +27,18 @@ builder.Services.AddAuthentication(options => {
     // The next to settings must match the Callback URLs in Criipto Verify
     options.CallbackPath = new PathString("/callback"); 
     options.SignedOutCallbackPath = new PathString("/signout");
+
+    // Add a login_hint with message if requested
+    // You can test this by navigating to /Home/Protected?message=test%20message
+    options.Events.OnRedirectToIdentityProvider = async context => 
+    {
+        var message = context.Request.Query["message"];
+        if (!String.IsNullOrWhiteSpace(message)) {
+            var bytes = System.Text.Encoding.UTF8.GetBytes(message);
+            context.ProtocolMessage.LoginHint = $"message:{System.Convert.ToBase64String(bytes)}";
+        }
+        await Task.FromResult(0);
+    };
 });
 
 var app = builder.Build();
