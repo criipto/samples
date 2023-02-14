@@ -38,6 +38,17 @@ mutation closeSignatureOrder ($input: CloseSignatureOrderInput!) {
       documents {
         id
         blob
+
+        signatures {
+          signatory {
+              id
+          }
+
+          ... on JWTSignature {
+              jwt
+              jwks
+          }
+        }
       }
     }
   }

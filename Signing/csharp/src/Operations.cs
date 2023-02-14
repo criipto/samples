@@ -110,6 +110,15 @@ namespace CriiptoSignatures {
               documents {
                 id
                 blob
+                signatures {
+                  signatory {
+                    id
+                  }
+                  ... on JWTSignature {
+                    jwt
+                    jwks
+                  }
+                }
               }
             }
           }

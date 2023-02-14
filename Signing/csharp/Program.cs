@@ -105,4 +105,9 @@ if (closeSignatureOrderResponse.Errors?.Length > 0) {
 
 foreach (var document in closeSignatureOrderResponse.Data.closeSignatureOrder.signatureOrder.documents) {
     Console.WriteLine(document.blob);
+    foreach (var signature in document.signatures) {
+        if (signature is CriiptoSignatures.Types.JWTSignature jwtSignature) {
+            Console.WriteLine(jwtSignature.jwt);
+        }
+    }
 }

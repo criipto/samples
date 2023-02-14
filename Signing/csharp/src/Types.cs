@@ -59,6 +59,11 @@ namespace CriiptoSignatures {
       #region members
       public List<SignatoryDocumentInput> documents { get; set; }
     
+      /// <summary>
+      /// Selectively enable evidence providers for this signatory.
+      /// </summary>
+      public List<SignatoryEvidenceProviderInput> evidenceProviders { get; set; }
+    
       public List<SignatoryEvidenceValidationInput> evidenceValidation { get; set; }
     
       /// <summary>
@@ -157,9 +162,20 @@ namespace CriiptoSignatures {
     
       [JsonProperty("id")]
       public string id { get; set; }
+    
+      [JsonProperty("mode")]
+      public ApplicationApiKeyMode mode { get; set; }
+    
+      [JsonProperty("note")]
+      public string note { get; set; }
       #endregion
     }
     #endregion
+    public enum ApplicationApiKeyMode {
+      READ_ONLY,
+      READ_WRITE
+    }
+    
     
     #region CancelSignatureOrderInput
     public class CancelSignatureOrderInput {
@@ -202,9 +218,113 @@ namespace CriiptoSignatures {
     }
     #endregion
     
+    #region ChangeSignatoryInput
+    public class ChangeSignatoryInput {
+      #region members
+      public List<SignatoryDocumentInput> documents { get; set; }
+    
+      /// <summary>
+      /// Selectively enable evidence providers for this signatory.
+      /// </summary>
+      public List<SignatoryEvidenceProviderInput> evidenceProviders { get; set; }
+    
+      public List<SignatoryEvidenceValidationInput> evidenceValidation { get; set; }
+    
+      /// <summary>
+      /// Will not be displayed to signatories, can be used as a reference to your own system.
+      /// </summary>
+      public string reference { get; set; }
+    
+      [Required]
+      [JsonRequired]
+      public string signatoryId { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region ChangeSignatoryOutput
+    public class ChangeSignatoryOutput {
+      #region members
+      [JsonProperty("signatory")]
+      public Signatory signatory { get; set; }
+    
+      [JsonProperty("signatureOrder")]
+      public SignatureOrder signatureOrder { get; set; }
+      #endregion
+    }
+    #endregion
+    
+    #region CleanupSignatureOrderInput
+    public class CleanupSignatureOrderInput {
+      #region members
+      [Required]
+      [JsonRequired]
+      public string signatureOrderId { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region CleanupSignatureOrderOutput
+    public class CleanupSignatureOrderOutput {
+      #region members
+      [JsonProperty("signatureOrder")]
+      public SignatureOrder signatureOrder { get; set; }
+      #endregion
+    }
+    #endregion
+    
     #region CloseSignatureOrderInput
     public class CloseSignatureOrderInput {
       #region members
+      /// <summary>
+      /// Retains documents on Criipto servers after closing a signature order. You MUST manually call the cleanupSignatureOrder mutation when you are sure you have downloaded the blobs. Maximum value is 7 days.
+      /// </summary>
+      public int? retainDocumentsForDays { get; set; }
+    
       [Required]
       [JsonRequired]
       public string signatureOrderId { get; set; }
@@ -249,6 +369,10 @@ namespace CriiptoSignatures {
       [Required]
       [JsonRequired]
       public string applicationId { get; set; }
+    
+      public ApplicationApiKeyMode? mode { get; set; }
+    
+      public string note { get; set; }
       #endregion
     
       #region methods
@@ -385,6 +509,11 @@ namespace CriiptoSignatures {
       public List<CreateSignatureOrderSignatoryInput> signatories { get; set; }
     
       /// <summary>
+      /// Configure appearance of signatures inside documents
+      /// </summary>
+      public SignatureAppearanceInput signatureAppearance { get; set; }
+    
+      /// <summary>
       /// Timezone to render signature seals in, default UTC.
       /// </summary>
       public string timezone { get; set; }
@@ -443,6 +572,11 @@ namespace CriiptoSignatures {
       #region members
       public List<SignatoryDocumentInput> documents { get; set; }
     
+      /// <summary>
+      /// Selectively enable evidence providers for this signatory.
+      /// </summary>
+      public List<SignatoryEvidenceProviderInput> evidenceProviders { get; set; }
+    
       public List<SignatoryEvidenceValidationInput> evidenceValidation { get; set; }
     
       /// <summary>
@@ -479,14 +613,29 @@ namespace CriiptoSignatures {
     public class CreateSignatureOrderUiInput {
       #region members
       /// <summary>
+      /// Removes the UI options to reject a document or signature order.
+      /// </summary>
+      public bool? disableRejection { get; set; }
+    
+      /// <summary>
       /// The language of texts rendered to the signatory.
       /// </summary>
       public Language? language { get; set; }
     
       /// <summary>
+      /// Define a logo to be shown in the signatory UI.
+      /// </summary>
+      public SignatureOrderUiLogoInput logo { get; set; }
+    
+      /// <summary>
       /// The signatory will be redirected to this URL after signing or rejected the signature order.
       /// </summary>
       public string signatoryRedirectUri { get; set; }
+    
+      /// <summary>
+      /// Add stylesheet/css via an absolute HTTPS URL.
+      /// </summary>
+      public string stylesheet { get; set; }
       #endregion
     
       #region methods
@@ -544,6 +693,86 @@ namespace CriiptoSignatures {
         }
         return d;
       }
+      #endregion
+    }
+    #endregion
+    
+    #region CriiptoVerifyProviderInput
+    /// <summary>
+    /// Criipto Verify based evidence for signatures.
+    /// </summary>
+    public class CriiptoVerifyProviderInput {
+      #region members
+      public List<string> acrValues { get; set; }
+    
+      public bool? alwaysRedirect { get; set; }
+    
+      /// <summary>
+      /// Set a custom login_hint for the underlying authentication request.
+      /// </summary>
+      public string loginHint { get; set; }
+    
+      /// <summary>
+      /// Messages displayed when performing authentication (only supported by DKMitID currently).
+      /// </summary>
+      public string message { get; set; }
+    
+      /// <summary>
+      /// Enforces that signatories sign by unique evidence by comparing the values of previous evidence on the key you define. For Criipto Verify you likely want to use `sub` which is a unique pseudonym value present in all e-ID tokens issued.
+      /// </summary>
+      public string uniqueEvidenceKey { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region CriiptoVerifySignatureEvidenceProvider
+    public class CriiptoVerifySignatureEvidenceProvider {
+      #region members
+      [JsonProperty("acrValues")]
+      public List<string> acrValues { get; set; }
+    
+      [JsonProperty("alwaysRedirect")]
+      public bool alwaysRedirect { get; set; }
+    
+      [JsonProperty("clientID")]
+      public string clientID { get; set; }
+    
+      [JsonProperty("domain")]
+      public string domain { get; set; }
+    
+      [JsonProperty("id")]
+      public string id { get; set; }
+    
+      [JsonProperty("loginHint")]
+      public string loginHint { get; set; }
+    
+      [JsonProperty("message")]
+      public string message { get; set; }
+    
+      [JsonProperty("name")]
+      public string name { get; set; }
       #endregion
     }
     #endregion
@@ -648,6 +877,12 @@ namespace CriiptoSignatures {
       [JsonProperty("reference")]
       string reference { get; set; }
     
+      [JsonProperty("signatoryViewerStatus")]
+      SignatoryDocumentStatus? signatoryViewerStatus { get; set; }
+    
+      [JsonProperty("signatures")]
+      List<Signature> signatures { get; set; }
+    
       [JsonProperty("title")]
       string title { get; set; }
     }
@@ -658,6 +893,11 @@ namespace CriiptoSignatures {
       [Required]
       [JsonRequired]
       public PadesDocumentInput pdf { get; set; }
+    
+      /// <summary>
+      /// When enabled, will remove any existing signatures from the document before storing.
+      /// </summary>
+      public bool? removePreviousSignatures { get; set; }
       #endregion
     
       #region methods
@@ -694,12 +934,192 @@ namespace CriiptoSignatures {
     }
     
     
+    #region DownloadVerificationCriiptoVerifyInput
+    public class DownloadVerificationCriiptoVerifyInput {
+      #region members
+      [Required]
+      [JsonRequired]
+      public string jwt { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region DownloadVerificationInput
+    public class DownloadVerificationInput {
+      #region members
+      public DownloadVerificationCriiptoVerifyInput criiptoVerify { get; set; }
+    
+      public DownloadVerificationOidcInput oidc { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region DownloadVerificationOidcInput
+    public class DownloadVerificationOidcInput {
+      #region members
+      [Required]
+      [JsonRequired]
+      public string jwt { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region DrawableEvidenceProviderInput
+    /// <summary>
+    /// Hand drawn signature evidence for signatures.
+    /// </summary>
+    public class DrawableEvidenceProviderInput {
+      #region members
+      public bool? requireName { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region DrawableSignature
+    public class DrawableSignature : Signature {
+      #region members
+      [JsonProperty("image")]
+      public string image { get; set; }
+    
+      [JsonProperty("name")]
+      public string name { get; set; }
+    
+      [JsonProperty("signatory")]
+      public Signatory signatory { get; set; }
+      #endregion
+    }
+    #endregion
+    
+    #region DrawableSignatureEvidenceProvider
+    public class DrawableSignatureEvidenceProvider {
+      #region members
+      [JsonProperty("id")]
+      public string id { get; set; }
+    
+      [JsonProperty("requireName")]
+      public bool requireName { get; set; }
+      #endregion
+    }
+    #endregion
+    
+    #region EmptySignature
+    public class EmptySignature : Signature {
+      #region members
+      [JsonProperty("signatory")]
+      public Signatory signatory { get; set; }
+      #endregion
+    }
+    #endregion
+    
     #region EvidenceProviderInput
     /// <summary>
     /// Must define either oidc or noop subsection.
     /// </summary>
     public class EvidenceProviderInput {
       #region members
+      /// <summary>
+      /// Criipto Verify based evidence for signatures.
+      /// </summary>
+      public CriiptoVerifyProviderInput criiptoVerify { get; set; }
+    
+      /// <summary>
+      /// Hand drawn signature evidence for signatures.
+      /// </summary>
+      public DrawableEvidenceProviderInput drawable { get; set; }
+    
+      /// <summary>
+      /// Determined if this evidence provider should be enabled by signatories by default. Default true
+      /// </summary>
+      public bool? enabledByDefault { get; set; }
+    
       /// <summary>
       /// TEST environment only. Does not manipulate the PDF, use for integration or webhook testing.
       /// </summary>
@@ -738,6 +1158,9 @@ namespace CriiptoSignatures {
     #region ExtendSignatureOrderInput
     public class ExtendSignatureOrderInput {
       #region members
+      /// <summary>
+      /// Expiration to add to order, in days, max 30.
+      /// </summary>
       [Required]
       [JsonRequired]
       public int additionalExpirationInDays { get; set; }
@@ -779,9 +1202,25 @@ namespace CriiptoSignatures {
       #endregion
     }
     #endregion
+    
+    #region JWTSignature
+    public class JWTSignature : Signature {
+      #region members
+      [JsonProperty("jwks")]
+      public string jwks { get; set; }
+    
+      [JsonProperty("jwt")]
+      public string jwt { get; set; }
+    
+      [JsonProperty("signatory")]
+      public Signatory signatory { get; set; }
+      #endregion
+    }
+    #endregion
     public enum Language {
       DA_DK,
       EN_US,
+      NB_NO,
       SV_SE
     }
     
@@ -806,6 +1245,18 @@ namespace CriiptoSignatures {
       /// </summary>
       [JsonProperty("cancelSignatureOrder")]
       public CancelSignatureOrderOutput cancelSignatureOrder { get; set; }
+    
+      /// <summary>
+      /// Change an existing signatory
+      /// </summary>
+      [JsonProperty("changeSignatory")]
+      public ChangeSignatoryOutput changeSignatory { get; set; }
+    
+      /// <summary>
+      /// Cleans up the signature order and removes any saved documents from the servers.
+      /// </summary>
+      [JsonProperty("cleanupSignatureOrder")]
+      public CleanupSignatureOrderOutput cleanupSignatureOrder { get; set; }
     
       /// <summary>
       /// Finalizes the documents in the signature order and returns them to you as blobs. Documents are deleted from storage after closing.
@@ -868,16 +1319,22 @@ namespace CriiptoSignatures {
       public SignOutput sign { get; set; }
     
       /// <summary>
-      /// Used by Signatory frontends sign the documents in a signature order with OIDC/JWT evidence.
+      /// Sign with API credentials acting as a specific signatory. The signatory MUST be preapproved in this case.
       /// </summary>
-      [JsonProperty("signWithOidcJWT")]
-      public SignWithOidcJWTOutput signWithOidcJWT { get; set; }
+      [JsonProperty("signActingAs")]
+      public SignActingAsOutput signActingAs { get; set; }
     
       /// <summary>
       /// Signatory frontend use only.
       /// </summary>
       [JsonProperty("signatoryBeacon")]
       public SignatoryBeaconOutput signatoryBeacon { get; set; }
+    
+      /// <summary>
+      /// Signatory frontend use only.
+      /// </summary>
+      [JsonProperty("trackSignatory")]
+      public TrackSignatoryOutput trackSignatory { get; set; }
     
       /// <summary>
       /// Used by Signatory frontends to mark documents as opened, approved or rejected.
@@ -941,6 +1398,10 @@ namespace CriiptoSignatures {
     /// </summary>
     public class OidcEvidenceProviderInput {
       #region members
+      public List<string> acrValues { get; set; }
+    
+      public bool? alwaysRedirect { get; set; }
+    
       [Required]
       [JsonRequired]
       public string audience { get; set; }
@@ -956,6 +1417,11 @@ namespace CriiptoSignatures {
       [Required]
       [JsonRequired]
       public string name { get; set; }
+    
+      /// <summary>
+      /// Enforces that signatories sign by unique evidence by comparing the values of previous evidence on the key you define.
+      /// </summary>
+      public string uniqueEvidenceKey { get; set; }
       #endregion
     
       #region methods
@@ -985,6 +1451,12 @@ namespace CriiptoSignatures {
     #region OidcJWTSignatureEvidenceProvider
     public class OidcJWTSignatureEvidenceProvider {
       #region members
+      [JsonProperty("acrValues")]
+      public List<string> acrValues { get; set; }
+    
+      [JsonProperty("alwaysRedirect")]
+      public bool alwaysRedirect { get; set; }
+    
       [JsonProperty("clientID")]
       public string clientID { get; set; }
     
@@ -1090,8 +1562,54 @@ namespace CriiptoSignatures {
       [JsonProperty("reference")]
       public string reference { get; set; }
     
+      [JsonProperty("signatoryViewerStatus")]
+      public SignatoryDocumentStatus? signatoryViewerStatus { get; set; }
+    
+      [JsonProperty("signatures")]
+      public List<Signature> signatures { get; set; }
+    
       [JsonProperty("title")]
       public string title { get; set; }
+      #endregion
+    }
+    #endregion
+    
+    #region PdfSealPosition
+    public class PdfSealPosition {
+      #region members
+      [Required]
+      [JsonRequired]
+      public int page { get; set; }
+    
+      [Required]
+      [JsonRequired]
+      public double x { get; set; }
+    
+      [Required]
+      [JsonRequired]
+      public double y { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
       #endregion
     }
     #endregion
@@ -1101,6 +1619,9 @@ namespace CriiptoSignatures {
       #region members
       [JsonProperty("application")]
       public Application application { get; set; }
+    
+      [JsonProperty("document")]
+      public Document document { get; set; }
     
       /// <summary>
       /// Query a signatory by id. Useful when using webhooks.
@@ -1217,9 +1738,130 @@ namespace CriiptoSignatures {
     }
     #endregion
     
+    #region SignActingAsInput
+    public class SignActingAsInput {
+      #region members
+      [Required]
+      [JsonRequired]
+      public SignInput evidence { get; set; }
+    
+      [Required]
+      [JsonRequired]
+      public string signatoryId { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region SignActingAsOutput
+    public class SignActingAsOutput {
+      #region members
+      [JsonProperty("signatory")]
+      public Signatory signatory { get; set; }
+    
+      [JsonProperty("signatureOrder")]
+      public SignatureOrder signatureOrder { get; set; }
+      #endregion
+    }
+    #endregion
+    
+    #region SignCriiptoVerifyInput
+    public class SignCriiptoVerifyInput {
+      #region members
+      [Required]
+      [JsonRequired]
+      public string jwt { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region SignDrawableInput
+    public class SignDrawableInput {
+      #region members
+      [Required]
+      [JsonRequired]
+      public string image { get; set; }
+    
+      public string name { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
     #region SignInput
     public class SignInput {
       #region members
+      public SignCriiptoVerifyInput criiptoVerify { get; set; }
+    
+      public SignDrawableInput drawable { get; set; }
+    
+      /// <summary>
+      /// EvidenceProvider id
+      /// </summary>
       [Required]
       [JsonRequired]
       public string id { get; set; }
@@ -1294,54 +1936,21 @@ namespace CriiptoSignatures {
     }
     #endregion
     
-    #region SignWithOidcJwtInput
-    public class SignWithOidcJwtInput {
-      #region members
-      [Required]
-      [JsonRequired]
-      public string id { get; set; }
-    
-      [Required]
-      [JsonRequired]
-      public string jwt { get; set; }
-      #endregion
-    
-      #region methods
-      public dynamic GetInputObject()
-      {
-        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
-    
-        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-        foreach (var propertyInfo in properties)
-        {
-          var value = propertyInfo.GetValue(this);
-          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
-    
-          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
-    
-          if (requiredProp || value != defaultValue)
-          {
-            d[propertyInfo.Name] = value;
-          }
-        }
-        return d;
-      }
-      #endregion
-    }
-    #endregion
-    
-    #region SignWithOidcJWTOutput
-    public class SignWithOidcJWTOutput {
-      #region members
-      [JsonProperty("viewer")]
-      public Viewer viewer { get; set; }
-      #endregion
-    }
-    #endregion
-    
     #region Signatory
     public class Signatory {
       #region members
+      [JsonProperty("documents")]
+      public SignatoryDocumentConnection documents { get; set; }
+    
+      /// <summary>
+      /// A download link for signatories to download their signed documents. Signatories must verify their identity before downloading. Can be used when signature order is closed with document retention.
+      /// </summary>
+      [JsonProperty("downloadHref")]
+      public string downloadHref { get; set; }
+    
+      [JsonProperty("evidenceProviders")]
+      public List<object> evidenceProviders { get; set; }
+    
       /// <summary>
       /// A link to the signatures frontend, you can send this link to your users to enable them to sign your documents.
       /// </summary>
@@ -1450,6 +2059,11 @@ namespace CriiptoSignatures {
       [JsonRequired]
       public string id { get; set; }
     
+      /// <summary>
+      /// Define custom position for PDF seal. Uses PDF coordinate system (bottom-left as 0,0). If defined for one signatory/document, must be defined for all.
+      /// </summary>
+      public PdfSealPosition pdfSealPosition { get; set; }
+    
       public bool? preapproved { get; set; }
       #endregion
     
@@ -1483,6 +2097,38 @@ namespace CriiptoSignatures {
       REJECTED
     }
     
+    
+    #region SignatoryEvidenceProviderInput
+    public class SignatoryEvidenceProviderInput {
+      #region members
+      [Required]
+      [JsonRequired]
+      public string id { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
     
     #region SignatoryEvidenceValidationInput
     public class SignatoryEvidenceValidationInput {
@@ -1519,7 +2165,13 @@ namespace CriiptoSignatures {
       #endregion
     }
     #endregion
+    public enum SignatoryFrontendEvent {
+      DOWNLOAD_LINK_OPENED,
+      SIGN_LINK_OPENED
+    }
+    
     public enum SignatoryStatus {
+      DELETED,
       ERROR,
       OPEN,
       REJECTED,
@@ -1536,6 +2188,9 @@ namespace CriiptoSignatures {
       [JsonProperty("documents")]
       public SignatoryDocumentConnection documents { get; set; }
     
+      [JsonProperty("download")]
+      public SignatoryViewerDownload download { get; set; }
+    
       [JsonProperty("evidenceProviders")]
       public List<object> evidenceProviders { get; set; }
     
@@ -1544,6 +2199,9 @@ namespace CriiptoSignatures {
     
       [JsonProperty("signatoryId")]
       public string signatoryId { get; set; }
+    
+      [JsonProperty("signatureOrderStatus")]
+      public SignatureOrderStatus signatureOrderStatus { get; set; }
     
       [JsonProperty("signer")]
       public bool signer { get; set; }
@@ -1557,17 +2215,87 @@ namespace CriiptoSignatures {
     }
     #endregion
     
+    #region SignatoryViewerDownload
+    public class SignatoryViewerDownload {
+      #region members
+      [JsonProperty("documents")]
+      public SignatoryDocumentConnection documents { get; set; }
+    
+      [JsonProperty("expired")]
+      public bool expired { get; set; }
+    
+      [JsonProperty("verificationEvidenceProvider")]
+      public object verificationEvidenceProvider { get; set; }
+    
+      [JsonProperty("verificationRequired")]
+      public bool verificationRequired { get; set; }
+      #endregion
+    }
+    #endregion
+    
+    /// <summary>
+    /// Represents a signature on a document.
+    /// </summary>
+    public interface Signature {
+      [JsonProperty("signatory")]
+      Signatory signatory { get; set; }
+    }
+    
+    #region SignatureAppearanceInput
+    public class SignatureAppearanceInput {
+      #region members
+      /// <summary>
+      /// Render evidence claim as identifier in the signature appearance inside the document. You can supply multiple keys and they will be tried in order. If no key is found a GUID will be rendered.
+      /// </summary>
+      [Required]
+      [JsonRequired]
+      public List<string> identifierFromEvidence { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
     #region SignatureOrder
     public class SignatureOrder {
       #region members
       [JsonProperty("application")]
       public Application application { get; set; }
     
+      [JsonProperty("closedAt")]
+      public string closedAt { get; set; }
+    
+      [JsonProperty("createdAt")]
+      public string createdAt { get; set; }
+    
       [JsonProperty("documents")]
       public List<PdfDocument> documents { get; set; }
     
       [JsonProperty("evidenceProviders")]
       public List<object> evidenceProviders { get; set; }
+    
+      [JsonProperty("expiresAt")]
+      public string expiresAt { get; set; }
     
       [JsonProperty("id")]
       public string id { get; set; }
@@ -1586,6 +2314,9 @@ namespace CriiptoSignatures {
       /// </summary>
       [JsonProperty("tenant")]
       public Tenant tenant { get; set; }
+    
+      [JsonProperty("timezone")]
+      public string timezone { get; set; }
     
       [JsonProperty("title")]
       public string title { get; set; }
@@ -1654,11 +2385,72 @@ namespace CriiptoSignatures {
     #region SignatureOrderUI
     public class SignatureOrderUI {
       #region members
+      [JsonProperty("disableRejection")]
+      public bool disableRejection { get; set; }
+    
       [JsonProperty("language")]
       public Language language { get; set; }
     
+      [JsonProperty("logo")]
+      public SignatureOrderUILogo logo { get; set; }
+    
       [JsonProperty("signatoryRedirectUri")]
       public string signatoryRedirectUri { get; set; }
+    
+      [JsonProperty("stylesheet")]
+      public string stylesheet { get; set; }
+      #endregion
+    }
+    #endregion
+    
+    #region SignatureOrderUILogo
+    public class SignatureOrderUILogo {
+      #region members
+      [JsonProperty("href")]
+      public string href { get; set; }
+    
+      [JsonProperty("src")]
+      public string src { get; set; }
+      #endregion
+    }
+    #endregion
+    
+    #region SignatureOrderUiLogoInput
+    public class SignatureOrderUiLogoInput {
+      #region members
+      /// <summary>
+      /// Turns your logo into a link with the defined href.
+      /// </summary>
+      public string href { get; set; }
+    
+      /// <summary>
+      /// The image source for the logo. Must be an absolute HTTPS URL.
+      /// </summary>
+      [Required]
+      [JsonRequired]
+      public string src { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
       #endregion
     }
     #endregion
@@ -1671,6 +2463,47 @@ namespace CriiptoSignatures {
     
       [JsonProperty("id")]
       public string id { get; set; }
+      #endregion
+    }
+    #endregion
+    
+    #region TrackSignatoryInput
+    public class TrackSignatoryInput {
+      #region members
+      [Required]
+      [JsonRequired]
+      public SignatoryFrontendEvent @event { get; set; }
+      #endregion
+    
+      #region methods
+      public dynamic GetInputObject()
+      {
+        IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+    
+        var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+        foreach (var propertyInfo in properties)
+        {
+          var value = propertyInfo.GetValue(this);
+          var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+    
+          var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+    
+          if (requiredProp || value != defaultValue)
+          {
+            d[propertyInfo.Name] = value;
+          }
+        }
+        return d;
+      }
+      #endregion
+    }
+    #endregion
+    
+    #region TrackSignatoryOutput
+    public class TrackSignatoryOutput {
+      #region members
+      [JsonProperty("viewer")]
+      public Viewer viewer { get; set; }
       #endregion
     }
     #endregion
