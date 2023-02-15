@@ -30,6 +30,7 @@ namespace CriiptoSignatures {
             signatureOrder {
               id
               documents {
+                __typename
                 id
               }
               signatories {
@@ -108,9 +109,11 @@ namespace CriiptoSignatures {
             signatureOrder {
               id
               documents {
+                __typename
                 id
                 blob
                 signatures {
+                  __typename
                   signatory {
                     id
                   }
@@ -154,6 +157,55 @@ namespace CriiptoSignatures {
             signatories {
               id
               status
+            }
+          }
+        }
+        ";
+      
+    }
+    
+
+    public class SignatureOrderWithDocumentsGQL {
+      /// <summary>
+      /// SignatureOrderWithDocumentsGQL.Request 
+      /// <para>Required variables:<br/> { id=(string) }</para>
+      /// <para>Optional variables:<br/> {  }</para>
+      /// </summary>
+      public static GraphQLRequest Request(object variables = null) {
+        return new GraphQLRequest {
+          Query = SignatureOrderWithDocumentsDocument,
+          OperationName = "signatureOrderWithDocuments",
+          Variables = variables
+        };
+      }
+
+      /// <remarks>This method is obsolete. Use Request instead.</remarks>
+      public static GraphQLRequest getSignatureOrderWithDocumentsGQL() {
+        return Request();
+      }
+      
+      public static string SignatureOrderWithDocumentsDocument = @"
+        query signatureOrderWithDocuments($id: ID!) {
+          signatureOrder(id: $id) {
+            status
+            signatories {
+              id
+              status
+            }
+            documents {
+              __typename
+              id
+              blob
+              signatures {
+                __typename
+                signatory {
+                  id
+                }
+                ... on JWTSignature {
+                  jwt
+                  jwks
+                }
+              }
             }
           }
         }

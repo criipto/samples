@@ -4,12 +4,17 @@ using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
 using System.Net.Http.Headers;
+using System;
 using System.IO;
 using System.Threading;
 
-var clientId = "";
-var clientSecret = "";
-using var graphQLClient = new GraphQLHttpClient("https://signatures-api.criipto.com/v1/graphql", new NewtonsoftJsonSerializer());
+var clientId = Environment.GetEnvironmentVariable("CRIIPTO_SIGNATURES_CLIENT_ID");
+var clientSecret = Environment.GetEnvironmentVariable("CRIIPTO_SIGNATURES_CLIENT_SECRET");
+
+var serializer = new NewtonsoftJsonSerializer();
+
+using var graphQLClient = new GraphQLHttpClient("https://signatures-api.criipto.com/v1/graphql", serializer);
+
 graphQLClient.HttpClient.DefaultRequestHeaders.Authorization
     = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes($"{clientId}:{clientSecret}")));
 

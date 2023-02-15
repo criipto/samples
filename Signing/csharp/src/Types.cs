@@ -881,6 +881,7 @@ namespace CriiptoSignatures {
       SignatoryDocumentStatus? signatoryViewerStatus { get; set; }
     
       [JsonProperty("signatures")]
+      [JsonConverter(typeof(CompositionTypeListConverter))]
       List<Signature> signatures { get; set; }
     
       [JsonProperty("title")]
@@ -1566,6 +1567,7 @@ namespace CriiptoSignatures {
       public SignatoryDocumentStatus? signatoryViewerStatus { get; set; }
     
       [JsonProperty("signatures")]
+      [JsonConverter(typeof(CompositionTypeListConverter))]
       public List<Signature> signatures { get; set; }
     
       [JsonProperty("title")]
@@ -1621,6 +1623,7 @@ namespace CriiptoSignatures {
       public Application application { get; set; }
     
       [JsonProperty("document")]
+      [JsonConverter(typeof(CompositionTypeConverter))]
       public Document document { get; set; }
     
       /// <summary>
@@ -1642,6 +1645,7 @@ namespace CriiptoSignatures {
       public List<string> timezones { get; set; }
     
       [JsonProperty("viewer")]
+      [JsonConverter(typeof(CompositionTypeConverter))]
       public Viewer viewer { get; set; }
       #endregion
     }
@@ -1733,6 +1737,7 @@ namespace CriiptoSignatures {
     public class RejectSignatureOrderOutput {
       #region members
       [JsonProperty("viewer")]
+      [JsonConverter(typeof(CompositionTypeConverter))]
       public Viewer viewer { get; set; }
       #endregion
     }
@@ -1931,6 +1936,7 @@ namespace CriiptoSignatures {
     public class SignOutput {
       #region members
       [JsonProperty("viewer")]
+      [JsonConverter(typeof(CompositionTypeConverter))]
       public Viewer viewer { get; set; }
       #endregion
     }
@@ -2026,6 +2032,7 @@ namespace CriiptoSignatures {
     public class SignatoryBeaconOutput {
       #region members
       [JsonProperty("viewer")]
+      [JsonConverter(typeof(CompositionTypeConverter))]
       public Viewer viewer { get; set; }
       #endregion
     }
@@ -2044,6 +2051,7 @@ namespace CriiptoSignatures {
     public class SignatoryDocumentEdge {
       #region members
       [JsonProperty("node")]
+      [JsonConverter(typeof(CompositionTypeConverter))]
       public Document node { get; set; }
     
       [JsonProperty("status")]
@@ -2289,7 +2297,8 @@ namespace CriiptoSignatures {
       public string createdAt { get; set; }
     
       [JsonProperty("documents")]
-      public List<PdfDocument> documents { get; set; }
+      [JsonConverter(typeof(CompositionTypeListConverter))]
+      public List<Document> documents { get; set; }
     
       [JsonProperty("evidenceProviders")]
       public List<object> evidenceProviders { get; set; }
@@ -2503,6 +2512,7 @@ namespace CriiptoSignatures {
     public class TrackSignatoryOutput {
       #region members
       [JsonProperty("viewer")]
+      [JsonConverter(typeof(CompositionTypeConverter))]
       public Viewer viewer { get; set; }
       #endregion
     }
@@ -2551,6 +2561,7 @@ namespace CriiptoSignatures {
       public SignatoryDocumentEdge documentEdge { get; set; }
     
       [JsonProperty("viewer")]
+      [JsonConverter(typeof(CompositionTypeConverter))]
       public Viewer viewer { get; set; }
       #endregion
     }

@@ -1,10 +1,39 @@
 query signatureOrder($id: ID!) {
-    signatureOrder(id: $id) {
-        status
+  signatureOrder(id: $id) {
+    status
 
-        signatories {
-            id
-            status
-        }
+    signatories {
+      id
+      status
     }
+  }
+}
+
+query signatureOrderWithDocuments($id: ID!) {
+  signatureOrder(id: $id) {
+    status
+
+    signatories {
+      id
+      status
+    }
+
+    documents {
+      __typename
+      id
+      blob
+
+      signatures {
+        __typename
+        signatory {
+            id
+        }
+
+        ... on JWTSignature {
+          jwt
+          jwks
+        }
+      }
+    }
+  }
 }

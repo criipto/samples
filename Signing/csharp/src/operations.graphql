@@ -4,6 +4,7 @@ mutation createSignatureOrder ($input: CreateSignatureOrderInput!) {
       id
 
       documents {
+        __typename
         id
       }
 
@@ -36,17 +37,19 @@ mutation closeSignatureOrder ($input: CloseSignatureOrderInput!) {
       id
 
       documents {
+        __typename
         id
         blob
 
         signatures {
+          __typename
           signatory {
               id
           }
 
           ... on JWTSignature {
-              jwt
-              jwks
+            jwt
+            jwks
           }
         }
       }
