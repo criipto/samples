@@ -1,0 +1,16 @@
+query SignatureOrders($status: SignatureOrderStatus) {
+  viewer {
+    __typename
+    ... on Application {
+      signatureOrders(status: $status) {
+        edges {
+          node {
+            id
+            title
+            status
+          }
+        }
+      }
+    }
+  }
+}

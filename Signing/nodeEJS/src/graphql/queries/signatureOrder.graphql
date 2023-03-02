@@ -1,0 +1,18 @@
+query signatureOrder($id: ID!) {
+  signatureOrder(id: $id) {
+    status
+    title
+
+    documents {
+      id
+      title,
+      blob
+    }
+
+    signatories {
+      id
+      status
+      href
+    }
+  }
+}

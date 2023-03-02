@@ -1,0 +1,15 @@
+mutation addSignatories ($input: AddSignatoriesInput!) {
+  addSignatories(input: $input) {
+    signatureOrder {
+      signatories {
+        id
+        href
+      }
+    }
+
+    signatories {
+      id
+      href
+    }
+  }
+}

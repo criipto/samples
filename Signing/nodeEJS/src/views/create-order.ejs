@@ -1,0 +1,42 @@
+<form method="POST" action="/new-signature-order" accept=".pdf" enctype="multipart/form-data" class="max-w-lg mx-auto">
+  <h2 class="text-2xl text-gray-700 font-bold mb-6 text-center">
+    Create Signature Order
+  </h2>
+  <div class="mb-6">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="orderTitle">
+      Signature Order Title
+    </label>
+    <input class="w-full px-4 py-2 text-gray-700 border rounded focus:outline-none focus:border-blue-500" id="order-title" name="orderTitle" type="text" placeholder="My Signature Order" />
+  </div>
+  <div class="mb-6">
+    <label for="document" class="block text-gray-700 text-sm font-bold mb-2">
+      Upload PDF Documents
+    </label>
+    <div class="flex items-center justify-center px-6 pt-12 pb-6 border-dashed border-2 border-gray-200 rounded-md">
+      <div class="text-center">
+        <img src="/assets/upload.svg" alt="Upload Icon" class="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 68 68" />
+        <div class="flex justify-center items-center">
+          <input type="file" id="document" name="document" class="ml-24 font-medium text-blue-600 hover:text-blue-500 px-4 py-2 text-gray-900 text-white rounded cursor-pointer" multiple />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-6">
+    <label for="signatory" class="block text-gray-700 text-sm font-bold mb-2">
+      Add Signatory
+    </label>
+    <div id="signatories-container">
+      <div class="flex items-center signatory">
+        <input class="w-full px-4 py-2 text-gray-700 border rounded focus:outline-none focus:border-blue-500" id="signatory" name="signatory" type="text" placeholder="Enter Signatory Reference" />
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-end">
+    <button id="create-order-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed" type="submit" disabled>
+      Create Signature Order
+    </button>
+  </div>
+</form>
+<script type="application/javascript" src="js/main.js">
+</script>
+</form>
