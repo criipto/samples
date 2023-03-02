@@ -110,18 +110,14 @@ app.post('/orders/:id/close', async (req: Request, res: Response) => {
 
   // Set retention period for 7 days – to be able to download the signed PDFs after the order is closed. 
   await closeSignatureOrder(id, 7);
-
-  if (!closeSignatureOrder) throw new Error('Error closing signature order');
-  else res.redirect('/orders/' + req.params.id);
+  res.redirect('/orders/' + req.params.id);
 });
 
 // Cancel signature order
 app.post('/orders/:id/cancel', async (req: Request, res: Response) => {
   const { id } = req.params;
   await cancelSignatureOrder(id);
-
-  if (!cancelSignatureOrder) alert('Error canceling signature order');
-  else res.redirect('/orders/' + req.params.id);
+  res.redirect('/orders/' + req.params.id);
 });
 
 
@@ -152,7 +148,7 @@ app.post(
 );
 
 // Listen to incoming events
-app.post('/webhook', async (req, res) => {
+app.post('/webhook', async (req: Request, res: Response) => {
   const event = req.body.event;
   const orderId = req.body.signatureOrderId;
   console.log('Received webhook event:', req.body);
@@ -160,7 +156,6 @@ app.post('/webhook', async (req, res) => {
   if (event === 'SIGNATORY_SIGNED' && orderId) {
     console.log(`Received SIGNATORY_SIGNED event for order ${orderId}`);
     await closeSignatureOrder(orderId, 7);
-    if (!closeSignatureOrder) alert('Signature order has open signatory');
   }
 });
 
