@@ -5,7 +5,7 @@ query signatureOrder($id: ID!) {
 
     documents {
       id
-      title,
+      title
       blob
     }
 
@@ -13,6 +13,7 @@ query signatureOrder($id: ID!) {
       id
       status
       href
+      reference
     }
   }
 }

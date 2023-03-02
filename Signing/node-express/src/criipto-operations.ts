@@ -1,11 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import { GraphQLClient } from 'graphql-request';
-import {
-  getSdk,
-  PadesDocumentInput,
-  Scalars,
-} from './generated/graphql';
+import { getSdk, PadesDocumentInput, Scalars } from './generated/graphql';
 import { ngrokUrl } from './app';
 
 if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET)
@@ -39,11 +35,11 @@ export async function createSignatureOrder(
         documents: inputFiles.map((pdf) => ({ pdf })),
         // Adding ngrok webhook url
         webhook: {
-          url: ngrokUrl + '/webhook', 
+          url: ngrokUrl + '/webhook',
         },
         // Adding redirect url (optional), where the signatory will be redirected after signing
         // ui: {
-        //   "signatoryRedirectUri": "http://localhost:4000/thank-you", 
+        //   "signatoryRedirectUri": "http://localhost:4000/thank-you",
         // },
       },
     })
@@ -56,7 +52,7 @@ export async function addSignatory(
   signatureOrderId: string,
   reference?: string
 ) {
-  console.log('Adding signatory ...');
+  console.log(`Adding signatory`);
   const signatory = await sdk
     .addSignatory({
       input: {
@@ -142,10 +138,9 @@ export async function cancelSignatureOrder(id: string) {
         signatureOrderId: id,
       },
     })
-    .then((result) => result.cancelSignatureOrder?.signatureOrder); 
+    .then((result) => result.cancelSignatureOrder?.signatureOrder);
   if (!canceledSignatureOrder)
     throw new Error('Failed cancelling signatureOrder');
   console.log(`Signature order ${id} canceled`);
   return canceledSignatureOrder;
 }
-

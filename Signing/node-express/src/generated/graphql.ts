@@ -961,7 +961,7 @@ export type SignatureOrderQueryVariables = Exact<{
 }>;
 
 
-export type SignatureOrderQuery = { __typename?: 'Query', signatureOrder?: { __typename?: 'SignatureOrder', status: SignatureOrderStatus, title?: string | null, documents: Array<{ __typename?: 'PdfDocument', id: string, title: string, blob?: any | null }>, signatories: Array<{ __typename?: 'Signatory', id: string, status: SignatoryStatus, href: string }> } | null };
+export type SignatureOrderQuery = { __typename?: 'Query', signatureOrder?: { __typename?: 'SignatureOrder', status: SignatureOrderStatus, title?: string | null, documents: Array<{ __typename?: 'PdfDocument', id: string, title: string, blob?: any | null }>, signatories: Array<{ __typename?: 'Signatory', id: string, status: SignatoryStatus, href: string, reference?: string | null }> } | null };
 
 export type SignatureOrdersQueryVariables = Exact<{
   status?: InputMaybe<SignatureOrderStatus>;
@@ -1070,6 +1070,7 @@ export const SignatureOrderDocument = gql`
       id
       status
       href
+      reference
     }
   }
 }

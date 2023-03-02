@@ -13,7 +13,7 @@ import {
   createSignatureOrder,
   addSignatory,
   closeSignatureOrder,
-  cancelSignatureOrder
+  cancelSignatureOrder,
 } from './criipto-operations';
 import { DocumentStorageMode } from './generated/graphql';
 
@@ -91,16 +91,15 @@ app.get('/orders/:id', async (req: Request, res: Response) => {
   const documentTitles = order.documents.map((document) => document.title);
 
   res.render('order', {
-    request: req,
     title: 'Signature Order Created',
-    link: order.signatories[0].href, // This sample app only supports adding one signatory per order
+    signatories: order.signatories,
     status: order.status,
-    orderTitle: order.title || 'Untitled',
+    orderTitle: order.title,
     orderId: id,
     signedDocuments: signedDocuments,
     documentTitles: documentTitles,
     isClosed,
-    isCanceled
+    isCanceled,
   });
 });
 
@@ -108,7 +107,7 @@ app.get('/orders/:id', async (req: Request, res: Response) => {
 app.post('/orders/:id/close', async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  // Set retention period for 7 days – to be able to download the signed PDFs after the order is closed. 
+  // Set retention period for 7 days – to be able to download the signed PDFs after the order is closed.
   await closeSignatureOrder(id, 7);
   res.redirect('/orders/' + req.params.id);
 });
@@ -120,14 +119,12 @@ app.post('/orders/:id/cancel', async (req: Request, res: Response) => {
   res.redirect('/orders/' + req.params.id);
 });
 
-
 app.post(
   '/new-signature-order',
   upload.array('document'),
   async (req: Request, res: Response) => {
     if (!req.files) throw new Error('No file uploaded!');
 
-    // Files array might also be a Map, converting to an array
     const files = Array.isArray(req.files)
       ? req.files
       : Object.values(req.files).flatMap((v) => v);
@@ -141,7 +138,29 @@ app.post(
       req.body.orderTitle
     );
 
-    await addSignatory(createdSignatureOrder.id, req.body.reference);
+    // Add signatories
+    const addedSignatories = [];
+    if (req.body.signatoryOne !== '') {
+      addedSignatories.push(req.body.signatoryOne);
+    }
+    if (req.body.signatoryTwo !== '') {
+      addedSignatories.push(req.body.signatoryTwo);
+    }
+    if (req.body.signatoryThree !== '') {
+      addedSignatories.push(req.body.signatoryThree);
+    }
+
+    if (addedSignatories.length < 1) {
+      await addSignatory(createdSignatureOrder.id);
+    } else {
+      for (const signatory of addedSignatories) {
+        try {
+          await addSignatory(createdSignatureOrder.id, signatory);
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    }
 
     res.redirect(`/orders/${createdSignatureOrder.id}`);
   }
@@ -149,13 +168,27 @@ app.post(
 
 // Listen to incoming events
 app.post('/webhook', async (req: Request, res: Response) => {
-  const event = req.body.event;
-  const orderId = req.body.signatureOrderId;
-  console.log('Received webhook event:', req.body);
+  const { event, signatureOrderId } = req.body;
+  const order = await getSignatureOrder(signatureOrderId);
+  let orderCanClose = false;
 
-  if (event === 'SIGNATORY_SIGNED' && orderId) {
-    console.log(`Received SIGNATORY_SIGNED event for order ${orderId}`);
-    await closeSignatureOrder(orderId, 7);
+  if (event) {
+    console.log(
+      `Received event ${event} for order ${signatureOrderId}`,
+      req.body
+    );
+  }
+
+  if (order.signatories.every((signatory) => signatory.status === 'SIGNED')) {
+    orderCanClose = true;
+  }
+
+  if (event === 'SIGNATORY_SIGNED' && orderCanClose) {
+    console.log(
+      `Received SIGNATORY_SIGNED event for order ${signatureOrderId}`
+    );
+    await closeSignatureOrder(signatureOrderId, 7);
+    res.redirect('/order/' + signatureOrderId);
   }
 });
 
