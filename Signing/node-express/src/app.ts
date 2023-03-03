@@ -139,26 +139,15 @@ app.post(
     );
 
     // Add signatories
-    const addedSignatories = [];
-    if (req.body.signatoryOne !== '') {
-      addedSignatories.push(req.body.signatoryOne);
-    }
-    if (req.body.signatoryTwo !== '') {
-      addedSignatories.push(req.body.signatoryTwo);
-    }
-    if (req.body.signatoryThree !== '') {
-      addedSignatories.push(req.body.signatoryThree);
-    }
+    const signatories = req.body.signatory;
 
-    if (addedSignatories.length < 1) {
-      await addSignatory(createdSignatureOrder.id);
-    } else {
-      for (const signatory of addedSignatories) {
-        try {
+    for (const signatory of signatories) {
+      try {
+        if (signatory !== '') {
           await addSignatory(createdSignatureOrder.id, signatory);
-        } catch (err) {
-          console.error(err);
         }
+      } catch (err) {
+        console.error(err);
       }
     }
 
