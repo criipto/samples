@@ -38,4 +38,4 @@ Our [GraphQL Explorer](https://signatures-api-prod.azurewebsites.net/v1/explorer
 
 ### Notes
 
-- The [retention peroiod](https://docs.criipto.com/signatures/graphql/examples/#with-document-retention) is set to 7 days. This allows to query for the order and retrieve the signed PDFs after the order has been closed without relying on a database.
+- The [retention period](https://docs.criipto.com/signatures/graphql/examples/#with-document-retention) is set to 7 days. This allows to query for the order and retrieve the signed PDFs after the order has been closed without relying on a database.
