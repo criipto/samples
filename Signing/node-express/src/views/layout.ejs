@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.15/dist/tailwind.min.css" />
+</head>
+
+<body>
+  <!-- include Navbar -->
+  <%- include('partials/navbar') %>
+  <div class="bg-gradient-to-b from-blue-900 to-neutral-100 text-white py-8 px-4">
+    <div class="w-full max-w-xl mx-auto mt-8">
+      <div class="bg-white shadow-md rounded px-4 py-4 pt-6 pb-8 mb-4 h-2/3">
+        <%- body %>
+      </div>
+    </div>
+  </div>
+  <!-- include script -->
+  <%- script %>
+</body>
+
+</html>
