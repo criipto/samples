@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import criiptoAuth from '../../criipto-auth'
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted } from 'vue/dist/vue';
 
 const state = reactive({
   userName: 'user',
