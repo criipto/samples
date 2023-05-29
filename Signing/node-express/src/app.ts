@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 import express, { Express, Request, Response } from 'express';
 import path from 'path';
-import ejs from 'ejs';
 const expressLayouts = require('express-ejs-layouts');
 import bodyParser from 'body-parser'; // parse incoming requests with JSON payloads, for webhook events
 import multer from 'multer'; // handle file uploads
@@ -15,7 +14,6 @@ import {
   closeSignatureOrder,
   cancelSignatureOrder,
 } from './criipto-operations';
-import { DocumentStorageMode } from './generated/graphql';
 
 const app: Express = express();
 const port = 4000;
@@ -64,8 +62,7 @@ app.get('/order-signed', async (req: Request, res: Response) => {
 });
 
 app.get('/orders', async (req: Request, res: Response) => {
-  const orders = await getOrders();
-
+  const orders = await getOrders(100);
   res.render('orders', {
     title: 'Orders',
     orders: orders,
@@ -74,23 +71,26 @@ app.get('/orders', async (req: Request, res: Response) => {
 
 app.get('/orders/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
-  const order = await getSignatureOrder(id);
+  const order = await getSignatureOrder(id, true) ;
 
   // Check if order is closed or cancelled
-  const isClosed = order.status === 'CLOSED';
-  const isCanceled = order.status === 'CANCELLED';
+  const isClosed = order!.status === 'CLOSED';
+  const isCanceled = order!.status === 'CANCELLED';
 
   // Signed PDFs
-  const signedDocuments = order.documents.map((document) => {
+  const signedDocuments = ("documents" in order!) ? 
+  (order.documents.map((document) => {
     return {
       title: document.title,
-      blob: document.blob,
+      blob: document.blob?.toString("base64"),
     };
-  });
+  })) : [];
+  
   // Document titles
-  const documentTitles = order.documents.map((document) => document.title);
+  const documentTitles = (order && "documents" in order)? (order!.documents.map((document) => document.title)) : [];
 
-  res.render('order', {
+
+  order && res.render('order', {
     title: 'Signature Order Created',
     signatories: order.signatories,
     status: order.status,
@@ -132,14 +132,18 @@ app.post(
     const createdSignatureOrder = await createSignatureOrder(
       files.map((file) => ({
         title: file.originalname,
-        storageMode: DocumentStorageMode.Temporary,
-        blob: file.buffer.toString('base64'),
+        storageMode: 'Temporary',
+        blob: file.buffer
       })),
       req.body.orderTitle
     );
 
     // Add signatories
-    const signatories = req.body.signatory;
+    let signatories = req.body.signatory || [];
+    if (signatories.every((signatory: string) => signatory === '')) {
+      // add a default signatory if no signatories added
+      signatories = ['Signatory'];
+    }
 
     for (const signatory of signatories) {
       try {
@@ -158,17 +162,23 @@ app.post(
 // Listen to incoming events
 app.post('/webhook', async (req: Request, res: Response) => {
   const { event, signatureOrderId } = req.body;
-  const order = await getSignatureOrder(signatureOrderId);
   let orderCanClose = false;
 
-  if (event) {
-    console.log(
-      `Received event ${event} for order ${signatureOrderId}`,
-      req.body
-    );
+  if (event === "WEBHOOK_VALIDATION") {
+    console.log("WEBHOOK_VALIDATION event");
+    res.sendStatus(200);
+    return;
   }
+  
+  if (event && signatureOrderId) {
+  const order = await getSignatureOrder(signatureOrderId);
+  console.log(
+    `Received event ${event} for order ${signatureOrderId}`,
+    req.body
+  );
 
-  if (order.signatories.every((signatory) => signatory.status === 'SIGNED')) {
+
+  if (order!.signatories.every((signatory) => signatory.status === 'SIGNED')) {
     orderCanClose = true;
   }
 
@@ -179,6 +189,7 @@ app.post('/webhook', async (req: Request, res: Response) => {
     await closeSignatureOrder(signatureOrderId, 7);
     res.redirect('/order/' + signatureOrderId);
   }
+}
 });
 
 app.listen(port, () => {
