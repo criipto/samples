@@ -89,8 +89,10 @@ app.get('/orders/:id', async (req: Request, res: Response) => {
   // Document titles
   const documentTitles = (order && "documents" in order)? (order!.documents.map((document) => document.title)) : [];
 
-
-  order && res.render('order', {
+  if(!order){
+    res.status(404).send('Order not found')
+  } else {
+  res.render('order', {
     title: 'Signature Order Created',
     signatories: order.signatories,
     status: order.status,
@@ -101,6 +103,7 @@ app.get('/orders/:id', async (req: Request, res: Response) => {
     isClosed,
     isCanceled,
   });
+}
 });
 
 // Close signature order
@@ -161,34 +164,39 @@ app.post(
 
 // Listen to incoming events
 app.post('/webhook', async (req: Request, res: Response) => {
-  const { event, signatureOrderId } = req.body;
-  let orderCanClose = false;
+  try {
+    const { event, signatureOrderId } = req.body;
+    let orderCanClose = false;
 
-  if (event === "WEBHOOK_VALIDATION") {
-    console.log("WEBHOOK_VALIDATION event");
-    res.sendStatus(200);
-    return;
-  }
-  
-  if (event && signatureOrderId) {
-  const order = await getSignatureOrder(signatureOrderId);
-  console.log(
-    `Received event ${event} for order ${signatureOrderId}`,
-    req.body
-  );
-
-
-  if (order!.signatories.every((signatory) => signatory.status === 'SIGNED')) {
-    orderCanClose = true;
-  }
-
-  if (event === 'SIGNATORY_SIGNED' && orderCanClose) {
+    if (event === "WEBHOOK_VALIDATION") {
+      console.log("WEBHOOK_VALIDATION event");
+      res.sendStatus(200);
+      return;
+    }
+    
+    if (event && signatureOrderId) {
+    const order = await getSignatureOrder(signatureOrderId);
     console.log(
-      `Received SIGNATORY_SIGNED event for order ${signatureOrderId}`
+      `Received event ${event} for order ${signatureOrderId}`,
+      req.body
     );
-    await closeSignatureOrder(signatureOrderId, 7);
-    res.redirect('/order/' + signatureOrderId);
-  }
+
+
+    if (order!.signatories.every((signatory) => signatory.status === 'SIGNED')) {
+      orderCanClose = true;
+    }
+
+    if (event === 'SIGNATORY_SIGNED' && orderCanClose) {
+      console.log(
+        `Received SIGNATORY_SIGNED event for order ${signatureOrderId}`
+      );
+      await closeSignatureOrder(signatureOrderId, 7);
+      res.redirect('/order/' + signatureOrderId);
+    }
+   }
+} catch (error) {
+  console.error('An error occurred:', error);
+  res.status(500).send('Error');
 }
 });
 
