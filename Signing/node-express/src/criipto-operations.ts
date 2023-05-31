@@ -67,13 +67,6 @@ export async function getOrdersByStatus(first: number, status?: NonNullable<Para
   return orders;
 }
 
-export async function getOrders(first: number) {
-  const openOrders = await getOrdersByStatus(first, "OPEN");
-  const closedOrders = await getOrdersByStatus(first, "CLOSED");
-  const allOrders = await getOrdersByStatus(first);
-  return { openOrders, closedOrders, allOrders };
-}
-
 export async function closeSignatureOrder(id: string, retentionPeriod: number) {
   console.log(`Closing signature order ${id} ...`);
 

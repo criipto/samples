@@ -8,7 +8,7 @@ import multer from 'multer'; // handle file uploads
 import ngrok from 'ngrok'; // ngrok tunneling for webhook events
 import {
   getSignatureOrder,
-  getOrders,
+  getOrdersByStatus,
   createSignatureOrder,
   addSignatory,
   closeSignatureOrder,
@@ -62,7 +62,7 @@ app.get('/order-signed', async (req: Request, res: Response) => {
 });
 
 app.get('/orders/all', async (req: Request, res: Response) => {
-  const {allOrders} = await getOrders(200);
+  const allOrders = await getOrdersByStatus(200);
   res.render('orders', {
     title: 'Orders',
     orders: allOrders,
@@ -71,7 +71,7 @@ app.get('/orders/all', async (req: Request, res: Response) => {
 });
 
 app.get('/orders/open', async (req: Request, res: Response) => {
-  const { openOrders } = await getOrders(200);
+  const openOrders = await getOrdersByStatus(200, "OPEN");
   res.render('orders', {
     title: 'Orders',
     openOrders,
@@ -80,7 +80,7 @@ app.get('/orders/open', async (req: Request, res: Response) => {
 });
 
 app.get('/orders/closed', async (req: Request, res: Response) => {
-  const { closedOrders } = await getOrders(200);
+  const closedOrders = await getOrdersByStatus(200, "CLOSED");
   res.render('orders', {
     title: 'Orders',
     closedOrders, 
