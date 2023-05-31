@@ -1,9 +1,0 @@
-mutation cancelSignatureOrder(
-  $input: CancelSignatureOrderInput!
-) {
-  cancelSignatureOrder(input: $input) {
-    signatureOrder {
-      id
-    }
-  }
-}

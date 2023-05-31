@@ -1,21 +1,17 @@
 # Criipto Signatures API Sample App with Node.js, EJS, and a webhook
 
-This simple web app allows you to create a signature order with multiple documents, add signatories to it, and close or cancel the order. It demonstrates how Criipto Signatures API can be used with Node.js, Express, and EJS. Additionally, it uses [Ngrok](https://ngrok.com/) to create a webhook endpoint where you can receive [events](https://docs.criipto.com/signatures/webhooks/events/) triggered when a signatory signs or rejects a document.
+This sample app allows you to create a signature order with multiple documents, add signatories to it, and close or cancel the order. It is built with the [Node.js SDK for Criipto Signatures](https://github.com/criipto/criipto-signatures-nodejs) and demonstrates how Criipto Signatures API can be used with Node.js, Express, and EJS.  
 
-This repository serves as an example of how you might implement the Criipto Document Signatures GraphQL API.
+Additionally, it uses [Ngrok](https://ngrok.com/) to create a webhook endpoint where you can receive [events](https://docs.criipto.com/signatures/webhooks/events/) triggered when a signatory signs or rejects a document.
 
-You can also try out the API and see the schema using our [GraphQL Explorer](https://signatures-api-prod.azurewebsites.net/v1/explorer).
+### Documentation & Resources 
 
-## GraphQL
+- [The full documentation](https://docs.criipto.com/signatures/integrations/nodejs/) for the Node.js SDK.  
 
-If you have not worked with GraphQL before, we suggest you read through [Introduction to GraphQL](https://graphql.org/learn/) and [The Fullstack Tutorial for GraphQL](https://www.howtographql.com/).
+- [More Node.js examples](https://docs.criipto.com/signatures/graphql/examples/) for all the options supported by the Criipto Signatures API (choose Node.js from the dropdown).  
 
-In this example, we used [GraphQL Code Generator](https://the-guild.dev/graphql/codegen) to generate types for operations.
-
-### GraphQL Queries & Mutations
-
-Please refer to our [GraphQL API documentation](https://docs.criipto.com/signatures/graphql/) for a list of available queries and mutations.  
-Our [GraphQL Explorer](https://signatures-api-prod.azurewebsites.net/v1/explorer) is the easiest way to test out queries.
+- An easy way to test out queries is by using our [GraphQL Explorer](https://signatures-api.criipto.com/v1/explorer).  
+If you have not worked with GraphQL before, you can read through [Introduction to GraphQL](https://graphql.org/learn/) and [The Fullstack Tutorial for GraphQL](https://www.howtographql.com/).
 
 ## Running the app
 
@@ -29,12 +25,6 @@ Our [GraphQL Explorer](https://signatures-api-prod.azurewebsites.net/v1/explorer
   Your client ID and secret will be available on your [Criipto Dashboard](https://dashboard.criipto.com/) after you [register your signatures application](https://docs.criipto.com/signatures/getting-started/register-application/).
 
 - `npm install` && `npm start`
-
-### Project structure
-
-- `mutations` and `queries` folders contain GraphQL mutations and queries used in the app
-- `generated` folder contains generated types for operations
-- `criipto-operations.ts` contains API calls to Criipto Signatures API
 
 ### Notes
 
