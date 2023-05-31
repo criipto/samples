@@ -52,19 +52,26 @@ export async function getSignatureOrder(id: string, includeDocuments?: boolean){
   return signatureOrder;
 }
 
-export async function getOrders(first: number) {
-  console.log('Getting orders ...');
-  const orders = await client.querySignatureOrders({first})
-  .then((result) => {
-    return result
-    .slice(-10)
-    .map((order) => ({
-      id: order.id,
-      status: order.status,
-      title: order.title || 'Untitled',
-    }));
-  });
+export async function getOrdersByStatus(first: number, status?: NonNullable<Parameters<typeof client["querySignatureOrders"]>[0]>["status"]) {
+  console.log(`Getting orders ...`);
+  const orders = await client.querySignatureOrders({ first, status })
+    .then((result) => {
+      return result
+        .slice(-10)
+        .map((order) => ({
+          id: order.id,
+          status: order.status,
+          title: order.title || 'Untitled',
+        }));
+    });
   return orders;
+}
+
+export async function getOrders(first: number) {
+  const openOrders = await getOrdersByStatus(first, "OPEN");
+  const closedOrders = await getOrdersByStatus(first, "CLOSED");
+  const allOrders = await getOrdersByStatus(first);
+  return { openOrders, closedOrders, allOrders };
 }
 
 export async function closeSignatureOrder(id: string, retentionPeriod: number) {

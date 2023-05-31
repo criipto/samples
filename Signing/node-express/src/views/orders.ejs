@@ -1,4 +1,18 @@
-<table class="max-w-xl table-auto divide-y divide-gray-200">
+<div class="border-b border-gray-200">
+  <nav class="flex">
+    <a id="allBtn" href="/orders/all" class="text-gray-500 py-4 px-6 bg-white rounded-t-lg font-semibold border-b-2 border-transparent hover:border-blue-500 focus:outline-none  <%= activeTab === 'all' ? 'bg-gray-200' : '' %>">
+      All Orders
+    </a>
+    <a id="openBtn" href="/orders/open" class="text-gray-500 py-4 px-6 bg-white rounded-t-lg font-semibold border-b-2 border-transparent hover:border-blue-500 focus:outline-none <%= activeTab === 'open' ? 'bg-gray-200' : '' %>">
+      Open Orders
+    </a>
+    <a id="closedBtn" href="/orders/closed" class="text-gray-500 py-4 px-6 bg-white rounded-t-lg font-semibold border-b-2 border-transparent hover:border-blue-500 focus:outline-none <%= activeTab === 'closed' ? 'bg-gray-200' : '' %>">
+      Closed Orders
+    </a>
+  </nav>
+</div>
+
+<table id="ordersTable" class="max-w-xl table-auto divide-y divide-gray-200">
   <thead class="bg-gray-50">
     <tr>
       <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -16,37 +30,12 @@
     </tr>
   </thead>
   <tbody class="bg-white divide-y divide-gray-200">
-    <% orders.forEach((order, index) => { %>
-    <tr>
-      <td class="px-6 py-4 text-gray-900 overflow-hidden text-overflow">
-        <%= index + 1 %>
-      </td>
-      <td class="px-6 py-4 text-gray-900 overflow-hidden text-overflow">
-        <%= order.title %>
-      </td>
-      <td class="px-6 py-4 overflow-hidden text-overflow">
-        <% if (order.status === 'OPEN') { %>
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-          <%= order.status %>
-        </span>
-        <% } else if (order.status === 'CLOSED') { %>
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-          <%= order.status %>
-        </span>
-        <% } else if (order.status === 'CANCELLED') { %>
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-          <%= order.status %>
-        </span>
-        <% } else if (order.status === 'EXPIRED') { %>
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
-          <%= order.status %>
-        </span>
-        <% } %>
-      </td>
-      <td class="px-6 py-4 whitespace-nowrap text-gray-900">
-        <a href="/orders/<%= order.id %>">View Order </a>
-      </td>
-    </tr>
-    <% }); %>
+    <% if (activeTab === 'all') { %>
+    <%- include('partials/all_orders') %>
+    <% } else if (activeTab === 'open') { %>
+    <%- include('partials/open_orders') %>
+    <% } else if (activeTab === 'closed') { %>
+    <%- include('partials/closed_orders') %>
+    <% } %>
   </tbody>
 </table>

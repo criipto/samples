@@ -61,11 +61,30 @@ app.get('/order-signed', async (req: Request, res: Response) => {
   res.render('thank-you', { title: 'Create New Signature Order' });
 });
 
-app.get('/orders', async (req: Request, res: Response) => {
-  const orders = await getOrders(100);
+app.get('/orders/all', async (req: Request, res: Response) => {
+  const {allOrders} = await getOrders(200);
   res.render('orders', {
     title: 'Orders',
-    orders: orders,
+    orders: allOrders,
+    activeTab: "all"
+  });
+});
+
+app.get('/orders/open', async (req: Request, res: Response) => {
+  const { openOrders } = await getOrders(200);
+  res.render('orders', {
+    title: 'Orders',
+    openOrders,
+    activeTab: "open"
+  });
+});
+
+app.get('/orders/closed', async (req: Request, res: Response) => {
+  const { closedOrders } = await getOrders(200);
+  res.render('orders', {
+    title: 'Orders',
+    closedOrders, 
+    activeTab: "closed"
   });
 });
 
@@ -89,9 +108,8 @@ app.get('/orders/:id', async (req: Request, res: Response) => {
   // Document titles
   const documentTitles = (order && "documents" in order)? (order!.documents.map((document) => document.title)) : [];
 
-  if(!order){
-    res.status(404).send('Order not found')
-  } else {
+  if(!order) return res.status(404).send('Order not found');
+  
   res.render('order', {
     title: 'Signature Order Created',
     signatories: order.signatories,
@@ -103,7 +121,6 @@ app.get('/orders/:id', async (req: Request, res: Response) => {
     isClosed,
     isCanceled,
   });
-}
 });
 
 // Close signature order

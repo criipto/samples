@@ -1,0 +1,30 @@
+<% try { %>
+<% if (openOrders && openOrders.length > 0) { %>
+<% openOrders.forEach((order, index) => { %>
+<tr>
+  <td class="px-6 py-4 text-gray-900 overflow-hidden text-overflow">
+    <%= index + 1 %>
+  </td>
+  <td class="px-6 py-4 text-gray-900 overflow-hidden text-overflow">
+    <%= order.title %>
+  </td>
+  <td class="px-6 py-4 overflow-hidden text-overflow">
+    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+      <%= order.status %>
+    </span>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap text-gray-900">
+    <a href="/orders/<%= order.id %>">View Order</a>
+  </td>
+</tr>
+<% }); %>
+<% } else { %>
+<tr>
+  <td colspan="4" class="px-6 py-4 text-gray-900 text-center">No open orders available</td>
+</tr>
+<% } %>
+<% } catch (error) { %>
+<tr>
+  <td colspan="4" class="px-6 py-4 text-red-500">Error: <%= error %></td>
+</tr>
+<% } %>
