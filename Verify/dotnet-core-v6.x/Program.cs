@@ -23,8 +23,9 @@ builder.Services.AddAuthentication(options => {
     options.ClientSecret = builder.Configuration["Criipto:ClientSecret"]; // Client from application registration
     options.Authority = $"https://{builder.Configuration["Criipto:Domain"]}/"; // Domain from application registration
     options.ResponseType = "code";
+    options.AccessDeniedPath = new PathString("/Home/Error");
 
-    // The next to settings must match the Callback URLs in Criipto Verify
+    // The next two settings must match the Callback URLs in Criipto Verify
     options.CallbackPath = new PathString("/callback"); 
     options.SignedOutCallbackPath = new PathString("/signout");
 
