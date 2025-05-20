@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directories:
+      - "/Bank/*"
+      - "/Signing/*"
+      - "/Verify/*"
+      - "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+  - package-ecosystem: "dotnet-sdk"
+    directories:
+      - "/Bank/*"
+      - "/Signing/*"
+      - "/Verify/*"
+      - "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
